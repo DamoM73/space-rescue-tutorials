@@ -1,0 +1,845 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Setup" href="setup.html" />
+
+    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>GameFrame - API - Space Rescue</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --font-stack: gill sans, sans-serif;
+  --font-stack--monospace: monaco, monospace;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Space Rescue</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Space Rescue</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame - API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="gameframe-api">
+<h1>GameFrame - API<a class="headerlink" href="#gameframe-api" title="Permalink to this heading">#</a></h1>
+<p>By Steven Tucker</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p>GameFrame has been developed to take the excellent PyGame libraries and make them more accessible and easy to use for beginner to intermediate programmers. GameFrame aims to help with learning the concepts of text based game programming without getting caught up in the implementation details.</p>
+<p>GameFrame is set up as an event driven framework. Programmers define <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> and <code class="docutils literal notranslate"><span class="pre">Room</span> <span class="pre">Objects</span></code>, then write functions to handle certain events such as collisions, button clicks and so on. Just define all the items of your game, then let it run. GameFrame handles the Game loop and collision detection, just register your object for an event and write the code that will run when that event occurs.</p>
+<p>GameFrame was primarily written for education, however it can be used to make a variety of games that can be can be freely shared, altered and improved. It’s free and available for everyone to use, students, hobbyist and accomplished programmers alike.</p>
+</section>
+<section id="gameframe-folder-structure">
+<h2>GameFrame folder structure<a class="headerlink" href="#gameframe-folder-structure" title="Permalink to this heading">#</a></h2>
+<p>GameFrame organises files so that the same types of files are together. This organization makes it easier to setup and maintain a game. By keeping files of the same type together, it makes it easy to locate particular files and to create a ‘birds eye view’ of the project.</p>
+<p>The following is a description of the files and folders found in the GameFrame project folder.</p>
+<section id="gameframe">
+<h3>GameFrame<a class="headerlink" href="#gameframe" title="Permalink to this heading">#</a></h3>
+<p>This folder holds most of the code provided by GameFrame. When making a game, the only file in this folder that you need to edit is the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file.</p>
+</section>
+<section id="images">
+<h3>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h3>
+<p>This folder holds all game images such as backgrounds and game characters. All graphic files that are in your game go here.</p>
+</section>
+<section id="objects">
+<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+<p>This is where you put all the individual parts (objects) of your game. For instance, you could make a player that has an image (from the Images folder) and moves across the screen if the arrow buttons are pressed. The player would be one object in the game. An enemy, wall, bouncing ball etc. could be other objects.</p>
+</section>
+<section id="rooms">
+<h3>Rooms<a class="headerlink" href="#rooms" title="Permalink to this heading">#</a></h3>
+<p>Rooms are stages or levels in the game. In the Rooms folder you put each level/stage/room of your game. For instance, the first room might be a maze, and when the player reaches the end of the maze they move into the next room which is a platform game.</p>
+</section>
+<section id="sounds">
+<h3>Sounds<a class="headerlink" href="#sounds" title="Permalink to this heading">#</a></h3>
+<p>This folder holds all game sounds such as gunfire and explosions. All sound files that are in your game go here.</p>
+</section>
+<section id="license">
+<h3>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h3>
+<p>The License file is not a part of the game. It lays out the rules around using and distributing GameFrame. The License is the Gnu General Public License, which basically means you can use it however you like, but you can’t stop anyone else from using it, and if you make changes to GameFrame itself (the files inside the GameFrame folder) and want to share it with other people, you can do that as well (It’s not stealing. You are allowed to do that!)</p>
+</section>
+<section id="maincontroller-py">
+<h3><code class="docutils literal notranslate"><span class="pre">MainController.py</span></code><a class="headerlink" href="#maincontroller-py" title="Permalink to this heading">#</a></h3>
+<p>This is the file that is run to start the game. We don’t need to edit this file, but when we want to run the game, this is the file that is run.</p>
+</section>
+<section id="readme-md">
+<h3><code class="docutils literal notranslate"><span class="pre">README.md</span></code><a class="headerlink" href="#readme-md" title="Permalink to this heading">#</a></h3>
+<p>This file contains a brief description of GameFrame. We do not need to edit this file. It is used to provide a description on GitHub for people who want to know what the project is about. You can delete this file if you like, but leaving it doesn’t cause any problems.</p>
+</section>
+<section id="init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code><a class="headerlink" href="#init-py" title="Permalink to this heading">#</a></h3>
+<p>Inside folders there is a file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> It is this file that allows us to group files into different folders and still have the game know where to find everything. Whenever we add a file to a folder, we need to add an entry to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in the same folder to let the rest of the program know that the new file is there.</p>
+<p>You will need to include code in this format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Folder.FileName</span> <span class="kn">import</span> <span class="n">ClassName</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="gameframe-globals-py">
+<h2><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file holds the overall game information and variables that can be accessed from any code file. As well as editing the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file to set game information, you may need to access or update information in the file from other parts of the program.</p>
+<p>To do this you need to import the file as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Globals</span>
+</pre></div>
+</div>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h3>
+<section id="running">
+<h4><code class="docutils literal notranslate"><span class="pre">running</span></code><a class="headerlink" href="#running" title="Permalink to this heading">#</a></h4>
+<p>This variable indicates that the game is in play.</p>
+<p>Set this variable to False to end the game.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Globals</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="frames-per-second">
+<h4><code class="docutils literal notranslate"><span class="pre">FRAMES_PER_SECOND</span> </code><a class="headerlink" href="#frames-per-second" title="Permalink to this heading">#</a></h4>
+<p>This variable sets how often the screen is redrawn. It is set by default to 30 times every second. If this rate is increased (or decreased), all movement must be adjusted accordingly. If an object moves 5 pixels every frame, then it will travel further in a second at 40 Frames per second (200 pixels), than it will at 30 (150 pixels).</p>
+</section>
+<section id="screen-width">
+<h4><code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code><a class="headerlink" href="#screen-width" title="Permalink to this heading">#</a></h4>
+<p>The width of the game screen. By default this is set to 800</p>
+</section>
+<section id="screen-height">
+<h4><code class="docutils literal notranslate"><span class="pre">SCREEN_HEIGHT</span></code><a class="headerlink" href="#screen-height" title="Permalink to this heading">#</a></h4>
+<p>The height of the game screen. By default this is set to 600</p>
+</section>
+<section id="score">
+<h4><code class="docutils literal notranslate"><span class="pre">SCORE</span></code><a class="headerlink" href="#score" title="Permalink to this heading">#</a></h4>
+<p>This variable is provided to track a players score and is initially set to 0.</p>
+</section>
+<section id="lives">
+<h4><code class="docutils literal notranslate"><span class="pre">LIVES</span></code><a class="headerlink" href="#lives" title="Permalink to this heading">#</a></h4>
+<p>This variable is provided to track a players lives and is initially set to 3.</p>
+</section>
+<section id="window-name">
+<h4><code class="docutils literal notranslate"><span class="pre">window_name</span></code><a class="headerlink" href="#window-name" title="Permalink to this heading">#</a></h4>
+<p>The text that is stored in this variable will be displayed on the game window.</p>
+</section>
+<section id="levels">
+<h4><code class="docutils literal notranslate"><span class="pre">levels</span></code><a class="headerlink" href="#levels" title="Permalink to this heading">#</a></h4>
+<p>This is an array that hold the names of all the levels in the game, in the order that a player progresses through them. The names in this array, must match with files that are in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder.</p>
+<p>An example could be</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Levels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;StartScreen&#39;</span><span class="p">,</span> <span class="s1">&#39;MazeLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;PlatformLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;EndScreen&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="start-level">
+<h4><code class="docutils literal notranslate"><span class="pre">start_level</span></code><a class="headerlink" href="#start-level" title="Permalink to this heading">#</a></h4>
+<p>The level index from the levels array, that will be launched when the game starts, this is usually 0 (the first item)</p>
+</section>
+<section id="end-game-level">
+<h4><code class="docutils literal notranslate"><span class="pre">end_game_level</span></code><a class="headerlink" href="#end-game-level" title="Permalink to this heading">#</a></h4>
+<p>The level index from the levels array, that will be run when the game ends (usually an end screen or high score screen)</p>
+</section>
+</section>
+</section>
+<section id="gameframe-databasecontroller-py">
+<h2><code class="docutils literal notranslate"><span class="pre">GameFrame/DataBaseController.py</span></code><a class="headerlink" href="#gameframe-databasecontroller-py" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">DataBaseController</span></code> is a class which connects the provided SQL database file.</p>
+<p>If you wish to use a database in your game you will need to use this Class and write methods for the class in this file.</p>
+</section>
+<section id="rooms-levels">
+<h2>Rooms/Levels<a class="headerlink" href="#rooms-levels" title="Permalink to this heading">#</a></h2>
+<p>In a game made with GameFrame, a room is the area in which a game is played. To have a game, there must be at least one room, but there can be many rooms, with the game progressing through different rooms.</p>
+<p>A room is defined and kept in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder, and it is a type of GameFrame <code class="docutils literal notranslate"><span class="pre">Level</span></code>. As a room is a type of Level, every room has the attributes and functions of a Level, plus any defined for that room.</p>
+<p>To access the <code class="docutils literal notranslate"><span class="pre">Level</span></code> code, you need to import the file as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+</pre></div>
+</div>
+<section id="defining-and-initialising-a-room-level">
+<h3>Defining and Initialising a Room/Level:<a class="headerlink" href="#defining-and-initialising-a-room-level" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LevelName</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span> 
+        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Variables<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="screen">
+<h4><code class="docutils literal notranslate"><span class="pre">screen</span></code><a class="headerlink" href="#screen" title="Permalink to this heading">#</a></h4>
+<p>Passed to the Room/Level when started, the screen variable is a hook to the display area of the room.</p>
+</section>
+<section id="id2">
+<h4><code class="docutils literal notranslate"><span class="pre">running</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>Level is active when true, level stops running due to being successfully complete when set to False</p>
+</section>
+<section id="quitting">
+<h4><code class="docutils literal notranslate"><span class="pre">quitting</span></code><a class="headerlink" href="#quitting" title="Permalink to this heading">#</a></h4>
+<p>Level stops running and has not been successfully completed.</p>
+</section>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
+<section id="set-background-image-image-file">
+<h4><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code><a class="headerlink" href="#set-background-image-image-file" title="Permalink to this heading">#</a></h4>
+<p>This function is called to set the background image of the level, where image_file is replaced by the name of an image in the Images folder.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s1">&#39;background.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-background-scroll-speed">
+<h4><code class="docutils literal notranslate"><span class="pre">set_background_scroll(speed)</span></code><a class="headerlink" href="#set-background-scroll-speed" title="Permalink to this heading">#</a></h4>
+<p>GameFrame provides this simple function call to set a scrolling background, such as those used for scrolling shooter games like 1942. The variable speed is the number of pixels moved every frame (Frames are set by default to 30 per second)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">set_background_scroll</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="load-sound-sound-file">
+<h4><code class="docutils literal notranslate"><span class="pre">load_sound(sound_file)</span></code><a class="headerlink" href="#load-sound-sound-file" title="Permalink to this heading">#</a></h4>
+<p>Read a sound file from the Sounds folder. Once read into a variable it can be played anytime by calling play() on the variable</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">explosion_sound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_sound</span><span class="p">(</span><span class="s1">&#39;explosion.wav&#39;</span><span class="p">)</span> 
+
+<span class="bp">self</span><span class="o">.</span><span class="n">explosion_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="pygame-sound-methods">
+<h5>PyGame sound methods<a class="headerlink" href="#pygame-sound-methods" title="Permalink to this heading">#</a></h5>
+<p>The variable is storing a PyGame sound object, which means that you can use any PyGame mixer method.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.play(loop=1)</span></code> will loop the sound</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.play(fade_ms=500)</span></code> will fade the sound in over half a 500ms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.stop()</span></code> will stop the sound</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.fadeout(500)</span></code> will fade the sound out over 500ms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.set_volume(0.5)</span></code> will set the volume to half (range <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>)</p></li>
+</ul>
+<p>Other methods can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play">PyGame mixer docs</a></p>
+</section>
+</section>
+<section id="delete-object-obj">
+<h4><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code><a class="headerlink" href="#delete-object-obj" title="Permalink to this heading">#</a></h4>
+<p>Removes an object from the room.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="s1">&#39;enemy_plane_1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-timer-ticks-function-call">
+<h4><code class="docutils literal notranslate"><span class="pre">set_timer(ticks,</span> <span class="pre">function_call)</span></code><a class="headerlink" href="#set-timer-ticks-function-call" title="Permalink to this heading">#</a></h4>
+<p>When you want to set a timed event, you call the set_timer function providing the number of ticks (frames ticked over) and a function to call when the number of ticks is reached.</p>
+<p>For example, if I wanted to generate a new enemy character every 10 seconds, and the Frames per second is at the default setting of 30, I could write the call</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">set_timer</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">create_new_enemy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Within the function <code class="docutils literal notranslate"><span class="pre">create_new_enemy</span></code>, I could have that same line to repeatedly call itself every 10 seconds</p>
+</section>
+<section id="count-object-obj-name">
+<h4><code class="docutils literal notranslate"><span class="pre">count_object(obj_name)</span></code><a class="headerlink" href="#count-object-obj-name" title="Permalink to this heading">#</a></h4>
+<p>Counts the number of instances  of the provided object within the room. The <code class="docutils literal notranslate"><span class="pre">obj_name</span></code> is a string giving the name of the object.</p>
+<p>For example, if I wanted to know how many enemy planes are win the room, I could write the call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">count_object</span><span class="p">(</span><span class="s1">&#39;enemy_plane&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="roomobject">
+<h2>RoomObject<a class="headerlink" href="#roomobject" title="Permalink to this heading">#</a></h2>
+<p>Everything that placed inside a Room, must be a <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code> (A <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> is also a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>). You define room objects in the “Objects” folder, and each object is a type of <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>.</p>
+<p>As each file in the Objects folder is a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, each has the attributes and functions of a <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, plus any defined for that file.</p>
+<p>To access the <code class="docutils literal notranslate"><span class="pre">RoomObject'</span></code> code, you need to import the file as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+</pre></div>
+</div>
+<section id="defining-and-initialising-a-room-object">
+<h3>Defining and Initialising a Room Object<a class="headerlink" href="#defining-and-initialising-a-room-object" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Name_of_Object</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Variables<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="room">
+<h4><code class="docutils literal notranslate"><span class="pre">Room</span></code><a class="headerlink" href="#room" title="Permalink to this heading">#</a></h4>
+<p>A hook to the room the object is in.</p>
+</section>
+<section id="depth">
+<h4><code class="docutils literal notranslate"><span class="pre">Depth</span></code><a class="headerlink" href="#depth" title="Permalink to this heading">#</a></h4>
+<p>The layer the object is situated in. When two objects occupy the same space, the object with the higher depth value will be shown, the object with the lower depth value will be covered.</p>
+</section>
+<section id="x">
+<h4><code class="docutils literal notranslate"><span class="pre">x</span></code><a class="headerlink" href="#x" title="Permalink to this heading">#</a></h4>
+<p>The current horizontal position of the object, taken at the top left hand corner of the image</p>
+</section>
+<section id="y">
+<h4><code class="docutils literal notranslate"><span class="pre">y</span></code><a class="headerlink" href="#y" title="Permalink to this heading">#</a></h4>
+<p>The current vertical position of the object, taken at the top left hand corner of the image</p>
+</section>
+<section id="rect">
+<h4><code class="docutils literal notranslate"><span class="pre">rect</span></code><a class="headerlink" href="#rect" title="Permalink to this heading">#</a></h4>
+<p>The bounding rectangle. That is, a rectangle that encompasses the image. Used for collision detection.</p>
+</section>
+<section id="prev-x">
+<h4><code class="docutils literal notranslate"><span class="pre">prev_x</span></code><a class="headerlink" href="#prev-x" title="Permalink to this heading">#</a></h4>
+<p>The previous horizontal position of the object, taken at the top left hand corner of the image</p>
+</section>
+<section id="prev-y">
+<h4><code class="docutils literal notranslate"><span class="pre">prev_y</span></code><a class="headerlink" href="#prev-y" title="Permalink to this heading">#</a></h4>
+<p>The previous vertical position of the object, taken at the top left hand corner of the image</p>
+</section>
+<section id="width">
+<h4><code class="docutils literal notranslate"><span class="pre">width</span></code><a class="headerlink" href="#width" title="Permalink to this heading">#</a></h4>
+<p>The width in pixels, of the object image</p>
+</section>
+<section id="height">
+<h4><code class="docutils literal notranslate"><span class="pre">height</span></code><a class="headerlink" href="#height" title="Permalink to this heading">#</a></h4>
+<p>The height in pixels, of the object image</p>
+</section>
+<section id="image">
+<h4><code class="docutils literal notranslate"><span class="pre">image</span></code><a class="headerlink" href="#image" title="Permalink to this heading">#</a></h4>
+<p>The current image of the object</p>
+</section>
+<section id="x-speed">
+<h4><code class="docutils literal notranslate"><span class="pre">x_speed</span></code><a class="headerlink" href="#x-speed" title="Permalink to this heading">#</a></h4>
+<p>The number of pixels the object is moving in the horizontal direction every frame. Positive numbers indicate a move to the right, negative numbers indicate a move to the left.</p>
+</section>
+<section id="y-speed">
+<h4><code class="docutils literal notranslate"><span class="pre">y_speed</span></code><a class="headerlink" href="#y-speed" title="Permalink to this heading">#</a></h4>
+<p>The number of pixels the object is moving in the vertical direction every frame. Positive numbers indicate a move down, negative numbers indicate a move up.</p>
+</section>
+<section id="gravity">
+<h4><code class="docutils literal notranslate"><span class="pre">gravity</span></code><a class="headerlink" href="#gravity" title="Permalink to this heading">#</a></h4>
+<p>The gravity is a number that is used to determine the amount of gravity exerted on an object. The higher the number, the greater effect of falling the object has.</p>
+</section>
+<section id="handle-key-events">
+<h4><code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code><a class="headerlink" href="#handle-key-events" title="Permalink to this heading">#</a></h4>
+<p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this variable determines whether an object is notified of keyboard presses. To listen for key events, set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+<section id="handle-mouse-events">
+<h4><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code><a class="headerlink" href="#handle-mouse-events" title="Permalink to this heading">#</a></h4>
+<p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+</section>
+<section id="id4">
+<h3>Functions<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="load-image-file-name">
+<h4><code class="docutils literal notranslate"><span class="pre">load_image(file_name)</span></code><a class="headerlink" href="#load-image-file-name" title="Permalink to this heading">#</a></h4>
+<p>Retrieve and image from file.</p>
+</section>
+<section id="set-image-image-width-height">
+<h4><code class="docutils literal notranslate"><span class="pre">set_image(image,</span> <span class="pre">width,</span> <span class="pre">height)</span></code><a class="headerlink" href="#set-image-image-width-height" title="Permalink to this heading">#</a></h4>
+<p>Set the objects image by providing the image itself as well as its width and height in pixels.</p>
+</section>
+<section id="id5">
+<h4><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p>Remove an object from the room.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="s1">&#39;enemy_plane_1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="register-collision-object-collision-object">
+<h4><code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code><a class="headerlink" href="#register-collision-object-collision-object" title="Permalink to this heading">#</a></h4>
+<p>For an object to be notified of collisions with other objects, it must register to listen for collisions with a given object type. You can register for multiple object types.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s1">&#39;enemy&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="def-handle-collision-self-other-other-type">
+<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code><a class="headerlink" href="#def-handle-collision-self-other-other-type" title="Permalink to this heading">#</a></h4>
+<p>When a collision is registered, the object will be notified of any such event by calling its <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> function.</p>
+<p>To write the code that needs to run in a collision event, the object needs to implement the function.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">,</span><span class="n">other_type</span><span class="p">):</span> 
+    <span class="bp">self</span><span class="o">.</span><span class="n">bounce</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="def-key-pressed-self-key">
+<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code><a class="headerlink" href="#def-key-pressed-self-key" title="Permalink to this heading">#</a></h4>
+<p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any key presses by calling its <code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable <code class="docutils literal notranslate"><span class="pre">key</span></code>.  <a class="reference external" href="http://www.pygame.org/docs/ref/key.html">PyGame key identities can be found here.</a></p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> 
+    <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_LEFT</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">4</span> 
+    <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_RIGHT</span><span class="p">]:</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">4</span> 
+    <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_UP</span><span class="p">]:</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="mi">4</span> 
+    <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_DOWN</span><span class="p">]:</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">4</span> 
+</pre></div>
+</div>
+</section>
+<section id="def-clicked-self-button-number">
+<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">clicked(self,</span> <span class="pre">button_number)</span></code><a class="headerlink" href="#def-clicked-self-button-number" title="Permalink to this heading">#</a></h4>
+<p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any mouse key presses by calling its clicked function. To write the code that needs to run in a mouse key press event, the object needs to implement the function. The mouse button identity will be supplied as the variable <code class="docutils literal notranslate"><span class="pre">button_number</span></code></p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">button_number</span><span class="p">):</span> 
+    <span class="c1"># - Check for a left mouse button click - # </span>
+    <span class="k">if</span> <span class="n">button_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="def-mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right">
+<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)</span></code><a class="headerlink" href="#def-mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right" title="Permalink to this heading">#</a></h4>
+<p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any mouse event by calling its mouse_event function. To write the code that needs to run in a mouse event, the object needs to implement the function. The mouse <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> position will be supplied as well as the buttons information</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouse_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mouse_x</span><span class="p">,</span> <span class="n">mouse_y</span><span class="p">,</span> <span class="n">button_left</span><span class="p">,</span> <span class="n">button_middle</span><span class="p">,</span> <span class="n">button_right</span><span class="p">):</span> 
+    <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">mouse_x</span> 
+    <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">mouse_y</span>
+</pre></div>
+</div>
+</section>
+<section id="bounce-other">
+<h4><code class="docutils literal notranslate"><span class="pre">bounce(other)</span></code><a class="headerlink" href="#bounce-other" title="Permalink to this heading">#</a></h4>
+<p>A convenience function that makes the current object bounce off of another object. The other object is provided as the variable <code class="docutils literal notranslate"><span class="pre">other</span></code></p>
+</section>
+<section id="blocked-other">
+<h4><code class="docutils literal notranslate"><span class="pre">blocked(other)</span></code><a class="headerlink" href="#blocked-other" title="Permalink to this heading">#</a></h4>
+<p>A convenience function that makes the current object blocked by another object. The other object is provided as the variable <code class="docutils literal notranslate"><span class="pre">other</span></code></p>
+</section>
+<section id="prestep">
+<h4><code class="docutils literal notranslate"><span class="pre">prestep()</span></code><a class="headerlink" href="#prestep" title="Permalink to this heading">#</a></h4>
+<p>Use this method to run code for the object each tick of the game clock, but before the code in the <code class="docutils literal notranslate"><span class="pre">step()</span></code> method.</p>
+</section>
+<section id="step">
+<h4><code class="docutils literal notranslate"><span class="pre">step()</span></code><a class="headerlink" href="#step" title="Permalink to this heading">#</a></h4>
+<p>Use this method to run code for the object on each tick of the game clock.</p>
+</section>
+<section id="set-dircetion-angle-speed">
+<h4><code class="docutils literal notranslate"><span class="pre">set_dircetion(angle,speed)</span></code><a class="headerlink" href="#set-dircetion-angle-speed" title="Permalink to this heading">#</a></h4>
+<p>Sets the direction and speed of the object. <code class="docutils literal notranslate"><span class="pre">angle</span></code> is in degrees where:</p>
+<ul class="simple">
+<li><p>0° → right</p></li>
+<li><p>90° → up</p></li>
+<li><p>180° → left</p></li>
+<li><p>270° → down</p></li>
+</ul>
+</section>
+<section id="get-direction-coordinates-angle-speed">
+<h4><code class="docutils literal notranslate"><span class="pre">get_direction_coordinates(angle,</span> <span class="pre">speed)</span></code><a class="headerlink" href="#get-direction-coordinates-angle-speed" title="Permalink to this heading">#</a></h4>
+<p>Calculates the next tick coordinates for a object travelling at <code class="docutils literal notranslate"><span class="pre">angle</span></code> and <code class="docutils literal notranslate"><span class="pre">speed</span></code>. Returns coordinates as a tuple <code class="docutils literal notranslate"><span class="pre">(x,y)</span></code></p>
+</section>
+<section id="rotate-angle">
+<h4><code class="docutils literal notranslate"><span class="pre">rotate(angle)</span></code><a class="headerlink" href="#rotate-angle" title="Permalink to this heading">#</a></h4>
+<p>Rotates the object so that it’s direction is pointed towards <code class="docutils literal notranslate"><span class="pre">angle</span></code>.</p>
+</section>
+<section id="rotate-to-coordinate-x-y">
+<h4><code class="docutils literal notranslate"><span class="pre">rotate_to_coordinate(x,</span> <span class="pre">y)</span></code><a class="headerlink" href="#rotate-to-coordinate-x-y" title="Permalink to this heading">#</a></h4>
+<p>Rotates the object so that it’s direction is pointed at the coordinates of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="text-object">
+<h2>Text Object<a class="headerlink" href="#text-object" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> is a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>. It has all the same attributes of a <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, but specialises in displaying text. The text can be set to various sizes and colours as well as specifying a given font type. To access the <code class="docutils literal notranslate"><span class="pre">TextObject</span></code>’ code, you need to import the file as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">TextObject</span>
+</pre></div>
+</div>
+<section id="defining-and-initialising-a-text-object">
+<h3>Defining and Initialising a Text Object<a class="headerlink" href="#defining-and-initialising-a-text-object" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NameofTextObject</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+                 <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Not Set&#39;</span><span class="p">,</span> 
+                 <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+                 <span class="n">font</span><span class="o">=</span><span class="s1">&#39;Comic Sans MS&#39;</span><span class="p">,</span> 
+                 <span class="n">colour</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
+                 <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>Variables<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="text">
+<h4><code class="docutils literal notranslate"><span class="pre">text</span></code><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h4>
+<p>The text that will be used for the <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> when the function <code class="docutils literal notranslate"><span class="pre">update_text()</span></code> is called.</p>
+</section>
+<section id="size">
+<h4><code class="docutils literal notranslate"><span class="pre">size</span></code><a class="headerlink" href="#size" title="Permalink to this heading">#</a></h4>
+<p>The font size of the text when rendered</p>
+</section>
+<section id="font">
+<h4><code class="docutils literal notranslate"><span class="pre">font</span></code><a class="headerlink" href="#font" title="Permalink to this heading">#</a></h4>
+<p>The font type for the text when rendered. ie. ‘Sans Serif’, ‘Comic Sans MS’</p>
+</section>
+<section id="colour">
+<h4><code class="docutils literal notranslate"><span class="pre">colour</span></code><a class="headerlink" href="#colour" title="Permalink to this heading">#</a></h4>
+<p>The colour of the text when rendered</p>
+</section>
+<section id="bold">
+<h4><code class="docutils literal notranslate"><span class="pre">bold</span></code><a class="headerlink" href="#bold" title="Permalink to this heading">#</a></h4>
+<p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this will set the text to bold if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</section>
+</section>
+<section id="id7">
+<h3>Functions<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="update-text">
+<h4><code class="docutils literal notranslate"><span class="pre">update_text()</span></code><a class="headerlink" href="#update-text" title="Permalink to this heading">#</a></h4>
+<p>This function must be called for any changes to the object variable to take effect.</p>
+</section>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="setup.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Setup</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Damien Murtagh
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/DamoM73/space-rescue-tutorials" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">GameFrame - API</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#gameframe-folder-structure">GameFrame folder structure</a><ul>
+<li><a class="reference internal" href="#gameframe">GameFrame</a></li>
+<li><a class="reference internal" href="#images">Images</a></li>
+<li><a class="reference internal" href="#objects">Objects</a></li>
+<li><a class="reference internal" href="#rooms">Rooms</a></li>
+<li><a class="reference internal" href="#sounds">Sounds</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#maincontroller-py"><code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></a></li>
+<li><a class="reference internal" href="#readme-md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a></li>
+<li><a class="reference internal" href="#init-py"><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a><ul>
+<li><a class="reference internal" href="#variables">Variables</a><ul>
+<li><a class="reference internal" href="#running"><code class="docutils literal notranslate"><span class="pre">running</span></code></a></li>
+<li><a class="reference internal" href="#frames-per-second"><code class="docutils literal notranslate"><span class="pre">FRAMES_PER_SECOND</span> </code></a></li>
+<li><a class="reference internal" href="#screen-width"><code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code></a></li>
+<li><a class="reference internal" href="#screen-height"><code class="docutils literal notranslate"><span class="pre">SCREEN_HEIGHT</span></code></a></li>
+<li><a class="reference internal" href="#score"><code class="docutils literal notranslate"><span class="pre">SCORE</span></code></a></li>
+<li><a class="reference internal" href="#lives"><code class="docutils literal notranslate"><span class="pre">LIVES</span></code></a></li>
+<li><a class="reference internal" href="#window-name"><code class="docutils literal notranslate"><span class="pre">window_name</span></code></a></li>
+<li><a class="reference internal" href="#levels"><code class="docutils literal notranslate"><span class="pre">levels</span></code></a></li>
+<li><a class="reference internal" href="#start-level"><code class="docutils literal notranslate"><span class="pre">start_level</span></code></a></li>
+<li><a class="reference internal" href="#end-game-level"><code class="docutils literal notranslate"><span class="pre">end_game_level</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gameframe-databasecontroller-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/DataBaseController.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-levels">Rooms/Levels</a><ul>
+<li><a class="reference internal" href="#defining-and-initialising-a-room-level">Defining and Initialising a Room/Level:</a></li>
+<li><a class="reference internal" href="#id1">Variables</a><ul>
+<li><a class="reference internal" href="#screen"><code class="docutils literal notranslate"><span class="pre">screen</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">running</span></code></a></li>
+<li><a class="reference internal" href="#quitting"><code class="docutils literal notranslate"><span class="pre">quitting</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#set-background-image-image-file"><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code></a></li>
+<li><a class="reference internal" href="#set-background-scroll-speed"><code class="docutils literal notranslate"><span class="pre">set_background_scroll(speed)</span></code></a></li>
+<li><a class="reference internal" href="#load-sound-sound-file"><code class="docutils literal notranslate"><span class="pre">load_sound(sound_file)</span></code></a><ul>
+<li><a class="reference internal" href="#pygame-sound-methods">PyGame sound methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delete-object-obj"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
+<li><a class="reference internal" href="#set-timer-ticks-function-call"><code class="docutils literal notranslate"><span class="pre">set_timer(ticks,</span> <span class="pre">function_call)</span></code></a></li>
+<li><a class="reference internal" href="#count-object-obj-name"><code class="docutils literal notranslate"><span class="pre">count_object(obj_name)</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#roomobject">RoomObject</a><ul>
+<li><a class="reference internal" href="#defining-and-initialising-a-room-object">Defining and Initialising a Room Object</a></li>
+<li><a class="reference internal" href="#id3">Variables</a><ul>
+<li><a class="reference internal" href="#room"><code class="docutils literal notranslate"><span class="pre">Room</span></code></a></li>
+<li><a class="reference internal" href="#depth"><code class="docutils literal notranslate"><span class="pre">Depth</span></code></a></li>
+<li><a class="reference internal" href="#x"><code class="docutils literal notranslate"><span class="pre">x</span></code></a></li>
+<li><a class="reference internal" href="#y"><code class="docutils literal notranslate"><span class="pre">y</span></code></a></li>
+<li><a class="reference internal" href="#rect"><code class="docutils literal notranslate"><span class="pre">rect</span></code></a></li>
+<li><a class="reference internal" href="#prev-x"><code class="docutils literal notranslate"><span class="pre">prev_x</span></code></a></li>
+<li><a class="reference internal" href="#prev-y"><code class="docutils literal notranslate"><span class="pre">prev_y</span></code></a></li>
+<li><a class="reference internal" href="#width"><code class="docutils literal notranslate"><span class="pre">width</span></code></a></li>
+<li><a class="reference internal" href="#height"><code class="docutils literal notranslate"><span class="pre">height</span></code></a></li>
+<li><a class="reference internal" href="#image"><code class="docutils literal notranslate"><span class="pre">image</span></code></a></li>
+<li><a class="reference internal" href="#x-speed"><code class="docutils literal notranslate"><span class="pre">x_speed</span></code></a></li>
+<li><a class="reference internal" href="#y-speed"><code class="docutils literal notranslate"><span class="pre">y_speed</span></code></a></li>
+<li><a class="reference internal" href="#gravity"><code class="docutils literal notranslate"><span class="pre">gravity</span></code></a></li>
+<li><a class="reference internal" href="#handle-key-events"><code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code></a></li>
+<li><a class="reference internal" href="#handle-mouse-events"><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">Functions</a><ul>
+<li><a class="reference internal" href="#load-image-file-name"><code class="docutils literal notranslate"><span class="pre">load_image(file_name)</span></code></a></li>
+<li><a class="reference internal" href="#set-image-image-width-height"><code class="docutils literal notranslate"><span class="pre">set_image(image,</span> <span class="pre">width,</span> <span class="pre">height)</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
+<li><a class="reference internal" href="#register-collision-object-collision-object"><code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code></a></li>
+<li><a class="reference internal" href="#def-handle-collision-self-other-other-type"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code></a></li>
+<li><a class="reference internal" href="#def-key-pressed-self-key"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code></a></li>
+<li><a class="reference internal" href="#def-clicked-self-button-number"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">clicked(self,</span> <span class="pre">button_number)</span></code></a></li>
+<li><a class="reference internal" href="#def-mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)</span></code></a></li>
+<li><a class="reference internal" href="#bounce-other"><code class="docutils literal notranslate"><span class="pre">bounce(other)</span></code></a></li>
+<li><a class="reference internal" href="#blocked-other"><code class="docutils literal notranslate"><span class="pre">blocked(other)</span></code></a></li>
+<li><a class="reference internal" href="#prestep"><code class="docutils literal notranslate"><span class="pre">prestep()</span></code></a></li>
+<li><a class="reference internal" href="#step"><code class="docutils literal notranslate"><span class="pre">step()</span></code></a></li>
+<li><a class="reference internal" href="#set-dircetion-angle-speed"><code class="docutils literal notranslate"><span class="pre">set_dircetion(angle,speed)</span></code></a></li>
+<li><a class="reference internal" href="#get-direction-coordinates-angle-speed"><code class="docutils literal notranslate"><span class="pre">get_direction_coordinates(angle,</span> <span class="pre">speed)</span></code></a></li>
+<li><a class="reference internal" href="#rotate-angle"><code class="docutils literal notranslate"><span class="pre">rotate(angle)</span></code></a></li>
+<li><a class="reference internal" href="#rotate-to-coordinate-x-y"><code class="docutils literal notranslate"><span class="pre">rotate_to_coordinate(x,</span> <span class="pre">y)</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#text-object">Text Object</a><ul>
+<li><a class="reference internal" href="#defining-and-initialising-a-text-object">Defining and Initialising a Text Object</a></li>
+<li><a class="reference internal" href="#id6">Variables</a><ul>
+<li><a class="reference internal" href="#text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></li>
+<li><a class="reference internal" href="#size"><code class="docutils literal notranslate"><span class="pre">size</span></code></a></li>
+<li><a class="reference internal" href="#font"><code class="docutils literal notranslate"><span class="pre">font</span></code></a></li>
+<li><a class="reference internal" href="#colour"><code class="docutils literal notranslate"><span class="pre">colour</span></code></a></li>
+<li><a class="reference internal" href="#bold"><code class="docutils literal notranslate"><span class="pre">bold</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">Functions</a><ul>
+<li><a class="reference internal" href="#update-text"><code class="docutils literal notranslate"><span class="pre">update_text()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    </body>
+</html>
