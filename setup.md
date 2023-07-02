@@ -2,6 +2,11 @@
 
 For this course we are going emphasise developing good programming practice. This means using a proper development environment with version control. We will need to install a number of programs and then set our environment to ensure it functions properly.
 
+```{admonition} Reasons for workflow
+:class: note
+There are many reason behind using the workflow I'm presenting here. Most of them are beyond the scope of this course. Put simply, through experiecne, I have discovered that using this workflow minimises a number of traps that beginners fall into. This means that we can spend more time coding and less time trouble-shooting.
+```
+
 ## Programming Language - Python
 
 The first step is to install Python our programming language. If you have been using educational IDEs like Thonny and Mu, Python normally came packaged with them. This is not normally the case.
