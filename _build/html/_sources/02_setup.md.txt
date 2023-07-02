@@ -116,7 +116,7 @@ To do this:
 2. Click on the **<> Code** button
 3. Click on **Open with GitHub Desktop**
 
-![GitHub clone repo](assets/gh_clone_repo.png)
+![GitHub clone repo](assets/img/gh_clone_repo.png)
 
 The repo should now be copied onto your computer and ready for use.
 
@@ -150,14 +150,14 @@ To use GitHub Desktop to open VS Code:
 2. Make sure the **Current repository** (top lefthand) is **space-rescue-resources**
 3. Click **Open Visual Studio Code**
 
-![Launch with GitHub Desktop](assets/launch_with_ghdt.png)
+![Launch with GitHub Desktop](assets/img/launch_with_ghdt.png)
 
 VS Code should now launch and you file panel of the lefthand side should show:
 
 - space-rescue-resources
 - all the files in the image below
 
-![Initial directory files](assets/initial_directory.png)
+![Initial directory files](assets/img/initial_directory.png)
 
 ## Virtual Environment
 
@@ -180,19 +180,19 @@ To create a virtual environment for this project:
 1. Click on the `requirements.txt` file to open it.
 2. Then click on the blue **Create Environment** button on the bottom right
 
-![Create venv 1](assets/create_venv_1.png)
+![Create venv 1](assets/img/create_venv_1.png)
 
 3. At the top choose the **Venv** option
 
-![Create venv 2](assets/create_venv_2.png)
+![Create venv 2](assets/img/create_venv_2.png)
 
 4. Then choose the latest version of Python that you just installed
 
-![Create venv 3](assets/create_venv_3.png)
+![Create venv 3](assets/img/create_venv_3.png)
 
 5. Tick the box beside **requirements.txt** and then **ok**
 
-![Create venv 4](assets/create_venv_4.png)
+![Create venv 4](assets/img/create_venv_4.png)
 
 VS Code will now:
 
@@ -209,7 +209,7 @@ If the **Create Environment** button doesn't appear when you open the `requireme
 2. Type `Python` at the top
 3. Choose `Python: Create Environment...`
 
-![Create venv problem](assets/create_venv_trouble.png)
+![Create venv problem](assets/img/create_venv_trouble.png)
 ```
 
 ### Check Virtual Environment
@@ -219,8 +219,8 @@ Finally to check that the virtual environment has been setup.
 1. Click the **Terminal** menu
 2. Choose **New Terminal**
 
-![New Terminal](assets/new_terminal.png)
+![New Terminal](assets/img/new_terminal.png)
 
 3. Check that the prompt in terminal (bottom of the screen) starts with **(.venv)**
 
-![Venv confirmation](assets/venv_confirm.png)
+![Venv confirmation](assets/img/venv_confirm.png)

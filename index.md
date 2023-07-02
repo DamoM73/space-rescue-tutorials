@@ -6,8 +6,9 @@ This website provides tutorials on building a Python PyGame game using the [Game
 :maxdepth: 1
 :caption: "Contents:"
 
-introduction
-setup
+01_introduction
+02_setup
+03_gameframe
 documentation
 ```
 

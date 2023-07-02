@@ -37,9 +37,9 @@ exclude_patterns = ['_build',
 
 html_theme = 'furo'
 html_static_path = ['_static']
-html_logo = 'assets/logo.png'
+html_logo = 'assets/img/logo.png'
 html_title = "Space Rescue"
-html_favicon = "assets/logo.ico"
+html_favicon = "assets/img/logo.ico"
 
 html_theme_options = {
     "footer_icons": [

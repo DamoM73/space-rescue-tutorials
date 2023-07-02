@@ -45,7 +45,7 @@ GameFrame is not a library like Pygame, but rather it is an event driven framewo
 
 Below is an diagram showing the full stack of what we will be using for this course.
 
-![GameFrame stack](assets/gf_stack.png)
+![GameFrame stack](assets/img/gf_stack.png)
 
 Lets explore this:
 

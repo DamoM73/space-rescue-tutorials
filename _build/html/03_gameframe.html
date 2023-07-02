@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Setup" href="setup.html" /><link rel="prev" title="Space Rescue" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Setup" href="02_setup.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Introduction - Space Rescue</title>
+        <title>Get to know GameFrame - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -162,8 +162,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Get to know GameFrame</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 </ul>
 
@@ -199,65 +200,49 @@
           </label>
         </div>
         <article role="main">
-          <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
-<p>In this course we will develop a 2D computer game using Python, Pygame and GameFrame. We will also explore some simple game design concepts.</p>
-<p>Before we go any further, let’s look at the technology we will be using.</p>
-<section id="python">
-<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h2>
-<p>To understand this course you will need a solid understanding of the basics of Python programming. You will need to understand:</p>
-<ul class="simple">
-<li><p>foundational syntax such as:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">elif</span> <span class="pre">else</span></code> statements</p></li>
-<li><p>creating and using functions</p></li>
-<li><p>mathematical, conditional and Boolean operations</p></li>
-<li><p>data types</p></li>
-</ul>
-</li>
-<li><p>screen coordinates</p></li>
-<li><p>importing and using libraries</p></li>
-<li><p>object orientated programming</p>
-<ul>
-<li><p>using objects</p></li>
-<li><p>creating objects using <code class="docutils literal notranslate"><span class="pre">class</span></code></p></li>
-</ul>
-</li>
-</ul>
-<p>If you are yet to develop this knowledge, then I would suggest completing the following courses before continuing here:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://damom73.github.io/turtle-introduction-to-python/">A Turtle Introduction to Python</a> for foundational syntax.</p></li>
-<li><p><a class="reference external" href="https://damom73.github.io/python-oop-with-deepest-dungeon/">Deepest Dungeon - Python OOP</a> for object orientated programming.</p></li>
-</ul>
-</section>
-<section id="pygame">
-<h2>Pygame<a class="headerlink" href="#pygame" title="Permalink to this heading">#</a></h2>
-<p>Pygame is a popular open-source library for building 2D video games and multimedia applications in the Python . It provides developers with the necessary tools and functionality to create games, simulations, and interactive graphical applications.</p>
-<p>Pygame uses abstraction to simplify many complicated programming tasks which computer game programming requires. For example, detecting when different sprites collide with each other. This makes developing games using Pygame much easier then if you were using Python alone.</p>
-<p>Being at 2D game engine, Pygame is not used to AAA titles such as Call of Duty, but it can be used to create extensive computer games. There are many games available on Steam that have been created using Pygame.</p>
-<p>If you are interested you can find more information on the <a class="reference external" href="https://www.pygame.org/news">Pygame official website</a>.</p>
-</section>
-<section id="gameframe">
-<h2>GameFrame<a class="headerlink" href="#gameframe" title="Permalink to this heading">#</a></h2>
-<p>In the words of it developer (Steven Tucker) ‘GameFrame has been developed to take the excellent PyGame libraries and make them more accessible and easy to use for beginner to intermediate programmers.’ Just as Pygame makes developing games with Python easier, GameFrame makes developing games using Pygame easier.</p>
-<p>GameFrame is not a library like Pygame, but rather it is an event driven framework. It is made up of a directory structure and a range of different Python files containing classes. Programmers define Rooms and Room Objects, then write functions to handle certain events such as collisions, button clicks and so on. It has clear rules about where files should be saved as well as a range of commands that can be used to develop your program.</p>
-</section>
-<section id="the-stack">
-<h2>The Stack<a class="headerlink" href="#the-stack" title="Permalink to this heading">#</a></h2>
-<p>Below is an diagram showing the full stack of what we will be using for this course.</p>
-<p><img alt="GameFrame stack" src="_images/gf_stack.png" /></p>
-<p>Lets explore this:</p>
-<ul class="simple">
-<li><p>On top, the <strong>programmer</strong> interacts with <strong>GameFrame</strong>, using its file structure and the commands in its API.</p></li>
-<li><p><strong>GameFrame</strong> interacts with <strong>Pygame</strong> using the commands available in its API.</p></li>
-<li><p><strong>Pygame</strong> interacts with the <strong>core Python libraries</strong>.</p></li>
-</ul>
+          <section id="get-to-know-gameframe">
+<h1>Get to know GameFrame<a class="headerlink" href="#get-to-know-gameframe" title="Permalink to this heading">#</a></h1>
+<p>The GameFrame framework is driven by the <strong>Objects</strong>. You will create objects that contain all the game logic. These objects are then placed in <strong>Rooms</strong>.</p>
 <div class="note admonition">
-<p class="admonition-title">Languages</p>
-<p>Your code, GameFrame, and Pygame are all written in Python, but this doesn’t have to be the case. For example, Pygame uses a library called NumPy which is written in C or C++.</p>
+<p class="admonition-title">Game Logic</p>
+<p>Game Logic is the all the algorithms that make a game work. They govern such things as what happens when a player presses certain keys, or what happens when sepecific object collide with each other, or when the score changes etc.</p>
 </div>
-<p>If you wish you can access the Pygame API directly. This means that you can use Pygame commands that aren’t in the GameFrame API. You won’t need to use them to complete this course, although you may wish to use them to add extra features. The <a class="reference external" href="https://www.pygame.org/docs/">Pygame Documents</a> has all the details.</p>
+<p>The image below is a screen shot of the game we will be creating.</p>
+<p><img alt="Game Play" src="_images/game_play.png" /></p>
+<p>Everything that you see in the screen is an Object:</p>
+<ul class="simple">
+<li><p>player’s spaceship on the left</p></li>
+<li><p>enemy spaceship (called Zork) on the right</p></li>
+<li><p>asteroids</p></li>
+<li><p>astronauts</p></li>
+<li><p>score</p></li>
+<li><p>player’s lives</p></li>
+<li><p>the sub-goal tally</p></li>
+</ul>
+<p>They are all inside a Room called <strong>GamePlay</strong>.</p>
+<p>Let’s look a little deeper.</p>
+<p>The player’s ship object called <strong>Ship</strong> contains:</p>
+<ul class="simple">
+<li><p>the associated sprite (image)</p></li>
+<li><p>the logic that deals with the played pressing keys</p></li>
+<li><p>the logic to prevent the ship from moving outside the upper and lower bounds of the room</p></li>
+<li><p>the logic that shoot lasers</p></li>
+</ul>
+<p>Other objects have different game logic. For example:</p>
+<ul class="simple">
+<li><p>the Zork object determines when asteroids and astronauts spawn</p></li>
+<li><p>the Asteroid object reduces the players health when it collides with the ship</p></li>
+<li><p>the Astronaut object increases the score when it collides with the ship</p></li>
+<li><p>the Laser object destroys asteroids and astronauts when it collides with them.</p></li>
+</ul>
+<p>Therefore, when creating a game in GameFrame we need to think about the object involved and how the interact with each other and the player.</p>
+<section id="file-structure">
+<h2>File Structure<a class="headerlink" href="#file-structure" title="Permalink to this heading">#</a></h2>
+<p>Another important aspect of GameFrame to understand is it file structure and some of the important files within it. Below is an image of the file structure.</p>
+<p><img alt="File Structure" src="_images/file_structure.png" /></p>
+<p>First is the yellow <strong>SPACE RESCUE</strong> folder. This is called the <strong>root</strong> folder and it contains everything.</p>
+<p>The next folder is the green <strong>.venv</strong> folder. This folder contains the files for your virtual environment. Visual Studio Code created this when you made your virtual environment.</p>
+<p>All the rest of the files and folders are part of our GameFrame</p>
 </section>
 </section>
 
@@ -266,23 +251,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="setup.html">
+          <a class="next-page" href="documentation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Setup</div>
+                <div class="title">GameFrame - API</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="02_setup.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Setup</div>
                 
               </div>
             </a>
@@ -323,11 +308,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#python">Python</a></li>
-<li><a class="reference internal" href="#pygame">Pygame</a></li>
-<li><a class="reference internal" href="#gameframe">GameFrame</a></li>
-<li><a class="reference internal" href="#the-stack">The Stack</a></li>
+<li><a class="reference internal" href="#">Get to know GameFrame</a><ul>
+<li><a class="reference internal" href="#file-structure">File Structure</a></li>
 </ul>
 </li>
 </ul>
