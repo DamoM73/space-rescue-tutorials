@@ -201,7 +201,7 @@
         <article role="main">
           <section id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
-<p>For this course we are going to using a proper development environment with version control. We will need to install a number of programs and then set our environment to ensure it functions properly.</p>
+<p>For this course we are going emphasise developing good programming practice. This means using a proper development environment with version control. We will need to install a number of programs and then set our environment to ensure it functions properly.</p>
 <section id="programming-language-python">
 <h2>Programming Language - Python<a class="headerlink" href="#programming-language-python" title="Permalink to this heading">#</a></h2>
 <p>The first step is to install Python our programming language. If you have been using educational IDEs like Thonny and Mu, Python normally came packaged with them. This is not normally the case.</p>
@@ -213,39 +213,196 @@
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
 <p>The easiest way to install Python on Windows devices is to use the <strong>Microsoft Store</strong>. Just search for Python and then select the latest version (at the time of writing it is 3.11). This will install Python as well as keeping it up to date, when patches are released. It also add Python to your computer path, this allows it to be used anywhere on your computer.</p>
+<p>Check the installation by running Python.</p>
 </section>
 <section id="macos">
 <h3>macOS<a class="headerlink" href="#macos" title="Permalink to this heading">#</a></h3>
-<p>To install Python for macOS go to the <a class="reference external" href="https://www.python.org/">Python homepage</a> and click the yellow button that says <strong>Download Python 3.X.X</strong>. The website will detect your operating system and download the correct file for your computer.</p>
+<p>To install Python for macOS go to the <a class="reference external" href="https://www.python.org/">Python website</a> and click the yellow button that says <strong>Download Python 3.X.X</strong>. The website will detect your operating system and download the correct file for your computer.</p>
 <p>Now install the downloaded file.</p>
+<p>Check the installation by running Python.</p>
 </section>
 </section>
 <section id="version-control">
 <h2>Version Control<a class="headerlink" href="#version-control" title="Permalink to this heading">#</a></h2>
+<p>Version control is a system that helps keep track of changes made to files or projects over time. It allows you to save different versions of your work and easily switch between them if needed. Think of it as OneDrive but not as automatic. After you save work to your local computer, you will need to explicitly sync it with the cloud version.</p>
+<p>While we will only be using the simplest features of version control, this is part of you developing good programming practice.</p>
 <section id="git">
 <h3>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h3>
+<p>Git is the industry standard distributed version control system. It is a free and open-source tool that helps individuals and teams manage changes to files and projects over time. Git is especially popular among software developers for tracking code changes, but it can be used for any type of file-based project.</p>
+<p>Using Git, we will have a special folder for your code. This folder is called a repository (repo). This repo is like a supercharged folder. It will keep track of the changes you make to your code, so you can revert to your previous code. This is really useful if you have made changes that have broken your code.</p>
+<p>We won’t be using Git directly, but rather it will be integrated into other software we are using. Never-the-less, we still need to install it.</p>
+<p>To install Git:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://git-scm.com/">Git website</a> and download the <strong>Latest source Release</strong>.</p></li>
+<li><p>Run the downloaded installation file</p></li>
+<li><p>Accept all the defaults for the installation process.</p></li>
+</ol>
 </section>
 <section id="github">
 <h3>GitHub<a class="headerlink" href="#github" title="Permalink to this heading">#</a></h3>
+<p>GitHub is the service we will be using to sync our repos to the cloud. We will be using the free version.</p>
+<p>Create an account by:</p>
+<ol class="arabic simple">
+<li><p>Going to the <a class="reference external" href="https://github.com/">GitHub website</a></p></li>
+<li><p>Choose the <strong>Sign up</strong> link in the top righthand corner.</p></li>
+<li><p>Use your College email to create your account (you can change it later)</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">Git vs GitHub</p>
+<p>Git is the underlying version control system that tracks changes to files and manages repositories locally, while GitHub is a web-based platform that hosts Git repositories remotely and provides additional collaboration and project management features. While GitHub is the most popular web-based repository platform, it’s important to note that there are alternative platforms similar to GitHub, such as GitLab and Bitbucket.</p>
+</div>
 </section>
 <section id="github-desktop">
 <h3>GitHub Desktop<a class="headerlink" href="#github-desktop" title="Permalink to this heading">#</a></h3>
+<p>GitHub Desktop is an application that makes it easier to use GitHub.</p>
+<p>To install GitHub Desktop:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop website</a></p></li>
+<li><p>Click the purple <strong>Download</strong> button.</p></li>
+<li><p>Run the downloaded installation file.</p></li>
+<li><p>Accept all the default options.</p></li>
+</ol>
+<p>Once it is installed, run GitHub Desktop and sign in using your new GitHub credentials</p>
 </section>
 </section>
 <section id="ide">
 <h2>IDE<a class="headerlink" href="#ide" title="Permalink to this heading">#</a></h2>
+<p>An Integrated Development Environment (IDE) is a special computer program that helps you write, edit, and test your code more easily. It’s like a digital workspace for programmers. Inside the IDE, you can write your code, see instant suggestions and corrections, organize your files, and run your programs to see the results. It brings together different tools and features that make coding more efficient and productive.</p>
 <section id="visual-studio-code">
 <h3>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this heading">#</a></h3>
+<p>Visual Studio Code (VS Code) is the IDE that we will be using.</p>
+<p>To install VS Code:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://code.visualstudio.com/">VS Code website</a></p></li>
+<li><p>Click on the <strong>Download</strong> button</p></li>
+<li><p>Run the downloaded installation file.</p></li>
+<li><p>Accept all the default options.</p></li>
+</ol>
 </section>
 <section id="vs-code-extensions">
 <h3>VS Code Extensions<a class="headerlink" href="#vs-code-extensions" title="Permalink to this heading">#</a></h3>
+<p>VS Code can be used to write any programming language. We need to prepare it for working with Python. We do that by adding the Python extensions.</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python extension on the Visual Studio Marketplace</a></p></li>
+<li><p>Click <strong>Install</strong></p></li>
+<li><p>Acknowledge that you have VS Code</p></li>
+<li><p>You may need to accept the prompt to open VS Code</p></li>
+</ol>
 </section>
 </section>
-<section id="gameframe">
-<h2>GameFrame<a class="headerlink" href="#gameframe" title="Permalink to this heading">#</a></h2>
+<section id="gameframe-and-resources">
+<h2>GameFrame and resources<a class="headerlink" href="#gameframe-and-resources" title="Permalink to this heading">#</a></h2>
+<p>GameFrame was developed by a Steven Tucker, a Queensland teacher. If you wish to use the latest versions of GameFrame, it can be found at his <a class="reference external" href="https://gitlab.com/tuxta/gameframe?fbclid=IwAR0GnSkDPy-IdeoNZofh0YwVJ63i4m2wVyzXwBrFqpbG2cLuYox8dkbU2Ss">Gitlab repository</a>.</p>
+<p>Instead, we will be using a repo with an edited version of GameFrame, which includes all the assets needed for these tutorials. We will clone (copy) the repo from GitHub.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://github.com/DamoM73/space-rescue-resources">Space Rescue Resources repo</a></p></li>
+<li><p>Click on the <strong>&lt;&gt; Code</strong> button</p></li>
+<li><p>Click on <strong>Open with GitHub Desktop</strong></p></li>
+</ol>
+<p><img alt="GitHub clone repo" src="_images/gh_clone_repo.png" /></p>
+<p>The repo should now be copied onto your computer and ready for use.</p>
+</section>
+<section id="opening-repo-in-vs-code">
+<h2>Opening repo in VS Code<a class="headerlink" href="#opening-repo-in-vs-code" title="Permalink to this heading">#</a></h2>
+<p>We’re going to use GitHub Desktop to coordinate our programming. We will use it to:</p>
+<ul class="simple">
+<li><p>Open our code in VS Code and set up the workspace correctly</p></li>
+<li><p>Save (commit) our finished code to our local repo</p></li>
+<li><p>Sync (Push) our committed code up to GitHub (origin)</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Git and GitHub terminology</p>
+<p>Git and GitHub uses a range of different terminology. Here are some of the terms we will be using:</p>
+<ul class="simple">
+<li><p>Repository or repo: A repository is a special folder that stores all the files and their history for a project.</p></li>
+<li><p>Commit: When you make changes to files in a repository, a commit is takes a snapshot of those changes. Each commit has a unique name and a message explaining what changes were made.</p></li>
+<li><p>Pull: Pulling means getting the latest changes made by others and adding them to your own copy of the project.</p></li>
+<li><p>Push: Pushing is when you share your changes with others by sending them to a central place, like a website or server.</p></li>
+<li><p>Remote: A remote is a way to connect your local copy of the project with the online version. weare using GitHub. It allows you to share your work and collaborate with others.</p></li>
+<li><p>Clone: Cloning is making a copy of a project from a remote location to your own computer so you can work on it.</p></li>
+<li><p>Local: the copy of the repo that is on your computer</p></li>
+<li><p>Origin: the copy of the repo that is on a remote location</p></li>
+</ul>
+<p>Note: the <em>other</em> that you could be working with might be you on another computer.</p>
+</div>
+<p>To use GitHub Desktop to open VS Code:</p>
+<ol class="arabic simple">
+<li><p>Open GitHub Desktop</p></li>
+<li><p>Make sure the <strong>Current repository</strong> (top lefthand) is <strong>space-rescue-resources</strong></p></li>
+<li><p>Click <strong>Open Visual Studio Code</strong></p></li>
+</ol>
+<p><img alt="Launch with GitHub Desktop" src="_images/launch_with_ghdt.png" /></p>
+<p>VS Code should now launch and you file panel of the lefthand side should show:</p>
+<ul class="simple">
+<li><p>space-rescue-resources</p></li>
+<li><p>all the files in the image below</p></li>
+</ul>
+<p><img alt="Initial directory files" src="_images/initial_directory.png" /></p>
 </section>
 <section id="virtual-environment">
 <h2>Virtual Environment<a class="headerlink" href="#virtual-environment" title="Permalink to this heading">#</a></h2>
+<p>Python virtual environments enables you to designate distinct areas for various Python projects. It’s like having various rooms in your home, each with its unique furnishings and accents. You can work on various projects in a virtual environment without their interfering with one another. Each project gets a special “playground” with its own Python installation and particular libraries. A virtual environment is similar to walking into a specific room, and any Python programmes or libraries you use are exclusive to that project once you enter it. You can easily work on numerous Python projects because everything is kept organised and conflicts between projects are avoided.</p>
+<div class="note admonition">
+<p class="admonition-title">requirements.txt</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file lists all the external libraries that we need to install for this project.</p>
+<p>You can add extra libraries to this file, but to install them you will need to run the command:</p>
+<ul class="simple">
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p></li>
+<li><p>macOS: <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p></li>
+</ul>
+</div>
+<section id="create-virtual-environment">
+<h3>Create Virtual Environment<a class="headerlink" href="#create-virtual-environment" title="Permalink to this heading">#</a></h3>
+<p>To create a virtual environment for this project:</p>
+<ol class="arabic simple">
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file to open it.</p></li>
+<li><p>Then click on the blue <strong>Create Environment</strong> button on the bottom right</p></li>
+</ol>
+<p><img alt="Create venv 1" src="_images/create_venv_1.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>At the top choose the <strong>Venv</strong> option</p></li>
+</ol>
+<p><img alt="Create venv 2" src="_images/create_venv_2.png" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Then choose the latest version of Python that you just installed</p></li>
+</ol>
+<p><img alt="Create venv 3" src="_images/create_venv_3.png" /></p>
+<ol class="arabic simple" start="5">
+<li><p>Tick the box beside <strong>requirements.txt</strong> and then <strong>ok</strong></p></li>
+</ol>
+<p><img alt="Create venv 4" src="_images/create_venv_4.png" /></p>
+<p>VS Code will now:</p>
+<ul class="simple">
+<li><p>create your virtual environment</p></li>
+<li><p>perform any necessary updates</p></li>
+<li><p>install the libraries in the <strong>requirements.txt</strong> file</p></li>
+<li><p>activate your virtual environment</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Create Environment button missing</p>
+<p>If the <strong>Create Environment</strong> button doesn’t appear when you open the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file, then:</p>
+<ol class="arabic simple">
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> (Windows) / <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Command</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> (macOS)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">Python</span></code> at the top</p></li>
+<li><p>Choose <code class="docutils literal notranslate"><span class="pre">Python:</span> <span class="pre">Create</span> <span class="pre">Environment...</span></code></p></li>
+</ol>
+<p><img alt="Create venv problem" src="_images/create_venv_trouble.png" /></p>
+</div>
+</section>
+<section id="check-virtual-environment">
+<h3>Check Virtual Environment<a class="headerlink" href="#check-virtual-environment" title="Permalink to this heading">#</a></h3>
+<p>Finally to check that the virtual environment has been setup.</p>
+<ol class="arabic simple">
+<li><p>Click the <strong>Terminal</strong> menu</p></li>
+<li><p>Choose <strong>New Terminal</strong></p></li>
+</ol>
+<p><img alt="New Terminal" src="_images/new_terminal.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>Check that the prompt in terminal (bottom of the screen) starts with <strong>(.venv)</strong></p></li>
+</ol>
+<p><img alt="Venv confirmation" src="_images/venv_confirm.png" /></p>
+</section>
 </section>
 </section>
 
@@ -328,8 +485,13 @@
 <li><a class="reference internal" href="#vs-code-extensions">VS Code Extensions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#gameframe">GameFrame</a></li>
-<li><a class="reference internal" href="#virtual-environment">Virtual Environment</a></li>
+<li><a class="reference internal" href="#gameframe-and-resources">GameFrame and resources</a></li>
+<li><a class="reference internal" href="#opening-repo-in-vs-code">Opening repo in VS Code</a></li>
+<li><a class="reference internal" href="#virtual-environment">Virtual Environment</a><ul>
+<li><a class="reference internal" href="#create-virtual-environment">Create Virtual Environment</a></li>
+<li><a class="reference internal" href="#check-virtual-environment">Check Virtual Environment</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
