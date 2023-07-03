@@ -202,6 +202,8 @@
         <article role="main">
           <section id="get-to-know-gameframe">
 <h1>Get to know GameFrame<a class="headerlink" href="#get-to-know-gameframe" title="Permalink to this heading">#</a></h1>
+<section id="how-gameframe-works">
+<h2>How GameFrame works<a class="headerlink" href="#how-gameframe-works" title="Permalink to this heading">#</a></h2>
 <p>The GameFrame framework is driven by the <strong>Objects</strong>. You will create objects that contain all the game logic. These objects are then placed in <strong>Rooms</strong>.</p>
 <div class="note admonition">
 <p class="admonition-title">Game Logic</p>
@@ -236,13 +238,28 @@
 <li><p>the Laser object destroys asteroids and astronauts when it collides with them.</p></li>
 </ul>
 <p>Therefore, when creating a game in GameFrame we need to think about the object involved and how the interact with each other and the player.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
+<p>We will cover many of the features on GameFrame through this tutorial. If you want to dig deeper, or use GameFrame for other purposes, then the full documentation can be found on the <a class="reference internal" href="documentation.html"><span class="std std-doc">GameFrame API</span></a> page.</p>
+</section>
 <section id="file-structure">
 <h2>File Structure<a class="headerlink" href="#file-structure" title="Permalink to this heading">#</a></h2>
 <p>Another important aspect of GameFrame to understand is it file structure and some of the important files within it. Below is an image of the file structure.</p>
-<p><img alt="File Structure" src="_images/file_structure.png" /></p>
+<figure class="align-left">
+<img alt="_images/file_structure.png" src="_images/file_structure.png" />
+</figure>
 <p>First is the yellow <strong>SPACE RESCUE</strong> folder. This is called the <strong>root</strong> folder and it contains everything.</p>
 <p>The next folder is the green <strong>.venv</strong> folder. This folder contains the files for your virtual environment. Visual Studio Code created this when you made your virtual environment.</p>
-<p>All the rest of the files and folders are part of our GameFrame</p>
+<p>The rest of the files and folders are part of our GameFrame framework. All the GameFrame folders (root, GameFrame, Images, Objects, Rooms and Sounds) have a <strong><code class="docutils literal notranslate"><span class="pre">notes.md</span></code></strong> file. These file contain the documentation relevant for that specific folder. The entire documentation can be found on the <a class="reference internal" href="documentation.html"><span class="std std-doc">GameFrame API</span></a> page.</p>
+<p>Next is the red <strong>GameFrame</strong> folder. This folder is the engine behind GameFrame. It has many files which hold most of the code. The only file you need to be concerned about is the <strong><code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></strong> file. This file contain the variables that are applicable to the entire program.</p>
+<p>The blue <strong>Images</strong> and <strong>Sounds</strong> folders contain all the images and sounds that your game uses. They have pre-populated with the assets we need for Space Rescue, but if you want to add more, or if you are using GameFrame for other projects, then this is where the files should go.</p>
+<p>The purple <strong>Objects</strong> and <strong>Rooms</strong> folders are where you will write most of your code. Your object and room classes will go into these folders in new files. For example, we will be creating a <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> file that contains our <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class in the <strong>Objects</strong> folder.</p>
+<p>Notice that both of the purple folder have a <strong><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></strong> file. This is very important. Since our GameFrame files are spread across various folders, we need to link them all together. This is done using the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files. This means that when you create a new file and class you need to link it to the rest of GameFrame using the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files. Going back to our previous ship example, we would need to add the following line to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <strong>Objects</strong> folder:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+</pre></div>
+</div>
+<p>The last file of note is the <strong>MainController.py</strong> in the root folder. This is the file that you run to start the program.</p>
 </section>
 </section>
 
@@ -309,6 +326,8 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Get to know GameFrame</a><ul>
+<li><a class="reference internal" href="#how-gameframe-works">How GameFrame works</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#file-structure">File Structure</a></li>
 </ul>
 </li>

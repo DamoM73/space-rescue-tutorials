@@ -1,5 +1,7 @@
 # Get to know GameFrame
 
+## How GameFrame works
+
 The GameFrame framework is driven by the **Objects**. You will create objects that contain all the game logic. These objects are then placed in **Rooms**.
 
 ```{admonition} Game Logic
@@ -41,14 +43,36 @@ Other objects have different game logic. For example:
 
 Therefore, when creating a game in GameFrame we need to think about the object involved and how the interact with each other and the player.
 
+## Documentation
+
+We will cover many of the features on GameFrame through this tutorial. If you want to dig deeper, or use GameFrame for other purposes, then the full documentation can be found on the [GameFrame API](./documentation.md) page.
+
 ## File Structure
 
 Another important aspect of GameFrame to understand is it file structure and some of the important files within it. Below is an image of the file structure.
 
-![File Structure](assets/img/file_structure.png)
+```{figure} assets/img/file_structure.png
+---
+align: left
+---
+```
 
 First is the yellow **SPACE RESCUE** folder. This is called the **root** folder and it contains everything.
 
 The next folder is the green **.venv** folder. This folder contains the files for your virtual environment. Visual Studio Code created this when you made your virtual environment.
 
-All the rest of the files and folders are part of our GameFrame 
+The rest of the files and folders are part of our GameFrame framework. All the GameFrame folders (root, GameFrame, Images, Objects, Rooms and Sounds) have a **`notes.md`** file. These file contain the documentation relevant for that specific folder. The entire documentation can be found on the [GameFrame API](./documentation.md) page.
+
+Next is the red **GameFrame** folder. This folder is the engine behind GameFrame. It has many files which hold most of the code. The only file you need to be concerned about is the **`Globals.py`** file. This file contain the variables that are applicable to the entire program.
+
+The blue **Images** and **Sounds** folders contain all the images and sounds that your game uses. They have pre-populated with the assets we need for Space Rescue, but if you want to add more, or if you are using GameFrame for other projects, then this is where the files should go.
+
+The purple **Objects** and **Rooms** folders are where you will write most of your code. Your object and room classes will go into these folders in new files. For example, we will be creating a `Ship.py` file that contains our `Ship` class in the **Objects** folder.
+
+Notice that both of the purple folder have a **`__init__.py`** file. This is very important. Since our GameFrame files are spread across various folders, we need to link them all together. This is done using the `__init__.py` files. This means that when you create a new file and class you need to link it to the rest of GameFrame using the `__init__.py` files. Going back to our previous ship example, we would need to add the following line to the `__init__.py` in the **Objects** folder:
+
+``` python
+from Objects.Ship import Ship
+```
+
+The last file of note is the **MainController.py** in the root folder. This is the file that you run to start the program.
