@@ -245,8 +245,7 @@ Try to save the helpless astronauts who are being left stranded in space by the 
 ```
 
 2. In GitHub desktop write Summary and the click **Commit to main**
-3. Click **Push**
-   - you will receive an error
+3. Click **Push origin** (you will receive an error)
 4. Choose to **Fork this repository**
 5. Choose **For my own purposes** and **Continue**
-6. Click **Push** again
+6. Click **Push origin** again
