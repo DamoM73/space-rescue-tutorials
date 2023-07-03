@@ -236,7 +236,14 @@ Finally to check that the virtual environment has been setup.
 
 ## Make first commit and push
 
-1. Make changes to README
+1. Change the text in README.md to:
+
+```
+# SPACE RESCUE
+
+Try to save the helpless astronauts who are being left stranded in space by the evil Zork.
+```
+
 2. Write commit comment and the click **commit**
 3. Click **Push**
    - you will receive an error
