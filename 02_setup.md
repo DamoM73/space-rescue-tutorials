@@ -244,7 +244,7 @@ Finally to check that the virtual environment has been setup.
 Try to save the helpless astronauts who are being left stranded in space by the evil Zork.
 ```
 
-2. Write commit comment and the click **commit**
+2. In GitHub desktop write Summary and the click **Commit to main**
 3. Click **Push**
    - you will receive an error
 4. Choose to **Fork this repository**
