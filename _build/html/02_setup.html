@@ -239,8 +239,12 @@
 <p>To install Git:</p>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://git-scm.com/">Git website</a> and download the <strong>Latest source Release</strong>.</p></li>
-<li><p>Run the downloaded installation file</p></li>
-<li><p>Accept all the defaults for the installation process.</p></li>
+<li><p>Run the downloaded installation file</p>
+<ul class="simple">
+<li><p>macOS users Choose the Binary Installer</p></li>
+</ul>
+</li>
+<li><p>Accept all the defaults for the installation process</p></li>
 </ol>
 </section>
 <section id="github">
@@ -264,7 +268,11 @@
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop website</a></p></li>
 <li><p>Click the purple <strong>Download</strong> button.</p></li>
-<li><p>Run the downloaded installation file.</p></li>
+<li><p>Run the downloaded installation file.</p>
+<ul class="simple">
+<li><p>macOS: when asked move and restart GitHub desktop</p></li>
+</ul>
+</li>
 <li><p>Accept all the default options.</p></li>
 </ol>
 <p>Once it is installed, run GitHub Desktop and sign in using your new GitHub credentials</p>
@@ -302,8 +310,14 @@
 <p>To do this:</p>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://github.com/DamoM73/space-rescue-resources">Space Rescue Resources repo</a></p></li>
-<li><p>Click on the <strong>&lt;&gt; Code</strong> button</p></li>
-<li><p>Click on <strong>Open with GitHub Desktop</strong></p></li>
+<li><p>Click on the green <strong>Code</strong> button</p></li>
+<li><p>Click on the copy button beside the https url</p></li>
+<li><p>Open GitHub desktop</p></li>
+<li><p>Open the File menu</p></li>
+<li><p>Click Clone Repository</p></li>
+<li><p>Choose the URL tab</p></li>
+<li><p>Paste URL into URL box</p></li>
+<li><p>Click clone</p></li>
 </ol>
 <p><img alt="GitHub clone repo" src="_images/gh_clone_repo.png" /></p>
 <p>The repo should now be copied onto your computer and ready for use.</p>
@@ -320,14 +334,15 @@
 <p class="admonition-title">Git and GitHub terminology</p>
 <p>Git and GitHub uses a range of different terminology. Here are some of the terms we will be using:</p>
 <ul class="simple">
-<li><p>Repository or repo: A repository is a special folder that stores all the files and their history for a project.</p></li>
-<li><p>Commit: When you make changes to files in a repository, a commit is takes a snapshot of those changes. Each commit has a unique name and a message explaining what changes were made.</p></li>
-<li><p>Pull: Pulling means getting the latest changes made by others and adding them to your own copy of the project.</p></li>
-<li><p>Push: Pushing is when you share your changes with others by sending them to a central place, like a website or server.</p></li>
-<li><p>Remote: A remote is a way to connect your local copy of the project with the online version. weare using GitHub. It allows you to share your work and collaborate with others.</p></li>
-<li><p>Clone: Cloning is making a copy of a project from a remote location to your own computer so you can work on it.</p></li>
-<li><p>Local: the copy of the repo that is on your computer</p></li>
-<li><p>Origin: the copy of the repo that is on a remote location</p></li>
+<li><p><strong>Repository or repo</strong>: A repository is a special folder that stores all the files and their history for a project.</p></li>
+<li><p><strong>Commit</strong>: When you make changes to files in a repository, a commit is takes a snapshot of those changes. Each commit has a unique name and a message explaining what changes were made.</p></li>
+<li><p><strong>Pull</strong>: Pulling means getting the latest changes made by others and adding them to your own copy of the project.</p></li>
+<li><p><strong>Push</strong>: Pushing is when you share your changes with others by sending them to a central place, like a website or server.</p></li>
+<li><p><strong>Remote</strong>: A remote is a way to connect your local copy of the project with the online version. weare using GitHub. It allows you to share your work and collaborate with others.</p></li>
+<li><p><strong>Clone</strong>: Cloning is making a copy of a project from a remote location to your own computer so you can work on it.</p></li>
+<li><p><strong>Local</strong>: the copy of the repo that is on your computer</p></li>
+<li><p><strong>Origin</strong>: the copy of the repo that is on a remote location</p></li>
+<li><p><strong>Fork</strong>: making your own copy of someone else’s project.</p></li>
 </ul>
 <p>Note: the <em>other</em> that you could be working with might be you on another computer.</p>
 </div>
@@ -408,6 +423,21 @@
 </ol>
 <p><img alt="Venv confirmation" src="_images/venv_confirm.png" /></p>
 </section>
+</section>
+<section id="make-first-commit-and-push">
+<h2>Make first commit and push<a class="headerlink" href="#make-first-commit-and-push" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Make changes to README</p></li>
+<li><p>Write commit comment and the click <strong>commit</strong></p></li>
+<li><p>Click <strong>Push</strong></p>
+<ul class="simple">
+<li><p>you will receive an error</p></li>
+</ul>
+</li>
+<li><p>Choose to <strong>Fork this repository</strong></p></li>
+<li><p>Choose <strong>For my own purposes</strong> and <strong>Continue</strong></p></li>
+<li><p>Click <strong>Push</strong> again</p></li>
+</ol>
 </section>
 </section>
 
@@ -497,6 +527,7 @@
 <li><a class="reference internal" href="#check-virtual-environment">Check Virtual Environment</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#make-first-commit-and-push">Make first commit and push</a></li>
 </ul>
 </li>
 </ul>

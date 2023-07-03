@@ -50,7 +50,8 @@ To install Git:
 
 1. Go to the [Git website](https://git-scm.com/) and download the **Latest source Release**.
 2. Run the downloaded installation file
-3. Accept all the defaults for the installation process.
+   - macOS users Choose the Binary Installer
+3. Accept all the defaults for the installation process
 
 ### GitHub
 
@@ -76,6 +77,7 @@ To install GitHub Desktop:
 1. Go to the [GitHub Desktop website](https://desktop.github.com/)
 2. Click the purple **Download** button.
 3. Run the downloaded installation file.
+    - macOS: when asked move and restart GitHub desktop
 4. Accept all the default options.
 
 Once it is installed, run GitHub Desktop and sign in using your new GitHub credentials
@@ -113,8 +115,14 @@ Instead, we will be using a repo with an edited version of GameFrame, which incl
 To do this:
 
 1. Go to the [Space Rescue Resources repo](https://github.com/DamoM73/space-rescue-resources)
-2. Click on the **<> Code** button
-3. Click on **Open with GitHub Desktop**
+2. Click on the green **Code** button
+3. Click on the copy button beside the https url
+4. Open GitHub desktop
+5. Open the File menu
+6. Click Clone Repository
+7. Choose the URL tab
+8. Paste URL into URL box
+9. Click clone
 
 ![GitHub clone repo](assets/img/gh_clone_repo.png)
 
@@ -132,14 +140,15 @@ We're going to use GitHub Desktop to coordinate our programming. We will use it 
 :class: note
 Git and GitHub uses a range of different terminology. Here are some of the terms we will be using:
 
-- Repository or repo: A repository is a special folder that stores all the files and their history for a project.
-- Commit: When you make changes to files in a repository, a commit is takes a snapshot of those changes. Each commit has a unique name and a message explaining what changes were made.
-- Pull: Pulling means getting the latest changes made by others and adding them to your own copy of the project.
-- Push: Pushing is when you share your changes with others by sending them to a central place, like a website or server.
-- Remote: A remote is a way to connect your local copy of the project with the online version. weare using GitHub. It allows you to share your work and collaborate with others.
-- Clone: Cloning is making a copy of a project from a remote location to your own computer so you can work on it.
-- Local: the copy of the repo that is on your computer
-- Origin: the copy of the repo that is on a remote location
+- **Repository or repo**: A repository is a special folder that stores all the files and their history for a project.
+- **Commit**: When you make changes to files in a repository, a commit is takes a snapshot of those changes. Each commit has a unique name and a message explaining what changes were made.
+- **Pull**: Pulling means getting the latest changes made by others and adding them to your own copy of the project.
+- **Push**: Pushing is when you share your changes with others by sending them to a central place, like a website or server.
+- **Remote**: A remote is a way to connect your local copy of the project with the online version. weare using GitHub. It allows you to share your work and collaborate with others.
+- **Clone**: Cloning is making a copy of a project from a remote location to your own computer so you can work on it.
+- **Local**: the copy of the repo that is on your computer
+- **Origin**: the copy of the repo that is on a remote location
+- **Fork**: making your own copy of someone else's project.
 
 Note: the *other* that you could be working with might be you on another computer.
 ```
@@ -224,3 +233,13 @@ Finally to check that the virtual environment has been setup.
 3. Check that the prompt in terminal (bottom of the screen) starts with **(.venv)**
 
 ![Venv confirmation](assets/img/venv_confirm.png)
+
+## Make first commit and push
+
+1. Make changes to README
+2. Write commit comment and the click **commit**
+3. Click **Push**
+   - you will receive an error
+4. Choose to **Fork this repository**
+5. Choose **For my own purposes** and **Continue**
+6. Click **Push** again
