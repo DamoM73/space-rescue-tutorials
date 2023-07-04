@@ -326,3 +326,106 @@ Now we have our welcome screen ready, it's time to test it.
 Open `MainController.py` and run it. Your screen should look like this:
 
 ![welcome screen finished](assets/img/welcome_2.png)
+
+## Completed File States
+
+Below are all the files we used in this lesson in their finished state.
+
+### `GameFrame\Globals.py`
+
+```{code-block} python
+:linenos:
+
+class Globals:
+
+    running = True
+    FRAMES_PER_SECOND = 30
+
+    SCREEN_WIDTH = 1280
+    SCREEN_HEIGHT = 800
+
+    SCORE = 0
+
+    # - Set the starting number of lives - #
+    LIVES = 3
+
+    # - Set the Window display name - #
+    window_name = 'Space Rescue'
+
+    # - Set the order of the rooms - #
+    levels = ["WelcomeScreen", "Maze", "ScrollingShooter", "BreakOut"]
+
+    # - Set the starting level - #
+    start_level = 0
+
+    # - Set this number to the level you want to jump to when the game ends - #
+    end_game_level = 4
+
+    # - This variable keeps track of the room that will follow the current room - #
+    # - Change this value to move through rooms in a non-sequential manner - #
+    next_level = 0
+
+    # - Change variable to True to exit the program - #
+    exiting = False
+
+
+# ############################################################# #
+# ###### User Defined Global Variables below this line ######## #
+# ############################################################# #
+
+    total_count = 0
+    destroyed_count = 0
+```
+
+### `Rooms\WelcomeScreen.py`
+
+```{code-block} python
+:linenos:
+from GameFrame import Level
+from Objects.Title import Title
+
+class WelcomeScreen(Level):
+    """
+    Intial screen for the game
+    """
+    def __init__(self, screen, joysticks):
+        Level.__init__(self, screen, joysticks)
+        
+        # set background image
+        self.set_background_image("Background.png")
+        
+        # add title object
+        self.add_room_object(Title(self, 240, 200))
+```
+
+### `Rooms\__init__.py`
+
+```{code-block} python
+:linenos:
+from Rooms.WelcomeScreen import WelcomeScreen
+```
+
+### `Objects\Title.py`
+
+```{code-block} python
+:linenos:
+from GameFrame import RoomObject
+
+class Title(RoomObject):
+    """
+    The object for displaying the title
+    """
+    def __init__(self, room, x, y):
+        RoomObject.__init__(self, room, x, y)
+        
+        # set image
+        image = self.load_image("Title.png")
+        self.set_image(image,800,350)
+```
+
+### `Objects\__init__.py`
+
+```{code-block} python
+:linenos:
+from Objects.Title import Title
+```

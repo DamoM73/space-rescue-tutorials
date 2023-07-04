@@ -10,6 +10,7 @@ This website provides tutorials on building a Python PyGame game using the [Game
 02_setup
 03_gameframe
 04_welcome
+05_gameplay
 documentation
 ```
 

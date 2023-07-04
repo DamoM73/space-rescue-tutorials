@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Introduction" href="01_introduction.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Welcome screen" href="04_welcome.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Space Rescue</title>
+        <title>GamePlay Room - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -126,7 +126,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">Space Rescue</div></a>
+      <a href="index.html"><div class="brand">Space Rescue</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -137,7 +137,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -146,7 +146,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
@@ -161,12 +161,12 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GamePlay Room</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 </ul>
 
@@ -196,26 +196,76 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="space-rescue">
-<h1>Space Rescue<a class="headerlink" href="#space-rescue" title="Permalink to this heading">#</a></h1>
-<p>This website provides tutorials on building a Python PyGame game using the <a class="reference external" href="https://gameframeforpygame.wordpress.com/">GameFrame</a> framework.</p>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
+          <section id="gameplay-room">
+<h1>GamePlay Room<a class="headerlink" href="#gameplay-room" title="Permalink to this heading">#</a></h1>
+<p>In this lesson we are going to create the central room for our game. All the game play will occur in this room, so it is aptly names GamePlay.</p>
+<p>We will:</p>
+<ul class="simple">
+<li><p>Create a new Room called GamePlay</p></li>
+<li><p>Indicate that this is the next room after the WelcomeScreen</p></li>
+<li><p>Make the game switch from WelcomeScreen to GamePlay when the player presses space.</p></li>
 </ul>
+<p>Before starting we need to understand event-driven programming.</p>
+<section id="event-driven-programming">
+<h2>Event-driven Programming<a class="headerlink" href="#event-driven-programming" title="Permalink to this heading">#</a></h2>
+<p>Event-driven programming is an approach where a program waits for specific events to occur and then performs designated actions in response to those events. Instead of following a predetermined sequence, the program listens for events, such as a button press or a message arriving, and executes specific code based on those events. It allows programs to be more interactive and responsive by dynamically responding to user actions or external inputs, enhancing the overall user experience.</p>
+<p>We will be creating an event driven program, which makes sense for a computer game. You want the game to respond when the user does something, or when characters bump into each other.</p>
+<p>To create an event-driven program you need to typically follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Identify the <strong>Events</strong> that will trigger actions.</p></li>
+<li><p>Define <strong>Event Handlers</strong>: the code that will be executed when an event is triggered.</p></li>
+<li><p><strong>Register</strong> Event Handlers: associate the event handlers with their corresponding events.</p></li>
+<li><p>Start <strong>Event Loop</strong>: Begin the event loop or <strong>event listener</strong>, which continuously waits for events to occur.</p></li>
+<li><p><strong>Execute</strong> Event Handlers: When an event occurs, the event loop triggers the associated event handler.</p></li>
+<li><p><strong>Repeat</strong>: The event loop continues running, waiting for more events. This cycle repeats until the program is exited or a specific condition is met.</p></li>
+</ol>
+<p>GameFrame handles many of the tasks above, but its important to understand the terminology before we continue.</p>
+</section>
+<section id="create-gameplay-room">
+<h2>Create GamePlay Room<a class="headerlink" href="#create-gameplay-room" title="Permalink to this heading">#</a></h2>
+<p>To create the GamePlay Room we follow the same steps as we did for the WelcomeScreen Room.</p>
+<ol class="arabic simple">
+<li><p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder</p></li>
+<li><p>Import the Levels class from GameFrame</p></li>
+<li><p>Create the GamePlay class</p></li>
+<li><p>Initialise the GamePlay class calling the parent class <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and then add a backdrop</p></li>
+<li><p>Add the new file to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder</p></li>
+</ol>
+<p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code>, then add the following code to it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos">4</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos">5</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">6</span>        
+<span class="linenos">7</span>        <span class="c1"># set background image</span>
+<span class="linenos">8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>Save the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file.</p>
+<p>Then open the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder and add the highlighted code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Rooms.WelcomeScreen</span> <span class="kn">import</span> <span class="n">WelcomeScreen</span>
+<span class="hll"><span class="linenos">2</span><span class="kn">from</span> <span class="nn">Rooms.GamePlay</span> <span class="kn">import</span> <span class="n">GamePlay</span>
+</span></pre></div>
+</div>
+<p>Save and <strong>close</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+</section>
+<section id="make-gameplay-the-next-room-after-welcomescreen">
+<h2>Make GamePlay the next room after WelcomeScreen<a class="headerlink" href="#make-gameplay-the-next-room-after-welcomescreen" title="Permalink to this heading">#</a></h2>
+<p>To make this change we need to go back to the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder.</p>
+<p>Look for the <code class="docutils literal notranslate"><span class="pre">levels</span></code> variable. It contains a list of strings. According to the <a class="reference internal" href="documentation.html#gameframe-globals-py"><span class="std std-ref">GameFrame docs</span></a> this holds the names of all the levels in the game, in the order that a player progresses through them.</p>
+<p>Currently that list is the default <code class="docutils literal notranslate"><span class="pre">[&quot;WelcomeScreen&quot;,</span> <span class="pre">&quot;Maze&quot;,</span> <span class="pre">&quot;ScrollingShooter&quot;,</span> <span class="pre">&quot;BreakOut&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;WelcomeScreen&quot;</span></code> first. This works with our program, but the rest don’t. So change the list to the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span><span class="c1"># - Set the order of the rooms - #</span>
+<span class="linenos">19</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -223,16 +273,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="01_introduction.html">
+          <a class="next-page" href="documentation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Introduction</div>
+                <div class="title">GameFrame - API</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="04_welcome.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Welcome screen</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -258,8 +318,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">GamePlay Room</a><ul>
+<li><a class="reference internal" href="#event-driven-programming">Event-driven Programming</a></li>
+<li><a class="reference internal" href="#create-gameplay-room">Create GamePlay Room</a></li>
+<li><a class="reference internal" href="#make-gameplay-the-next-room-after-welcomescreen">Make GamePlay the next room after WelcomeScreen</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
