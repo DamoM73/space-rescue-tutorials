@@ -4,53 +4,53 @@ By Steven Tucker
 
 ## Overview
 
-GameFrame has been developed to take the excellent PyGame libraries and make them more accessible and easy to use for beginner to intermediate programmers. GameFrame aims to help with learning the concepts of text based game programming without getting caught up in the implementation details. 
+GameFrame has been developed to take the excellent PyGame libraries and make them more accessible and easy to use for beginner to intermediate programmers. GameFrame aims to help with learning the concepts of text based game programming without getting caught up in the implementation details.
 
-GameFrame is set up as an event driven framework. Programmers define `Rooms` and `Room Objects`, then write functions to handle certain events such as collisions, button clicks and so on. Just define all the items of your game, then let it run. GameFrame handles the Game loop and collision detection, just register your object for an event and write the code that will run when that event occurs. 
+GameFrame is set up as an event driven framework. Programmers define `Rooms` and `Room Objects`, then write functions to handle certain events such as collisions, button clicks and so on. Just define all the items of your game, then let it run. GameFrame handles the Game loop and collision detection, just register your object for an event and write the code that will run when that event occurs.
 
 GameFrame was primarily written for education, however it can be used to make a variety of games that can be can be freely shared, altered and improved. It's free and available for everyone to use, students, hobbyist and accomplished programmers alike.
 
 ## GameFrame folder structure
 
-GameFrame organises files so that the same types of files are together. This organization makes it easier to setup and maintain a game. By keeping files of the same type together, it makes it easy to locate particular files and to create a 'birds eye view' of the project. 
+GameFrame organises files so that the same types of files are together. This organization makes it easier to setup and maintain a game. By keeping files of the same type together, it makes it easy to locate particular files and to create a 'birds eye view' of the project.
 
-The following is a description of the files and folders found in the GameFrame project folder. 
+The following is a description of the files and folders found in the GameFrame project folder.
 
-### GameFrame 
+### GameFrame
 
-This folder holds most of the code provided by GameFrame. When making a game, the only file in this folder that you need to edit is the `Globals.py` file. 
+This folder holds most of the code provided by GameFrame. When making a game, the only file in this folder that you need to edit is the `Globals.py` file.
 
-### Images 
+### Images
 
-This folder holds all game images such as backgrounds and game characters. All graphic files that are in your game go here. 
+This folder holds all game images such as backgrounds and game characters. All graphic files that are in your game go here.
 
-### Objects 
+### Objects
 
-This is where you put all the individual parts (objects) of your game. For instance, you could make a player that has an image (from the Images folder) and moves across the screen if the arrow buttons are pressed. The player would be one object in the game. An enemy, wall, bouncing ball etc. could be other objects. 
+This is where you put all the individual parts (objects) of your game. For instance, you could make a player that has an image (from the Images folder) and moves across the screen if the arrow buttons are pressed. The player would be one object in the game. An enemy, wall, bouncing ball etc. could be other objects.
 
-### Rooms 
+### Rooms
 
-Rooms are stages or levels in the game. In the Rooms folder you put each level/stage/room of your game. For instance, the first room might be a maze, and when the player reaches the end of the maze they move into the next room which is a platform game. 
+Rooms are stages or levels in the game. In the Rooms folder you put each level/stage/room of your game. For instance, the first room might be a maze, and when the player reaches the end of the maze they move into the next room which is a platform game.
 
-### Sounds 
+### Sounds
 
-This folder holds all game sounds such as gunfire and explosions. All sound files that are in your game go here. 
+This folder holds all game sounds such as gunfire and explosions. All sound files that are in your game go here.
 
 ### License
 
-The License file is not a part of the game. It lays out the rules around using and distributing GameFrame. The License is the Gnu General Public License, which basically means you can use it however you like, but you can't stop anyone else from using it, and if you make changes to GameFrame itself (the files inside the GameFrame folder) and want to share it with other people, you can do that as well (It's not stealing. You are allowed to do that!) 
+The License file is not a part of the game. It lays out the rules around using and distributing GameFrame. The License is the Gnu General Public License, which basically means you can use it however you like, but you can't stop anyone else from using it, and if you make changes to GameFrame itself (the files inside the GameFrame folder) and want to share it with other people, you can do that as well (It's not stealing. You are allowed to do that!)
 
 ### `MainController.py`
 
-This is the file that is run to start the game. We don't need to edit this file, but when we want to run the game, this is the file that is run. 
+This is the file that is run to start the game. We don't need to edit this file, but when we want to run the game, this is the file that is run.
 
-### `README.md` 
+### `README.md`
 
-This file contains a brief description of GameFrame. We do not need to edit this file. It is used to provide a description on GitHub for people who want to know what the project is about. You can delete this file if you like, but leaving it doesn't cause any problems. 
+This file contains a brief description of GameFrame. We do not need to edit this file. It is used to provide a description on GitHub for people who want to know what the project is about. You can delete this file if you like, but leaving it doesn't cause any problems.
 
-### `__init__.py` 
+### `__init__.py`
 
-Inside folders there is a file called `__init__.py` It is this file that allows us to group files into different folders and still have the game know where to find everything. Whenever we add a file to a folder, we need to add an entry to the `__init__.py` file in the same folder to let the rest of the program know that the new file is there. 
+Inside folders there is a file called `__init__.py` It is this file that allows us to group files into different folders and still have the game know where to find everything. Whenever we add a file to a folder, we need to add an entry to the `__init__.py` file in the same folder to let the rest of the program know that the new file is there.
 
 You will need to include code in this format
 
@@ -60,9 +60,9 @@ from Folder.FileName import ClassName
 
 ## `GameFrame/Globals.py`
 
-The `Globals.py` file holds the overall game information and variables that can be accessed from any code file. As well as editing the `Globals.py` file to set game information, you may need to access or update information in the file from other parts of the program. 
+The `Globals.py` file holds the overall game information and variables that can be accessed from any code file. As well as editing the `Globals.py` file to set game information, you may need to access or update information in the file from other parts of the program.
 
-To do this you need to import the file as follows: 
+To do this you need to import the file as follows:
 
 ``` python
 from GameFrame import Globals
@@ -70,11 +70,11 @@ from GameFrame import Globals
 
 ### Variables
 
-#### `running` 
+#### `running`
 
-This variable indicates that the game is in play. 
+This variable indicates that the game is in play.
 
-Set this variable to False to end the game. 
+Set this variable to False to end the game.
 
 ``` python
 Globals.running = False
@@ -82,43 +82,43 @@ Globals.running = False
 
 #### `FRAMES_PER_SECOND `
 
-This variable sets how often the screen is redrawn. It is set by default to 30 times every second. If this rate is increased (or decreased), all movement must be adjusted accordingly. If an object moves 5 pixels every frame, then it will travel further in a second at 40 Frames per second (200 pixels), than it will at 30 (150 pixels). 
+This variable sets how often the screen is redrawn. It is set by default to 30 times every second. If this rate is increased (or decreased), all movement must be adjusted accordingly. If an object moves 5 pixels every frame, then it will travel further in a second at 40 Frames per second (200 pixels), than it will at 30 (150 pixels).
 
-#### `SCREEN_WIDTH` 
+#### `SCREEN_WIDTH`
 
 The width of the game screen. By default this is set to 800
 
 #### `SCREEN_HEIGHT`
 
-The height of the game screen. By default this is set to 600 
+The height of the game screen. By default this is set to 600
 
-#### `SCORE` 
+#### `SCORE`
 
-This variable is provided to track a players score and is initially set to 0. 
+This variable is provided to track a players score and is initially set to 0.
 
-#### `LIVES` 
+#### `LIVES`
 
-This variable is provided to track a players lives and is initially set to 3. 
+This variable is provided to track a players lives and is initially set to 3.
 
-#### `window_name` 
+#### `window_name`
 
-The text that is stored in this variable will be displayed on the game window. 
+The text that is stored in this variable will be displayed on the game window.
 
-#### `levels` 
+#### `levels`
 
-This is an array that hold the names of all the levels in the game, in the order that a player progresses through them. The names in this array, must match with files that are in the `Rooms` folder. 
+This is an array that hold the names of all the levels in the game, in the order that a player progresses through them. The names in this array, must match with files that are in the `Rooms` folder.
 
-An example could be 
+An example could be
 
 ``` python
 Levels = ['StartScreen', 'MazeLevel', 'PlatformLevel', 'EndScreen']
 ```
 
-#### `start_level` 
+#### `start_level`
 
-The level index from the levels array, that will be launched when the game starts, this is usually 0 (the first item) 
+The level index from the levels array, that will be launched when the game starts, this is usually 0 (the first item)
 
-#### `end_game_level` 
+#### `end_game_level`
 
 The level index from the levels array, that will be run when the game ends (usually an end screen or high score screen)
 
@@ -130,11 +130,11 @@ If you wish to use a database in your game you will need to use this Class and w
 
 ## Rooms/Levels
 
-In a game made with GameFrame, a room is the area in which a game is played. To have a game, there must be at least one room, but there can be many rooms, with the game progressing through different rooms. 
+In a game made with GameFrame, a room is the area in which a game is played. To have a game, there must be at least one room, but there can be many rooms, with the game progressing through different rooms.
 
-A room is defined and kept in the `Rooms` folder, and it is a type of GameFrame `Level`. As a room is a type of Level, every room has the attributes and functions of a Level, plus any defined for that room. 
+A room is defined and kept in the `Rooms` folder, and it is a type of GameFrame `Level`. As a room is a type of Level, every room has the attributes and methods of a Level, plus any defined for that room.
 
-To access the `Level` code, you need to import the file as follows: 
+To access the `Level` code, you need to import the file as follows:
 
 ``` python
 from GameFrame import Level
@@ -148,27 +148,27 @@ class LevelName(Level):
         Level.__init__(self, screen, joysticks)
 ```
 
-### Variables 
+### Variables
 
 #### `screen`
 
 Passed to the Room/Level when started, the screen variable is a hook to the display area of the room.
 
-#### `running` 
+#### `running`
 
-Level is active when true, level stops running due to being successfully complete when set to False 
+Level is active when true, level stops running due to being successfully complete when set to False
 
-#### `quitting` 
+#### `quitting`
 
 Level stops running and has not been successfully completed.
 
-### Functions 
+### Methods
 
-#### `set_background_image(image_file)` 
+#### `set_background_image(image_file)`
 
-This function is called to set the background image of the level, where image_file is replaced by the name of an image in the Images folder. 
+This function is called to set the background image of the level, where image_file is replaced by the name of an image in the Images folder.
 
-Example: 
+Example:
 
 ``` python
 self.set_background_image('background.jpg')
@@ -176,9 +176,9 @@ self.set_background_image('background.jpg')
 
 #### `set_background_scroll(speed)`
 
-GameFrame provides this simple function call to set a scrolling background, such as those used for scrolling shooter games like 1942. The variable speed is the number of pixels moved every frame (Frames are set by default to 30 per second) 
+GameFrame provides this simple function call to set a scrolling background, such as those used for scrolling shooter games like 1942. The variable speed is the number of pixels moved every frame (Frames are set by default to 30 per second)
 
-Example: 
+Example:
 
 ``` python
 self.set_background_scroll(5)
@@ -186,9 +186,9 @@ self.set_background_scroll(5)
 
 #### `load_sound(sound_file)`
 
-Read a sound file from the Sounds folder. Once read into a variable it can be played anytime by calling play() on the variable 
+Read a sound file from the Sounds folder. Once read into a variable it can be played anytime by calling play() on the variable
 
-Example: 
+Example:
 
 ``` python
 self.explosion_sound = self.load_sound('explosion.wav') 
@@ -210,11 +210,11 @@ For example:
 
 Other methods can be found on the [PyGame mixer docs](https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play)
 
-#### `delete_object(obj)` 
+#### `delete_object(obj)`
 
-Removes an object from the room. 
+Removes an object from the room.
 
-Example: 
+Example:
 
 ``` python
 self.room.delete_object('enemy_plane_1')
@@ -222,9 +222,9 @@ self.room.delete_object('enemy_plane_1')
 
 #### `set_timer(ticks, function_call)`
 
-When you want to set a timed event, you call the set_timer function providing the number of ticks (frames ticked over) and a function to call when the number of ticks is reached. 
+When you want to set a timed event, you call the set_timer function providing the number of ticks (frames ticked over) and a function to call when the number of ticks is reached.
 
-For example, if I wanted to generate a new enemy character every 10 seconds, and the Frames per second is at the default setting of 30, I could write the call 
+For example, if I wanted to generate a new enemy character every 10 seconds, and the Frames per second is at the default setting of 30, I could write the call
 
 ``` python
 set_timer(300, create_new_enemy)
@@ -242,19 +242,19 @@ For example, if I wanted to know how many enemy planes are win the room, I could
 self.room.count_object('enemy_plane')
 ```
 
-## RoomObject 
+## RoomObject
 
-Everything that placed inside a Room, must be a `GameFrame` `RoomObject` (A `TextObject` is also a type of `RoomObject`). You define room objects in the “Objects” folder, and each object is a type of `GameFrame` `RoomObject`. 
+Everything that placed inside a Room, must be a `GameFrame` `RoomObject` (A `TextObject` is also a type of `RoomObject`). You define room objects in the “Objects” folder, and each object is a type of `GameFrame` `RoomObject`.
 
-As each file in the Objects folder is a type of `RoomObject`, each has the attributes and functions of a `RoomObject`, plus any defined for that file. 
+As each file in the Objects folder is a type of `RoomObject`, each has the attributes and methods of a `RoomObject`, plus any defined for that file.
 
-To access the `RoomObject'` code, you need to import the file as follows: 
+To access the `RoomObject'` code, you need to import the file as follows:
 
 ``` python
 from GameFrame import RoomObject
 ```
 
-### Defining and Initialising a Room Object 
+### Defining and Initialising a Room Object
 
 ``` python
 class Name_of_Object(RoomObject): 
@@ -264,103 +264,103 @@ class Name_of_Object(RoomObject):
 
 ### Variables
 
-#### `Room` 
+#### `Room`
 
-A hook to the room the object is in. 
+A hook to the room the object is in.
 
-#### `Depth` 
+#### `Depth`
 
-The layer the object is situated in. When two objects occupy the same space, the object with the higher depth value will be shown, the object with the lower depth value will be covered. 
+The layer the object is situated in. When two objects occupy the same space, the object with the higher depth value will be shown, the object with the lower depth value will be covered.
 
-#### `x` 
+#### `x`
 
-The current horizontal position of the object, taken at the top left hand corner of the image 
+The current horizontal position of the object, taken at the top left hand corner of the image
 
-#### `y` 
+#### `y`
 
-The current vertical position of the object, taken at the top left hand corner of the image 
+The current vertical position of the object, taken at the top left hand corner of the image
 
-#### `rect` 
+#### `rect`
 
-The bounding rectangle. That is, a rectangle that encompasses the image. Used for collision detection. 
+The bounding rectangle. That is, a rectangle that encompasses the image. Used for collision detection.
 
-#### `prev_x` 
+#### `prev_x`
 
-The previous horizontal position of the object, taken at the top left hand corner of the image 
+The previous horizontal position of the object, taken at the top left hand corner of the image
 
-#### `prev_y` 
+#### `prev_y`
 
-The previous vertical position of the object, taken at the top left hand corner of the image 
+The previous vertical position of the object, taken at the top left hand corner of the image
 
-#### `width` 
+#### `width`
 
-The width in pixels, of the object image 
+The width in pixels, of the object image
 
-#### `height` 
+#### `height`
 
-The height in pixels, of the object image 
+The height in pixels, of the object image
 
-#### `image` 
+#### `image`
 
-The current image of the object 
+The current image of the object
 
-#### `x_speed` 
+#### `x_speed`
 
-The number of pixels the object is moving in the horizontal direction every frame. Positive numbers indicate a move to the right, negative numbers indicate a move to the left. 
+The number of pixels the object is moving in the horizontal direction every frame. Positive numbers indicate a move to the right, negative numbers indicate a move to the left.
 
 #### `y_speed`
 
-The number of pixels the object is moving in the vertical direction every frame. Positive numbers indicate a move down, negative numbers indicate a move up. 
+The number of pixels the object is moving in the vertical direction every frame. Positive numbers indicate a move down, negative numbers indicate a move up.
 
 #### `gravity`
 
-The gravity is a number that is used to determine the amount of gravity exerted on an object. The higher the number, the greater effect of falling the object has. 
+The gravity is a number that is used to determine the amount of gravity exerted on an object. The higher the number, the greater effect of falling the object has.
 
 #### `handle_key_events`
 
-Set to `False` by default, this variable determines whether an object is notified of keyboard presses. To listen for key events, set this variable to `True` 
+Set to `False` by default, this variable determines whether an object is notified of keyboard presses. To listen for key events, set this variable to `True`
 
-#### `handle_mouse_events` 
+#### `handle_mouse_events`
 
-Set to `False` by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to `True` 
+Set to `False` by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to `True`
 
-### Functions 
+### Methods
 
 #### `load_image(file_name)`
 
-Retrieve and image from file. 
+Retrieve and image from file.
 
 #### `set_image(image, width, height)`
 
-Set the objects image by providing the image itself as well as its width and height in pixels. 
+Set the objects image by providing the image itself as well as its width and height in pixels.
 
 #### `delete_object(obj)`
 
-Remove an object from the room. 
+Remove an object from the room.
 
-Example: 
+Example:
 
 ``` python
 self.room.delete_object('enemy_plane_1')
 ```
 
-#### `register_collision_object(collision_object)` 
+#### `register_collision_object(collision_object)`
 
-For an object to be notified of collisions with other objects, it must register to listen for collisions with a given object type. You can register for multiple object types. 
+For an object to be notified of collisions with other objects, it must register to listen for collisions with a given object type. You can register for multiple object types.
 
-Example: 
+Example:
 
 ``` python
 self.register_collision_object('enemy') 
 ```
 
-#### `def handle_collision(self, other, other_type)` 
+#### `def handle_collision(self, other, other_type)`
 
 When a collision is registered, the object will be notified of any such event by calling its `handle_collision` function.  
 
-To write the code that needs to run in a collision event, the object needs to implement the function. 
+To write the code that needs to run in a collision event, the object needs to implement the function.
 
-Example: 
+Example:
 
 ``` python
 def handle_collision(self,other,other_type): 
@@ -369,7 +369,7 @@ def handle_collision(self,other,other_type):
 
 
 
-#### `def key_pressed(self, key)` 
+#### `def key_pressed(self, key)`
 
 If the variable `handle_key_events` is set to `True`, the object will be notified of any key presses by calling its `key_pressed` function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable `key`.  [PyGame key identities can be found here.](http://www.pygame.org/docs/ref/key.html)
 
@@ -387,11 +387,11 @@ def key_pressed(self, key):
         self.y += 4 
 ```
 
-#### `def clicked(self, button_number)` 
+#### `def clicked(self, button_number)`
 
-If the variable `handle_mouse_events` is set to `True`, the object will be notified of any mouse key presses by calling its clicked function. To write the code that needs to run in a mouse key press event, the object needs to implement the function. The mouse button identity will be supplied as the variable `button_number` 
+If the variable `handle_mouse_events` is set to `True`, the object will be notified of any mouse key presses by calling its clicked function. To write the code that needs to run in a mouse key press event, the object needs to implement the function. The mouse button identity will be supplied as the variable `button_number`
 
-Example: 
+Example:
 
 ``` python
 def clicked(self, button_number): 
@@ -400,11 +400,11 @@ def clicked(self, button_number):
         self.delete_object(self) 
 ```
 
-#### `def mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)` 
+#### `def mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)`
 
-If the variable `handle_mouse_events` is set to `True`, the object will be notified of any mouse event by calling its mouse_event function. To write the code that needs to run in a mouse event, the object needs to implement the function. The mouse `x` and `y` position will be supplied as well as the buttons information 
+If the variable `handle_mouse_events` is set to `True`, the object will be notified of any mouse event by calling its mouse_event function. To write the code that needs to run in a mouse event, the object needs to implement the function. The mouse `x` and `y` position will be supplied as well as the buttons information
 
-Example: 
+Example:
 
 ``` python
 def mouse_event(self, mouse_x, mouse_y, button_left, button_middle, button_right): 
@@ -412,13 +412,13 @@ def mouse_event(self, mouse_x, mouse_y, button_left, button_middle, button_right
     self.y = mouse_y
 ```
 
-#### `bounce(other)` 
+#### `bounce(other)`
 
-A convenience function that makes the current object bounce off of another object. The other object is provided as the variable `other` 
+A convenience function that makes the current object bounce off of another object. The other object is provided as the variable `other`
 
-#### `blocked(other)` 
+#### `blocked(other)`
 
-A convenience function that makes the current object blocked by another object. The other object is provided as the variable `other` 
+A convenience function that makes the current object blocked by another object. The other object is provided as the variable `other`
 
 #### `prestep()`
 
@@ -451,7 +451,7 @@ Rotates the object so that it's direction is pointed at the coordinates of `x` a
 
 ## Text Object
 
-The `TextObject` is a type of `RoomObject`. It has all the same attributes of a `RoomObject`, but specialises in displaying text. The text can be set to various sizes and colours as well as specifying a given font type. To access the `TextObject`' code, you need to import the file as follows: 
+The `TextObject` is a type of `RoomObject`. It has all the same attributes of a `RoomObject`, but specialises in displaying text. The text can be set to various sizes and colours as well as specifying a given font type. To access the `TextObject`' code, you need to import the file as follows:
 
 ``` python
 from GameFrame import TextObject
@@ -470,30 +470,30 @@ class NameofTextObject(TextObject):
         RoomObject.__init__(self, room, x, y) 
 ```
 
-### Variables 
+### Variables
 
-#### `text` 
+#### `text`
 
-The text that will be used for the `TextObject` when the function `update_text()` is called. 
+The text that will be used for the `TextObject` when the function `update_text()` is called.
 
-#### `size` 
+#### `size`
 
-The font size of the text when rendered 
+The font size of the text when rendered
 
-#### `font` 
+#### `font`
 
-The font type for the text when rendered. ie. 'Sans Serif', 'Comic Sans MS' 
+The font type for the text when rendered. ie. 'Sans Serif', 'Comic Sans MS'
 
-#### `colour` 
+#### `colour`
 
-The colour of the text when rendered 
+The colour of the text when rendered
 
-#### `bold` 
+#### `bold`
 
-Set to `False` by default, this will set the text to bold if `True`. 
+Set to `False` by default, this will set the text to bold if `True`.
 
-### Functions
+### Methods
 
-#### `update_text()` 
+#### `update_text()`
 
 This function must be called for any changes to the object variable to take effect.

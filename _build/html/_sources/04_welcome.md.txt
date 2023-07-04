@@ -46,13 +46,14 @@ We can also see that the Title class has:
 
 So we can see that there are three tasks we need to complete to create our welcome screen:
 
-1. Adjust the window values
-2. Create the WelcomeScreen Room
-3. Create the Title RoomObject
+1. Adjust window values
+2. Create WelcomeScreen Room
+3. Create Title RoomObject
+4. Add Title RoomObject to WelcomeScreen Room
 
 Let's start.
 
-## Adjusting window values
+## Adjust window values
 
 The window values reside in `Globals.py` in the `GameFrame` folder, so open it up.
 
@@ -185,3 +186,143 @@ Breaking that down:
   - `"Background.png"` an image file in the `images` folder (go to the folder and see if you can find it).
 
 Save `WelcomeScreen.py` and then run the program again using `MainController.py`.
+
+## Create Title RoomObject
+
+Not that we have a Room we can place the Title RoomObject inside it. So let's check the [GameFrame docs](documentation.md#roomobject) to see how to do this. This is a similar process to creating a Room:
+
+1. Create a new file in the `Objects` folder
+2. Import the parent class
+3. Initialise the class
+4. Add new file to the `__init__.py` file.
+
+Notice that the RoomObject class has many more methods. These are used to implement the game logic.
+
+Open the `Objects` folder create a new file and call it `Title.py`.
+
+In `Title.py` import the parent class using the following code:
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 1
+from GameFrame import RoomObject
+```
+
+Now create your Title class using the code below:
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 3-8
+from GameFrame import RoomObject
+
+class Title(RoomObject):
+    """
+    The object for displaying the title
+    """
+    def __init__(self, room, x, y):
+        RoomObject.__init__(self, room, x, y)
+```
+
+This code is very similar to the code to create a the WelcomeScreen class. It creates the class, initialises the class, and runs the parent class' `__init__` in order to inherent the attributes and methods.
+
+Next we need to add an image to the object. Add the highlighted code below
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 10-12
+from GameFrame import RoomObject
+
+class Title(RoomObject):
+    """
+    The object for displaying the title
+    """
+    def __init__(self, room, x, y):
+        RoomObject.__init__(self, room, x, y)
+        
+        # set image
+        image = self.load_image("Title.png")
+        self.set_image(image,800,350)
+```
+
+This is fairly different to how we added an image to the WelcomeScreen room, so let's unpack it:
+
+- line 10 &rarr; a structural comment
+- line 11 &rarr; retrieves `"Title.png"` from the Images folder and stores it in the `image` variable
+- line 12 &rarr; assigns the image variable to this (self) RoomObject
+  - Note `800` and `350` this is the width and the height of the image
+
+```{admonition} Determine image width and height
+:class: note
+The easiest way to work out the height and width of an image is to open the image in VS Code and then look at the status bar at the bottom right of the screen.
+
+![image dets](assets/img/image_dets.png)
+```
+
+Finally save `Title.py`. 
+
+Open the `__init__.py` in the `Objects` folder and add the following code:
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 1
+from Objects.Title import Title
+```
+
+```{admonition} Keeping workspace clean
+:class: note
+During these tutorials, you will be moving between many different files, even files with the same name, but in different folder (eg. `__init__.py`).
+
+To reduce the chance of working in the wrong file, get into the habbit of closing a file once you have finished with it.
+```
+
+Save `__init__.py` and close it.
+
+Now run `MainController.py` to test your code. Nothing should change, because we haven't added the RoomObject into the Room yet. This was just to check that there are no errors in your code so far.
+
+## Add Title RoomObject to WelcomeScreen Room
+
+Now that we have made the Title RoomObject and the WelcomeScreen Room, we can put them together.
+
+Open `WelcomeScreen.py` and add the code highlighted below:
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 2, 14-15
+from GameFrame import Level
+from Objects.Title import Title
+
+class WelcomeScreen(Level):
+    """
+    Intial screen for the game
+    """
+    def __init__(self, screen, joysticks):
+        Level.__init__(self, screen, joysticks)
+        
+        # set background image
+        self.set_background_image("Background.png")
+        
+        # add title object
+        self.add_room_object(Title(self, 240, 200))
+```
+
+Breaking that down:
+
+- line 2 &rarr; imports the Title RoomObject we just created
+- line 14:
+  - `add_room_object` &rarr; a Level method that adds RoomObjects to Rooms
+  - `Title(self, 240, 200)` &rarr; creates a new `Title` RoomObject and adds it to **this** room at the position of `x` of `240` and `y` of `200`.
+
+```{admonition} Pygame screen coordinates
+:class: note
+Pygame screen coordinates start with (0,0) in the top lefthand corner and increase as you move right and down. For example, on our screen the top left is (0,0) whilst the bottom right is (1279,799)
+```
+
+Save `WelcomeScreen.py` and close it.
+
+## Testing
+
+Now we have our welcome screen ready, it's time to test it.
+
+Open `MainController.py` and run it. Your screen should look like this:
+
+![welcome screen finished](assets/img/welcome_2.png)

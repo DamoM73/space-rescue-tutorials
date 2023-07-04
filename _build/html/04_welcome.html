@@ -253,15 +253,16 @@
 </ul>
 <p>So we can see that there are three tasks we need to complete to create our welcome screen:</p>
 <ol class="arabic simple">
-<li><p>Adjust the window values</p></li>
-<li><p>Create the WelcomeScreen Room</p></li>
-<li><p>Create the Title RoomObject</p></li>
+<li><p>Adjust window values</p></li>
+<li><p>Create WelcomeScreen Room</p></li>
+<li><p>Create Title RoomObject</p></li>
+<li><p>Add Title RoomObject to WelcomeScreen Room</p></li>
 </ol>
 <p>Let’s start.</p>
 </section>
 </section>
-<section id="adjusting-window-values">
-<h2>Adjusting window values<a class="headerlink" href="#adjusting-window-values" title="Permalink to this heading">#</a></h2>
+<section id="adjust-window-values">
+<h2>Adjust window values<a class="headerlink" href="#adjust-window-values" title="Permalink to this heading">#</a></h2>
 <p>The window values reside in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder, so open it up.</p>
 <p>To change the window size, adjust the <code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code> and <code class="docutils literal notranslate"><span class="pre">SCREEN_HEIGHT</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">7</span><span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">1280</span>
@@ -358,6 +359,119 @@
 <p>Save <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and then run the program again using <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>.</p>
 </section>
 </section>
+<section id="create-title-roomobject">
+<h2>Create Title RoomObject<a class="headerlink" href="#create-title-roomobject" title="Permalink to this heading">#</a></h2>
+<p>Not that we have a Room we can place the Title RoomObject inside it. So let’s check the <a class="reference internal" href="documentation.html#roomobject"><span class="std std-ref">GameFrame docs</span></a> to see how to do this. This is a similar process to creating a Room:</p>
+<ol class="arabic simple">
+<li><p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder</p></li>
+<li><p>Import the parent class</p></li>
+<li><p>Initialise the class</p></li>
+<li><p>Add new file to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p></li>
+</ol>
+<p>Notice that the RoomObject class has many more methods. These are used to implement the game logic.</p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder create a new file and call it <code class="docutils literal notranslate"><span class="pre">Title.py</span></code>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> import the parent class using the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+</span></pre></div>
+</div>
+<p>Now create your Title class using the code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos">2</span>
+<span class="hll"><span class="linenos">3</span><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">5</span><span class="sd">    The object for displaying the title</span>
+</span><span class="hll"><span class="linenos">6</span><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This code is very similar to the code to create a the WelcomeScreen class. It creates the class, initialises the class, and runs the parent class’ <code class="docutils literal notranslate"><span class="pre">__init__</span></code> in order to inherent the attributes and methods.</p>
+<p>Next we need to add an image to the object. Add the highlighted code below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="hll"><span class="linenos">10</span>        <span class="c1"># set image</span>
+</span><span class="hll"><span class="linenos">11</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This is fairly different to how we added an image to the WelcomeScreen room, so let’s unpack it:</p>
+<ul class="simple">
+<li><p>line 10 → a structural comment</p></li>
+<li><p>line 11 → retrieves <code class="docutils literal notranslate"><span class="pre">&quot;Title.png&quot;</span></code> from the Images folder and stores it in the <code class="docutils literal notranslate"><span class="pre">image</span></code> variable</p></li>
+<li><p>line 12 → assigns the image variable to this (self) RoomObject</p>
+<ul>
+<li><p>Note <code class="docutils literal notranslate"><span class="pre">800</span></code> and <code class="docutils literal notranslate"><span class="pre">350</span></code> this is the width and the height of the image</p></li>
+</ul>
+</li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Determine image width and height</p>
+<p>The easiest way to work out the height and width of an image is to open the image in VS Code and then look at the status bar at the bottom right of the screen.</p>
+<p><img alt="image dets" src="_images/image_dets.png" /></p>
+</div>
+<p>Finally save <code class="docutils literal notranslate"><span class="pre">Title.py</span></code>.</p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+</span></pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Keeping workspace clean</p>
+<p>During these tutorials, you will be moving between many different files, even files with the same name, but in different folder (eg. <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>).</p>
+<p>To reduce the chance of working in the wrong file, get into the habbit of closing a file once you have finished with it.</p>
+</div>
+<p>Save <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and close it.</p>
+<p>Now run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code. Nothing should change, because we haven’t added the RoomObject into the Room yet. This was just to check that there are no errors in your code so far.</p>
+</section>
+<section id="add-title-roomobject-to-welcomescreen-room">
+<h2>Add Title RoomObject to WelcomeScreen Room<a class="headerlink" href="#add-title-roomobject-to-welcomescreen-room" title="Permalink to this heading">#</a></h2>
+<p>Now that we have made the Title RoomObject and the WelcomeScreen Room, we can put them together.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and add the code highlighted below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">WelcomeScreen</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    Intial screen for the game</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set background image</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="hll"><span class="linenos">14</span>        <span class="c1"># add title object</span>
+</span><span class="hll"><span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</span></pre></div>
+</div>
+<p>Breaking that down:</p>
+<ul class="simple">
+<li><p>line 2 → imports the Title RoomObject we just created</p></li>
+<li><p>line 14:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_room_object</span></code> → a Level method that adds RoomObjects to Rooms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Title(self,</span> <span class="pre">240,</span> <span class="pre">200)</span></code> → creates a new <code class="docutils literal notranslate"><span class="pre">Title</span></code> RoomObject and adds it to <strong>this</strong> room at the position of <code class="docutils literal notranslate"><span class="pre">x</span></code> of <code class="docutils literal notranslate"><span class="pre">240</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> of <code class="docutils literal notranslate"><span class="pre">200</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Pygame screen coordinates</p>
+<p>Pygame screen coordinates start with (0,0) in the top lefthand corner and increase as you move right and down. For example, on our screen the top left is (0,0) whilst the bottom right is (1279,799)</p>
+</div>
+<p>Save <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and close it.</p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p>Now we have our welcome screen ready, it’s time to test it.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your screen should look like this:</p>
+<p><img alt="welcome screen finished" src="_images/welcome_2.png" /></p>
+</section>
 </section>
 
         </article>
@@ -428,12 +542,15 @@
 <li><a class="reference internal" href="#class-diagram">Class diagram</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#adjusting-window-values">Adjusting window values</a></li>
+<li><a class="reference internal" href="#adjust-window-values">Adjust window values</a></li>
 <li><a class="reference internal" href="#create-welcomescreen-room">Create WelcomeScreen Room</a><ul>
 <li><a class="reference internal" href="#testing-welcomescreen">Testing WelcomeScreen</a></li>
 <li><a class="reference internal" href="#adding-the-background">Adding the background</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#create-title-roomobject">Create Title RoomObject</a></li>
+<li><a class="reference internal" href="#add-title-roomobject-to-welcomescreen-room">Add Title RoomObject to WelcomeScreen Room</a></li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
 </ul>
 </li>
 </ul>

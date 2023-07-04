@@ -322,7 +322,7 @@
 <section id="rooms-levels">
 <h2>Rooms/Levels<a class="headerlink" href="#rooms-levels" title="Permalink to this heading">#</a></h2>
 <p>In a game made with GameFrame, a room is the area in which a game is played. To have a game, there must be at least one room, but there can be many rooms, with the game progressing through different rooms.</p>
-<p>A room is defined and kept in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder, and it is a type of GameFrame <code class="docutils literal notranslate"><span class="pre">Level</span></code>. As a room is a type of Level, every room has the attributes and functions of a Level, plus any defined for that room.</p>
+<p>A room is defined and kept in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder, and it is a type of GameFrame <code class="docutils literal notranslate"><span class="pre">Level</span></code>. As a room is a type of Level, every room has the attributes and methods of a Level, plus any defined for that room.</p>
 <p>To access the <code class="docutils literal notranslate"><span class="pre">Level</span></code> code, you need to import the file as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
 </pre></div>
@@ -350,8 +350,8 @@
 <p>Level stops running and has not been successfully completed.</p>
 </section>
 </section>
-<section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
 <section id="set-background-image-image-file">
 <h4><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code><a class="headerlink" href="#set-background-image-image-file" title="Permalink to this heading">#</a></h4>
 <p>This function is called to set the background image of the level, where image_file is replaced by the name of an image in the Images folder.</p>
@@ -421,7 +421,7 @@
 <section id="roomobject">
 <h2>RoomObject<a class="headerlink" href="#roomobject" title="Permalink to this heading">#</a></h2>
 <p>Everything that placed inside a Room, must be a <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code> (A <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> is also a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>). You define room objects in the “Objects” folder, and each object is a type of <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>.</p>
-<p>As each file in the Objects folder is a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, each has the attributes and functions of a <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, plus any defined for that file.</p>
+<p>As each file in the Objects folder is a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, each has the attributes and methods of a <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, plus any defined for that file.</p>
 <p>To access the <code class="docutils literal notranslate"><span class="pre">RoomObject'</span></code> code, you need to import the file as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
 </pre></div>
@@ -498,7 +498,7 @@
 </section>
 </section>
 <section id="id4">
-<h3>Functions<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Methods<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <section id="load-image-file-name">
 <h4><code class="docutils literal notranslate"><span class="pre">load_image(file_name)</span></code><a class="headerlink" href="#load-image-file-name" title="Permalink to this heading">#</a></h4>
 <p>Retrieve and image from file.</p>
@@ -653,7 +653,7 @@
 </section>
 </section>
 <section id="id7">
-<h3>Functions<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>Methods<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <section id="update-text">
 <h4><code class="docutils literal notranslate"><span class="pre">update_text()</span></code><a class="headerlink" href="#update-text" title="Permalink to this heading">#</a></h4>
 <p>This function must be called for any changes to the object variable to take effect.</p>
@@ -755,7 +755,7 @@
 <li><a class="reference internal" href="#quitting"><code class="docutils literal notranslate"><span class="pre">quitting</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#methods">Methods</a><ul>
 <li><a class="reference internal" href="#set-background-image-image-file"><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code></a></li>
 <li><a class="reference internal" href="#set-background-scroll-speed"><code class="docutils literal notranslate"><span class="pre">set_background_scroll(speed)</span></code></a></li>
 <li><a class="reference internal" href="#load-sound-sound-file"><code class="docutils literal notranslate"><span class="pre">load_sound(sound_file)</span></code></a><ul>
@@ -789,7 +789,7 @@
 <li><a class="reference internal" href="#handle-mouse-events"><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id4">Functions</a><ul>
+<li><a class="reference internal" href="#id4">Methods</a><ul>
 <li><a class="reference internal" href="#load-image-file-name"><code class="docutils literal notranslate"><span class="pre">load_image(file_name)</span></code></a></li>
 <li><a class="reference internal" href="#set-image-image-width-height"><code class="docutils literal notranslate"><span class="pre">set_image(image,</span> <span class="pre">width,</span> <span class="pre">height)</span></code></a></li>
 <li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
@@ -820,7 +820,7 @@
 <li><a class="reference internal" href="#bold"><code class="docutils literal notranslate"><span class="pre">bold</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">Functions</a><ul>
+<li><a class="reference internal" href="#id7">Methods</a><ul>
 <li><a class="reference internal" href="#update-text"><code class="docutils literal notranslate"><span class="pre">update_text()</span></code></a></li>
 </ul>
 </li>
