@@ -11,6 +11,7 @@ This website provides tutorials on building a Python PyGame game using the [Game
 03_gameframe
 04_welcome
 05_gameplay
+06_spaceship
 documentation
 ```
 
