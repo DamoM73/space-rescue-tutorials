@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Welcome screen" href="04_welcome.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="GamePlay Room" href="05_gameplay.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>GameFrame - API - Space Rescue</title>
@@ -166,6 +166,7 @@
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame - API</a></li>
 </ul>
 
@@ -262,8 +263,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Globals</span>
 </pre></div>
 </div>
-<section id="variables">
-<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h3>
+<section id="globals-py-variables">
+<h3><code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> Variables<a class="headerlink" href="#globals-py-variables" title="Permalink to this heading">#</a></h3>
 <section id="running">
 <h4><code class="docutils literal notranslate"><span class="pre">running</span></code><a class="headerlink" href="#running" title="Permalink to this heading">#</a></h4>
 <p>This variable indicates that the game is in play.</p>
@@ -335,23 +336,23 @@
 </pre></div>
 </div>
 </section>
-<section id="id1">
-<h3>Variables<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="rooms-levels-variables">
+<h3>Rooms/Levels Variables<a class="headerlink" href="#rooms-levels-variables" title="Permalink to this heading">#</a></h3>
 <section id="screen">
 <h4><code class="docutils literal notranslate"><span class="pre">screen</span></code><a class="headerlink" href="#screen" title="Permalink to this heading">#</a></h4>
 <p>Passed to the Room/Level when started, the screen variable is a hook to the display area of the room.</p>
 </section>
-<section id="id2">
-<h4><code class="docutils literal notranslate"><span class="pre">running</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
-<p>Level is active when true, level stops running due to being successfully complete when set to False</p>
+<section id="id1">
+<h4><code class="docutils literal notranslate"><span class="pre">running</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>Level is active when True, level stops running due to being successfully complete when set to False</p>
 </section>
 <section id="quitting">
 <h4><code class="docutils literal notranslate"><span class="pre">quitting</span></code><a class="headerlink" href="#quitting" title="Permalink to this heading">#</a></h4>
 <p>Level stops running and has not been successfully completed.</p>
 </section>
 </section>
-<section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
+<section id="rooms-levels-methods">
+<h3>Rooms/Levels Methods<a class="headerlink" href="#rooms-levels-methods" title="Permalink to this heading">#</a></h3>
 <section id="set-background-image-image-file">
 <h4><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code><a class="headerlink" href="#set-background-image-image-file" title="Permalink to this heading">#</a></h4>
 <p>This function is called to set the background image of the level, where image_file is replaced by the name of an image in the Images folder.</p>
@@ -365,6 +366,14 @@
 <p>GameFrame provides this simple function call to set a scrolling background, such as those used for scrolling shooter games like 1942. The variable speed is the number of pixels moved every frame (Frames are set by default to 30 per second)</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">set_background_scroll</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="add-room-object-room-object">
+<h4>`add_room_object(room_object)<a class="headerlink" href="#add-room-object-room-object" title="Permalink to this heading">#</a></h4>
+<p>Add a RoomObject to the level.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -391,8 +400,8 @@
 <p>Other methods can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play">PyGame mixer docs</a></p>
 </section>
 </section>
-<section id="delete-object-obj">
-<h4><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code><a class="headerlink" href="#delete-object-obj" title="Permalink to this heading">#</a></h4>
+<section id="delete-object-obj-name">
+<h4><code class="docutils literal notranslate"><span class="pre">delete_object(obj_name)</span></code><a class="headerlink" href="#delete-object-obj-name" title="Permalink to this heading">#</a></h4>
 <p>Removes an object from the room.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="s1">&#39;enemy_plane_1&#39;</span><span class="p">)</span>
@@ -434,14 +443,14 @@
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3>Variables<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="roomobject-variables">
+<h3>RoomObject Variables<a class="headerlink" href="#roomobject-variables" title="Permalink to this heading">#</a></h3>
 <section id="room">
-<h4><code class="docutils literal notranslate"><span class="pre">Room</span></code><a class="headerlink" href="#room" title="Permalink to this heading">#</a></h4>
-<p>A hook to the room the object is in.</p>
+<h4><code class="docutils literal notranslate"><span class="pre">room</span></code><a class="headerlink" href="#room" title="Permalink to this heading">#</a></h4>
+<p>The room that the object is in.</p>
 </section>
 <section id="depth">
-<h4><code class="docutils literal notranslate"><span class="pre">Depth</span></code><a class="headerlink" href="#depth" title="Permalink to this heading">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">depth</span></code><a class="headerlink" href="#depth" title="Permalink to this heading">#</a></h4>
 <p>The layer the object is situated in. When two objects occupy the same space, the object with the higher depth value will be shown, the object with the lower depth value will be covered.</p>
 </section>
 <section id="x">
@@ -497,8 +506,8 @@
 <p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </section>
 </section>
-<section id="id4">
-<h3>Methods<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="roomobject-methods">
+<h3>RoomObject Methods<a class="headerlink" href="#roomobject-methods" title="Permalink to this heading">#</a></h3>
 <section id="load-image-file-name">
 <h4><code class="docutils literal notranslate"><span class="pre">load_image(file_name)</span></code><a class="headerlink" href="#load-image-file-name" title="Permalink to this heading">#</a></h4>
 <p>Retrieve and image from file.</p>
@@ -507,8 +516,8 @@
 <h4><code class="docutils literal notranslate"><span class="pre">set_image(image,</span> <span class="pre">width,</span> <span class="pre">height)</span></code><a class="headerlink" href="#set-image-image-width-height" title="Permalink to this heading">#</a></h4>
 <p>Set the objects image by providing the image itself as well as its width and height in pixels.</p>
 </section>
-<section id="id5">
-<h4><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<section id="delete-object-obj">
+<h4><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code><a class="headerlink" href="#delete-object-obj" title="Permalink to this heading">#</a></h4>
 <p>Remove an object from the room.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="s1">&#39;enemy_plane_1&#39;</span><span class="p">)</span>
@@ -629,8 +638,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h3>Variables<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="text-object-variables">
+<h3>Text Object Variables<a class="headerlink" href="#text-object-variables" title="Permalink to this heading">#</a></h3>
 <section id="text">
 <h4><code class="docutils literal notranslate"><span class="pre">text</span></code><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h4>
 <p>The text that will be used for the <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> when the function <code class="docutils literal notranslate"><span class="pre">update_text()</span></code> is called.</p>
@@ -652,8 +661,8 @@
 <p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this will set the text to bold if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </section>
 </section>
-<section id="id7">
-<h3>Methods<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="text-object-methods">
+<h3>Text Object Methods<a class="headerlink" href="#text-object-methods" title="Permalink to this heading">#</a></h3>
 <section id="update-text">
 <h4><code class="docutils literal notranslate"><span class="pre">update_text()</span></code><a class="headerlink" href="#update-text" title="Permalink to this heading">#</a></h4>
 <p>This function must be called for any changes to the object variable to take effect.</p>
@@ -668,14 +677,14 @@
         
         <div class="related-pages">
           
-          <a class="prev-page" href="04_welcome.html">
+          <a class="prev-page" href="05_gameplay.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Welcome screen</div>
+                <div class="title">GamePlay Room</div>
                 
               </div>
             </a>
@@ -731,7 +740,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a><ul>
-<li><a class="reference internal" href="#variables">Variables</a><ul>
+<li><a class="reference internal" href="#globals-py-variables"><code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> Variables</a><ul>
 <li><a class="reference internal" href="#running"><code class="docutils literal notranslate"><span class="pre">running</span></code></a></li>
 <li><a class="reference internal" href="#frames-per-second"><code class="docutils literal notranslate"><span class="pre">FRAMES_PER_SECOND</span> </code></a></li>
 <li><a class="reference internal" href="#screen-width"><code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code></a></li>
@@ -749,20 +758,21 @@
 <li><a class="reference internal" href="#gameframe-databasecontroller-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/DataBaseController.py</span></code></a></li>
 <li><a class="reference internal" href="#rooms-levels">Rooms/Levels</a><ul>
 <li><a class="reference internal" href="#defining-and-initialising-a-room-level">Defining and Initialising a Room/Level:</a></li>
-<li><a class="reference internal" href="#id1">Variables</a><ul>
+<li><a class="reference internal" href="#rooms-levels-variables">Rooms/Levels Variables</a><ul>
 <li><a class="reference internal" href="#screen"><code class="docutils literal notranslate"><span class="pre">screen</span></code></a></li>
-<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">running</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">running</span></code></a></li>
 <li><a class="reference internal" href="#quitting"><code class="docutils literal notranslate"><span class="pre">quitting</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#methods">Methods</a><ul>
+<li><a class="reference internal" href="#rooms-levels-methods">Rooms/Levels Methods</a><ul>
 <li><a class="reference internal" href="#set-background-image-image-file"><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code></a></li>
 <li><a class="reference internal" href="#set-background-scroll-speed"><code class="docutils literal notranslate"><span class="pre">set_background_scroll(speed)</span></code></a></li>
+<li><a class="reference internal" href="#add-room-object-room-object">`add_room_object(room_object)</a></li>
 <li><a class="reference internal" href="#load-sound-sound-file"><code class="docutils literal notranslate"><span class="pre">load_sound(sound_file)</span></code></a><ul>
 <li><a class="reference internal" href="#pygame-sound-methods">PyGame sound methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#delete-object-obj"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
+<li><a class="reference internal" href="#delete-object-obj-name"><code class="docutils literal notranslate"><span class="pre">delete_object(obj_name)</span></code></a></li>
 <li><a class="reference internal" href="#set-timer-ticks-function-call"><code class="docutils literal notranslate"><span class="pre">set_timer(ticks,</span> <span class="pre">function_call)</span></code></a></li>
 <li><a class="reference internal" href="#count-object-obj-name"><code class="docutils literal notranslate"><span class="pre">count_object(obj_name)</span></code></a></li>
 </ul>
@@ -771,9 +781,9 @@
 </li>
 <li><a class="reference internal" href="#roomobject">RoomObject</a><ul>
 <li><a class="reference internal" href="#defining-and-initialising-a-room-object">Defining and Initialising a Room Object</a></li>
-<li><a class="reference internal" href="#id3">Variables</a><ul>
-<li><a class="reference internal" href="#room"><code class="docutils literal notranslate"><span class="pre">Room</span></code></a></li>
-<li><a class="reference internal" href="#depth"><code class="docutils literal notranslate"><span class="pre">Depth</span></code></a></li>
+<li><a class="reference internal" href="#roomobject-variables">RoomObject Variables</a><ul>
+<li><a class="reference internal" href="#room"><code class="docutils literal notranslate"><span class="pre">room</span></code></a></li>
+<li><a class="reference internal" href="#depth"><code class="docutils literal notranslate"><span class="pre">depth</span></code></a></li>
 <li><a class="reference internal" href="#x"><code class="docutils literal notranslate"><span class="pre">x</span></code></a></li>
 <li><a class="reference internal" href="#y"><code class="docutils literal notranslate"><span class="pre">y</span></code></a></li>
 <li><a class="reference internal" href="#rect"><code class="docutils literal notranslate"><span class="pre">rect</span></code></a></li>
@@ -789,10 +799,10 @@
 <li><a class="reference internal" href="#handle-mouse-events"><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id4">Methods</a><ul>
+<li><a class="reference internal" href="#roomobject-methods">RoomObject Methods</a><ul>
 <li><a class="reference internal" href="#load-image-file-name"><code class="docutils literal notranslate"><span class="pre">load_image(file_name)</span></code></a></li>
 <li><a class="reference internal" href="#set-image-image-width-height"><code class="docutils literal notranslate"><span class="pre">set_image(image,</span> <span class="pre">width,</span> <span class="pre">height)</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
+<li><a class="reference internal" href="#delete-object-obj"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
 <li><a class="reference internal" href="#register-collision-object-collision-object"><code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code></a></li>
 <li><a class="reference internal" href="#def-handle-collision-self-other-other-type"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code></a></li>
 <li><a class="reference internal" href="#def-key-pressed-self-key"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code></a></li>
@@ -812,7 +822,7 @@
 </li>
 <li><a class="reference internal" href="#text-object">Text Object</a><ul>
 <li><a class="reference internal" href="#defining-and-initialising-a-text-object">Defining and Initialising a Text Object</a></li>
-<li><a class="reference internal" href="#id6">Variables</a><ul>
+<li><a class="reference internal" href="#text-object-variables">Text Object Variables</a><ul>
 <li><a class="reference internal" href="#text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></li>
 <li><a class="reference internal" href="#size"><code class="docutils literal notranslate"><span class="pre">size</span></code></a></li>
 <li><a class="reference internal" href="#font"><code class="docutils literal notranslate"><span class="pre">font</span></code></a></li>
@@ -820,7 +830,7 @@
 <li><a class="reference internal" href="#bold"><code class="docutils literal notranslate"><span class="pre">bold</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">Methods</a><ul>
+<li><a class="reference internal" href="#text-object-methods">Text Object Methods</a><ul>
 <li><a class="reference internal" href="#update-text"><code class="docutils literal notranslate"><span class="pre">update_text()</span></code></a></li>
 </ul>
 </li>

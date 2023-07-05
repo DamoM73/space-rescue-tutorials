@@ -68,7 +68,7 @@ To do this you need to import the file as follows:
 from GameFrame import Globals
 ```
 
-### Variables
+### `Globals.py` Variables
 
 #### `running`
 
@@ -148,7 +148,7 @@ class LevelName(Level):
         Level.__init__(self, screen, joysticks)
 ```
 
-### Variables
+### Rooms/Levels Variables
 
 #### `screen`
 
@@ -156,13 +156,13 @@ Passed to the Room/Level when started, the screen variable is a hook to the disp
 
 #### `running`
 
-Level is active when true, level stops running due to being successfully complete when set to False
+Level is active when True, level stops running due to being successfully complete when set to False
 
 #### `quitting`
 
 Level stops running and has not been successfully completed.
 
-### Methods
+### Rooms/Levels Methods
 
 #### `set_background_image(image_file)`
 
@@ -182,6 +182,16 @@ Example:
 
 ``` python
 self.set_background_scroll(5)
+```
+
+#### `add_room_object(room_object)
+
+Add a RoomObject to the level.
+
+Example:
+
+``` python
+self.add_room_object(player)
 ```
 
 #### `load_sound(sound_file)`
@@ -210,7 +220,7 @@ For example:
 
 Other methods can be found on the [PyGame mixer docs](https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play)
 
-#### `delete_object(obj)`
+#### `delete_object(obj_name)`
 
 Removes an object from the room.
 
@@ -262,13 +272,13 @@ class Name_of_Object(RoomObject):
         RoomObject.__init__(self, room, x, y)
 ```
 
-### Variables
+### RoomObject Variables
 
-#### `Room`
+#### `room`
 
-A hook to the room the object is in.
+The room that the object is in.
 
-#### `Depth`
+#### `depth`
 
 The layer the object is situated in. When two objects occupy the same space, the object with the higher depth value will be shown, the object with the lower depth value will be covered.
 
@@ -324,7 +334,7 @@ Set to `False` by default, this variable determines whether an object is notifie
 
 Set to `False` by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to `True`
 
-### Methods
+### RoomObject Methods
 
 #### `load_image(file_name)`
 
@@ -366,8 +376,6 @@ Example:
 def handle_collision(self,other,other_type): 
     self.bounce(other) 
 ```
-
-
 
 #### `def key_pressed(self, key)`
 
@@ -470,7 +478,7 @@ class NameofTextObject(TextObject):
         RoomObject.__init__(self, room, x, y) 
 ```
 
-### Variables
+### Text Object Variables
 
 #### `text`
 
@@ -492,7 +500,7 @@ The colour of the text when rendered
 
 Set to `False` by default, this will set the text to bold if `True`.
 
-### Methods
+### Text Object Methods
 
 #### `update_text()`
 

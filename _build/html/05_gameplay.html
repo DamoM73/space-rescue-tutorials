@@ -265,6 +265,193 @@
 <span class="linenos">19</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Save and close <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code>.</p>
+</section>
+<section id="changing-rooms-using-space">
+<h2>Changing Rooms using space<a class="headerlink" href="#changing-rooms-using-space" title="Permalink to this heading">#</a></h2>
+<p>Now we have created the new Room and have added it to the list of rooms, we can create the trigger to swap from the WelcomeScreen to the GamePlay. So let’s investigate how to do this.</p>
+<p>Remember that the game logic resides within RoomObjects, therefore we will check out RoomObject in the <a class="reference internal" href="documentation.html#roomobject"><span class="std std-ref">GameFrame docs</span></a>.</p>
+<p>Reading the RoomObject docs section we see that there are two references to the <strong>keys</strong>: the <strong>handle_key_events</strong> variable, and the <strong>key_pressed</strong> method. Lets look into these two.</p>
+<section id="handle-key-events-variable">
+<h3>handle_key_events variable<a class="headerlink" href="#handle-key-events-variable" title="Permalink to this heading">#</a></h3>
+<p>The <strong>handle_key_events</strong> variable determines whether an object is notified of keyboard presses. The GameFrame docs tell us to listen for key events, we need to set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code>. We want to the Title RoomObject to listen for keypresses, so let’s set that to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set image</span>
+<span class="linenos">11</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="hll"><span class="linenos">14</span>        <span class="c1"># register for key events</span>
+</span><span class="hll"><span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span> 
+</span></pre></div>
+</div>
+</section>
+<section id="key-pressed-method">
+<h3>key_pressed method<a class="headerlink" href="#key-pressed-method" title="Permalink to this heading">#</a></h3>
+<p>The GameFrame docs tell us that when <code class="docutils literal notranslate"><span class="pre">self.handle_key_events</span> <span class="pre">=</span> <span class="pre">True</span></code> then any key presses will call the <strong>key_pressed</strong> function. We need to write the code that needs to run in a key press event inside the key_pressed function. The GameFrame docs also tell us that, the key identity will be supplied as the variable <strong>key</strong>. These are Pygame key identities, which can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/key.html">Pygame docs</a>. We want the identity for the space key which is <code class="docutils literal notranslate"><span class="pre">K_SPACE</span></code>.</p>
+<p>So we know this method will be run when a key is pressed, specifically the space key, but what do we want it to do? Well, we want it to close the WelcomeScreen Room and move onto the next Room in the list - GamePlay. How do we do this? Lets check what the <a class="reference internal" href="documentation.html#rooms-levels"><span class="std std-ref">GameFrame docs</span></a> say about this.</p>
+<p>One of the Rooms/Levels variables is called <strong>running</strong>, and the GameFrame docs tell us that if this is set to False then the room stops running. That sounds like the what we want to do.</p>
+<p>Putting that all together in a flowchart:</p>
+<p><img alt="Title key_press flowchart" src="_images/title_keypress_flowchart.png" /></p>
+<p>The only tricky part is we are working inside the Tile RoomObject, but we want to change a value in the WelcomeScreen Room, how can we reference this?</p>
+<p>Remember when we create a RoomObject, we pass to it the room that it is being created in (that’s the <code class="docutils literal notranslate"><span class="pre">self</span></code> in the code below).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This means the RoomObject knows what room it is in. Checking the <a class="reference internal" href="documentation.html#roomobject-variables"><span class="std std-ref">GameFrame docs</span></a> and there is a variable called <code class="docutils literal notranslate"><span class="pre">room</span></code> which stored this information.</p>
+<p>With all this now worked out, we can write our code.</p>
+<p>Still working in our <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> file, add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set image</span>
+<span class="linenos">12</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># register for key events</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span> 
+<span class="linenos">17</span>        
+<span class="hll"><span class="linenos">18</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">19</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">20</span><span class="sd">        If the key pressed is space the game will start</span>
+</span><span class="hll"><span class="linenos">21</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">22</span>        
+</span><span class="hll"><span class="linenos">23</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+</span><span class="hll"><span class="linenos">24</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</span></pre></div>
+</div>
+<p>Let’s break those lines down:</p>
+<ul class="simple">
+<li><p><strong>line 2</strong>: since we are using the Pygame identifier <code class="docutils literal notranslate"><span class="pre">K_SPACE</span></code> we need to import the package.</p></li>
+<li><p><strong>line 18</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> → creates the event handler for when keys are pressed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> → the Pygame key identifier of the key that has been pressed.</p></li>
+</ul>
+</li>
+<li><p><strong>line 23</strong>: checks if the key pressed was <strong>space</strong></p></li>
+<li><p><strong>line 24</strong>: goes to the RoomObject’s parent Room (WelcomeScreen) and changes it’s <code class="docutils literal notranslate"><span class="pre">running</span></code> variable to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+<p>Save <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> and close it.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p>Now to test that everything is working correctly.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your welcome screen should show.</p>
+<p>Next press <strong>space</strong> and the Title should disappear because you are now in the empty GamePlay room.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state.</p>
+<section id="gameframe-globals-py">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame\Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">Globals</span><span class="p">:</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 4</span>    <span class="n">FRAMES_PER_SECOND</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">1280</span>
+<span class="linenos"> 7</span>    <span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="n">SCORE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="c1"># - Set the starting number of lives - #</span>
+<span class="linenos">12</span>    <span class="n">LIVES</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="c1"># - Set the Window display name - #</span>
+<span class="linenos">15</span>    <span class="n">window_name</span> <span class="o">=</span> <span class="s1">&#39;Space Rescue&#39;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>    <span class="c1"># - Set the order of the rooms - #</span>
+<span class="linenos">18</span>    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="c1"># - Set the starting level - #</span>
+<span class="linenos">21</span>    <span class="n">start_level</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>    <span class="c1"># - Set this number to the level you want to jump to when the game ends - #</span>
+<span class="linenos">24</span>    <span class="n">end_game_level</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>    <span class="c1"># - This variable keeps track of the room that will follow the current room - #</span>
+<span class="linenos">27</span>    <span class="c1"># - Change this value to move through rooms in a non-sequential manner - #</span>
+<span class="linenos">28</span>    <span class="n">next_level</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="c1"># - Change variable to True to exit the program - #</span>
+<span class="linenos">31</span>    <span class="n">exiting</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># ############################################################# #</span>
+<span class="linenos">35</span><span class="c1"># ###### User Defined Global Variables below this line ######## #</span>
+<span class="linenos">36</span><span class="c1"># ############################################################# #</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span>    <span class="n">total_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">39</span>    <span class="n">destroyed_count</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="rooms-gameplay-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos">4</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos">5</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">6</span>        
+<span class="linenos">7</span>        <span class="c1"># set background image</span>
+<span class="linenos">8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="rooms-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms\__init__.py</span></code><a class="headerlink" href="#rooms-init-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Rooms.WelcomeScreen</span> <span class="kn">import</span> <span class="n">WelcomeScreen</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Rooms.GamePlay</span> <span class="kn">import</span> <span class="n">GamePlay</span>
+</pre></div>
+</div>
+</section>
+<section id="objects-title-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects\Title.py</span></code><a class="headerlink" href="#objects-title-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set image</span>
+<span class="linenos">12</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># register for key events</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span> 
+<span class="linenos">17</span>        
+<span class="linenos">18</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">19</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">20</span><span class="sd">        If the key pressed is space the game will start</span>
+<span class="linenos">21</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">22</span>        
+<span class="linenos">23</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+<span class="linenos">24</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -334,6 +521,19 @@
 <li><a class="reference internal" href="#event-driven-programming">Event-driven Programming</a></li>
 <li><a class="reference internal" href="#create-gameplay-room">Create GamePlay Room</a></li>
 <li><a class="reference internal" href="#make-gameplay-the-next-room-after-welcomescreen">Make GamePlay the next room after WelcomeScreen</a></li>
+<li><a class="reference internal" href="#changing-rooms-using-space">Changing Rooms using space</a><ul>
+<li><a class="reference internal" href="#handle-key-events-variable">handle_key_events variable</a></li>
+<li><a class="reference internal" href="#key-pressed-method">key_pressed method</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame\Globals.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-init-py"><code class="docutils literal notranslate"><span class="pre">Rooms\__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-title-py"><code class="docutils literal notranslate"><span class="pre">Objects\Title.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

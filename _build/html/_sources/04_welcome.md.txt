@@ -109,10 +109,10 @@ class WelcomeScreen(Level):
 
 Lets break that down a bit:
 
-- line 3 &rarr; defines our class and explicitly names it as a subclass of the `Level` class.
-- lines 4-6 &rarr; a doc string that explains the class.
-- line 7 &rarr; the `__init__` method that is called automatically when a `WelcomeScreen` object is made.
-- line 8 &rarr; calling the `__init__` method of the `Level` parent class will mean the `WelcomeScreen` class will inherent all the attributes and methods from `Level`.
+- **line 3**: defines our class &rarr; explicitly names it as a subclass of the `Level` class.
+- **lines 4-6**: a doc string that explains the class.
+- **line 7**: the `__init__` method &rarr; called automatically when a `WelcomeScreen` object is made.
+- **line 8** calling the `__init__` method of the `Level` parent class &rarr; the `WelcomeScreen` class will inherent all the attributes and methods from `Level`.
 
 Now save the `WelcomeScreen.py` file.
 
@@ -179,11 +179,11 @@ class WelcomeScreen(Level):
 
 Breaking that down:
 
-- line 10 &rarr; structural comment to explain what is happening. This is a really good habit to develop.
-- line 11:
+- **line 10**: structural comment to explain what is happening (really good habit to develop).
+- **line 11**:
   - `self` &rarr; remember in OOP the need to refer all actions to the current instance of the object (self)
   - `set_background_iamge` &rarr; a method inherited from the `Level` parent class.
-  - `"Background.png"` an image file in the `images` folder (go to the folder and see if you can find it).
+  - `"Background.png"` &rarr; image file in the `images` folder (go to the folder and see if you can find it).
 
 Save `WelcomeScreen.py` and then run the program again using `MainController.py`.
 
@@ -246,9 +246,9 @@ class Title(RoomObject):
 
 This is fairly different to how we added an image to the WelcomeScreen room, so let's unpack it:
 
-- line 10 &rarr; a structural comment
-- line 11 &rarr; retrieves `"Title.png"` from the Images folder and stores it in the `image` variable
-- line 12 &rarr; assigns the image variable to this (self) RoomObject
+- **line 10**: a structural comment
+- **line 11**: retrieves `"Title.png"` from the Images folder &rarr; stores it in the `image` variable
+- **line 12**: assigns the image variable to this (self) RoomObject
   - Note `800` and `350` this is the width and the height of the image
 
 ```{admonition} Determine image width and height
@@ -307,10 +307,10 @@ class WelcomeScreen(Level):
 
 Breaking that down:
 
-- line 2 &rarr; imports the Title RoomObject we just created
-- line 14:
+- **line 2**: imports the Title RoomObject we just created
+- **line 14**:
   - `add_room_object` &rarr; a Level method that adds RoomObjects to Rooms
-  - `Title(self, 240, 200)` &rarr; creates a new `Title` RoomObject and adds it to **this** room at the position of `x` of `240` and `y` of `200`.
+  - `Title(self, 240, 200)` &rarr; creates a new `Title` RoomObject and tells it that it belongs to **this** room at the position of `x` of `240` and `y` of `200`.
 
 ```{admonition} Pygame screen coordinates
 :class: note
@@ -327,7 +327,7 @@ Open `MainController.py` and run it. Your screen should look like this:
 
 ![welcome screen finished](assets/img/welcome_2.png)
 
-## Completed File States
+## Completed file states
 
 Below are all the files we used in this lesson in their finished state.
 
