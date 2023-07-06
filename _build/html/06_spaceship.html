@@ -206,9 +206,323 @@
           <section id="spaceship-object">
 <h1>Spaceship Object<a class="headerlink" href="#spaceship-object" title="Permalink to this heading">#</a></h1>
 <p>Every game needs a player avatar, and for our game it will be a spaceship. In this lesson we are going to create a spaceship and make it move up and down the screen in response to the player.</p>
+<section id="pygame-graphics">
+<h2>Pygame Graphics<a class="headerlink" href="#pygame-graphics" title="Permalink to this heading">#</a></h2>
+<p>Now that we are starting to work with sprites and graphics, we need to look a bit deeper at how graphics works in GameFrame. Since GameFrame is built on Pygame this mean understanding how Pygame handles graphics.</p>
+<div class="note admonition">
+<p class="admonition-title">Graphics refresher</p>
+<p>Computer screens are made up of millions of little dots called pixels. Each pixel be more than 16 million colours.</p>
+<p>Each pixel has a coordinate made up of its x value (horizontal position) and its y value (vertical position). These coordinates are written as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
+</div>
+<p>We will use the image below to explore graphics in Pygame.</p>
+<p><img alt="Pygame Graphics" src="_images/pygame_graphics.png" /></p>
+<section id="the-screen">
+<h3>The screen<a class="headerlink" href="#the-screen" title="Permalink to this heading">#</a></h3>
+<p>Pygame follows the common convention of have the <code class="docutils literal notranslate"><span class="pre">(0,0)</span></code> coordinate in the top lefthand corner of the screen, with the <strong>x</strong> value increasing as you move left and the <strong>y</strong> value increasing as you move down. This means that the largest coordinate value is the bottom righthand corner. Looking at our diagram this is <code class="docutils literal notranslate"><span class="pre">(1280,</span> <span class="pre">800)</span></code>. The boundaries of the screen are:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Value</p></th>
+<th class="head text-left"><p>Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>x</strong></p></td>
+<td class="text-left"><p>greater than <code class="docutils literal notranslate"><span class="pre">0</span></code> and less than <code class="docutils literal notranslate"><span class="pre">1280</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>y</strong></p></td>
+<td class="text-left"><p>greater than <code class="docutils literal notranslate"><span class="pre">0</span></code> and less than <code class="docutils literal notranslate"><span class="pre">800</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="objects">
+<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+<p>All objects placed on the screen have three values:</p>
+<ul class="simple">
+<li><p>coordinates (x, y)</p></li>
+<li><p>width in pixels</p></li>
+<li><p>height in pixels</p></li>
+</ul>
+<p>But if the object size is greater than one pixel, it will cover many coordinates. To deal with this issue objects are said to have an origin, and this is its coordinate. For objects with sprites, this is the top lefthand corner.</p>
+<p>Using these three values, you can work out the corners of the object. Check the purple object in the diagram.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Corner</p></th>
+<th class="head text-left"><p>Calculation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>top-left (origin)</strong></p></td>
+<td class="text-left"><p>(x, y)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>top-right</strong></p></td>
+<td class="text-left"><p>(x + width, y)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>bottom-left</strong></p></td>
+<td class="text-left"><p>(x, y + height)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>bottom-right</strong></p></td>
+<td class="text-left"><p>(x + width, y + height)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Let’s look at this in practice with the green object. It’s origin is <code class="docutils literal notranslate"><span class="pre">(200,</span> <span class="pre">450)</span></code>, width is <code class="docutils literal notranslate"><span class="pre">100</span></code> and height is <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Corner</p></th>
+<th class="head text-left"><p>Calculation</p></th>
+<th class="head text-left"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>top-left (origin)</strong></p></td>
+<td class="text-left"><p>(x, y)</p></td>
+<td class="text-left"><p>(200, 450)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>top-right</strong></p></td>
+<td class="text-left"><p>(x + width, y)</p></td>
+<td class="text-left"><p>(300, 450)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>bottom-left</strong></p></td>
+<td class="text-left"><p>(x, y + height)</p></td>
+<td class="text-left"><p>(200, 550)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>bottom-right</strong></p></td>
+<td class="text-left"><p>(x + width, y + height)</p></td>
+<td class="text-left"><p>(300, 500)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="movement">
+<h3>Movement<a class="headerlink" href="#movement" title="Permalink to this heading">#</a></h3>
+<p>We can make an object move around the screen by changing its origin coordinates.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Coordinate change</p></th>
+<th class="head text-left"><p>Resulting Movement</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Increase in <strong>x</strong></p></td>
+<td class="text-left"><p>Object moves to the right</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Decrease in <strong>x</strong></p></td>
+<td class="text-left"><p>Object moves to the left</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Increase in <strong>y</strong></p></td>
+<td class="text-left"><p>Object moves down</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Decrease in <strong>y</strong></p></td>
+<td class="text-left"><p>Object moves up</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
-<p>So lets think about what we want our spaceship to do.</p>
+<p>To plan what our objects are going to do, we’re going to use an Input Process Output table (IPO).</p>
+<p>To complete and IPO table</p>
+<ol class="arabic simple">
+<li><p>Start with the desired <strong>output</strong></p></li>
+<li><p>Identify from the available <strong>inputs</strong> an appropriate trigger</p></li>
+<li><p>Work out what <strong>process</strong> need to occur to move from <strong>input</strong> to <strong>output</strong></p></li>
+</ol>
+<section id="output">
+<h3>Output<a class="headerlink" href="#output" title="Permalink to this heading">#</a></h3>
+<p>Lets think about what we want our spaceship to do. For this lesson, we’re going to focus on moving the ship up and down. So that is our output.</p>
+<p><img alt="Ship IPO 1 Output" src="_images/ship_ipo_1a.png" /></p>
+</section>
+<section id="input">
+<h3>Input<a class="headerlink" href="#input" title="Permalink to this heading">#</a></h3>
+<p>What are our input options? Well our computers offer different types of input. Keyboard and mouse are the most common type. Ultimately, its an arbitrary choice, but lets go with keyboard. The next question is which keys? The most common keys used for up and down in games are <strong>W</strong> and <strong>S</strong>, so lets use them.</p>
+<p><img alt="Ship IPO 1 Input" src="_images/ship_ipo_1b.png" /></p>
+</section>
+<section id="process">
+<h3>Process<a class="headerlink" href="#process" title="Permalink to this heading">#</a></h3>
+<p>So how are we going to get the ship to move up and down in response to key presses. If we think about how Pygame handles graphics, we will have to change the <strong>y</strong> value of the object’s origin, decreasing it when <strong>W</strong> is pressed and increasing it when <strong>S</strong> is pressed. How are we going to do that?</p>
+<p>Let’s check the <a class="reference internal" href="documentation.html#roomobject"><span class="std std-ref">GameFrame docs</span></a> to see if there are any RoomObject variables or methods that could help us. They show two possible variables.</p>
+<p>We could change the value of <code class="docutils literal notranslate"><span class="pre">y</span></code>, but that would results in only one change per press. meaning the player would have to repeatedly pressing keys to keep the spaceship moving. That doesn’t sound like the best option.</p>
+<p>We could change the value of <code class="docutils literal notranslate"><span class="pre">y_speed</span></code>. The docs say that this represents the number of pixels the object is moving in the vertical direction every frame. So we could set that to a number, for example <code class="docutils literal notranslate"><span class="pre">-10</span></code> for up and <code class="docutils literal notranslate"><span class="pre">10</span></code> for down. That way the ship will keep moving once the player presses the button. This sounds like our best bet.</p>
+<p><img alt="Ship IPO 1 Process" src="_images/ship_ipo_1c.png" /></p>
+<p>That’s the planning finished, now time to implement it.</p>
+</section>
+</section>
+<section id="adding-spaceship-roomobject">
+<h2>Adding Spaceship RoomObject<a class="headerlink" href="#adding-spaceship-roomobject" title="Permalink to this heading">#</a></h2>
+<p>Adding the Spaceship RoomObject will initially follow the same steps as the Title RoomObject.</p>
+<ol class="arabic simple">
+<li><p>define the Ship RoomObject class</p></li>
+<li><p>Initialise the Ship RoomObject class</p></li>
+<li><p>Add an image to the Ship RoomObject class</p></li>
+<li><p>Add Ship RoomObject class to <code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></p></li>
+<li><p>Add Ship object to GamePlay Room</p></li>
+<li><p>Register Ship RoomObject class to handle key events</p></li>
+<li><p>Define Ship RoomObject’s keypress method</p></li>
+</ol>
+<section id="creating-ship-roomobject">
+<h3>Creating Ship RoomObject<a class="headerlink" href="#creating-ship-roomobject" title="Permalink to this heading">#</a></h3>
+<p>Go to the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and create a new file called <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code>.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> and add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set image</span>
+<span class="linenos">15</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Save <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code></p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code> and add the highlight code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="hll"><span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+</span></pre></div>
+</div>
+<p>Save <code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code> and close it.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder open the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 5</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 6</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 7</span>        
+<span class="linenos"> 8</span>        <span class="c1"># set background image</span>
+<span class="linenos"> 9</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="hll"><span class="linenos">11</span>        <span class="c1"># add objects</span>
+</span><span class="hll"><span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+</span></pre></div>
+</div>
+<p>Save and close <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code>.</p>
+<p>By this stage we should have a spaceship in our GamePlay room, so let’s test this.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></p>
+</section>
+<section id="making-the-ship-roomobject-move">
+<h3>Making the Ship RoomObject move<a class="headerlink" href="#making-the-ship-roomobject-move" title="Permalink to this heading">#</a></h3>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code> and add the following highlighted code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="hll"><span class="linenos">19</span>        <span class="c1"># register events</span>
+</span><span class="hll"><span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span class="hll"><span class="linenos">21</span>        
+</span><span class="hll"><span class="linenos">22</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">24</span><span class="sd">        Respond to keypress up and down</span>
+</span><span class="hll"><span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">26</span>        
+</span><span class="hll"><span class="linenos">27</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+</span><span class="hll"><span class="linenos">28</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+</span><span class="hll"><span class="linenos">29</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+</span><span class="hll"><span class="linenos">30</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="mi">10</span>
+</span></pre></div>
+</div>
+<p>This is the first bit of code with something a little different, so we will unpack it.</p>
+<ul class="simple">
+<li><p><strong>lines 19-25</strong>: should be familiar since we created a key press handler for the Title RoomObject.</p></li>
+<li><p><strong>lines 27-28</strong>: changes the value of this object’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> to <code class="docutils literal notranslate"><span class="pre">-10</span></code> (up) when <code class="docutils literal notranslate"><span class="pre">key</span></code> is <strong>w</strong></p></li>
+<li><p><strong>lines 29-30</strong>: changes the value of this object’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> to <code class="docutils literal notranslate"><span class="pre">10</span></code> (down) when <code class="docutils literal notranslate"><span class="pre">key</span></code> is <strong>s</strong></p></li>
+</ul>
+<p>So you ship should be moving now. Save <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> and then run the game using <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></p>
+</section>
+</section>
+<section id="completed-file-states">
+<h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state.</p>
+<section id="objects-ship-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># register events</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">24</span><span class="sd">        Respond to keypress up and down</span>
+<span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+<span class="linenos">28</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="linenos">29</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+<span class="linenos">30</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="objects-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+</pre></div>
+</div>
+</section>
+<section id="rooms-gameplay-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 5</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 6</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 7</span>        
+<span class="linenos"> 8</span>        <span class="c1"># set background image</span>
+<span class="linenos"> 9</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># add objects</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -275,7 +589,29 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Spaceship Object</a><ul>
-<li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#pygame-graphics">Pygame Graphics</a><ul>
+<li><a class="reference internal" href="#the-screen">The screen</a></li>
+<li><a class="reference internal" href="#objects">Objects</a></li>
+<li><a class="reference internal" href="#movement">Movement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#planning">Planning</a><ul>
+<li><a class="reference internal" href="#output">Output</a></li>
+<li><a class="reference internal" href="#input">Input</a></li>
+<li><a class="reference internal" href="#process">Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-spaceship-roomobject">Adding Spaceship RoomObject</a><ul>
+<li><a class="reference internal" href="#creating-ship-roomobject">Creating Ship RoomObject</a></li>
+<li><a class="reference internal" href="#making-the-ship-roomobject-move">Making the Ship RoomObject move</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#completed-file-states">Completed file states</a><ul>
+<li><a class="reference internal" href="#objects-ship-py"><code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

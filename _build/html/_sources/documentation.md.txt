@@ -316,11 +316,11 @@ The current image of the object
 
 #### `x_speed`
 
-The number of pixels the object is moving in the horizontal direction every frame. Positive numbers indicate a move to the right, negative numbers indicate a move to the left.
+The number of pixels the object is moving in the horizontal direction every frame. Positive numbers indicate a move to the right, negative numbers indicate a move to the left. Default value is `0`.
 
 #### `y_speed`
 
-The number of pixels the object is moving in the vertical direction every frame. Positive numbers indicate a move down, negative numbers indicate a move up.
+The number of pixels the object is moving in the vertical direction every frame. Positive numbers indicate a move down, negative numbers indicate a move up. Default value is `0`.
 
 #### `gravity`
 
