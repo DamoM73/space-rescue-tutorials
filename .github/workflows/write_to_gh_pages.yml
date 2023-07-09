@@ -51,4 +51,3 @@ jobs:
           branch: gh-pages
           force: true
           directory: ./_build/html
-          
