@@ -190,6 +190,18 @@ Open `MainController.py` and run it. Your welcome screen should show.
 
 Next press **space** and the Title should disappear because you are now in the empty GamePlay room.
 
+## Commit and Push
+
+We have finished and tested another section of code so we should make a Git commit.
+
+To do this:
+
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary `Created GamePlay room`.
+2. Click on **Commit to main**
+3. Click on **Push origin**
+
+Now the work from this lesson is committed and synced with the online repo.
+
 ## Completed File States
 
 Below are all the files we used in this lesson in their finished state.

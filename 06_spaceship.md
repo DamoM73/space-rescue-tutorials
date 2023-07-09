@@ -224,6 +224,18 @@ This is the first bit of code with something a little different, so we will unpa
 
 So you ship should be moving now. Save `Ship.py` and then run the game using `MainController.py`
 
+## Commit and Push
+
+We have finished and tested another section of code so you know what you should do - commit and push.
+
+To do this:
+
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary `Created Spaceship object`.
+2. Click on **Commit to main**
+3. Click on **Push origin**
+
+Now the work from this lesson is committed and synced with the online repo.
+
 ## Completed file states
 
 Below are all the files we used in this lesson in their finished state.
