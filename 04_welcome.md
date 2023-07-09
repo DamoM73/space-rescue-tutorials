@@ -327,6 +327,14 @@ Open `MainController.py` and run it. Your screen should look like this:
 
 ![welcome screen finished](assets/img/welcome_2.png)
 
+## Commit and Push
+
+![In case of fire... git](assets/img/git_commit_push.jpg)
+
+Now that we have finished a section of code and we have tested it to ensure it works, we should make a Git commit. Each commit creates an easy roll-back point. So if we break a our code, we can always return to a point that it worked.
+
+In GitHub Desktop 
+
 ## Completed file states
 
 Below are all the files we used in this lesson in their finished state.
