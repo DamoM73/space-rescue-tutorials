@@ -166,7 +166,10 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
 
 </div>
@@ -284,7 +287,12 @@
 <p>An Integrated Development Environment (IDE) is a special computer program that helps you write, edit, and test your code more easily. It’s like a digital workspace for programmers. Inside the IDE, you can write your code, see instant suggestions and corrections, organize your files, and run your programs to see the results. It brings together different tools and features that make coding more efficient and productive.</p>
 <section id="visual-studio-code">
 <h3>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this heading">#</a></h3>
-<p>Visual Studio Code (VS Code) is the IDE that we will be using.</p>
+<p>Visual Studio Code (VS Code) is the IDE that we will be using for this course.</p>
+<div class="warning admonition">
+<p class="admonition-title">Alternative to VS Code</p>
+<p>VS Code is a professional IDE, which has many feature far beyond the scope of this course. It also uses some of the deeper systems within your computer, which might cause problems when trying to set it up.</p>
+<p>If you want an alternative to VS Code, then I have provided <strong><a class="reference internal" href="using_thonny.html"><span class="std std-doc">instructions on setting up Thonny</span></a></strong> as an alternative IDE.</p>
+</div>
 <p>To install VS Code:</p>
 <ol class="arabic simple">
 <li><p>Go to the <a class="reference external" href="https://code.visualstudio.com/">VS Code website</a></p></li>
@@ -306,21 +314,30 @@
 </section>
 <section id="gameframe-and-resources">
 <h2>GameFrame and resources<a class="headerlink" href="#gameframe-and-resources" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title">GameFrame</p>
 <p>GameFrame was developed by a Steven Tucker, a Queensland teacher. If you wish to use the latest versions of GameFrame, it can be found at his <a class="reference external" href="https://gitlab.com/tuxta/gameframe?fbclid=IwAR0GnSkDPy-IdeoNZofh0YwVJ63i4m2wVyzXwBrFqpbG2cLuYox8dkbU2Ss">Gitlab repository</a>.</p>
-<p>Instead, we will be using a repo with an edited version of GameFrame, which includes all the assets needed for these tutorials. We will clone (copy) the repo from GitHub.</p>
+</div>
+<p>We will be using a repo with an edited version of GameFrame, which includes all the assets needed for these tutorials. We will clone (copy) the repo from GitHub.</p>
 <p>To do this:</p>
 <ol class="arabic simple">
-<li><p>Go to the <a class="reference external" href="https://github.com/DamoM73/space-rescue-resources">Space Rescue Resources repo</a></p></li>
+<li><p>Go to the <strong><a class="reference external" href="https://github.com/DamoM73/space-rescue-resources">Space Rescue Resources repo</a></strong></p></li>
 <li><p>Click on the green <strong>Code</strong> button</p></li>
-<li><p>Click on the copy button beside the https url</p></li>
-<li><p>Open GitHub desktop</p></li>
-<li><p>Open the File menu</p></li>
-<li><p>Click Clone Repository</p></li>
-<li><p>Choose the URL tab</p></li>
-<li><p>Paste URL into URL box</p></li>
-<li><p>Click clone</p></li>
+<li><p>Click on the <strong>copy</strong> button beside the https url</p></li>
 </ol>
 <p><img alt="GitHub clone repo" src="_images/gh_clone_repo.png" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Open <strong>GitHub Desktop</strong></p></li>
+<li><p>Open the <strong>File</strong> menu</p></li>
+<li><p>Click <strong>Clone Repository</strong></p></li>
+</ol>
+<p><img alt="GitHub Desktop clone repo" src="_images/ghdt_clone_repo.png" /></p>
+<ol class="arabic simple" start="7">
+<li><p>Choose the <strong>URL</strong> tab</p></li>
+<li><p>Paste repo URL into <strong>URL or username/repository</strong> box</p></li>
+<li><p>Click <strong>Clone</strong></p></li>
+</ol>
+<p><img alt="Github desktop clone repo dialogue" src="_images/ghdt_cloning_dialogue.png" /></p>
 <p>The repo should now be copied onto your computer and ready for use.</p>
 </section>
 <section id="opening-repo-in-vs-code">
@@ -381,6 +398,16 @@
 <li><p>Then click on the blue <strong>Create Environment</strong> button on the bottom right</p></li>
 </ol>
 <p><img alt="Create venv 1" src="_images/create_venv_1.png" /></p>
+<div class="error admonition">
+<p class="admonition-title">Create Environment button missing</p>
+<p>If the <strong>Create Environment</strong> button doesn’t appear when you open the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file, then:</p>
+<ol class="arabic simple">
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> (Windows) / <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Command</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> (macOS)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">Python</span></code> at the top</p></li>
+<li><p>Choose <code class="docutils literal notranslate"><span class="pre">Python:</span> <span class="pre">Create</span> <span class="pre">Environment...</span></code></p></li>
+</ol>
+<p><img alt="Create venv problem" src="_images/create_venv_trouble.png" /></p>
+</div>
 <ol class="arabic simple" start="3">
 <li><p>At the top choose the <strong>Venv</strong> option</p></li>
 </ol>
@@ -400,16 +427,6 @@
 <li><p>install the libraries in the <strong>requirements.txt</strong> file</p></li>
 <li><p>activate your virtual environment</p></li>
 </ul>
-<div class="warning admonition">
-<p class="admonition-title">Create Environment button missing</p>
-<p>If the <strong>Create Environment</strong> button doesn’t appear when you open the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file, then:</p>
-<ol class="arabic simple">
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> (Windows) / <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Command</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> (macOS)</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">Python</span></code> at the top</p></li>
-<li><p>Choose <code class="docutils literal notranslate"><span class="pre">Python:</span> <span class="pre">Create</span> <span class="pre">Environment...</span></code></p></li>
-</ol>
-<p><img alt="Create venv problem" src="_images/create_venv_trouble.png" /></p>
-</div>
 </section>
 <section id="check-virtual-environment">
 <h3>Check Virtual Environment<a class="headerlink" href="#check-virtual-environment" title="Permalink to this heading">#</a></h3>
@@ -428,7 +445,7 @@
 <section id="make-first-commit-and-push">
 <h2>Make first commit and push<a class="headerlink" href="#make-first-commit-and-push" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Change the text in README.md to:</p></li>
+<li><p>Change the text in README.md to the text below and then save it:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># SPACE RESCUE</span>
 
@@ -436,8 +453,15 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>In GitHub desktop write Summary and the click <strong>Commit to main</strong></p></li>
+<li><p>In GitHub desktop write “Made first change” in the <strong>Summary (required)</strong> box</p></li>
+<li><p>Then click <strong>Commit to main</strong></p></li>
+</ol>
+<p><img alt="GitHub Desktop first commit" src="_images/ghdt_first_commit.png" /></p>
+<ol class="arabic simple" start="4">
 <li><p>Click <strong>Push origin</strong> (you will receive an error)</p></li>
+</ol>
+<p><img alt="GitHub Desktop fist push" src="_images/ghtd_first_push.png" /></p>
+<ol class="arabic simple" start="5">
 <li><p>Choose to <strong>Fork this repository</strong></p></li>
 <li><p>Choose <strong>For my own purposes</strong> and <strong>Continue</strong></p></li>
 <li><p>Click <strong>Push origin</strong> again</p></li>

@@ -88,7 +88,14 @@ An Integrated Development Environment (IDE) is a special computer program that h
 
 ### Visual Studio Code
 
-Visual Studio Code (VS Code) is the IDE that we will be using.
+Visual Studio Code (VS Code) is the IDE that we will be using for this course.
+
+```{admonition} Alternative to VS Code
+:class: warning
+VS Code is a professional IDE, which has many feature far beyond the scope of this course. It also uses some of the deeper systems within your computer, which might cause problems when trying to set it up.
+
+If you want an alternative to VS Code, then I have provided **[instructions on setting up Thonny](using_thonny.md)** as an alternative IDE.
+```
 
 To install VS Code:
 
@@ -108,23 +115,32 @@ VS Code can be used to write any programming language. We need to prepare it for
 
 ## GameFrame and resources
 
+```{admonition} GameFrame
+:class: note
 GameFrame was developed by a Steven Tucker, a Queensland teacher. If you wish to use the latest versions of GameFrame, it can be found at his [Gitlab repository](https://gitlab.com/tuxta/gameframe?fbclid=IwAR0GnSkDPy-IdeoNZofh0YwVJ63i4m2wVyzXwBrFqpbG2cLuYox8dkbU2Ss).
+```
 
-Instead, we will be using a repo with an edited version of GameFrame, which includes all the assets needed for these tutorials. We will clone (copy) the repo from GitHub.
+We will be using a repo with an edited version of GameFrame, which includes all the assets needed for these tutorials. We will clone (copy) the repo from GitHub.
 
 To do this:
 
-1. Go to the [Space Rescue Resources repo](https://github.com/DamoM73/space-rescue-resources)
+1. Go to the **[Space Rescue Resources repo](https://github.com/DamoM73/space-rescue-resources)**
 2. Click on the green **Code** button
-3. Click on the copy button beside the https url
-4. Open GitHub desktop
-5. Open the File menu
-6. Click Clone Repository
-7. Choose the URL tab
-8. Paste URL into URL box
-9. Click clone
+3. Click on the **copy** button beside the https url
 
 ![GitHub clone repo](assets/img/gh_clone_repo.png)
+
+4. Open **GitHub Desktop**
+5. Open the **File** menu
+6. Click **Clone Repository**
+
+![GitHub Desktop clone repo](assets/img/ghdt_clone_repo.png)
+
+7. Choose the **URL** tab
+8. Paste repo URL into **URL or username/repository** box
+9.  Click **Clone**
+
+![Github desktop clone repo dialogue](assets/img/ghdt_cloning_dialogue.png) 
 
 The repo should now be copied onto your computer and ready for use.
 
@@ -191,6 +207,17 @@ To create a virtual environment for this project:
 
 ![Create venv 1](assets/img/create_venv_1.png)
 
+```{admonition} Create Environment button missing
+:class: error
+If the **Create Environment** button doesn't appear when you open the `requirements.txt` file, then:
+
+1. Press `Ctrl` + `Shift` + `P` (Windows) / `Shift` + `Command` + `P` (macOS)
+2. Type `Python` at the top
+3. Choose `Python: Create Environment...`
+
+![Create venv problem](assets/img/create_venv_trouble.png)
+```
+
 3. At the top choose the **Venv** option
 
 ![Create venv 2](assets/img/create_venv_2.png)
@@ -210,17 +237,6 @@ VS Code will now:
 - install the libraries in the **requirements.txt** file
 - activate your virtual environment
 
-```{admonition} Create Environment button missing
-:class: warning
-If the **Create Environment** button doesn't appear when you open the `requirements.txt` file, then:
-
-1. Press `Ctrl` + `Shift` + `P` (Windows) / `Shift` + `Command` + `P` (macOS)
-2. Type `Python` at the top
-3. Choose `Python: Create Environment...`
-
-![Create venv problem](assets/img/create_venv_trouble.png)
-```
-
 ### Check Virtual Environment
 
 Finally to check that the virtual environment has been setup.
@@ -236,7 +252,7 @@ Finally to check that the virtual environment has been setup.
 
 ## Make first commit and push
 
-1. Change the text in README.md to:
+1. Change the text in README.md to the text below and then save it:
 
 ```
 # SPACE RESCUE
@@ -244,8 +260,15 @@ Finally to check that the virtual environment has been setup.
 Try to save the helpless astronauts who are being left stranded in space by the evil Zork.
 ```
 
-2. In GitHub desktop write Summary and the click **Commit to main**
-3. Click **Push origin** (you will receive an error)
-4. Choose to **Fork this repository**
-5. Choose **For my own purposes** and **Continue**
-6. Click **Push origin** again
+2. In GitHub desktop write "Made first change" in the **Summary (required)** box
+3. Then click **Commit to main**
+
+![GitHub Desktop first commit](assets/img/ghdt_first_commit.png)
+
+4. Click **Push origin** (you will receive an error)
+
+![GitHub Desktop fist push](assets/img/ghtd_first_push.png)
+
+5. Choose to **Fork this repository**
+6. Choose **For my own purposes** and **Continue**
+7. Click **Push origin** again
