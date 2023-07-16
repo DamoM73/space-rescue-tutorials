@@ -1,5 +1,12 @@
 # GamePlay Room
 
+```{topic} In this lesson you will:
+- learn to plan using flowcharts
+- learn about event driven programming
+- learn how listen for and handle keyboard events in GameFrame
+- learn how to change GameFrame Rooms
+```
+
 In this lesson we are going to create the central room for our game. All the game play will occur in this room, so it is aptly names GamePlay. 
 
 We will:

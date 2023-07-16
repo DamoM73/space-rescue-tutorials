@@ -1,5 +1,11 @@
 # Spaceship Object
 
+```{topic} In this lesson you will:
+- how to plan using IPO tables
+- how Pygame handles 2D graphics
+- move a RoomObject in response to keystrokes
+```
+
 Every game needs a player avatar, and for our game it will be a spaceship. In this lesson we are going to create a spaceship and make it move up and down the screen in response to the player.
 
 ## Pygame Graphics

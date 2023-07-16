@@ -1,5 +1,10 @@
 # Get to know GameFrame
 
+```{topic} In this lesson you will:
+- Learn the file structure of the GameFrame framework
+- Learn about the important files in the GameFrame framework
+```
+
 ## How GameFrame works
 
 The GameFrame framework is driven by the **Objects**. You will create objects that contain all the game logic. These objects are then placed in **Rooms**.

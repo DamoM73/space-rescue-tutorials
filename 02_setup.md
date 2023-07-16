@@ -1,5 +1,14 @@
 # Setup
 
+```{topic} In this lesson you will:
+- Set up your computer for for the course
+- Install Python
+- Setup a version control workflow
+- Install an Intergrated Development Environment
+- Download the game resources and the GameFrame framework
+- Create a virtual environment
+```
+
 For this course we are going emphasise developing good programming practice. This means using a proper development environment with version control. We will need to install a number of programs and then set our environment to ensure it functions properly.
 
 ```{admonition} Reasons for workflow

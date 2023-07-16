@@ -1,5 +1,9 @@
 # Introduction
 
+```{topic} In this lesson you will:
+- develop an overall understanding of technology using in this course and how they interact with each other.
+```
+
 In this course we will develop a 2D computer game using Python, Pygame and GameFrame. We will also explore some simple game design concepts.
 
 Before we go any further, let's look at the technology we will be using.

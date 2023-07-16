@@ -1,5 +1,12 @@
 # Welcome screen
 
+```{topic} In this lesson you will:
+- learn how to plan using wireframes and class diagrams
+- learn how to make adjustment to window variables
+- learn how to create a GameFrame Room and add a background to it
+- learn how to create a GameFrame Object and add it to a Room
+```
+
 To get the ball rolling, well create a welcome screen for our game. This is a nice easy way to introduce some of the concepts and processes we will be using throughout.
 
 ## Planning

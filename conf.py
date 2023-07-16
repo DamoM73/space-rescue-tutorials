@@ -19,6 +19,12 @@ extensions = [
     "sphinx_copybutton",
 ]
 
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".txt": "markdown",
+    ".md": "markdown",
+}
+
 templates_path = ['_templates']
 exclude_patterns = ['_build', 
                     'Thumbs.db', 
@@ -27,7 +33,8 @@ exclude_patterns = ['_build',
                     'README.md',
                     'teacher_resources',
                     'notes.md',
-                    'todo.md'
+                    'todo.md',
+                    'requirements.txt'
                     ]
 
 myst_heading_anchors = 3
@@ -37,6 +44,7 @@ myst_heading_anchors = 3
 
 html_theme = 'furo'
 html_static_path = ['_static']
+html_css_files = ['custom.css']
 html_logo = 'assets/img/logo.png'
 html_title = "Space Rescue"
 html_favicon = "assets/img/logo.ico"
