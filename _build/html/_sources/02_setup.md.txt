@@ -115,9 +115,20 @@ To install VS Code:
 
 ### VS Code Extensions
 
+#### Python Extension
+
 VS Code can be used to write any programming language. We need to prepare it for working with Python. We do that by adding the Python extensions.
 
 1. Go to the [Python extension on the Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+2. Click **Install**
+3. Acknowledge that you have VS Code
+4. You may need to accept the prompt to open VS Code
+
+#### Material Icon Theme
+
+By default VS Code doesn't have any icons in it's files panel. This can lead to confusion between files and folders. To address this we will install the **Material Icon Theme**.
+
+1. Go to the [Material Icon Theme on the Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
 2. Click **Install**
 3. Acknowledge that you have VS Code
 4. You may need to accept the prompt to open VS Code

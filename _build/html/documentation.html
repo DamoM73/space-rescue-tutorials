@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Using Thonny as the IDE" href="using_thonny.html" /><link rel="prev" title="Spaceship Object" href="06_spaceship.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Using Thonny as the IDE" href="using_thonny.html" /><link rel="prev" title="Keeping Ship in the Room" href="08_ship_in_bounds.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>GameFrame - API - Space Rescue</title>
@@ -169,6 +169,8 @@
 <li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -535,8 +537,8 @@
 </pre></div>
 </div>
 </section>
-<section id="def-handle-collision-self-other-other-type">
-<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code><a class="headerlink" href="#def-handle-collision-self-other-other-type" title="Permalink to this heading">#</a></h4>
+<section id="handle-collision-self-other-other-type">
+<h4><code class="docutils literal notranslate"><span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code><a class="headerlink" href="#handle-collision-self-other-other-type" title="Permalink to this heading">#</a></h4>
 <p>When a collision is registered, the object will be notified of any such event by calling its <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> function.</p>
 <p>To write the code that needs to run in a collision event, the object needs to implement the function.</p>
 <p>Example:</p>
@@ -545,8 +547,8 @@
 </pre></div>
 </div>
 </section>
-<section id="def-key-pressed-self-key">
-<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code><a class="headerlink" href="#def-key-pressed-self-key" title="Permalink to this heading">#</a></h4>
+<section id="key-pressed-self-key">
+<h4><code class="docutils literal notranslate"><span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code><a class="headerlink" href="#key-pressed-self-key" title="Permalink to this heading">#</a></h4>
 <p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any key presses by calling its <code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable <code class="docutils literal notranslate"><span class="pre">key</span></code>.  <a class="reference external" href="http://www.pygame.org/docs/ref/key.html">PyGame key identities can be found here.</a></p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> 
@@ -561,8 +563,8 @@
 </pre></div>
 </div>
 </section>
-<section id="def-clicked-self-button-number">
-<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">clicked(self,</span> <span class="pre">button_number)</span></code><a class="headerlink" href="#def-clicked-self-button-number" title="Permalink to this heading">#</a></h4>
+<section id="clicked-self-button-number">
+<h4><code class="docutils literal notranslate"><span class="pre">clicked(self,</span> <span class="pre">button_number)</span></code><a class="headerlink" href="#clicked-self-button-number" title="Permalink to this heading">#</a></h4>
 <p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any mouse key presses by calling its clicked function. To write the code that needs to run in a mouse key press event, the object needs to implement the function. The mouse button identity will be supplied as the variable <code class="docutils literal notranslate"><span class="pre">button_number</span></code></p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">button_number</span><span class="p">):</span> 
@@ -572,8 +574,8 @@
 </pre></div>
 </div>
 </section>
-<section id="def-mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right">
-<h4><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)</span></code><a class="headerlink" href="#def-mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right" title="Permalink to this heading">#</a></h4>
+<section id="mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right">
+<h4><code class="docutils literal notranslate"><span class="pre">mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)</span></code><a class="headerlink" href="#mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right" title="Permalink to this heading">#</a></h4>
 <p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any mouse event by calling its mouse_event function. To write the code that needs to run in a mouse event, the object needs to implement the function. The mouse <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> position will be supplied as well as the buttons information</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouse_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mouse_x</span><span class="p">,</span> <span class="n">mouse_y</span><span class="p">,</span> <span class="n">button_left</span><span class="p">,</span> <span class="n">button_middle</span><span class="p">,</span> <span class="n">button_right</span><span class="p">):</span> 
@@ -688,14 +690,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="06_spaceship.html">
+          <a class="prev-page" href="08_ship_in_bounds.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Spaceship Object</div>
+                <div class="title">Keeping Ship in the Room</div>
                 
               </div>
             </a>
@@ -815,10 +817,10 @@
 <li><a class="reference internal" href="#set-image-image-width-height"><code class="docutils literal notranslate"><span class="pre">set_image(image,</span> <span class="pre">width,</span> <span class="pre">height)</span></code></a></li>
 <li><a class="reference internal" href="#delete-object-obj"><code class="docutils literal notranslate"><span class="pre">delete_object(obj)</span></code></a></li>
 <li><a class="reference internal" href="#register-collision-object-collision-object"><code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code></a></li>
-<li><a class="reference internal" href="#def-handle-collision-self-other-other-type"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code></a></li>
-<li><a class="reference internal" href="#def-key-pressed-self-key"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code></a></li>
-<li><a class="reference internal" href="#def-clicked-self-button-number"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">clicked(self,</span> <span class="pre">button_number)</span></code></a></li>
-<li><a class="reference internal" href="#def-mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right"><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)</span></code></a></li>
+<li><a class="reference internal" href="#handle-collision-self-other-other-type"><code class="docutils literal notranslate"><span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code></a></li>
+<li><a class="reference internal" href="#key-pressed-self-key"><code class="docutils literal notranslate"><span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code></a></li>
+<li><a class="reference internal" href="#clicked-self-button-number"><code class="docutils literal notranslate"><span class="pre">clicked(self,</span> <span class="pre">button_number)</span></code></a></li>
+<li><a class="reference internal" href="#mouse-event-self-mouse-x-mouse-y-button-left-button-middle-button-right"><code class="docutils literal notranslate"><span class="pre">mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)</span></code></a></li>
 <li><a class="reference internal" href="#bounce-other"><code class="docutils literal notranslate"><span class="pre">bounce(other)</span></code></a></li>
 <li><a class="reference internal" href="#blocked-other"><code class="docutils literal notranslate"><span class="pre">blocked(other)</span></code></a></li>
 <li><a class="reference internal" href="#prestep"><code class="docutils literal notranslate"><span class="pre">prestep()</span></code></a></li>

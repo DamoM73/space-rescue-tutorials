@@ -364,7 +364,7 @@ Example:
 self.register_collision_object('enemy') 
 ```
 
-#### `def handle_collision(self, other, other_type)`
+#### `handle_collision(self, other, other_type)`
 
 When a collision is registered, the object will be notified of any such event by calling its `handle_collision` function.  
 
@@ -377,7 +377,7 @@ def handle_collision(self,other,other_type):
     self.bounce(other) 
 ```
 
-#### `def key_pressed(self, key)`
+#### `key_pressed(self, key)`
 
 If the variable `handle_key_events` is set to `True`, the object will be notified of any key presses by calling its `key_pressed` function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable `key`.  [PyGame key identities can be found here.](http://www.pygame.org/docs/ref/key.html)
 
@@ -395,7 +395,7 @@ def key_pressed(self, key):
         self.y += 4 
 ```
 
-#### `def clicked(self, button_number)`
+#### `clicked(self, button_number)`
 
 If the variable `handle_mouse_events` is set to `True`, the object will be notified of any mouse key presses by calling its clicked function. To write the code that needs to run in a mouse key press event, the object needs to implement the function. The mouse button identity will be supplied as the variable `button_number`
 
@@ -408,7 +408,7 @@ def clicked(self, button_number):
         self.delete_object(self) 
 ```
 
-#### `def mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)`
+#### `mouse_event(self,mouse_x,mouse_y,button_left,button_middle,button_right)`
 
 If the variable `handle_mouse_events` is set to `True`, the object will be notified of any mouse event by calling its mouse_event function. To write the code that needs to run in a mouse event, the object needs to implement the function. The mouse `x` and `y` position will be supplied as well as the buttons information
 

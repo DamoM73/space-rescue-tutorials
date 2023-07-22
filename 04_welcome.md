@@ -350,7 +350,7 @@ Now the work from this lesson is committed and synced with the online repo.
 
 ## Completed file states
 
-Below are all the files we used in this lesson in their finished state.
+Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
 
 ### `GameFrame\Globals.py`
 
