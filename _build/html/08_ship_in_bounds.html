@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Advanced Spaceship Movement" href="07_adv_move.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Add Zork Object" href="09_add_boss.html" /><link rel="prev" title="Advanced Spaceship Movement" href="07_adv_move.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Keeping Ship in the Room - Space Rescue</title>
@@ -171,6 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Keeping Ship in the Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -213,6 +214,7 @@
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
 <li><p>learn about how screen coordinates interact with each other</p></li>
+<li><p>learn about game clocks and how to use their ticks to time events</p></li>
 </ul>
 </aside>
 <p>By now you would have noticed that the ship can move both below the bottom of the screen and above the top of the screen. Lets prevent this from happening.</p>
@@ -264,11 +266,13 @@
 </section>
 <section id="coding">
 <h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h2>
+<section id="object-ship-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Object/Ship.py</span></code><a class="headerlink" href="#object-ship-py" title="Permalink to this heading">#</a></h3>
 <p>All this code needs to be implemented inside the <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class so we need to open <code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code>.</p>
 <p>Now we need to work out where. We could put this all inside the <code class="docutils literal notranslate"><span class="pre">step</span></code> method, and it would work, but what if we want to do other things with the ship on each tick of the clock? It could start getting really messy.</p>
 <p>To make our code more maintainable, we’re going to keep our <code class="docutils literal notranslate"><span class="pre">step</span></code> method as small and clean as possible. We will do this by creating methods for the game logic and then calling those methods in <code class="docutils literal notranslate"><span class="pre">step</span></code>.</p>
 <section id="keep-in-room">
-<h3>keep_in_room<a class="headerlink" href="#keep-in-room" title="Permalink to this heading">#</a></h3>
+<h4>keep_in_room<a class="headerlink" href="#keep-in-room" title="Permalink to this heading">#</a></h4>
 <p>So, lets put the game logic into a method called <code class="docutils literal notranslate"><span class="pre">keep_in_room</span></code>. Add the code below to the bottom of the <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">32</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -289,7 +293,7 @@
 </ul>
 </section>
 <section id="step">
-<h3>step<a class="headerlink" href="#step" title="Permalink to this heading">#</a></h3>
+<h4>step<a class="headerlink" href="#step" title="Permalink to this heading">#</a></h4>
 <p>Now we have to call the <code class="docutils literal notranslate"><span class="pre">keep_in_room()</span></code> method from the <code class="docutils literal notranslate"><span class="pre">step</span></code> method.</p>
 <p>Go to the bottom of the <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class and add the code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">41</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -301,15 +305,17 @@
 </div>
 </section>
 </section>
+</section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
 <p>Now go to <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run the program and make sure that our spaceship stays within the window.</p>
+<p>If it work, go to <strong>GitHub Desktop</strong>, add a summary, <strong>Commit to main</strong> then <strong>Push origin</strong>.</p>
 </section>
 <section id="completed-file-states">
 <h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
 <section id="objects-ship-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
 <span class="linenos"> 3</span>
@@ -366,12 +372,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="documentation.html">
+          <a class="next-page" href="09_add_boss.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">GameFrame - API</div>
+                <div class="title">Add Zork Object</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -426,13 +432,16 @@
 <li><a class="reference internal" href="#">Keeping Ship in the Room</a><ul>
 <li><a class="reference internal" href="#planning">Planning</a></li>
 <li><a class="reference internal" href="#coding">Coding</a><ul>
+<li><a class="reference internal" href="#object-ship-py"><code class="docutils literal notranslate"><span class="pre">Object/Ship.py</span></code></a><ul>
 <li><a class="reference internal" href="#keep-in-room">keep_in_room</a></li>
 <li><a class="reference internal" href="#step">step</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li><a class="reference internal" href="#testing">Testing</a></li>
 <li><a class="reference internal" href="#completed-file-states">Completed file states</a><ul>
-<li><a class="reference internal" href="#objects-ship-py"><code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-ship-py"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
 </ul>
 </li>
 </ul>

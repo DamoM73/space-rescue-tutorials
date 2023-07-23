@@ -2,6 +2,7 @@
 
 ```{topic} In this lesson you will:
 - learn about how screen coordinates interact with each other
+- learn about game clocks and how to use their ticks to time events
 ```
 
 By now you would have noticed that the ship can move both below the bottom of the screen and above the top of the screen. Lets prevent this from happening.
@@ -69,13 +70,15 @@ In summary, every tick of the game clock we will check if the ship is outside th
 
 ## Coding
 
+### `Object/Ship.py`
+
 All this code needs to be implemented inside the `Ship` class so we need to open `Objects/Ship.py`.
 
 Now we need to work out where. We could put this all inside the `step` method, and it would work, but what if we want to do other things with the ship on each tick of the clock? It could start getting really messy.
 
 To make our code more maintainable, we're going to keep our `step` method as small and clean as possible. We will do this by creating methods for the game logic and then calling those methods in `step`.
 
-### keep_in_room
+#### keep_in_room
 
 So, lets put the game logic into a method called `keep_in_room`. Add the code below to the bottom of the `Ship` class.
 
@@ -99,7 +102,7 @@ Let's break down lines 36-39 (it might be useful to check the screen diagram in 
 - **line 38**: checks if bottom of the ship (self.y + self.height) is less then the bottom of the screen (Globals.SCREEEN_HEIGHT)
 - **line 39**: sets the ship's origin position to far enough above the bottom that the ship will fit (Globals.SCREEN_HEIGHT - self.height)
 
-### step
+#### step
 
 Now we have to call the `keep_in_room()` method from the `step` method.
 
@@ -119,11 +122,13 @@ Go to the bottom of the `Ship` class and add the code below:
 
 Now go to `MainController.py` and run the program and make sure that our spaceship stays within the window.
 
+If it work, go to **GitHub Desktop**, add a summary, **Commit to main** then **Push origin**.
+
 ## Completed file states
 
 Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
 
-### `Objects\Ship.py`
+### `Objects/Ship.py`
 
 ```{code-block} python
 :linenos:

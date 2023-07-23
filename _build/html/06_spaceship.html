@@ -171,6 +171,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Spaceship Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -383,6 +384,8 @@
 </ol>
 <section id="creating-ship-roomobject">
 <h3>Creating Ship RoomObject<a class="headerlink" href="#creating-ship-roomobject" title="Permalink to this heading">#</a></h3>
+<section id="objects-ship-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h4>
 <p>Go to the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and create a new file called <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code>.</p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> and add the following code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
@@ -404,12 +407,18 @@
 </pre></div>
 </div>
 <p>Save <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code></p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code> and add the highlight code below:</p>
+</section>
+<section id="objects-init-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h4>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code> and add the highlight code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
 <span class="hll"><span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
 </span></pre></div>
 </div>
-<p>Save <code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code> and close it.</p>
+<p>Save <code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code> and close it.</p>
+</section>
+<section id="rooms-gameplay-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h4>
 <p>In the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder open the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file and add the highlighted code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
 <span class="hll"><span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
@@ -429,9 +438,12 @@
 <p>By this stage we should have a spaceship in our GamePlay room, so let’s test this.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></p>
 </section>
+</section>
 <section id="making-the-ship-roomobject-move">
 <h3>Making the Ship RoomObject move<a class="headerlink" href="#making-the-ship-roomobject-move" title="Permalink to this heading">#</a></h3>
-<p>Open <code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code> and add the following highlighted code:</p>
+<section id="id1">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> and add the following highlighted code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
 <span class="hll"><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
 </span><span class="linenos"> 3</span>
@@ -473,6 +485,7 @@
 <p>So you ship should be moving now. Save <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> and then run the game using <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></p>
 </section>
 </section>
+</section>
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
 <p>We have finished and tested another section of code so you know what you should do - commit and push.</p>
@@ -487,8 +500,8 @@
 <section id="completed-file-states">
 <h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
-<section id="objects-ship-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
 <span class="linenos"> 3</span>
@@ -522,15 +535,15 @@
 </pre></div>
 </div>
 </section>
-<section id="objects-init-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
 <span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
 </pre></div>
 </div>
 </section>
-<section id="rooms-gameplay-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
 <span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
 <span class="linenos"> 3</span>
@@ -625,15 +638,23 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-spaceship-roomobject">Adding Spaceship RoomObject</a><ul>
-<li><a class="reference internal" href="#creating-ship-roomobject">Creating Ship RoomObject</a></li>
-<li><a class="reference internal" href="#making-the-ship-roomobject-move">Making the Ship RoomObject move</a></li>
+<li><a class="reference internal" href="#creating-ship-roomobject">Creating Ship RoomObject</a><ul>
+<li><a class="reference internal" href="#objects-ship-py"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-the-ship-roomobject-move">Making the Ship RoomObject move</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
 <li><a class="reference internal" href="#completed-file-states">Completed file states</a><ul>
-<li><a class="reference internal" href="#objects-ship-py"><code class="docutils literal notranslate"><span class="pre">Objects\Ship.py</span></code></a></li>
-<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects\__init__.py</span></code></a></li>
-<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
 </ul>
 </li>
 </ul>

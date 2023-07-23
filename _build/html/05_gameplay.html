@@ -171,6 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -251,7 +252,9 @@
 <li><p>Initialise the GamePlay class calling the parent class <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and then add a backdrop</p></li>
 <li><p>Add the new file to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder</p></li>
 </ol>
-<p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code>, then add the following code to it.</p>
+<section id="rooms-gameplay-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<p>Create a <strong>new file</strong> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code>, then add the following code to it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
@@ -262,16 +265,22 @@
 <span class="linenos">8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Save the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file.</p>
-<p>Then open the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder and add the highlighted code below.</p>
+<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file.</p>
+</section>
+<section id="rooms-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code><a class="headerlink" href="#rooms-init-py" title="Permalink to this heading">#</a></h3>
+<p>Then <strong>open</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder and add the highlighted code below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Rooms.WelcomeScreen</span> <span class="kn">import</span> <span class="n">WelcomeScreen</span>
 <span class="hll"><span class="linenos">2</span><span class="kn">from</span> <span class="nn">Rooms.GamePlay</span> <span class="kn">import</span> <span class="n">GamePlay</span>
 </span></pre></div>
 </div>
-<p>Save and <strong>close</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+<p><strong>Save</strong> and <strong>close</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+</section>
 </section>
 <section id="make-gameplay-the-next-room-after-welcomescreen">
 <h2>Make GamePlay the next room after WelcomeScreen<a class="headerlink" href="#make-gameplay-the-next-room-after-welcomescreen" title="Permalink to this heading">#</a></h2>
+<section id="gameframe-globals-py">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Permalink to this heading">#</a></h3>
 <p>To make this change we need to go back to the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder.</p>
 <p>Look for the <code class="docutils literal notranslate"><span class="pre">levels</span></code> variable. It contains a list of strings. According to the <a class="reference internal" href="documentation.html#gameframe-globals-py"><span class="std std-ref">GameFrame docs</span></a> this holds the names of all the levels in the game, in the order that a player progresses through them.</p>
 <p>Currently that list is the default <code class="docutils literal notranslate"><span class="pre">[&quot;WelcomeScreen&quot;,</span> <span class="pre">&quot;Maze&quot;,</span> <span class="pre">&quot;ScrollingShooter&quot;,</span> <span class="pre">&quot;BreakOut&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;WelcomeScreen&quot;</span></code> first. This works with our program, but the rest don’t. So change the list to the highlighted code below:</p>
@@ -279,7 +288,8 @@
 <span class="linenos">19</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Save and close <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code>.</p>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code>.</p>
+</section>
 </section>
 <section id="changing-rooms-using-space">
 <h2>Changing Rooms using space<a class="headerlink" href="#changing-rooms-using-space" title="Permalink to this heading">#</a></h2>
@@ -289,7 +299,9 @@
 <section id="handle-key-events-variable">
 <h3>handle_key_events variable<a class="headerlink" href="#handle-key-events-variable" title="Permalink to this heading">#</a></h3>
 <p>The <strong>handle_key_events</strong> variable determines whether an object is notified of keyboard presses. The GameFrame docs tell us to listen for key events, we need to set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code>. We want to the Title RoomObject to listen for keypresses, so let’s set that to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and add the highlighted code below:</p>
+<section id="objects-title-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#objects-title-py" title="Permalink to this heading">#</a></h4>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and add the highlighted code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
@@ -308,6 +320,7 @@
 </span></pre></div>
 </div>
 </section>
+</section>
 <section id="key-pressed-method">
 <h3>key_pressed method<a class="headerlink" href="#key-pressed-method" title="Permalink to this heading">#</a></h3>
 <p>The GameFrame docs tell us that when <code class="docutils literal notranslate"><span class="pre">self.handle_key_events</span> <span class="pre">=</span> <span class="pre">True</span></code> then any key presses will call the <strong>key_pressed</strong> function. We need to write the code that needs to run in a key press event inside the key_pressed function. The GameFrame docs also tell us that, the key identity will be supplied as the variable <strong>key</strong>. These are Pygame key identities, which can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/key.html">Pygame docs</a>. We want the identity for the space key which is <code class="docutils literal notranslate"><span class="pre">K_SPACE</span></code>.</p>
@@ -322,6 +335,8 @@
 </div>
 <p>This means the RoomObject knows what room it is in. Checking the <a class="reference internal" href="documentation.html#roomobject-variables"><span class="std std-ref">GameFrame docs</span></a> and there is a variable called <code class="docutils literal notranslate"><span class="pre">room</span></code> which stored this information.</p>
 <p>With all this now worked out, we can write our code.</p>
+<section id="id1">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Still working in our <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> file, add the highlighted code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
 <span class="hll"><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
@@ -361,13 +376,14 @@
 <li><p><strong>line 23</strong>: checks if the key pressed was <strong>space</strong></p></li>
 <li><p><strong>line 24</strong>: goes to the RoomObject’s parent Room (WelcomeScreen) and changes it’s <code class="docutils literal notranslate"><span class="pre">running</span></code> variable to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
-<p>Save <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> and close it.</p>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> and <strong>close</strong> it.</p>
+</section>
 </section>
 </section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
 <p>Now to test that everything is working correctly.</p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your welcome screen should show.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your welcome screen should show.</p>
 <p>Next press <strong>space</strong> and the Title should disappear because you are now in the empty GamePlay room.</p>
 </section>
 <section id="commit-and-push">
@@ -384,8 +400,8 @@
 <section id="completed-file-states">
 <h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
-<section id="gameframe-globals-py">
-<h3><code class="docutils literal notranslate"><span class="pre">GameFrame\Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">Globals</span><span class="p">:</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span>    <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
@@ -428,8 +444,8 @@
 </pre></div>
 </div>
 </section>
-<section id="rooms-gameplay-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
@@ -441,15 +457,15 @@
 </pre></div>
 </div>
 </section>
-<section id="rooms-init-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Rooms\__init__.py</span></code><a class="headerlink" href="#rooms-init-py" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Rooms.WelcomeScreen</span> <span class="kn">import</span> <span class="n">WelcomeScreen</span>
 <span class="linenos">2</span><span class="kn">from</span> <span class="nn">Rooms.GamePlay</span> <span class="kn">import</span> <span class="n">GamePlay</span>
 </pre></div>
 </div>
 </section>
-<section id="objects-title-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects\Title.py</span></code><a class="headerlink" href="#objects-title-py" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
 <span class="linenos"> 3</span>
@@ -544,20 +560,33 @@
             <ul>
 <li><a class="reference internal" href="#">GamePlay Room</a><ul>
 <li><a class="reference internal" href="#event-driven-programming">Event-driven Programming</a></li>
-<li><a class="reference internal" href="#create-gameplay-room">Create GamePlay Room</a></li>
-<li><a class="reference internal" href="#make-gameplay-the-next-room-after-welcomescreen">Make GamePlay the next room after WelcomeScreen</a></li>
+<li><a class="reference internal" href="#create-gameplay-room">Create GamePlay Room</a><ul>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-init-py"><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#make-gameplay-the-next-room-after-welcomescreen">Make GamePlay the next room after WelcomeScreen</a><ul>
+<li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#changing-rooms-using-space">Changing Rooms using space</a><ul>
-<li><a class="reference internal" href="#handle-key-events-variable">handle_key_events variable</a></li>
-<li><a class="reference internal" href="#key-pressed-method">key_pressed method</a></li>
+<li><a class="reference internal" href="#handle-key-events-variable">handle_key_events variable</a><ul>
+<li><a class="reference internal" href="#objects-title-py"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#key-pressed-method">key_pressed method</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#testing">Testing</a></li>
 <li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
 <li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
-<li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame\Globals.py</span></code></a></li>
-<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms\GamePlay.py</span></code></a></li>
-<li><a class="reference internal" href="#rooms-init-py"><code class="docutils literal notranslate"><span class="pre">Rooms\__init__.py</span></code></a></li>
-<li><a class="reference internal" href="#objects-title-py"><code class="docutils literal notranslate"><span class="pre">Objects\Title.py</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
 </ul>
 </li>
 </ul>

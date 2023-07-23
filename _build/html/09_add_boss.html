@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Keeping Ship in the Room" href="08_ship_in_bounds.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Boss Object - Space Rescue</title>
+        <title>Add Zork Object - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -138,7 +138,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -171,7 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Boss Object</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -202,14 +202,275 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="boss-object">
-<h1>Boss Object<a class="headerlink" href="#boss-object" title="Permalink to this heading">#</a></h1>
+          <section id="add-zork-object">
+<h1>Add Zork Object<a class="headerlink" href="#add-zork-object" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>learn to intiate movement when objects are created</p></li>
+<li><p>using <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">-1</span></code> to negate numbers (swap + and -)</p></li>
+</ul>
+</aside>
+<p>Our boss for this game is called Zork, who is an evil alien. Most of the creation of Zork follows the same processes as creating the ship so we will race through those steps, then we will plan and implement the differences.</p>
+<section id="create-zork-and-add-to-room">
+<h2>Create Zork and add to Room<a class="headerlink" href="#create-zork-and-add-to-room" title="Permalink to this heading">#</a></h2>
+<section id="objects-zork-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code><a class="headerlink" href="#objects-zork-py" title="Permalink to this heading">#</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> directory make a new file and call it <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code>. Then add the following code which creates the Zork class and adds its image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Zork</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for the game&#39;s antagoist</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Initialise the Boss object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">12</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set image</span>
+<span class="linenos">15</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Zork.png&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">165</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code> file.</p>
+</section>
+<section id="objects-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> directory open the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file. Then add the following highlighted code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="hll"><span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+</section>
+<section id="rooms-gameplay-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder, open the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file. Then add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="hll"><span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+</span><span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 8</span>        
+<span class="linenos"> 9</span>        <span class="c1"># set background image</span>
+<span class="linenos">10</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>        
+<span class="linenos">12</span>        <span class="c1"># add objects</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="hll"><span class="linenos">14</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Zork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file, then use the <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to run and test the code.</p>
+<p>If everything tests ok, you should now have our boss on the screen. Now it is time to think about it’s unique features.</p>
+</section>
+</section>
+<section id="planning">
+<h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
+<p>Since Zork is run by the computer we will have to animate it’s movement. Just like our spaceship, Zork will only move up and down. Unlike our spaceship, this will not be in response to a keystroke.</p>
+<p>There are two aspects of Zork’s movement we need to automate:</p>
+<ol class="arabic simple">
+<li><p>starting Zork moving when the game begins</p></li>
+<li><p>changing the direction of Zork’s direction when it reaches the top or bottom of the screen</p></li>
+</ol>
+<section id="initial-movement">
+<h3>Initial movement<a class="headerlink" href="#initial-movement" title="Permalink to this heading">#</a></h3>
+<p>Let’s use an IPO table to plan out the initial Zork movement.</p>
+<ul class="simple">
+<li><p><strong>Output</strong> → we want Zork to move either up or down</p></li>
+<li><p><strong>Input</strong> → we want this to start when Zork is created</p></li>
+<li><p><strong>Process</strong> → we can randomly set Zork’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> to either <code class="docutils literal notranslate"><span class="pre">-10</span></code> (up) or <code class="docutils literal notranslate"><span class="pre">10</span></code> (down)</p></li>
+</ul>
+<p>So our IPO table would look as such:</p>
+<p><img alt="Initial Zork movement IPO" src="_images/zork_movement.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Instantiation</p>
+<p>Remember classes are like blueprints that we use to create object instances. The term <strong>object</strong> refers to all the objects created from the same class (ie. Zork object), while the term instance refers to each individual object.</p>
+<p>When we create an <strong>instance</strong> of an <strong>object</strong> from a <strong>class</strong>, this is called <strong>instantiation</strong>.</p>
+</div>
+</section>
+<section id="changing-direction">
+<h3>Changing direction<a class="headerlink" href="#changing-direction" title="Permalink to this heading">#</a></h3>
+<p>When Zork hits the top or bottom of the screen, we don’t want it to stop, but rather to change direction (ie. <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> from <code class="docutils literal notranslate"><span class="pre">-10</span></code> to <code class="docutils literal notranslate"><span class="pre">10</span></code> or vice versa).</p>
+<p>Let’s think about this in IPO terms:</p>
+<ul class="simple">
+<li><p>Output → Zork moves in the opposite direction</p></li>
+<li><p>Input → Zork touches top or bottom of the screen</p></li>
+<li><p>Process → negate the value of Zork’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> (ie. <code class="docutils literal notranslate"><span class="pre">-10</span></code> becomes <code class="docutils literal notranslate"><span class="pre">10</span></code> or <code class="docutils literal notranslate"><span class="pre">10</span></code> becomes <code class="docutils literal notranslate"><span class="pre">-10</span></code>)</p></li>
+</ul>
+<p>So our IPO table would be something like this:</p>
+<p><img alt="Change Zork direction IPO" src="_images/zork_change_direction.png" /></p>
+<p>Now we have conceptualised how we will make these happen, let’s get to the coding.</p>
+</section>
+</section>
+<section id="initial-movement-code">
+<h2>Initial movement code<a class="headerlink" href="#initial-movement-code" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Return the the <code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code> file to add the code for the initial movement. According to our IPO plan the event that triggers the movement is the instantiation of the Zork object. We know that when instantiate an object the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method gets called, so that would be the logical place to put it.</p>
+<p>We also know that we can use <code class="docutils literal notranslate"><span class="pre">random.choice</span></code> to choose a random item from a list. So if we have a list consisting of <code class="docutils literal notranslate"><span class="pre">-10</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">random.choice</span></code> can choose one. So let’s make these changes to the the <code class="docutils literal notranslate"><span class="pre">Zork</span></code> class by adding the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Zork</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the game&#39;s antagoist</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the Boss object</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Zork.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">165</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="hll"><span class="linenos">19</span>        <span class="c1"># set inital movement</span>
+</span><span class="hll"><span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+</span></pre></div>
+</div>
+<p>Unpacking this:</p>
+<ul class="simple">
+<li><p><strong>line 2</strong> → importing random so we can use choice</p></li>
+<li><p><strong>line 20</strong> → randomly choose between <code class="docutils literal notranslate"><span class="pre">-10</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code> and set that as Zork’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code></p></li>
+</ul>
+<p>Now <strong>save</strong> <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code> and <strong>run</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test our code. Zork should either move up or down until it is off the screen.</p>
+</section>
+</section>
+<section id="reverse-zork-direction">
+<h2>Reverse Zork Direction<a class="headerlink" href="#reverse-zork-direction" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>To reverse Zork’s direction we will use a similar process that we used to stop the ship from moving off screen. This will involve using <code class="docutils literal notranslate"><span class="pre">step()</span></code> to test if Zork is off screen. The only difference will be in the <code class="docutils literal notranslate"><span class="pre">keep_in_room</span></code> method where we will just reverse Zork’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code>.</p>
+<p>Go back to <code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code> and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+</span><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Zork</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the game&#39;s antagoist</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the Boss object</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Zork.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">165</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set inital movement</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="linenos">21</span>        
+<span class="hll"><span class="linenos">22</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">24</span><span class="sd">        Keeps the Zork inside the top and bottom room limits</span>
+</span><span class="hll"><span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">26</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">27</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+</span></pre></div>
+</div>
+<p>We really only need to look at two lines here:</p>
+<ul class="simple">
+<li><p><strong>line 26</strong> → checks if Zork has touched either the top or the bottom of the screen</p></li>
+<li><p><strong>line 27</strong></p>
+<ul>
+<li><p>negate a number (change its sign) → multiply it by <code class="docutils literal notranslate"><span class="pre">-1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*=</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">+=</span></code>, it means take the value stored in <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> multiply it by <code class="docutils literal notranslate"><span class="pre">-1</span></code>, then store it back in <code class="docutils literal notranslate"><span class="pre">y_speed</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code> then <strong>run</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test that our code works.</p>
+<p>If it work, go to <strong>GitHub Desktop</strong>, add a summary, <strong>Commit to main</strong> then <strong>Push origin</strong>.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Zork</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the game&#39;s antagoist</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the Boss object</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Zork.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">165</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set inital movement</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">24</span><span class="sd">        Keeps the Zork inside the top and bottom room limits</span>
+<span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">26</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">27</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">28</span>            
+<span class="linenos">29</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">30</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">31</span><span class="sd">        Determine what happens to the Dragon on each tick of the game clock</span>
+<span class="linenos">32</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">33</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 8</span>        
+<span class="linenos"> 9</span>        <span class="c1"># set background image</span>
+<span class="linenos">10</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>        
+<span class="linenos">12</span>        <span class="c1"># add objects</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">14</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Zork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
         </article>
@@ -262,8 +523,52 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Add Zork Object</a><ul>
+<li><a class="reference internal" href="#create-zork-and-add-to-room">Create Zork and add to Room</a><ul>
+<li><a class="reference internal" href="#objects-zork-py"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#planning">Planning</a><ul>
+<li><a class="reference internal" href="#initial-movement">Initial movement</a></li>
+<li><a class="reference internal" href="#changing-direction">Changing direction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#initial-movement-code">Initial movement code</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reverse-zork-direction">Reverse Zork Direction</a><ul>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed file states</a><ul>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

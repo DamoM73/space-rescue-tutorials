@@ -121,6 +121,8 @@ Adding the Spaceship RoomObject will initially follow the same steps as the Titl
 
 ### Creating Ship RoomObject
 
+#### `Objects/Ship.py`
+
 Go to the `Objects` folder and create a new file called `Ship.py`.
 
 Open `Ship.py` and add the following code:
@@ -147,7 +149,9 @@ class Ship(RoomObject):
 
 Save `Ship.py`
 
-Open `Objects\__init__.py` and add the highlight code below:
+#### `Objects/__init__.py`
+
+Open `Objects/__init__.py` and add the highlight code below:
 
 ```{code-block} python
 :linenos:
@@ -156,7 +160,9 @@ from Objects.Title import Title
 from Objects.Ship import Ship
 ```
 
-Save `Objects\__init__.py` and close it.
+Save `Objects/__init__.py` and close it.
+
+#### `Rooms/GamePlay.py`
 
 In the `Rooms` folder open the `GamePlay.py` file and add the highlighted code below:
 
@@ -185,7 +191,9 @@ Run `MainController.py`
 
 ### Making the Ship RoomObject move
 
-Open `Objects\Ship.py` and add the following highlighted code:
+#### `Objects/Ship.py`
+
+Open `Objects/Ship.py` and add the following highlighted code:
 
 ```{code-block} python
 :linenos:
@@ -246,7 +254,7 @@ Now the work from this lesson is committed and synced with the online repo.
 
 Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
 
-### `Objects\Ship.py`
+### `Objects/Ship.py`
 
 ```{code-block} python
 :linenos:
@@ -282,7 +290,7 @@ class Ship(RoomObject):
             self.y_speed = 10
 ```
 
-### `Objects\__init__.py`
+### `Objects/__init__.py`
 
 ```{code-block} python
 :linenos:
@@ -290,7 +298,7 @@ from Objects.Title import Title
 from Objects.Ship import Ship
 ```
 
-### `Rooms\GamePlay.py`
+### `Rooms/GamePlay.py`
 
 ```{code-block} python
 :linenos:

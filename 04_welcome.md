@@ -62,7 +62,9 @@ Let's start.
 
 ## Adjust window values
 
-The window values reside in `Globals.py` in the `GameFrame` folder, so open it up.
+### `GameFrame/Globals.py`
+
+The window values reside in `Globals.py` in the `GameFrame` folder, so **open** it up.
 
 To change the window size, adjust the `SCREEN_WIDTH` and `SCREEN_HEIGHT`:
 
@@ -83,11 +85,13 @@ Then change the `window_name` value:
 window_name = 'Space Rescue'
 ```
 
-Save the `Globals.py` file using `control` + `S` (Windows) `command` + S (macOS)
+**Save** the `Globals.py` file using `control` + `S` (Windows) `command` + S (macOS)
 
 ## Create WelcomeScreen Room
 
 Let's check the [GameFrame documentation](documentation.md#roomslevels) to see how we can create a level.
+
+### `Rooms/WelcomeScreen.py`
 
 So we need to create a new file in the `Rooms` folder called `WelcomeScreen.py`.
 
@@ -121,13 +125,13 @@ Lets break that down a bit:
 - **line 7**: the `__init__` method &rarr; called automatically when a `WelcomeScreen` object is made.
 - **line 8** calling the `__init__` method of the `Level` parent class &rarr; the `WelcomeScreen` class will inherent all the attributes and methods from `Level`.
 
-Now save the `WelcomeScreen.py` file.
+Now **save** the `WelcomeScreen.py` file.
 
 ### Testing WelcomeScreen
 
 So we've made a welcome screen, let's run the game and see what happens.
 
-Open `MainController.py` and then click the play button in the top righthand corner.
+**Open** `MainController.py` and then click the play button in the top righthand corner.
 
 ![play button](assets/img/run.png)
 
@@ -141,18 +145,20 @@ Traceback (most recent call last):
 TypeError: 'module' object is not callable
 ```
 
-Have a close look at this error. I guarantee this is not the last time you will see it, that's why I purposely caused it. 
+Have a close look at this error. I guarantee this is not the last time you will see it, that's why I purposely caused it.
 
 Reading the error it is really obscure what the problem. Remember when looking at the file structure I said that if you add a new Room or Object you need to link it to GameFrame using the `__init__.py` file. This is the kind of error that occurs when you forget.
 
-To remedy this error, open the `__init__.py` file in the `Rooms` folder and add the following code:
+### `Rooms/__init__.py`
+
+To remedy this error, **open** the `__init__.py` file in the `Rooms` folder and add the following code:
 
 ```{code-block} python
 :linenos:
 from Rooms.WelcomeScreen import WelcomeScreen
 ```
 
-Save the `__init__.py` file, and run your program again using the `MainController.py`.
+**Save** the `__init__.py` file, and run your program again using the `MainController.py`.
 
 You should now have a screen like this:
 
@@ -165,6 +171,8 @@ Not very exciting, but it's the correct size, and the window title reads **Space
 Let's make it less boring by adding a background image. Again, check the [GameFrame docs](documentation.md#roomslevels) to see how we can do this.
 
 You will see that there is a method **set_background_image** which takes an image file. So we will have to call this method, but when? Well, we want the background to appear as soon as the room is created, so, it needs to be called in the `__init__` method.
+
+#### `Rooms/WelcomeScreen.py`
 
 Go back to the `WelcomeScreen.py` file and then add the highlighted code to the `__init__` method.
 
@@ -205,7 +213,9 @@ Not that we have a Room we can place the Title RoomObject inside it. So let's ch
 
 Notice that the RoomObject class has many more methods. These are used to implement the game logic.
 
-Open the `Objects` folder create a new file and call it `Title.py`.
+### `Objects/Title.py`
+
+**Open** the `Objects` folder create a **new file** and call it `Title.py`.
 
 In `Title.py` import the parent class using the following code:
 
@@ -265,7 +275,9 @@ The easiest way to work out the height and width of an image is to open the imag
 ![image dets](assets/img/image_dets.png)
 ```
 
-Finally save `Title.py`. 
+Finally **save** `Title.py`. 
+
+### `Objects/__init__.py`
 
 Open the `__init__.py` in the `Objects` folder and add the following code:
 
@@ -282,7 +294,7 @@ During these tutorials, you will be moving between many different files, even fi
 To reduce the chance of working in the wrong file, get into the habbit of closing a file once you have finished with it.
 ```
 
-Save `__init__.py` and close it.
+**Save** `__init__.py` and **close** it.
 
 Now run `MainController.py` to test your code. Nothing should change, because we haven't added the RoomObject into the Room yet. This was just to check that there are no errors in your code so far.
 
@@ -290,7 +302,9 @@ Now run `MainController.py` to test your code. Nothing should change, because we
 
 Now that we have made the Title RoomObject and the WelcomeScreen Room, we can put them together.
 
-Open `WelcomeScreen.py` and add the code highlighted below:
+### `Rooms/WelcomeScreen.py`
+
+**Open** `WelcomeScreen.py` and add the code highlighted below:
 
 ```{code-block} python
 :linenos:
@@ -324,7 +338,7 @@ Breaking that down:
 Pygame screen coordinates start with (0,0) in the top lefthand corner and increase as you move right and down. For example, on our screen the top left is (0,0) whilst the bottom right is (1279,799)
 ```
 
-Save `WelcomeScreen.py` and close it.
+**Save** `WelcomeScreen.py` and **close** it.
 
 ## Testing
 
@@ -352,7 +366,7 @@ Now the work from this lesson is committed and synced with the online repo.
 
 Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
 
-### `GameFrame\Globals.py`
+### `GameFrame/Globals.py`
 
 ```{code-block} python
 :linenos:
@@ -398,7 +412,7 @@ class Globals:
     destroyed_count = 0
 ```
 
-### `Rooms\WelcomeScreen.py`
+### `Rooms/WelcomeScreen.py`
 
 ```{code-block} python
 :linenos:
@@ -419,14 +433,14 @@ class WelcomeScreen(Level):
         self.add_room_object(Title(self, 240, 200))
 ```
 
-### `Rooms\__init__.py`
+### `Rooms/__init__.py`
 
 ```{code-block} python
 :linenos:
 from Rooms.WelcomeScreen import WelcomeScreen
 ```
 
-### `Objects\Title.py`
+### `Objects/Title.py`
 
 ```{code-block} python
 :linenos:
@@ -444,7 +458,7 @@ class Title(RoomObject):
         self.set_image(image,800,350)
 ```
 
-### `Objects\__init__.py`
+### `Objects/__init__.py`
 
 ```{code-block} python
 :linenos:

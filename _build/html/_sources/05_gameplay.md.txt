@@ -44,7 +44,9 @@ To create the GamePlay Room we follow the same steps as we did for the WelcomeSc
 4. Initialise the GamePlay class calling the parent class `__init__` and then add a backdrop
 5. Add the new file to the `__init__.py` in the `Rooms` folder
 
-Create a new file in the `Rooms` folder called `GamePlay.py`, then add the following code to it.
+### `Rooms/GamePlay.py`
+
+Create a **new file** in the `Rooms` folder called `GamePlay.py`, then add the following code to it.
 
 ```{code-block} python
 :linenos:
@@ -58,9 +60,11 @@ class GamePlay(Level):
         self.set_background_image("Background.png")
 ```
 
-Save the `GamePlay.py` file.
+**Save** the `GamePlay.py` file.
 
-Then open the `__init__.py` file in the `Rooms` folder and add the highlighted code below.
+### `Rooms/__init__.py`
+
+Then **open** the `__init__.py` file in the `Rooms` folder and add the highlighted code below.
 
 ```{code-block} python
 :linenos:
@@ -69,9 +73,11 @@ from Rooms.WelcomeScreen import WelcomeScreen
 from Rooms.GamePlay import GamePlay
 ```
 
-Save and **close** the `__init__.py` file.
+**Save** and **close** the `__init__.py` file.
 
 ## Make GamePlay the next room after WelcomeScreen
+
+### `GameFrame/Globals.py`
 
 To make this change we need to go back to the `Globals.py` file in the `GameFrame` folder.
 
@@ -86,7 +92,7 @@ Currently that list is the default `["WelcomeScreen", "Maze", "ScrollingShooter"
 levels = ["WelcomeScreen", "GamePlay"]
 ```
 
-Save and close `Globals.py`.
+**Save** and **close** `Globals.py`.
 
 ## Changing Rooms using space
 
@@ -100,7 +106,9 @@ Reading the RoomObject docs section we see that there are two references to the 
 
 The **handle_key_events** variable determines whether an object is notified of keyboard presses. The GameFrame docs tell us to listen for key events, we need to set this variable to `True`. We want to the Title RoomObject to listen for keypresses, so let's set that to `True`.
 
-Open `Title.py` in the `Objects` folder and add the highlighted code below:
+#### `Objects/Title.py`
+
+**Open** `Title.py` in the `Objects` folder and add the highlighted code below:
 
 ```{code-block} python
 :linenos:
@@ -147,6 +155,8 @@ This means the RoomObject knows what room it is in. Checking the [GameFrame docs
 
 With all this now worked out, we can write our code.
 
+#### `Objects/Title.py`
+
 Still working in our `Title.py` file, add the highlighted code below:
 
 ```{code-block} python
@@ -187,13 +197,13 @@ Let's break those lines down:
 - **line 23**: checks if the key pressed was **space**
 - **line 24**: goes to the RoomObject's parent Room (WelcomeScreen) and changes it's `running` variable to `False`
 
-Save `Title.py` and close it.
+**Save** `Title.py` and **close** it.
 
 ## Testing
 
 Now to test that everything is working correctly.
 
-Open `MainController.py` and run it. Your welcome screen should show. 
+**Open** `MainController.py` and run it. Your welcome screen should show. 
 
 Next press **space** and the Title should disappear because you are now in the empty GamePlay room.
 
@@ -213,7 +223,7 @@ Now the work from this lesson is committed and synced with the online repo.
 
 Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
 
-### `GameFrame\Globals.py`
+### `GameFrame/Globals.py`
 
 ```{code-block} python
 :linenos:
@@ -259,7 +269,7 @@ class Globals:
     destroyed_count = 0
 ```
 
-### `Rooms\GamePlay.py`
+### `Rooms/GamePlay.py`
 
 ```{code-block} python
 :linenos:
@@ -273,7 +283,7 @@ class GamePlay(Level):
         self.set_background_image("Background.png")
 ```
 
-### `Rooms\__init__.py`
+### `Rooms/__init__.py`
 
 ```{code-block} python
 :linenos:
@@ -281,7 +291,7 @@ from Rooms.WelcomeScreen import WelcomeScreen
 from Rooms.GamePlay import GamePlay
 ```
 
-### `Objects\Title.py`
+### `Objects/Title.py`
 
 ```{code-block} python
 :linenos:
