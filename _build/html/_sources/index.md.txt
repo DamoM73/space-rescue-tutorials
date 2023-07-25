@@ -16,7 +16,7 @@ This website provides tutorials on building a Python PyGame game using the [Game
 08_ship_in_bounds
 09_add_boss
 10_add_asteroids
+11_animate_asteroids
 documentation
 using_thonny
 ```
-

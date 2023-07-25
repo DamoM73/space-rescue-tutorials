@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Add Asteroid Object" href="10_add_asteroids.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>&lt;no title&gt; - Space Rescue</title>
+        <title>Animate Asteroids - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -138,7 +138,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -162,7 +162,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
@@ -172,6 +172,8 @@
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Animate Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -202,20 +204,112 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
+          <section id="animate-asteroids">
+<h1>Animate Asteroids<a class="headerlink" href="#animate-asteroids" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>learn about Object direction</p></li>
+<li><p>making Objects bounce off the edges of a screen</p></li>
+<li><p>testing if an Object is outside the screen</p></li>
+<li><p>removing an object</p></li>
+</ul>
+</aside>
+<p>In this lesson we are going to cover all the animations for asteroid. In particular:</p>
+<ul class="simple">
+<li><p>initial movement left but at a random angle</p></li>
+<li><p>bouncing off the top and bottom of the screen</p></li>
+<li><p>de-spawning the asteroid when it moves past the left of the screen</p></li>
+</ul>
+<p>Lets get going.</p>
+<section id="initial-movement">
+<h2>Initial movement<a class="headerlink" href="#initial-movement" title="Permalink to this heading">#</a></h2>
+<section id="planning">
+<h3>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h3>
+<p>So far, all of our Object movements have been using the cartesian coordinates of the screen, specifically, up and down the y-axis, but we want our asteroids to move diagonally, on both the x-axis and the y-axis. We could use trigonometry to work out the <code class="docutils literal notranslate"><span class="pre">x_speed</span></code> and <code class="docutils literal notranslate"><span class="pre">y_speed</span></code> required to make this happen, but, fortunately, Steven Tucker has already done the hard work for us.</p>
+<p>If you check the <a class="reference internal" href="documentation.html#roomobject-methods"><span class="std std-ref">RoomObject Methods</span></a> in the docs you will see the <code class="docutils literal notranslate"><span class="pre">set_direction</span></code> method that allows us to make the object move in a designated direction at a designated speed. The docs explain that 0° is moving right. So, we now know our mechanism to make the asteroids move diagonally. But what value should we make them move?</p>
+<p>We want some randomness to the direction, so we need to choose a value from a range. Let’s consider our options.</p>
+<p><img alt="Asteroid direction" src="_images/asteroid_direction.png" /></p>
+<p>We can see that:</p>
+<ul class="simple">
+<li><p>180° will just move strait across the screen</p></li>
+<li><p>135° which is 45° less than 180°, gives a nice bounce across the screen</p></li>
+<li><p>260° which is 90° more than 180°, will just bounce up and down and barely transverse the screen.</p></li>
+</ul>
+<p>From the we can see that the best range of angles would be 180° plus or minus 45°, or for our purposes the values <code class="docutils literal notranslate"><span class="pre">135</span></code> to <code class="docutils literal notranslate"><span class="pre">225</span></code>.</p>
+<p>Putting all of this into an IPO table</p>
+<p><img alt="asteroid direction IPO" src="_images/asteroid_direction_IPO.png" /></p>
+</section>
+<section id="objects-asteroid-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#objects-asteroid-py" title="Permalink to this heading">#</a></h3>
+<p>Let’s put that plan into code.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="hll"><span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+</span><span class="hll"><span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Let’s unpack that code:</p>
+<ul class="simple">
+<li><p><strong>line 2</strong>: we need to import the <code class="docutils literal notranslate"><span class="pre">random</span></code> module to use <code class="docutils literal notranslate"><span class="pre">randint</span></code></p></li>
+<li><p><strong>line 21</strong>: using <code class="docutils literal notranslate"><span class="pre">randint</span></code> to provide a number between 135 and 225</p></li>
+<li><p><strong>line 22</strong>: set the asteroid in motion at the random angle and speed of 10</p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Asteroid.py</span></code> and then <strong>run</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code.</p>
+</section>
+</section>
+</section>
+
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="documentation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GameFrame - API</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="10_add_asteroids.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Add Asteroid Object</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -241,8 +335,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Animate Asteroids</a><ul>
+<li><a class="reference internal" href="#initial-movement">Initial movement</a><ul>
+<li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#objects-asteroid-py"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -1,7 +1,9 @@
 # Add Asteroid Object
 
 ```{topic} In this lesson you will:
-- learn to instatiate objects during game play
+- learn to how to make objects instatiate other objects
+- use GameFrame timers
+- calling functions from within other functions
 ```
 
 In the game the Zork will hurl asteroids back at the player's ship, which the player will the need to dodge. To create an asteroid RoomObject we will need to go through many of the steps we also used for the Ship and Zork.
