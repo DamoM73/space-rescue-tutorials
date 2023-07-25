@@ -355,7 +355,112 @@
 <span class="linenos">50</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_timer</span><span class="p">(</span><span class="n">asteroid_spawn_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spawn_asteroid</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code> and then <strong>run</strong> the program using <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></p>
+<p>Zork should move up and down, spawning asteroids, much like below:</p>
+<p><img alt="Zork spawning asteroids" src="_images/asteroid_spawning.png" /></p>
+<p>Obviously the next thing we need to do is make the asteroids move. We’ll do that in the next lesson.</p>
 </section>
+</section>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <code class="docutils literal notranslate"><span class="pre">Created</span> <span class="pre">GamePlay</span> <span class="pre">room</span></code>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">Zork</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span><span class="sd">    A class for the game&#39;s antagoist</span>
+<span class="linenos"> 8</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Boss object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Zork.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">165</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set inital movement</span>
+<span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="linenos">22</span>        
+<span class="linenos">23</span>        <span class="c1"># start asteroid timer</span>
+<span class="linenos">24</span>        <span class="n">asteroid_spawn_time</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span>
+<span class="linenos">25</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_timer</span><span class="p">(</span><span class="n">asteroid_spawn_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spawn_asteroid</span><span class="p">)</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">28</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">29</span><span class="sd">        Keeps the Zork inside the top and bottom room limits</span>
+<span class="linenos">30</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">31</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">32</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">33</span>            
+<span class="linenos">34</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">35</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">36</span><span class="sd">        Determine what happens to the Dragon on each tick of the game clock</span>
+<span class="linenos">37</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">38</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="linenos">39</span>        
+<span class="linenos">40</span>    <span class="k">def</span> <span class="nf">spawn_asteroid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Randomly spawns a new Asteroid</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="c1"># spawn Asteroid and add to room</span>
+<span class="linenos">45</span>        <span class="n">new_asteroid</span> <span class="o">=</span> <span class="n">Asteroid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">46</span>        <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">new_asteroid</span><span class="p">)</span>
+<span class="linenos">47</span>        
+<span class="linenos">48</span>        <span class="c1"># reset time for next Asteroid spawn</span>
+<span class="linenos">49</span>        <span class="n">asteroid_spawn_time</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="linenos">50</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_timer</span><span class="p">(</span><span class="n">asteroid_spawn_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spawn_asteroid</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -436,6 +541,13 @@
 <li><a class="reference internal" href="#objects-zork-py"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
 </ul>
 </li>
 </ul>

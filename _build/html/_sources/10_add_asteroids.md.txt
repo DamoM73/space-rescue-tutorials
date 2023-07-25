@@ -168,3 +168,116 @@ We currently have the timer calling the `self.spawn_asteroid` method, which does
         asteroid_spawn_time = random.randint(15, 150)
         self.set_timer(asteroid_spawn_time, self.spawn_asteroid)
 ```
+
+**Save** `Zork.py` and then **run** the program using `MainController.py`
+
+Zork should move up and down, spawning asteroids, much like below:
+
+![Zork spawning asteroids](assets/img/asteroid_spawning.png)
+
+Obviously the next thing we need to do is make the asteroids move. We'll do that in the next lesson.
+
+## Commit and Push
+
+We have finished and tested another section of code so we should make a Git commit.
+
+To do this:
+
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary `Created GamePlay room`.
+2. Click on **Commit to main**
+3. Click on **Push origin**
+
+Now the work from this lesson is committed and synced with the online repo.
+
+## Completed File States
+
+Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
+
+### `Objects/Asteroid.py`
+
+```{code-block} python
+:linenos:
+from GameFrame import RoomObject
+
+class Asteroid(RoomObject):
+    """
+    A class for Zorks danerous obstacles
+    """
+    
+    def __init__(self, room, x, y):
+        """
+        Initialise the Asteroid object
+        """
+        # include attributes and methods from RoomObject
+        RoomObject.__init__(self,room, x, y)
+        
+        # set image
+        image = self.load_image("asteroid.png")
+        self.set_image(image,50,49)
+```
+
+### `Objects/__init__.py`
+
+```{code-block} python
+:linenos:
+from Objects.Title import Title
+from Objects.Ship import Ship
+from Objects.Zork import Zork
+from Objects.Asteroid import Asteroid
+```
+
+### `Objects/Zork.py`
+
+```{code-block} python
+:linenos:
+from GameFrame import RoomObject, Globals
+from Objects.Asteroid import Asteroid
+import random
+
+class Zork(RoomObject):
+    """
+    A class for the game's antagoist
+    """
+    def __init__(self, room, x, y):
+        """
+        Initialise the Boss object
+        """
+        # include attributes and methods from RoomObject
+        RoomObject.__init__(self, room, x, y)
+        
+        # set image
+        image = self.load_image("Zork.png")
+        self.set_image(image,135,165)
+        
+        # set inital movement
+        self.y_speed = random.choice([-10,10])
+        
+        # start asteroid timer
+        asteroid_spawn_time = random.randint(15,150)
+        self.set_timer(asteroid_spawn_time, self.spawn_asteroid)
+        
+    def keep_in_room(self):
+        """
+        Keeps the Zork inside the top and bottom room limits
+        """
+        if self.y < 0 or self.y > Globals.SCREEN_HEIGHT - self.height:
+            self.y_speed *= -1
+            
+    def step(self):
+        """
+        Determine what happens to the Dragon on each tick of the game clock
+        """
+        self.keep_in_room()
+        
+    def spawn_asteroid(self):
+        """
+        Randomly spawns a new Asteroid
+        """
+        # spawn Asteroid and add to room
+        new_asteroid = Asteroid(self.room, self.x, self.y + self.height/2)
+        self.room.add_room_object(new_asteroid)
+        
+        # reset time for next Asteroid spawn
+        asteroid_spawn_time = random.randint(15, 150)
+        self.set_timer(asteroid_spawn_time, self.spawn_asteroid)
+```
