@@ -172,6 +172,7 @@
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Keeping Ship in the Room</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -291,6 +292,12 @@
 <li><p><strong>line 38</strong>: checks if bottom of the ship (self.y + self.height) is less then the bottom of the screen (Globals.SCREEEN_HEIGHT)</p></li>
 <li><p><strong>line 39</strong>: sets the ship’s origin position to far enough above the bottom that the ship will fit (Globals.SCREEN_HEIGHT - self.height)</p></li>
 </ul>
+<p>Notice that we are using <code class="docutils literal notranslate"><span class="pre">Global.SCREEN_HEIGHT</span></code> but the squiggly line underneath it tells us the VS Code can’t find it. That’s because we haven’t imported the Globals module.</p>
+<p>So at the top of <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> and change the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+</span><span class="linenos">2</span><span class="kn">import</span> <span class="nn">pygame</span>
+</pre></div>
+</div>
 </section>
 <section id="step">
 <h4>step<a class="headerlink" href="#step" title="Permalink to this heading">#</a></h4>

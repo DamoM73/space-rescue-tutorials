@@ -102,6 +102,17 @@ Let's break down lines 36-39 (it might be useful to check the screen diagram in 
 - **line 38**: checks if bottom of the ship (self.y + self.height) is less then the bottom of the screen (Globals.SCREEEN_HEIGHT)
 - **line 39**: sets the ship's origin position to far enough above the bottom that the ship will fit (Globals.SCREEN_HEIGHT - self.height)
 
+Notice that we are using `Global.SCREEN_HEIGHT` but the squiggly line underneath it tells us the VS Code can't find it. That's because we haven't imported the Globals module.
+
+So at the top of `Ship.py` and change the highlighted code below:
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 1
+from GameFrame import RoomObject, Globals
+import pygame
+```
+
 #### step
 
 Now we have to call the `keep_in_room()` method from the `step` method.
