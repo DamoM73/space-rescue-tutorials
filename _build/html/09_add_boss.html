@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Keeping Ship in the Room" href="08_ship_in_bounds.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Add Asteroids" href="10_add_asteroids.html" /><link rel="prev" title="Keeping Ship in the Room" href="08_ship_in_bounds.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Add Zork Object - Space Rescue</title>
@@ -172,6 +172,7 @@
 <li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Zork Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -218,8 +219,8 @@
 </ul>
 </aside>
 <p>Our boss for this game is called Zork, who is an evil alien. Most of the creation of Zork follows the same processes as creating the ship so we will race through those steps, then we will plan and implement the differences.</p>
-<section id="create-zork-and-add-to-room">
-<h2>Create Zork and add to Room<a class="headerlink" href="#create-zork-and-add-to-room" title="Permalink to this heading">#</a></h2>
+<section id="create-zork-class-and-add-to-room">
+<h2>Create Zork class and add to Room<a class="headerlink" href="#create-zork-class-and-add-to-room" title="Permalink to this heading">#</a></h2>
 <section id="objects-zork-py">
 <h3><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code><a class="headerlink" href="#objects-zork-py" title="Permalink to this heading">#</a></h3>
 <p>In the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> directory make a new file and call it <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code>. Then add the following code which creates the Zork class and adds its image:</p>
@@ -478,12 +479,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="documentation.html">
+          <a class="next-page" href="10_add_asteroids.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">GameFrame - API</div>
+                <div class="title">Add Asteroids</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -536,7 +537,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Add Zork Object</a><ul>
-<li><a class="reference internal" href="#create-zork-and-add-to-room">Create Zork and add to Room</a><ul>
+<li><a class="reference internal" href="#create-zork-class-and-add-to-room">Create Zork class and add to Room</a><ul>
 <li><a class="reference internal" href="#objects-zork-py"><code class="docutils literal notranslate"><span class="pre">Objects/Zork.py</span></code></a></li>
 <li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
 <li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>

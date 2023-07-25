@@ -7,7 +7,7 @@
 
 Our boss for this game is called Zork, who is an evil alien. Most of the creation of Zork follows the same processes as creating the ship so we will race through those steps, then we will plan and implement the differences.
 
-## Create Zork and add to Room
+## Create Zork class and add to Room
 
 ### `Objects/Zork.py`
 
