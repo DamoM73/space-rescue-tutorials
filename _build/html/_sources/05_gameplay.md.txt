@@ -75,7 +75,7 @@ from Rooms.GamePlay import GamePlay
 
 **Save** and **close** the `__init__.py` file.
 
-## Make GamePlay the next room after WelcomeScreen
+## Make GamePlay next room
 
 ### `GameFrame/Globals.py`
 
