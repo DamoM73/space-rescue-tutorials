@@ -219,6 +219,7 @@
 <li><p>making Objects bounce off the edges of a screen</p></li>
 <li><p>testing if an Object is outside the screen</p></li>
 <li><p>removing an object</p></li>
+<li><p>using <code class="docutils literal notranslate"><span class="pre">print</span></code> and the terminal for testing</p></li>
 </ul>
 </aside>
 <p>In this lesson we are going to cover all the animations for asteroid. In particular:</p>
@@ -238,9 +239,9 @@
 <p><img alt="Asteroid direction" src="_images/asteroid_direction.png" /></p>
 <p>We can see that:</p>
 <ul class="simple">
-<li><p>180° will just move strait across the screen</p></li>
-<li><p>135° which is 45° less than 180°, gives a nice bounce across the screen</p></li>
-<li><p>260° which is 90° more than 180°, will just bounce up and down and barely transverse the screen.</p></li>
+<li><p>180° (black line) will just move strait across the screen</p></li>
+<li><p>135° (red line) is 45° less than 180° and gives a nice bounce across the screen</p></li>
+<li><p>260° (blue line) is 80° more than 180° and will just bounce up and down and barely transverse the screen.</p></li>
 </ul>
 <p>From the we can see that the best range of angles would be 180° plus or minus 45°, or for our purposes the values <code class="docutils literal notranslate"><span class="pre">135</span></code> to <code class="docutils literal notranslate"><span class="pre">225</span></code>.</p>
 <p>Putting all of this into an IPO table</p>
@@ -281,6 +282,253 @@
 <li><p><strong>line 22</strong>: set the asteroid in motion at the random angle and speed of 10</p></li>
 </ul>
 <p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Asteroid.py</span></code> and then <strong>run</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code.</p>
+</section>
+</section>
+<section id="bouncing-off-top-and-bottom-of-screen">
+<h2>Bouncing off top and bottom of screen<a class="headerlink" href="#bouncing-off-top-and-bottom-of-screen" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Planning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>We want the asteroids to bounce off the top and bottom of the screen so they stay inside in window. To do this we need to understand how the <code class="docutils literal notranslate"><span class="pre">set_direction</span></code> method works.</p>
+<p><code class="docutils literal notranslate"><span class="pre">set_direction</span></code> makes an object move in a specified direction at a specified speed on the screen. Since the screen is a Cartesian plane (has x and y coordinates) this movement is made up of both x and y components.</p>
+<p><img alt="x and y components" src="_images/direction_components.png" /></p>
+<p>When we use <code class="docutils literal notranslate"><span class="pre">set_direction</span></code> GameFrame uses Trigonometry to calculate the <code class="docutils literal notranslate"><span class="pre">x_speed</span></code> and the <code class="docutils literal notranslate"><span class="pre">y_speed</span></code>. With this understanding we already know how to bounce an object off the top and bottom, because we have already done it.</p>
+<p>We made the Zork object bounce off the top and bottom of the screen by negating it’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code>. The only difference between Zork and an asteroid is that Zork’s <code class="docutils literal notranslate"><span class="pre">x_speed</span></code> is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Let’s put our understanding into an IPO.</p>
+<p><img alt="asteroid change direction IPO" src="_images/asteroid_change_direction.png" /></p>
+<p>Now to the code.</p>
+</section>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Just like in the <code class="docutils literal notranslate"><span class="pre">Zork</span></code> Object, we will need to:</p>
+<ul class="simple">
+<li><p>every step , make a call to a keep_in_room method</p></li>
+<li><p>the keep_in_room method negates the asteroid’s <code class="docutils literal notranslate"><span class="pre">y_speed</span></code>, if the asteroid is touching the top or bottom of the screen.</p></li>
+</ul>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+</span><span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos">23</span>        
+<span class="hll"><span class="linenos">24</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">25</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">26</span><span class="sd">        Determines what happens to the asteroid on each tick of the game clock</span>
+</span><span class="hll"><span class="linenos">27</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">28</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+</span><span class="linenos">29</span>        
+<span class="hll"><span class="linenos">30</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">31</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">32</span><span class="sd">        Keeps the asteroid inside the top and bottom room limits</span>
+</span><span class="hll"><span class="linenos">33</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">34</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">35</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll"><span class="linenos">36</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class="hll"><span class="linenos">37</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">38</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+</span><span class="hll"><span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+</span></pre></div>
+</div>
+<p>This is almost a copy and paste from the <code class="docutils literal notranslate"><span class="pre">Zork</span></code> class, so we won’t bother breaking it down.</p>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Asteroid.py</span></code> and then <strong>run</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code.</p>
+</section>
+</section>
+<section id="de-spawning-asteroids">
+<h2>De-spawning asteroids<a class="headerlink" href="#de-spawning-asteroids" title="Permalink to this heading">#</a></h2>
+<p>When a asteroid exits the screen to the left, we want to destroy it. Why? Well, each object takes up a small bit of memory. If we fail to destroy them, all these little bits of memory will add up and degrade the computer’s performance and eventually crash the system. This is called a <strong>memory leak</strong>. Although it would take a very long game for our asteroids to overwhelm your computer, it is good programming practice to destroy objects no longer in use.</p>
+<div class="note admonition">
+<p class="admonition-title">Memory leaks</p>
+<p>A memory leak is a situation in computer programming when a program or process fails to release memory that it no longer needs or is not actively using. As a result, the program keeps consuming more and more memory over time, which can eventually lead to performance issues and even crashes.</p>
+</div>
+<section id="id3">
+<h3>Planning<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>We know how to identify when an object touches the top or bottom of the screen, but how do we know if an object moves past the left-hand boundary of the screen?</p>
+<p>Let’s work this out:</p>
+<ul class="simple">
+<li><p>The left-right axis of the screen is the x-axis, so we are looking at the x value</p></li>
+<li><p>The screen’s left boundary’s x value is <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p>An object has left the room when it’s right-hand side is less than the screen’s left boundary</p></li>
+<li><p>The value of the right hand side of an object is <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">width</span></code> (see below)</p></li>
+</ul>
+<p><img alt="object boundaries" src="_images/object_boundaries.png" /></p>
+<p>Therefore the event that triggers our code is when <code class="docutils literal notranslate"><span class="pre">object.x</span> <span class="pre">+</span> <span class="pre">object.width</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>.</p>
+<p>So, we have our trigger, now we need to work out how to de-spawn out object. We’re talking about object actions, so lets check the <a class="reference internal" href="documentation.html#roomobject-methods"><span class="std std-ref">RoomObject methods</span></a> in the docs. Notice the <code class="docutils literal notranslate"><span class="pre">delete_object</span></code> method, that seems about right.</p>
+<p>Summarising this gives the following IPO table:</p>
+<p><img alt="asteroid despawn IPO" src="_images/asteroid_despawn_IPO.png" /></p>
+<p>Lets put this in code</p>
+</section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Still working in <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code>, add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos">23</span>        
+<span class="linenos">24</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">25</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">26</span><span class="sd">        Determines what happens to the asteroid on each tick of the game clock</span>
+<span class="linenos">27</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">28</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="hll"><span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+</span><span class="linenos">30</span>        
+<span class="linenos">31</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">32</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">33</span><span class="sd">        Keeps the asteroid inside the top and bottom room limits</span>
+<span class="linenos">34</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">35</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">36</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">38</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">40</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">41</span>            
+<span class="hll"><span class="linenos">42</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">43</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">44</span><span class="sd">        removes asteroid that have exited the room</span>
+</span><span class="hll"><span class="linenos">45</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">46</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">47</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Lets unpack some of the code we added:</p>
+<ul class="simple">
+<li><p><strong>line 28</strong>: every tick of the game clock we need to test if the asteroid has left the screen</p></li>
+<li><p><strong>line 46</strong>: this is the trigger we had in our IPO table</p></li>
+<li><p><strong>line 47</strong>: this could be a bit confusing</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete_object</span></code> → we want to delete an object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.room</span></code> → the object is in the room of <strong>this</strong> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(self)</span></code> → the object is <strong>this</strong> object</p></li>
+</ul>
+</li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">self vs other</p>
+<p>The syntax for <code class="docutils literal notranslate"><span class="pre">delete_object</span></code> seems unnecessarily repeatative. Why couldn’t we just say delete this object? Well the syntax hints at a wider application of the <code class="docutils literal notranslate"><span class="pre">delete_object</span></code> method.</p>
+<p>It is possible to:</p>
+<ul class="simple">
+<li><p>delete other objects in this room</p></li>
+<li><p>delete objects in other rooms</p></li>
+</ul>
+</div>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code.</p>
+<p>How did it go? Was the asteroid de-spawned? How did you know?</p>
+<p>The problem is that the asteroid is already off the screen when the <code class="docutils literal notranslate"><span class="pre">outside_of_room</span></code> method is called, so we can’t tell if it has been called. In these situations, it is useful to use <code class="docutils literal notranslate"><span class="pre">print</span></code> and the terminal to see what is going on inside your program.</p>
+<p>Go back to <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">42</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">43</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">44</span><span class="sd">        removes asteroid that have exited the room</span>
+<span class="linenos">45</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">46</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="hll"><span class="linenos">47</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;asteroid deleted&quot;</span><span class="p">)</span>
+</span><span class="linenos">48</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Again <strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code. Now, every time the <code class="docutils literal notranslate"><span class="pre">outside_of_room</span></code> method is called <code class="docutils literal notranslate"><span class="pre">asteroid</span> <span class="pre">deleted</span></code> will be printed in the terminal.</p>
+</section>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <code class="docutils literal notranslate"><span class="pre">Created</span> <span class="pre">GamePlay</span> <span class="pre">room</span></code>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos">23</span>        
+<span class="linenos">24</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">25</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">26</span><span class="sd">        Determines what happens to the asteroid on each tick of the game clock</span>
+<span class="linenos">27</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">28</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">30</span>        
+<span class="linenos">31</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">32</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">33</span><span class="sd">        Keeps the asteroid inside the top and bottom room limits</span>
+<span class="linenos">34</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">35</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">36</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">38</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">40</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">41</span>            
+<span class="linenos">42</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">43</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">44</span><span class="sd">        removes asteroid that have exited the room</span>
+<span class="linenos">45</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">46</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">47</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;asteroid deleted&quot;</span><span class="p">)</span>
+<span class="linenos">48</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -351,6 +599,21 @@
 <li><a class="reference internal" href="#initial-movement">Initial movement</a><ul>
 <li><a class="reference internal" href="#planning">Planning</a></li>
 <li><a class="reference internal" href="#objects-asteroid-py"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bouncing-off-top-and-bottom-of-screen">Bouncing off top and bottom of screen</a><ul>
+<li><a class="reference internal" href="#id1">Planning</a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#de-spawning-asteroids">De-spawning asteroids</a><ul>
+<li><a class="reference internal" href="#id3">Planning</a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
 </ul>
 </li>
 </ul>
