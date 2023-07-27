@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Setup" href="02_setup.html" /><link rel="prev" title="Space Rescue" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Animate Asteroids" href="11_animate_asteroids.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Introduction - Space Rescue</title>
+        <title>Ship and Asteroid Collision - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -163,7 +163,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
@@ -174,7 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Animate Asteroids</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Ship and Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -211,71 +211,44 @@
           </label>
         </div>
         <article role="main">
-          <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+          <section id="ship-and-asteroid-collision">
+<h1>Ship and Asteroid Collision<a class="headerlink" href="#ship-and-asteroid-collision" title="Permalink to this heading">#</a></h1>
 <aside class="topic">
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
-<li><p>develop an overall understanding of technology using in this course and how they interact with each other.</p></li>
+<li><p>learn about hitboxes and collisions</p></li>
+<li><p>learn how to detect collisions</p></li>
+<li><p>use the build-in GameFrame feature to detect and handle collisions</p></li>
 </ul>
 </aside>
-<p>In this course we will develop a 2D computer game using Python, Pygame and GameFrame. We will also explore some simple game design concepts.</p>
-<p>Before we go any further, let’s look at the technology we will be using.</p>
-<section id="python">
-<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h2>
-<p>To understand this course you will need a solid understanding of the basics of Python programming. You will need to understand:</p>
-<ul class="simple">
-<li><p>foundational syntax such as:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">elif</span> <span class="pre">else</span></code> statements</p></li>
-<li><p>creating and using functions</p></li>
-<li><p>mathematical, conditional and Boolean operations</p></li>
-<li><p>data types</p></li>
-</ul>
-</li>
-<li><p>screen coordinates</p></li>
-<li><p>importing and using libraries</p></li>
-<li><p>object orientated programming</p>
-<ul>
-<li><p>using objects</p></li>
-<li><p>creating objects using <code class="docutils literal notranslate"><span class="pre">class</span></code></p></li>
-</ul>
-</li>
-</ul>
-<p>If you are yet to develop this knowledge, then I would suggest completing the following courses before continuing here:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://damom73.github.io/turtle-introduction-to-python/">A Turtle Introduction to Python</a> for foundational syntax.</p></li>
-<li><p><a class="reference external" href="https://damom73.github.io/python-oop-with-deepest-dungeon/">Deepest Dungeon - Python OOP</a> for object orientated programming.</p></li>
-</ul>
+<section id="hitboxes">
+<h2>Hitboxes<a class="headerlink" href="#hitboxes" title="Permalink to this heading">#</a></h2>
+<p>Collisions refer to the interactions between different game objects in a game when they overlap or come into contact with each other. GameFrame uses Rectangular Collisions which involve bounding rectangles that surround objects. This rectangles are often referred to as hitboxes.</p>
+<p>We have already been using this this concept of hitboxes. For example, in our game asteroids look like this.</p>
+<p><img alt="asteroid" src="_images/asteroid.png" /></p>
+<p>But we have used the image below to represent asteroids.</p>
+<p><img alt="object boundaries" src="_images/object_boundaries.png" /></p>
+<p>We have been using hitboxes to represent all our objects. For example, when the <strong>top boundary</strong> of the Zork <strong>hitbox</strong> <strong>collides</strong> with the top of the screen, we reverse Zork’s direction.</p>
 </section>
-<section id="pygame">
-<h2>Pygame<a class="headerlink" href="#pygame" title="Permalink to this heading">#</a></h2>
-<p>Pygame is a popular open-source library for building 2D video games and multimedia applications in the Python . It provides developers with the necessary tools and functionality to create games, simulations, and interactive graphical applications.</p>
-<p>Pygame uses abstraction to simplify many complicated programming tasks which computer game programming requires. For example, detecting when different sprites collide with each other. This makes developing games using Pygame much easier then if you were using Python alone.</p>
-<p>Being at 2D game engine, Pygame is not used to AAA titles such as Call of Duty, but it can be used to create extensive computer games. There are many games available on Steam that have been created using Pygame.</p>
-<p>If you are interested you can find more information on the <a class="reference external" href="https://www.pygame.org/news">Pygame official website</a>.</p>
-</section>
-<section id="gameframe">
-<h2>GameFrame<a class="headerlink" href="#gameframe" title="Permalink to this heading">#</a></h2>
-<p>In the words of it developer (Steven Tucker) ‘GameFrame has been developed to take the excellent PyGame libraries and make them more accessible and easy to use for beginner to intermediate programmers.’ Just as Pygame makes developing games with Python easier, GameFrame makes developing games using Pygame easier.</p>
-<p>GameFrame is not a library like Pygame, but rather it is an event driven framework. It is made up of a directory structure and a range of different Python files containing classes. Programmers define Rooms and Room Objects, then write functions to handle certain events such as collisions, button clicks and so on. It has clear rules about where files should be saved as well as a range of commands that can be used to develop your program.</p>
-</section>
-<section id="the-stack">
-<h2>The Stack<a class="headerlink" href="#the-stack" title="Permalink to this heading">#</a></h2>
-<p>Below is an diagram showing the full stack of what we will be using for this course.</p>
-<p><img alt="GameFrame stack" src="_images/gf_stack.png" /></p>
-<p>Lets explore this:</p>
+<section id="collisions">
+<h2>Collisions<a class="headerlink" href="#collisions" title="Permalink to this heading">#</a></h2>
+<p>Collisions occur between two objects when their hitboxes touch or overlap.</p>
 <ul class="simple">
-<li><p>On top, the <strong>programmer</strong> interacts with <strong>GameFrame</strong>, using its file structure and the commands in its API.</p></li>
-<li><p><strong>GameFrame</strong> interacts with <strong>Pygame</strong> using the commands available in its API.</p></li>
-<li><p><strong>Pygame</strong> interacts with the <strong>core Python libraries</strong>.</p></li>
+<li><p>obj_1’s left boundary is less than obj_2’s right boundary <strong>and</strong></p></li>
+<li><p>obj_1’s right boundary is greater than obj_2’s left boundary <strong>and</strong></p></li>
+<li><p>obj_1’s top boundary is less than obj_2’s bottom boundary <strong>and</strong></p></li>
+<li><p>obj_1’s bottom boundary is greater than obj_2’s top boundary.</p></li>
 </ul>
-<div class="note admonition">
-<p class="admonition-title">Languages</p>
-<p>Your code, GameFrame, and Pygame are all written in Python, but this doesn’t have to be the case. For example, Pygame uses a library called NumPy which is written in C or C++.</p>
+<p>If we wanted to use the coordinates from this image:</p>
+<p><img alt="collision coordinates" src="_images/collision.png" /></p>
+<p>Then the code would be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">obj1</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">obj2</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">obj2</span><span class="o">.</span><span class="n">width</span> <span class="ow">and</span>
+    <span class="n">obj1</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">obj1</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="n">obj2</span><span class="o">.</span><span class="n">x</span> <span class="ow">and</span>
+    <span class="n">obj1</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">obj2</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">obj2</span><span class="o">.</span><span class="n">height</span> <span class="ow">and</span>
+    <span class="n">obj1</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">obj1</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="n">obj2</span><span class="o">.</span><span class="n">y</span><span class="p">):</span>
+</pre></div>
 </div>
-<p>If you wish you can access the Pygame API directly. This means that you can use Pygame commands that aren’t in the GameFrame API. You won’t need to use them to complete this course, although you may wish to use them to add extra features. The <a class="reference external" href="https://www.pygame.org/docs/">Pygame Documents</a> has all the details.</p>
+<p>That’s a whole heap of code to understand and remember. Fortunately, this is all just for background. Since GameFrame is based on Pygame, there are is a built in process for detecting and handling collisions.</p>
 </section>
 </section>
 
@@ -284,23 +257,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="02_setup.html">
+          <a class="next-page" href="documentation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Setup</div>
+                <div class="title">GameFrame - API</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="11_animate_asteroids.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Animate Asteroids</div>
                 
               </div>
             </a>
@@ -341,11 +314,9 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#python">Python</a></li>
-<li><a class="reference internal" href="#pygame">Pygame</a></li>
-<li><a class="reference internal" href="#gameframe">GameFrame</a></li>
-<li><a class="reference internal" href="#the-stack">The Stack</a></li>
+<li><a class="reference internal" href="#">Ship and Asteroid Collision</a><ul>
+<li><a class="reference internal" href="#hitboxes">Hitboxes</a></li>
+<li><a class="reference internal" href="#collisions">Collisions</a></li>
 </ul>
 </li>
 </ul>
