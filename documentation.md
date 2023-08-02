@@ -1,4 +1,4 @@
-# GameFrame - API
+# GameFrame Documentation
 
 By Steven Tucker
 

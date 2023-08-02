@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame - API" href="documentation.html" /><link rel="prev" title="Animate Asteroids" href="11_animate_asteroids.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Animate Asteroids" href="11_animate_asteroids.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Ship and Asteroid Collision - Space Rescue</title>
@@ -175,7 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Animate Asteroids</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Ship and Asteroid Collision</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame - API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
 
@@ -249,6 +249,167 @@
 </pre></div>
 </div>
 <p>That’s a whole heap of code to understand and remember. Fortunately, this is all just for background. Since GameFrame is based on Pygame, there are is a built in process for detecting and handling collisions.</p>
+<p>Lets check the GameFrame docs to how it handles collisions. If we look at the <a class="reference internal" href="documentation.html"><span class="std std-doc">RoomObject methods</span></a> we will see to methods that address collisions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Collisions Terminology</p>
+<p>In game design there are two objects involved.</p>
+<ul class="simple">
+<li><p><strong>self</strong> → the object that contains the event handler</p></li>
+<li><p><strong>other</strong> → the object that <strong>self</strong> has collided with</p></li>
+</ul>
+</div>
+<section id="register-collision-object">
+<h3>Register Collision Object<a class="headerlink" href="#register-collision-object" title="Permalink to this heading">#</a></h3>
+<p>Each room can be filled with many objects, which means an object can collide with many other objects. We may not be interested in all of these collisions, so need to register which collisions we want to worry. We use <code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code> to do this.</p>
+<p>This method is added on an object’s <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method and tells GameFrame to detect any collisions between the object (self) and the collision object.</p>
+</section>
+<section id="handle-collisions">
+<h3>Handle Collisions<a class="headerlink" href="#handle-collisions" title="Permalink to this heading">#</a></h3>
+<p>Every tick GameFrame will check if any of the registered collisions have occurred. If a registered collision has occurred it will call the <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> method. GameFrame will also pass the other object (<code class="docutils literal notranslate"><span class="pre">other</span></code>) and the class of the object (<code class="docutils literal notranslate"><span class="pre">other_type</span></code>). These have distinct uses.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">other</span></code> → gives you access to the other objects attributes and methods, for example, you could change the other’s x_speed using <code class="docutils literal notranslate"><span class="pre">other.x_speed</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_type</span></code> → allows for the differentiation of handling collisions with different types of objects. For example, handling collisions with the player differently to collisions with a bullet.</p></li>
+</ul>
+<p>With that theory under our belt, let’s plan how to handle collisions between asteroids and the space ship</p>
+</section>
+</section>
+<section id="planning">
+<h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
+<p>First, we need to decide which <code class="docutils literal notranslate"><span class="pre">class</span></code> we will get to handle this collision between <code class="docutils literal notranslate"><span class="pre">Ship</span></code> and <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code>. At this stage, it could be handled by either class, but to make life easier later on, we will get <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> to handle the collision.</p>
+<p>Let’s use the simplest outcome for the collision → ends the level. Since we only have one level, this will also end the game. Thinking back to <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> we end a level by using <code class="docutils literal notranslate"><span class="pre">self.room.running</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p>
+<p>Putting this into a IPO table:</p>
+<p><img alt="Asteroid Collision IPO" src="_images/asteroid_collision_IPO.png" /></p>
+<p>Lets add this to the program</p>
+</section>
+<section id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h2>
+<section id="objects-asteroid-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects\Asteroid.py</span></code><a class="headerlink" href="#objects-asteroid-py" title="Permalink to this heading">#</a></h3>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Objects\Asteroid.py</span></code> and add the highlighted code to the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos">23</span>        
+<span class="hll"><span class="linenos">24</span>        <span class="c1"># register events</span>
+</span><span class="hll"><span class="linenos">25</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Ship&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Unpacking that code:</p>
+<ul class="simple">
+<li><p><strong>line 25</strong>: tell GameFrame to detect and collisions between this object and and object of the <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class.</p></li>
+</ul>
+<p>The, at the bottom of <code class="docutils literal notranslate"><span class="pre">Asteroid.py</span></code> add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">54</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">55</span><span class="sd">        Handles the collision events for the Asteroid</span>
+<span class="linenos">56</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">57</span>        
+<span class="linenos">58</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">59</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Breaking that code down:</p>
+<ul class="simple">
+<li><p><strong>line 53</strong>: when GameFrame detects a registered collision it will call this method</p></li>
+<li><p><strong>line 58</strong>: checks if the collision is with a <code class="docutils literal notranslate"><span class="pre">Ship</span></code> object</p></li>
+<li><p><strong>line 59</strong>: ends the level, and therefore the game.</p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Asteroid.py</span></code> and run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code.</p>
+</section>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <code class="docutils literal notranslate"><span class="pre">Created</span> <span class="pre">GamePlay</span> <span class="pre">room</span></code>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos">23</span>        
+<span class="linenos">24</span>        <span class="c1"># register events</span>
+<span class="linenos">25</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Ship&quot;</span><span class="p">)</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">28</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">29</span><span class="sd">        Determines what happens to the asteroid on each tick of the game clock</span>
+<span class="linenos">30</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">31</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="linenos">32</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">33</span>        
+<span class="linenos">34</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">35</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">36</span><span class="sd">        Keeps the asteroid inside the top and bottom room limits</span>
+<span class="linenos">37</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">38</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">40</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">41</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">42</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">43</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">44</span>            
+<span class="linenos">45</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">46</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">47</span><span class="sd">        removes asteroid that have exited the room</span>
+<span class="linenos">48</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">49</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">50</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;asteroid deleted&quot;</span><span class="p">)</span>
+<span class="linenos">51</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">52</span>            
+<span class="linenos">53</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">54</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">55</span><span class="sd">        Handles the collision events for the Asteroid</span>
+<span class="linenos">56</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">57</span>        
+<span class="linenos">58</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">59</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -262,7 +423,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">GameFrame - API</div>
+                <div class="title">GameFrame Documentation</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -316,7 +477,21 @@
             <ul>
 <li><a class="reference internal" href="#">Ship and Asteroid Collision</a><ul>
 <li><a class="reference internal" href="#hitboxes">Hitboxes</a></li>
-<li><a class="reference internal" href="#collisions">Collisions</a></li>
+<li><a class="reference internal" href="#collisions">Collisions</a><ul>
+<li><a class="reference internal" href="#register-collision-object">Register Collision Object</a></li>
+<li><a class="reference internal" href="#handle-collisions">Handle Collisions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#coding">Coding</a><ul>
+<li><a class="reference internal" href="#objects-asteroid-py"><code class="docutils literal notranslate"><span class="pre">Objects\Asteroid.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

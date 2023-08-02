@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Using Thonny as the IDE" href="using_thonny.html" /><link rel="prev" title="Ship and Asteroid Collision" href="12_ship_astroid_collision.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>GameFrame - API - Space Rescue</title>
+        <title>GameFrame Documentation - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -175,7 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Animate Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame - API</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
 
@@ -211,8 +211,8 @@
           </label>
         </div>
         <article role="main">
-          <section id="gameframe-api">
-<h1>GameFrame - API<a class="headerlink" href="#gameframe-api" title="Permalink to this heading">#</a></h1>
+          <section id="gameframe-documentation">
+<h1>GameFrame Documentation<a class="headerlink" href="#gameframe-documentation" title="Permalink to this heading">#</a></h1>
 <p>By Steven Tucker</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
@@ -514,6 +514,16 @@
 <h4><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code><a class="headerlink" href="#handle-mouse-events" title="Permalink to this heading">#</a></h4>
 <p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </section>
+<section id="self-curr-rotation">
+<h4><code class="docutils literal notranslate"><span class="pre">self.curr_rotation</span></code><a class="headerlink" href="#self-curr-rotation" title="Permalink to this heading">#</a></h4>
+<p>The angle the object is currently facing, where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> is →</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">90</span></code> is ↑</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">180</span></code> is ←</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">270</span></code> is ↓</p></li>
+</ul>
+</section>
 </section>
 <section id="roomobject-methods">
 <h3>RoomObject Methods<a class="headerlink" href="#roomobject-methods" title="Permalink to this heading">#</a></h3>
@@ -742,7 +752,7 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">GameFrame - API</a><ul>
+<li><a class="reference internal" href="#">GameFrame Documentation</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#gameframe-folder-structure">GameFrame folder structure</a><ul>
 <li><a class="reference internal" href="#gameframe">GameFrame</a></li>
@@ -814,6 +824,7 @@
 <li><a class="reference internal" href="#gravity"><code class="docutils literal notranslate"><span class="pre">gravity</span></code></a></li>
 <li><a class="reference internal" href="#handle-key-events"><code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code></a></li>
 <li><a class="reference internal" href="#handle-mouse-events"><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code></a></li>
+<li><a class="reference internal" href="#self-curr-rotation"><code class="docutils literal notranslate"><span class="pre">self.curr_rotation</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#roomobject-methods">RoomObject Methods</a><ul>

@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-07-27T07:43:23.734Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="Z1lt-fkGt4v5nODtidk5" version="21.6.5" type="device" pages="22">
+<mxfile host="Electron" modified="2023-08-02T23:42:05.246Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="loWNUbNz9X0yNjraKwnN" version="21.6.5" type="device" pages="23">
   <diagram name="GameFrame Stack" id="y7A1uIMcofy-eYZWOFlA">
     <mxGraphModel dx="941" dy="304" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1475,6 +1475,38 @@
             <mxPoint x="580" y="160" as="sourcePoint" />
             <mxPoint x="760" y="130" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="asteroid_collision_IPO" id="wPjs0dp0FnYPDG6vCFXs">
+    <mxGraphModel dx="1341" dy="1104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-0" />
+        <mxCell id="K0QO0EejzTIxOngtjK7y-1" parent="K0QO0EejzTIxOngtjK7y-0" />
+        <mxCell id="K0QO0EejzTIxOngtjK7y-2" value="" style="rounded=0;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;strokeColor=none;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-1">
+          <mxGeometry x="-10" y="-50" width="700" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-3" value="Asteroid" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fillColor=#ffcccc;strokeColor=#36393d;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-1">
+          <mxGeometry y="-40" width="680" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-4" value="Input" style="swimlane;startSize=20;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fillColor=#cdeb8b;strokeColor=#36393d;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-3">
+          <mxGeometry y="20" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-5" value="Asteroid collides with Ship" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-4">
+          <mxGeometry y="20" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-6" value="Process" style="swimlane;startSize=20;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fillColor=#ffff88;strokeColor=#36393d;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-3">
+          <mxGeometry x="200" y="20" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-7" value="self.room.running = False" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-6">
+          <mxGeometry y="20" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-8" value="Output" style="swimlane;startSize=20;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;fillColor=#cce5ff;strokeColor=#36393d;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-3">
+          <mxGeometry x="480" y="20" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="K0QO0EejzTIxOngtjK7y-9" value="game ends" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="K0QO0EejzTIxOngtjK7y-8">
+          <mxGeometry y="20" width="200" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
