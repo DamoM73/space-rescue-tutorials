@@ -387,6 +387,12 @@
 </span><span class="hll"><span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
 </span><span class="hll"><span class="linenos">26</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
 </span><span class="hll"><span class="linenos">27</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class="hll"><span class="linenos">28</span>    
+</span><span class="hll"><span class="linenos">29</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">30</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">31</span><span class="sd">        Determine what happens to the Dragon on each tick of the game clock</span>
+</span><span class="hll"><span class="linenos">32</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">33</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
 </span></pre></div>
 </div>
 <p>We really only need to look at two lines here:</p>

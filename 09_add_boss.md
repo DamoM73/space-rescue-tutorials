@@ -170,7 +170,7 @@ Go back to `Objects/Zork.py` and add the highlighted code below:
 
 ```{code-block} python
 :linenos:
-:emphasize-lines: 1, 22-27
+:emphasize-lines: 1, 22-
 from GameFrame import RoomObject, Globals
 import random
 
@@ -198,6 +198,12 @@ class Zork(RoomObject):
         """
         if self.y < 0 or self.y > Globals.SCREEN_HEIGHT - self.height:
             self.y_speed *= -1
+    
+    def step(self):
+        """
+        Determine what happens to the Dragon on each tick of the game clock
+        """
+        self.keep_in_room()
 ```
 
 We really only need to look at two lines here:
