@@ -88,7 +88,7 @@ Lets add this to the program
 
 ### `Objects\Asteroid.py`
 
-Open `Objects\Asteroid.py` and add the highlighted code to the `__init__()` method.
+**Open** `Objects\Asteroid.py` and add the highlighted code to the `__init__()` method.
 
 ```{code-block} python
 :linenos:
