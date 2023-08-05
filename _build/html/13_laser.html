@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Ship and Asteroid Collision" href="12_ship_astroid_collision.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Laser Asteroid Collision" href="14_laser_asteroid_collision.html" /><link rel="prev" title="Ship and Asteroid Collision" href="12_ship_astroid_collision.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Add Laser - Space Rescue</title>
@@ -176,6 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Animate Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Laser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -215,8 +216,10 @@
           <section id="add-laser">
 <h1>Add Laser<a class="headerlink" href="#add-laser" title="Permalink to this heading">#</a></h1>
 <p>Since Zork is hurling Asteroids at our defenceless space ship, we better give it something to fight back. In this lesson will will arm the space ship with a laser.</p>
+<section id="shooting-the-laser">
+<h2>Shooting the Laser<a class="headerlink" href="#shooting-the-laser" title="Permalink to this heading">#</a></h2>
 <section id="planning">
-<h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
+<h3>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h3>
 <p>We want to ship to spawn a laser whenever we press the space key.</p>
 <p><img alt="Laser IPO" src="_images/laser_IPO.png" /></p>
 <p>This involves:</p>
@@ -229,9 +232,9 @@
 <p>We already know how to do all this, so lets get to the coding.</p>
 </section>
 <section id="coding">
-<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h2>
+<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h3>
 <section id="objects-laser-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#objects-laser-py" title="Permalink to this heading">#</a></h3>
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#objects-laser-py" title="Permalink to this heading">#</a></h4>
 <p><strong>Create</strong> a new file in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder called <code class="docutils literal notranslate"><span class="pre">Laser.py</span></code> and then add the following code to it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
 <span class="linenos"> 2</span>
@@ -276,7 +279,7 @@
 </section>
 </section>
 <section id="objects-init-py">
-<h2><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h2>
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h3>
 <p>We need to tell GameFrame that we have added a new RoomObject to the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder.</p>
 <p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code> and add the highlighted code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
@@ -289,11 +292,11 @@
 <p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></p>
 </section>
 <section id="objects-ship-py">
-<h2><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h2>
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#objects-ship-py" title="Permalink to this heading">#</a></h3>
 <p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> and add the highlighted code below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
-</span><span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
-<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">pygame</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+</span><span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">pygame</span>
 <span class="linenos"> 4</span>
 <span class="linenos"> 5</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
 <span class="linenos"> 6</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -350,7 +353,266 @@
 </span><span class="hll"><span class="linenos">57</span>        <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">new_laser</span><span class="p">)</span>
 </span></pre></div>
 </div>
+<p>Lets break that down:</p>
+<ul class="simple">
+<li><p><strong>line 2</strong>: since we want the Ship to create a Laser object, we need to import the Laser class</p></li>
+<li><p><strong>lines 32-33</strong>: handles the event of the space key being pressed</p></li>
+<li><p><strong>lines 50-57</strong>:</p>
+<ul>
+<li><p>creates a new laser object at the middle of the right side of the ship</p></li>
+<li><p>adds the laser object to the Room the Ship is in</p></li>
+</ul>
+</li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Spliting instructions over multiple lines</p>
+<p>Lines <strong>54 - 56</strong> are actually one instruction split over 3 lines to make it easier to read.</p>
+<p>The <strong><a class="reference external" href="https://peps.python.org/pep-0008/">Python Style Guide</a></strong> recommends that lines of code shouldn’t be more than 79 characters long. Although this isn’t followed religiously, it is frown upon to write lines of code that are two long to read without scrolling sideway.</p>
+<p>You can split arugements by placing a <strong>linebreak</strong> (pressing <strong>Enter</strong>) after any <code class="docutils literal notranslate"><span class="pre">,</span></code> (like in the code above). You can also place line breaks after <code class="docutils literal notranslate"><span class="pre">,</span></code> in list, dictionaries and tuples.</p>
+<p>Placing long expressions inside parenthesis <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> allows you to place a <strong>linebreak</strong> after any alrogithmic or Boolean operand.</p>
+<p>This method can also be used to logically group operations in a exteremely long expression.</p>
+</div>
 <p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> and then test the code by running <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>.</p>
+</section>
+</section>
+<section id="restricting-the-laser">
+<h2>Restricting the laser<a class="headerlink" href="#restricting-the-laser" title="Permalink to this heading">#</a></h2>
+<p>When testing, did you notice what happens if you hold down the space key? There is a constant stream of lasers flowing across the screen. You might even notice that some of the other object freeze. What is that?</p>
+<p>Since our event lister is tied to the frame rate, it is detecting the space key press 30 times a second, and, consequently, spawning 30 lasers a second. That’s a lot of lasers. We need to work out a way to restrict how many lasers can be shot a second.</p>
+<section id="id1">
+<h3>Planning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To address this issue we will limit how frequently the Ship can spawn a Laser. To do this we are going to use a <strong>flag variable</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">Flag variables</p>
+<p>Flag variables, also known as Boolean flags, are variables used in computer programming to represent the state of a condition or a specific situation. Flag variables act as signals, indicating whether a particular condition is true or false, and they help control the flow of a program.</p>
+</div>
+<p>Specifically we are going to create a flag variable called <code class="docutils literal notranslate"><span class="pre">can_shoot</span></code> initialised to <code class="docutils literal notranslate"><span class="pre">True</span></code>. A laser can only spawn when <code class="docutils literal notranslate"><span class="pre">can_shoot</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>. Every time a laser is spawned, <code class="docutils literal notranslate"><span class="pre">can_shoot</span></code> will be set to <code class="docutils literal notranslate"><span class="pre">False</span></code> and a timer is started. When that timer ends, <code class="docutils literal notranslate"><span class="pre">can_shoot</span></code> is set back to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Lets look at that in an IPO table.</p>
+<p><img alt="laser with flag IPO" src="_images/laser_with_flag_IPO.png" /></p>
+</section>
+<section id="id2">
+<h3>Coding<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p>Restricting the number of lasers is all about laser spawning, which happens in the Ship class so go back to <code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> and change the highlighted code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 8</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>    
+<span class="linenos">10</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">11</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">12</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">13</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># register events</span>
+<span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">22</span>        
+<span class="hll"><span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span class="linenos">24</span>        
+<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">26</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">27</span><span class="sd">        Respond to keypress up and down</span>
+<span class="linenos">28</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">29</span>        
+<span class="linenos">30</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+<span class="linenos">31</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="linenos">32</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+<span class="linenos">33</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">34</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+<span class="linenos">35</span>            <span class="bp">self</span><span class="o">.</span><span class="n">shoot_laser</span><span class="p">()</span>
+<span class="linenos">36</span>            
+<span class="linenos">37</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">38</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">39</span><span class="sd">        Keeps the ship inside the room</span>
+<span class="linenos">40</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">41</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">42</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">43</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span><span class="p">:</span>
+<span class="linenos">44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">45</span>            
+<span class="linenos">46</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">47</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">48</span><span class="sd">        Determine what happens to the Ship on each click of the game clock</span>
+<span class="linenos">49</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">50</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="linenos">51</span>        
+<span class="linenos">52</span>    <span class="k">def</span> <span class="nf">shoot_laser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">53</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">54</span><span class="sd">        Shoots a laser from the ship</span>
+<span class="linenos">55</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="hll"><span class="linenos">56</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">57</span>            <span class="n">new_laser</span> <span class="o">=</span> <span class="n">Laser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="p">,</span> 
+</span><span class="hll"><span class="linenos">58</span>                            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> 
+</span><span class="hll"><span class="linenos">59</span>                            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">60</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">new_laser</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">61</span>            <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span class="hll"><span class="linenos">62</span>            <span class="bp">self</span><span class="o">.</span><span class="n">set_timer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">reset_shot</span><span class="p">)</span>
+</span><span class="linenos">63</span>            
+<span class="hll"><span class="linenos">64</span>    <span class="k">def</span> <span class="nf">reset_shot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">65</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">66</span><span class="sd">        Allows ship to shoot again</span>
+</span><span class="hll"><span class="linenos">67</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">68</span>        <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span> <span class="o">=</span> <span class="kc">True</span>
+</span></pre></div>
+</div>
+<p>Investigating those changes:</p>
+<ul class="simple">
+<li><p><strong>line 23</strong>: creates our flag variable and initializes it to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>line 56</strong>: checks whether the Ship is allows to spawn a laser</p></li>
+<li><p><strong>lines 57-60</strong>: these haven’t changed, but their indentation has increased one level to place them inside the if statement.</p></li>
+<li><p><strong>line 61</strong>: after spawning a laser, the <code class="docutils literal notranslate"><span class="pre">can_shoot</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to prevent other lasers being spawned</p></li>
+<li><p><strong>line 62</strong>: sets a timer which will call the <code class="docutils literal notranslate"><span class="pre">reset_shot</span></code> function when finished.</p></li>
+<li><p><strong>lines 64-68</strong>: this function will be called when the timer has reached 0. It changed the <code class="docutils literal notranslate"><span class="pre">can_shoot</span></code> flag back to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test that everything is working as planned.</p>
+</section>
+</section>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <code class="docutils literal notranslate"><span class="pre">Created</span> <span class="pre">GamePlay</span> <span class="pre">room</span></code>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Laser</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Class for the lasers shot by the Ship</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Inistialise the laser</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Laser.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set movement</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">24</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
+<span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">27</span>        
+<span class="linenos">28</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">29</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">30</span><span class="sd">        removes laser if it has exited the room</span>
+<span class="linenos">31</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">32</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
+<span class="linenos">33</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 8</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>    
+<span class="linenos">10</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">11</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">12</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">13</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># register events</span>
+<span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">22</span>        
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">24</span>        
+<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">26</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">27</span><span class="sd">        Respond to keypress up and down</span>
+<span class="linenos">28</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">29</span>        
+<span class="linenos">30</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+<span class="linenos">31</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="linenos">32</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+<span class="linenos">33</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">34</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+<span class="linenos">35</span>            <span class="bp">self</span><span class="o">.</span><span class="n">shoot_laser</span><span class="p">()</span>
+<span class="linenos">36</span>            
+<span class="linenos">37</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">38</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">39</span><span class="sd">        Keeps the ship inside the room</span>
+<span class="linenos">40</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">41</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">42</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">43</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span><span class="p">:</span>
+<span class="linenos">44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">45</span>            
+<span class="linenos">46</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">47</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">48</span><span class="sd">        Determine what happens to the Ship on each click of the game clock</span>
+<span class="linenos">49</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">50</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="linenos">51</span>        
+<span class="linenos">52</span>    <span class="k">def</span> <span class="nf">shoot_laser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">53</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">54</span><span class="sd">        Shoots a laser from the ship</span>
+<span class="linenos">55</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">56</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span><span class="p">:</span>
+<span class="linenos">57</span>            <span class="n">new_laser</span> <span class="o">=</span> <span class="n">Laser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="p">,</span> 
+<span class="linenos">58</span>                            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> 
+<span class="linenos">59</span>                            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span>
+<span class="linenos">60</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">new_laser</span><span class="p">)</span>
+<span class="linenos">61</span>            <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">62</span>            <span class="bp">self</span><span class="o">.</span><span class="n">set_timer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">reset_shot</span><span class="p">)</span>
+<span class="linenos">63</span>            
+<span class="linenos">64</span>    <span class="k">def</span> <span class="nf">reset_shot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">65</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">66</span><span class="sd">        Allows ship to shoot again</span>
+<span class="linenos">67</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">68</span>        <span class="bp">self</span><span class="o">.</span><span class="n">can_shoot</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -359,12 +621,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="documentation.html">
+          <a class="next-page" href="14_laser_asteroid_collision.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">GameFrame Documentation</div>
+                <div class="title">Laser Asteroid Collision</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -417,6 +679,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Add Laser</a><ul>
+<li><a class="reference internal" href="#shooting-the-laser">Shooting the Laser</a><ul>
 <li><a class="reference internal" href="#planning">Planning</a></li>
 <li><a class="reference internal" href="#coding">Coding</a><ul>
 <li><a class="reference internal" href="#objects-laser-py"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
@@ -424,6 +687,23 @@
 </li>
 <li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
 <li><a class="reference internal" href="#objects-ship-py"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#restricting-the-laser">Restricting the laser</a><ul>
+<li><a class="reference internal" href="#id1">Planning</a></li>
+<li><a class="reference internal" href="#id2">Coding</a><ul>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
