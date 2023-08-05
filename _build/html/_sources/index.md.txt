@@ -20,6 +20,7 @@ This website provides tutorials on building a Python PyGame game using the [Game
 12_ship_astroid_collision
 13_laser
 14_laser_asteroid_collision
+15_astronaut
 documentation
 using_thonny
 ```
