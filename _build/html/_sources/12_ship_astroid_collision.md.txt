@@ -117,7 +117,7 @@ Unpacking that code:
 
 - **line 25**: tell GameFrame to detect and collisions between this object and and object of the `Ship` class.
 
-The, at the bottom of `Asteroid.py` add the following code:
+Move to the bottom of `Asteroid.py` add the following code:
 
 ```{code-block} python
 :linenos:

@@ -2,9 +2,12 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Add Astronaut" href="15_astronaut.html" />
 
-    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 --><title>Search - Space Rescue</title><link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>Add Scoring - Space Rescue</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -135,7 +138,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -152,14 +155,14 @@
   
   <span class="sidebar-brand-text">Space Rescue</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
@@ -175,7 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
-<li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Scoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -197,7 +200,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -205,31 +209,95 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
+          <section id="add-scoring">
+<h1>Add Scoring<a class="headerlink" href="#add-scoring" title="Permalink to this heading">#</a></h1>
+<p>Now we have all our moving part, it’s time to reward the player for their efforts, and what better way to reward them, than using scoring.</p>
+<p>GameFrame is an event-driven framework, so the easiest way in incorporate scoring it to connect it to various events.</p>
+<p>We will be providing the player with both positive and negative scoring events:</p>
+<ul class="simple">
+<li><p>Rescuing an astronaut → +50 points</p></li>
+<li><p>Shooting an asteroid → + 5 points</p></li>
+<li><p>Shooting an astronaut → -10 points</p></li>
+</ul>
+<p>Lets work out how we can incorporate this into our code.</p>
+<section id="display-score">
+<h2>Display Score<a class="headerlink" href="#display-score" title="Permalink to this heading">#</a></h2>
+<section id="planning">
+<h3>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h3>
+<p>First thing we need to do is find the scoring mechanism. Look to the GameFrame Documentation under the <strong><a class="reference internal" href="documentation.html#globals-variables"><span class="std std-ref">Globals variables</span></a></strong> you will see a variable called <code class="docutils literal notranslate"><span class="pre">SCORE</span></code>. We can use this to keep track of the score.</p>
+<p>Next we need to work how we can draw numbers onto the screen. Again, referring to the GameFrame Documents you will notice the <strong><a class="reference internal" href="documentation.html#text-object"><span class="std std-ref">Text Object</span></a></strong> which specialises in displaying text. The docs also tell us that it is a special type of RoomObject, so we can treat it like a RoomObject. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> requires extra arguments when you instantiate a TextObject. The TextObject also has a method to write new text values to the screen.</p>
+<p>So we have our two mechanism for recording and displaying the score. Before we start changing the score, lets try to display the current SCORE on the screen.</p>
+</section>
+<section id="coding">
+<h3>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h3>
+<section id="objects-hud-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code><a class="headerlink" href="#objects-hud-py" title="Permalink to this heading">#</a></h4>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder <strong>create</strong> a new file called <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code>, then enter the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">TextObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Score</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for displaying the current score</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set values         </span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;Arial Black&#39;</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+<span class="linenos">20</span>        
+<span class="linenos">21</span>    <span class="k">def</span> <span class="nf">update_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="linenos">22</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">        Updates the score and redraws the text</span>
+<span class="linenos">24</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">25</span>        <span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span> <span class="o">+=</span> <span class="n">change</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+</pre></div>
 </div>
-</noscript>
-
-<div id="search-results"></div>
+</section>
+</section>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="documentation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GameFrame Documentation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="15_astronaut.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Add Astronaut</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -255,8 +323,34 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Add Scoring</a><ul>
+<li><a class="reference internal" href="#display-score">Display Score</a><ul>
+<li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#coding">Coding</a><ul>
+<li><a class="reference internal" href="#objects-hud-py"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -267,8 +361,5 @@
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>

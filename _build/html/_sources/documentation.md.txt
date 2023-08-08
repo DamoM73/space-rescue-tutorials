@@ -68,7 +68,7 @@ To do this you need to import the file as follows:
 from GameFrame import Globals
 ```
 
-### `Globals.py` Variables
+### Globals Variables
 
 #### `running`
 
@@ -513,4 +513,4 @@ Set to `False` by default, this will set the text to bold if `True`.
 
 #### `update_text()`
 
-This function must be called for any changes to the object variable to take effect.
+This function must be called for any changes to the object's text to take effect.
