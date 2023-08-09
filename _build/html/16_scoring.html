@@ -232,7 +232,7 @@
 <h3>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h3>
 <p>First thing we need to do is find the scoring mechanism. Look to the GameFrame Documentation under the <strong><a class="reference internal" href="documentation.html#globals-variables"><span class="std std-ref">Globals variables</span></a></strong> you will see a variable called <code class="docutils literal notranslate"><span class="pre">SCORE</span></code>. We can use this to keep track of the score.</p>
 <p>Next we need to work how we can draw numbers onto the screen. Again, referring to the GameFrame Documents you will notice the <strong><a class="reference internal" href="documentation.html#text-object"><span class="std std-ref">Text Object</span></a></strong> which specialises in displaying text. The docs also tell us that it is a special type of RoomObject, so we can treat it like a RoomObject. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> requires extra arguments when you instantiate a TextObject. The TextObject also has a method to write new text values to the screen.</p>
-<p>So we have our two mechanism for recording and displaying the score. Before we start changing the score, lets try to display the current SCORE on the screen.</p>
+<p>So we have our two mechanisms for recording and displaying the score. Before we start changing the score, lets try to display the current SCORE on the screen.</p>
 </section>
 <section id="coding">
 <h3>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h3>
@@ -250,7 +250,209 @@
 <span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
 <span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
 <span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
-<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set values         </span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;Arial Black&#39;</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Before we unpack this code, it is worth noting that, for the first time, the name of the class and the file name differs. They don’t have to be the same. We are going to have two HUD (Heads Up Display) elements: score and lives. It make sense to keep these two classes in the same file. Alternatively we could have made two files <code class="docutils literal notranslate"><span class="pre">score.py</span></code> and <code class="docutils literal notranslate"><span class="pre">lives.py</span></code>. You will find that in coding there are many valid paths to the destination.</p>
+<p>Exploring this code a bit more:</p>
+<ul class="simple">
+<li><p><strong>line 1</strong>: the <code class="docutils literal notranslate"><span class="pre">Score</span></code> class is a <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> and the variable <code class="docutils literal notranslate"><span class="pre">SCORE</span></code> is part of <code class="docutils literal notranslate"><span class="pre">GameFrame.Globals</span></code> so these need to be imported.</p></li>
+<li><p><strong>lines 7-12</strong>:</p>
+<ul>
+<li><p>define the class as a subclass of the <code class="docutils literal notranslate"><span class="pre">TextObjects</span></code> class</p></li>
+<li><p>identifies four arguments that must be passed when creating a <code class="docutils literal notranslate"><span class="pre">Score</span></code> object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">room</span></code> → the room the object will be placed in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> → the x coordinate for the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> → the y coordinate for the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> → the text that is going to be displayed</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>lines 15-18</strong>: sets all the font values for the text</p></li>
+<li><p><strong>line 19</strong>: write the text to the screen. Without the method call nothing will appear on the screen.</p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code>.</p>
+</section>
+<section id="objects-init-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Permalink to this heading">#</a></h4>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code> and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos">6</span><span class="kn">from</span> <span class="nn">Objects.Astronaut</span> <span class="kn">import</span> <span class="n">Astronaut</span>
+<span class="hll"><span class="linenos">7</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to see if our score appears on the screen.</p>
+</section>
+</section>
+</section>
+<section id="changing-score">
+<h2>Changing score<a class="headerlink" href="#changing-score" title="Permalink to this heading">#</a></h2>
+<p>We have a score on our screen, now we need a way to change that score. Looking at our objective, certain collision events will result in points being awarded or taken away. The easiest way to achieve this is to create a method that can be called to update the score.</p>
+<section id="id1">
+<h3>Planning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The score updating method will need to do two things:</p>
+<ol class="arabic simple">
+<li><p>change the value of the global score variable</p></li>
+<li><p>write the new score on the screen</p></li>
+</ol>
+<p>Expressing that in an IPO table:</p>
+<p><img alt="score update IPO" src="_images/score_update_IPO.png" /></p>
+<p>Lets put that into code.</p>
+</section>
+<section id="id2">
+<h3>Coding<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code> and add the following code to the end of the <code class="docutils literal notranslate"><span class="pre">Score</span></code> class</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">21</span>    <span class="k">def</span> <span class="nf">update_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="linenos">22</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">        Updates the score and redraws the text</span>
+<span class="linenos">24</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">25</span>        <span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span> <span class="o">+=</span> <span class="n">change</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Breaking that code down:</p>
+<ul class="simple">
+<li><p><strong>line 21</strong>: defines a method used to change the score</p></li>
+<li><p><strong>line 25</strong>: adjusts the <code class="docutils literal notranslate"><span class="pre">Global.SCORE</span></code> value by the provided <code class="docutils literal notranslate"><span class="pre">change</span></code> argument</p></li>
+<li><p><strong>line 26</strong>: changes the value of the Score’s text to the new value of <code class="docutils literal notranslate"><span class="pre">Globals.SCORE</span></code></p></li>
+<li><p><strong>line 27</strong>: writes the new text to the screen</p></li>
+</ul>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code> and then run the game with <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test for any errors.</p>
+</section>
+</section>
+<section id="adding-scores-to-collisions">
+<h2>Adding scores to collisions<a class="headerlink" href="#adding-scores-to-collisions" title="Permalink to this heading">#</a></h2>
+<p>Our objective identify three collisions we want to add scoring to:</p>
+<ol class="arabic simple">
+<li><p>Laser → Asteroid</p></li>
+<li><p>Laser → Astronaut</p></li>
+<li><p>Astronaut → Ship</p></li>
+</ol>
+<p>We already have event handlers for all three of these collisions, so we just need to adjust them.</p>
+<p>Lets start with the Laser ones.</p>
+<section id="objects-laser-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#objects-laser-py" title="Permalink to this heading">#</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code> and add the highlighted text to the <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">39</span>    <span class="c1"># --- Event handlers</span>
+<span class="linenos">40</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Handles laser collisions with other registered objects</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
+<span class="linenos">45</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="hll"><span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class="linenos">47</span>        <span class="k">elif</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Astronaut&quot;</span><span class="p">:</span>
+<span class="linenos">48</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="hll"><span class="linenos">49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Unpacking these lines:</p>
+<ul class="simple">
+<li><p><strong>line 46</strong>: responds to the Asteroid collision event (ie. laser shoots an asteroid) by increasing the score by <code class="docutils literal notranslate"><span class="pre">5</span></code></p></li>
+<li><p><strong>line 49</strong>: responds to the Astronaut collision event (ie. laser shoots an astronaut) by decreasing the score by <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+</ul>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></p>
+<p>Onto the Astronaut &amp; Ship collisions</p>
+</section>
+<section id="objects-astronaut-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code><a class="headerlink" href="#objects-astronaut-py" title="Permalink to this heading">#</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code> and add the highlighted code to the <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">31</span>    <span class="c1"># --- Event Handlers</span>
+<span class="linenos">32</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        Handles the collision event for Astronaut objects</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="c1"># ship collision</span>
+<span class="linenos">37</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">38</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="hll"><span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p><strong>Line 39</strong> work exactly the same as the last two calls to <code class="docutils literal notranslate"><span class="pre">update_score</span></code>, but this time it add <code class="docutils literal notranslate"><span class="pre">50</span></code> to the score.</p>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code>.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p>Time to test our code. We just made three changes to the code so we want to check for the success of all three changes. To do this we will use a <strong>testing table</strong> consisting of four columns:</p>
+<ul class="simple">
+<li><p><strong>Test</strong>: Lists what you are testing</p></li>
+<li><p><strong>Expected results</strong>: State what you expect the result to be</p></li>
+<li><p><strong>Actual results</strong>: Record what the actual result was when you tested</p></li>
+<li><p><strong>Remedy</strong>: If the actual results differ from the expected results, record has you fixed the problem.</p></li>
+</ul>
+<p>Below is our testing table with the first two columns completed. Copy it down and finish it off.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>Expected results</p></th>
+<th class="head"><p>Actual results</p></th>
+<th class="head"><p>Remedy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Laser shoots asteroid</p></td>
+<td><p>score + 5</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Laser shoots astronaut</p></td>
+<td><p>score - 10</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Ship collects astronaut</p></td>
+<td><p>score + 50</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <code class="docutils literal notranslate"><span class="pre">Added</span> <span class="pre">scoring</span></code>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">TextObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Score</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for displaying the current score</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 <span class="linenos">13</span>        
 <span class="linenos">14</span>        <span class="c1"># set values         </span>
 <span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
@@ -269,6 +471,122 @@
 </pre></div>
 </div>
 </section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos">6</span><span class="kn">from</span> <span class="nn">Objects.Astronaut</span> <span class="kn">import</span> <span class="n">Astronaut</span>
+<span class="linenos">7</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Laser</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Class for the lasers shot by the Ship</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Inistialise the laser</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Laser.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set movement</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>        <span class="c1"># handle events</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Asteroid&quot;</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Astronaut&quot;</span><span class="p">)</span>
+<span class="linenos">25</span>        
+<span class="linenos">26</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">28</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
+<span class="linenos">29</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">30</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">31</span>        
+<span class="linenos">32</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        removes laser if it has exited the room</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
+<span class="linenos">37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">38</span>            
+<span class="linenos">39</span>    <span class="c1"># --- Event handlers</span>
+<span class="linenos">40</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Handles laser collisions with other registered objects</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
+<span class="linenos">45</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">47</span>        <span class="k">elif</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Astronaut&quot;</span><span class="p">:</span>
+<span class="linenos">48</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Astronaut</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Class for the astronauts escaping from Zork</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the astronaut instance</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attirbutes and method from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Astronaut.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>        <span class="c1"># handle events</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Ship&quot;</span><span class="p">)</span>
+<span class="linenos">24</span>        
+<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">26</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">27</span><span class="sd">        Determines what happend to the astronaut on each tick of the game clock</span>
+<span class="linenos">28</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">30</span>        
+<span class="linenos">31</span>    <span class="c1"># --- Event Handlers</span>
+<span class="linenos">32</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        Handles the collision event for Astronaut objects</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="c1"># ship collision</span>
+<span class="linenos">37</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">38</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="linenos">40</span>            
+<span class="linenos">41</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">42</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">43</span><span class="sd">        removes astronauts that have exited the room</span>
+<span class="linenos">44</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">45</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -340,8 +658,28 @@
 <li><a class="reference internal" href="#planning">Planning</a></li>
 <li><a class="reference internal" href="#coding">Coding</a><ul>
 <li><a class="reference internal" href="#objects-hud-py"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#changing-score">Changing score</a><ul>
+<li><a class="reference internal" href="#id1">Planning</a></li>
+<li><a class="reference internal" href="#id2">Coding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-scores-to-collisions">Adding scores to collisions</a><ul>
+<li><a class="reference internal" href="#objects-laser-py"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-astronaut-py"><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code></a></li>
 </ul>
 </li>
 </ul>
