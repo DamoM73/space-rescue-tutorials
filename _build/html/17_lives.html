@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="GameFrame Documentation" href="documentation.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Add Scoring" href="16_scoring.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Using Thonny as the IDE - Space Rescue</title>
+        <title>Add lives - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -179,8 +179,9 @@
 <li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
 
 </div>
@@ -215,160 +216,11 @@
           </label>
         </div>
         <article role="main">
-          <section id="using-thonny-as-the-ide">
-<h1>Using Thonny as the IDE<a class="headerlink" href="#using-thonny-as-the-ide" title="Permalink to this heading">#</a></h1>
-<div class="warning admonition">
-<p class="admonition-title">Thonny as an alteravtive IDE</p>
-<p>This page will finish the setup of your environment, but using Thonny as the IDE rather than VS Code. Before you follow these instructions, you should have completed the instructions in the Setup page, up to and including <a class="reference internal" href="02_setup.html#github-desktop"><span class="std std-ref">GitHub Desktop</span></a>.</p>
-</div>
-<p>Thonny is a Python IDE for beginners. It comes packaged with Python, which helps with the setup. Despite being targeted at begginers, it has many of the feature of professional IDEs</p>
-<section id="install-and-setup-thonny">
-<h2>Install and setup Thonny<a class="headerlink" href="#install-and-setup-thonny" title="Permalink to this heading">#</a></h2>
-<p>Download Thonny from <a class="reference external" href="https://thonny.org/"><strong>thonny.org</strong></a> and install it.</p>
-<p>Then open the <strong>View</strong> menu and tick</p>
-<ul class="simple">
-<li><p>Files</p></li>
-<li><p>Shell</p></li>
-</ul>
-<p><img alt="setup view" src="_images/setup_view.png" /></p>
-</section>
-<section id="gameframe-and-resources">
-<h2>GameFrame and resources<a class="headerlink" href="#gameframe-and-resources" title="Permalink to this heading">#</a></h2>
-<div class="note admonition">
-<p class="admonition-title">GameFrame</p>
-<p>GameFrame was developed by a Steven Tucker, a Queensland teacher. If you wish to use the latest versions of GameFrame, it can be found at his <a class="reference external" href="https://gitlab.com/tuxta/gameframe?fbclid=IwAR0GnSkDPy-IdeoNZofh0YwVJ63i4m2wVyzXwBrFqpbG2cLuYox8dkbU2Ss">Gitlab repository</a>.</p>
-</div>
-<p>We will be using a repo with an edited version of GameFrame, which includes all the assets needed for these tutorials. We will clone (copy) the repo from GitHub.</p>
-<p>To do this:</p>
-<ol class="arabic simple">
-<li><p>Go to the <strong><a class="reference external" href="https://github.com/DamoM73/space-rescue-resources">Space Rescue Resources repo</a></strong></p></li>
-<li><p>Click on the green <strong>Code</strong> button</p></li>
-<li><p>Click on the <strong>copy</strong> button beside the https url</p></li>
-</ol>
-<p><img alt="GitHub clone repo" src="_images/gh_clone_repo.png" /></p>
-<ol class="arabic simple" start="4">
-<li><p>Open <strong>GitHub Desktop</strong></p></li>
-<li><p>Open the <strong>File</strong> menu</p></li>
-<li><p>Click <strong>Clone Repository</strong></p></li>
-</ol>
-<p><img alt="GitHub Desktop clone repo" src="_images/ghdt_clone_repo.png" /></p>
-<ol class="arabic simple" start="7">
-<li><p>Choose the <strong>URL</strong> tab</p></li>
-<li><p>Paste repo URL into <strong>URL or username/repository</strong> box</p></li>
-<li><p>Remember the <strong>Local path</strong> that your repo will be saved in (write it down somewhere)</p></li>
-<li><p>Click <strong>Clone</strong></p></li>
-</ol>
-<p><img alt="Github desktop clone repo dialogue" src="_images/ghdt_cloning_dialogue_thonny.png" /></p>
-<p>The repo should now be copied onto your computer and ready for use.</p>
-</section>
-<section id="navigating-to-repo-in-thonny">
-<h2>Navigating to repo in Thonny<a class="headerlink" href="#navigating-to-repo-in-thonny" title="Permalink to this heading">#</a></h2>
-<p>We now have to direct Thonny to the repo we just created.</p>
-<ol class="arabic simple">
-<li><p>Go back to Thonny</p></li>
-<li><p>In the <strong>Files</strong> panel click on <strong>This computer</strong></p></li>
-</ol>
-<p><img alt="This computer is the Thonny file panel" src="_images/thonny_this_computer.png" /></p>
-<ol class="arabic simple" start="3">
-<li><p>Click through the drives and directories until you have recreated the <strong>Local path</strong> where you saved your repo.</p></li>
-<li><p>Make sure that the file in your repo folder directories match those in the image below.</p></li>
-</ol>
-<p><img alt="Thonny with the repo open" src="_images/thonny_repo_files.png" /></p>
-</section>
-<section id="virtual-environment">
-<h2>Virtual Environment<a class="headerlink" href="#virtual-environment" title="Permalink to this heading">#</a></h2>
-<p>Python virtual environments enables you to designate distinct areas for various Python projects. It’s like having various rooms in your home, each with its unique furnishings and accents. You can work on various projects in a virtual environment without their interfering with one another. Each project gets a special “playground” with its own Python installation and particular libraries. A virtual environment is similar to walking into a specific room, and any Python programmes or libraries you use are exclusive to that project once you enter it. You can easily work on numerous Python projects because everything is kept organised and conflicts between projects are avoided.</p>
-<section id="creating-a-virtual-environment-in-thonny">
-<h3>Creating a virtual environment in Thonny<a class="headerlink" href="#creating-a-virtual-environment-in-thonny" title="Permalink to this heading">#</a></h3>
-<div class="error admonition">
-<p class="admonition-title">Must be in the repo directory</p>
-<p>Thonny will create the virtual environment in the current directory, therefore it is essential that the Files panel is showing your repo directory.</p>
-</div>
-<ol class="arabic simple">
-<li><p>Go to the <strong>Tools</strong> menu and choose <strong>Options…</strong></p></li>
-</ol>
-<p><img alt="Thonny options" src="_images/thonny_options.png" /></p>
-<ol class="arabic simple" start="2">
-<li><p>In the <strong>Thonny options</strong> dialogue box click the <strong>Interpreter</strong> tab</p></li>
-<li><p>Then click on <strong>New virtual environment</strong></p></li>
-</ol>
-<p><img alt="Thonny interpreter" src="_images/thonny_interpreter.png" /></p>
-<ol class="arabic simple" start="4">
-<li><p>Click <strong>OK</strong> on the <strong>Creating new virtual environment</strong> message.</p></li>
-<li><p>In the File dialogue box, <strong>right mouse click</strong> in the white space.</p></li>
-<li><p>Then choose <strong>New</strong> from the context menu</p></li>
-<li><p>Then <strong>Folder</strong></p></li>
-</ol>
-<p><img alt="Thonny create folder" src="_images/thonny_create_new_folder.png" /></p>
-<ol class="arabic simple" start="8">
-<li><p>Name the new folder <strong>venv</strong></p></li>
-<li><p>Make sure that it is highlighted and then click <strong>Select</strong></p></li>
-</ol>
-<p><img alt="Thonny selecting folder" src="_images/thonny_select_folder.png" /></p>
-<ol class="arabic simple" start="10">
-<li><p>Wait for <strong>Creating virtual environment</strong> message to close</p></li>
-</ol>
-<p><img alt="Thonny creating venv" src="_images/thonny_creating_venv.png" /></p>
-<ol class="arabic simple" start="11">
-<li><p>Check that the <strong>Python executable</strong> is pointing at your repo directory.</p></li>
-<li><p>Click <strong>OK</strong></p></li>
-</ol>
-<p>![Thonny checking venv]</p>
-</section>
-<section id="checking-your-virtual-environment-in-thonny">
-<h3>Checking your virtual environment in Thonny<a class="headerlink" href="#checking-your-virtual-environment-in-thonny" title="Permalink to this heading">#</a></h3>
-<p>Each time you open Thonny it is important to ensure that your virtual environment is active. To do this look at the Python version in the Shell frame, it should point to the <strong>venv</strong> folder you just made.</p>
-<p><img alt="Thonny check venv" src="_images/thonny_venv_in_shell.png" /></p>
-<p>If it is not pointing to the <strong>venv</strong> folder, you need to activate your virtual environment by:</p>
-<ol class="arabic simple">
-<li><p><strong>Right mouse click</strong> on the <strong>venv</strong> folder in the <strong>Files</strong> panel</p></li>
-<li><p>Select <strong>Activate virtual environment</strong></p></li>
-</ol>
-<p><img alt="Thonny activate virtual environment" src="_images/thonny_activate_venv.png" /></p>
-<p>Then recheck your Shell panel</p>
-<p><img alt="Thonny check venv" src="_images/thonny_venv_in_shell.png" /></p>
-</section>
-</section>
-<section id="make-first-commit-and-push">
-<h2>Make first commit and push<a class="headerlink" href="#make-first-commit-and-push" title="Permalink to this heading">#</a></h2>
-<div class="note admonition">
-<p class="admonition-title">Git and GitHub terminology</p>
-<p>Git and GitHub uses a range of different terminology. Here are some of the terms we will be using:</p>
-<ul class="simple">
-<li><p><strong>Repository or repo</strong>: A repository is a special folder that stores all the files and their history for a project.</p></li>
-<li><p><strong>Commit</strong>: When you make changes to files in a repository, a commit is takes a snapshot of those changes. Each commit has a unique name and a message explaining what changes were made.</p></li>
-<li><p><strong>Pull</strong>: Pulling means getting the latest changes made by others and adding them to your own copy of the project.</p></li>
-<li><p><strong>Push</strong>: Pushing is when you share your changes with others by sending them to a central place, like a website or server.</p></li>
-<li><p><strong>Remote</strong>: A remote is a way to connect your local copy of the project with the online version. weare using GitHub. It allows you to share your work and collaborate with others.</p></li>
-<li><p><strong>Clone</strong>: Cloning is making a copy of a project from a remote location to your own computer so you can work on it.</p></li>
-<li><p><strong>Local</strong>: the copy of the repo that is on your computer</p></li>
-<li><p><strong>Origin</strong>: the copy of the repo that is on a remote location</p></li>
-<li><p><strong>Fork</strong>: making your own copy of someone else’s project.</p></li>
-</ul>
-<p>Note: the <em>other</em> that you could be working with might be you on another computer.</p>
-</div>
-<ol class="arabic simple">
-<li><p>Change the text in README.md to the text below and then save it:</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># SPACE RESCUE</span>
-
-<span class="n">Try</span> <span class="n">to</span> <span class="n">save</span> <span class="n">the</span> <span class="n">helpless</span> <span class="n">astronauts</span> <span class="n">who</span> <span class="n">are</span> <span class="n">being</span> <span class="n">left</span> <span class="n">stranded</span> <span class="ow">in</span> <span class="n">space</span> <span class="n">by</span> <span class="n">the</span> <span class="n">evil</span> <span class="n">Zork</span><span class="o">.</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>In GitHub desktop write “Made first change” in the <strong>Summary (required)</strong> box</p></li>
-<li><p>Then click <strong>Commit to main</strong></p></li>
-</ol>
-<p><img alt="GitHub Desktop first commit" src="_images/ghdt_first_commit.png" /></p>
-<ol class="arabic simple" start="4">
-<li><p>Click <strong>Push origin</strong> (you will receive an error)</p></li>
-</ol>
-<p><img alt="GitHub Desktop fist push" src="_images/ghtd_first_push.png" /></p>
-<ol class="arabic simple" start="5">
-<li><p>Choose to <strong>Fork this repository</strong></p></li>
-<li><p>Choose <strong>For my own purposes</strong> and <strong>Continue</strong></p></li>
-<li><p>Click <strong>Push origin</strong> again</p></li>
-</ol>
+          <section id="add-lives">
+<h1>Add lives<a class="headerlink" href="#add-lives" title="Permalink to this heading">#</a></h1>
+<p>At the moment touching just one asteroid ends the game. This is a bit tough. So for the final step in our game development is giving our player lives.</p>
+<section id="planning">
+<h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -377,15 +229,23 @@
       <footer>
         
         <div class="related-pages">
-          
-          <a class="prev-page" href="documentation.html">
+          <a class="next-page" href="documentation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GameFrame Documentation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="16_scoring.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">GameFrame Documentation</div>
+                <div class="title">Add Scoring</div>
                 
               </div>
             </a>
@@ -426,16 +286,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Using Thonny as the IDE</a><ul>
-<li><a class="reference internal" href="#install-and-setup-thonny">Install and setup Thonny</a></li>
-<li><a class="reference internal" href="#gameframe-and-resources">GameFrame and resources</a></li>
-<li><a class="reference internal" href="#navigating-to-repo-in-thonny">Navigating to repo in Thonny</a></li>
-<li><a class="reference internal" href="#virtual-environment">Virtual Environment</a><ul>
-<li><a class="reference internal" href="#creating-a-virtual-environment-in-thonny">Creating a virtual environment in Thonny</a></li>
-<li><a class="reference internal" href="#checking-your-virtual-environment-in-thonny">Checking your virtual environment in Thonny</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#make-first-commit-and-push">Make first commit and push</a></li>
+<li><a class="reference internal" href="#">Add lives</a><ul>
+<li><a class="reference internal" href="#planning">Planning</a></li>
 </ul>
 </li>
 </ul>
