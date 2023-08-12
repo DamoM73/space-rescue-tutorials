@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Add Scoring" href="16_scoring.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Add lives - Space Rescue</title>
+        <title>Add Lives - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -179,7 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add lives</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -217,12 +217,367 @@
         </div>
         <article role="main">
           <section id="add-lives">
-<h1>Add lives<a class="headerlink" href="#add-lives" title="Permalink to this heading">#</a></h1>
-<p>At the moment touching just one asteroid ends the game. This is a bit tough. So for the final step in our game development journey is giving our player lives.</p>
+<h1>Add Lives<a class="headerlink" href="#add-lives" title="Permalink to this heading">#</a></h1>
+<p>At the moment colliding with just one asteroid ends the game. This is a bit tough. So for the final step in our game development journey is giving our player lives.</p>
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
 <p>We need to work out what mechanisms will use for lives. Looking at the  GameFrame documentation for <strong><a class="reference internal" href="documentation.html#globals-variables"><span class="std std-ref">Global Variables</span></a></strong> you will notice there is a variable called <code class="docutils literal notranslate"><span class="pre">LIVES</span></code>. This is similar to <code class="docutils literal notranslate"><span class="pre">SCORE</span></code>.</p>
-<p>Now we could just have the score value show as a number, but that is a bit boring. Instead we will display hearts to represent the number of lives. If you look inside the <code class="docutils literal notranslate"><span class="pre">Images/Lives_frames</span></code> and you will see five images with 1 to 5 hearts. So when a player loses a life, we will change the image showing the number of lives.</p>
+<p>We could just have the score value show as a number, but that is a bit boring. Instead we will display hearts to represent the number of lives. If you look inside the <code class="docutils literal notranslate"><span class="pre">Images/Lives_frames</span></code> and you will see five images with 1 to 5 hearts. So when a player loses a life, we will change the image showing the number of lives. How can we do that?</p>
+<p>To this point we have only used <code class="docutils literal notranslate"><span class="pre">set_image</span></code> in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> to assign an image to an object when it is instantiated. There is nothing stopping us from using <code class="docutils literal notranslate"><span class="pre">set_image</span></code> elsewhere in response to other events, like loosing a life. You will also remember that we need to use <code class="docutils literal notranslate"><span class="pre">load_image</span></code> before we can use <code class="docutils literal notranslate"><span class="pre">set_image</span></code>.</p>
+<p>Below are flowcharts of two possible ways to approach this:</p>
+<ul class="simple">
+<li><p><strong>Method 1</strong> → <strong>each</strong> time <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> changes, load the image and then set the image</p></li>
+<li><p><strong>Method 2</strong> → preload the images into a list once and then set the image when <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> changes</p></li>
+</ul>
+<p><img alt="Display Lives Flowcharts" src="_images/display_lives_flowchart.png" /></p>
+<p>Both methods require the same resource if you intend for players lives to only decrease. In this case each possible <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> score will only be displayed once. Therefore, each image will only be loaded once.</p>
+<p><strong>Method 2</strong> is superior if you indent player’s lives go up as well as down. In this case it is possible that any given <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> score may be displayed multiple times. <strong>Method 1</strong> may need to load each image <strong>multiple times</strong>, but <strong>Method 2</strong> will still only load each image <strong>once</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">When to use data structures</p>
+<p>Data structures are used in computer science to organize, store, and manage data in a way that enables efficient operations and access. The most common Python data structures are: <strong>lists</strong>, <strong>tuples</strong>, <strong>dictionaries</strong> and <strong>sets</strong>.</p>
+<p>Use data structures to gather values that logically belong together. For example, we use tuples to gather coordinates together. Coordinates contain two variables <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> that logically belong together so we place them in a tuple: <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</div>
+<p>Since we want to leave open the option of giving bonus lives, we’ll use <strong>Method 2</strong> which will look like this in an IPO:</p>
+<p><img alt="Lives update IPO" src="_images/lives_update_IPO.png" /></p>
+<p>With all that sorted out, lets get on with the coding.</p>
+</section>
+<section id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h2>
+<section id="objects-hud-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code><a class="headerlink" href="#objects-hud-py" title="Permalink to this heading">#</a></h3>
+<p>Since the lives icons are still part of the HUD, we will put the <code class="docutils literal notranslate"><span class="pre">Lives</span></code> class in <code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code>.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code> and then add or adjust the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">TextObject</span><span class="p">,</span> <span class="n">Globals</span><span class="p">,</span> <span class="n">RoomObject</span>
+</span><span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Score</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for displaying the current score</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set values         </span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;Arial Black&#39;</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+<span class="linenos">20</span>        
+<span class="linenos">21</span>    <span class="k">def</span> <span class="nf">update_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="linenos">22</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">        Updates the score and redraws the text</span>
+<span class="linenos">24</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">25</span>        <span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span> <span class="o">+=</span> <span class="n">change</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+<span class="linenos">28</span>        
+<span class="linenos">29</span>
+<span class="hll"><span class="linenos">30</span><span class="k">class</span> <span class="nc">Lives</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">31</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">32</span><span class="sd">    A class for displaying the number of lives remaining</span>
+</span><span class="hll"><span class="linenos">33</span><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">34</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">35</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">36</span><span class="sd">        Intialises the lives object</span>
+</span><span class="hll"><span class="linenos">37</span><span class="sd">        &quot;&quot;&quot;</span>   
+</span><span class="hll"><span class="linenos">38</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">39</span>        
+</span><span class="hll"><span class="linenos">40</span>        <span class="c1"># set image</span>
+</span><span class="hll"><span class="linenos">41</span>        <span class="bp">self</span><span class="o">.</span><span class="n">lives_icon</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="hll"><span class="linenos">42</span>        <span class="c1"># load the various lives images into a live list</span>
+</span><span class="hll"><span class="linenos">43</span>        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">lives_icon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lives_frames/Lives_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">))</span>
+</span><span class="hll"><span class="linenos">45</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_image</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">46</span>        
+</span><span class="hll"><span class="linenos">47</span>        
+</span><span class="hll"><span class="linenos">48</span>    <span class="k">def</span> <span class="nf">update_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">49</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">50</span><span class="sd">        Updates the number of lives on the UI</span>
+</span><span class="hll"><span class="linenos">51</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">52</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lives_icon</span><span class="p">[</span><span class="n">Globals</span><span class="o">.</span><span class="n">LIVES</span><span class="p">],</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Unpacking those changes:</p>
+<ul class="simple">
+<li><p><strong>line 1</strong>: the <code class="docutils literal notranslate"><span class="pre">Lives</span></code> is going to be a RoomObject, so we need to import this class.</p></li>
+<li><p><strong>lines 30-38</strong>: defines the <code class="docutils literal notranslate"><span class="pre">Lives</span></code> class as a RoomObject</p></li>
+<li><p><strong>line 41</strong>: creates the <code class="docutils literal notranslate"><span class="pre">lives_icon</span></code> list that we will use to store our images</p></li>
+<li><p><strong>line 43 &amp; 44</strong>: create a loop that appends each of the loaded images to the <code class="docutils literal notranslate"><span class="pre">lives_icon</span></code> list</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_image</span></code> accepts a string that is the file name</p></li>
+<li><p>we can use the index value to create that file name</p></li>
+</ul>
+</li>
+<li><p><strong>line 45</strong>: calls <code class="docutils literal notranslate"><span class="pre">update_image</span></code> to load the first image</p></li>
+<li><p><strong>lines 48-51</strong>: defines the <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">image</span></code> method</p></li>
+<li><p><strong>line 52</strong>: sets the <code class="docutils literal notranslate"><span class="pre">Lives</span></code> image to the image that corresponds to <code class="docutils literal notranslate"><span class="pre">Globals.LIVES</span></code>, For example:</p>
+<ul>
+<li><p>at the beginning of the game <code class="docutils literal notranslate"><span class="pre">Globals.LIVES</span></code> is <code class="docutils literal notranslate"><span class="pre">3</span></code></p></li>
+<li><p>this will display <code class="docutils literal notranslate"><span class="pre">self.lives_icon[3]</span></code></p></li>
+<li><p>which is the image <code class="docutils literal notranslate"><span class="pre">&quot;Lives_frames/Lives_3.png&quot;</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code>.</p>
+</section>
+<section id="object-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Object/__init__.py</span></code><a class="headerlink" href="#object-init-py" title="Permalink to this heading">#</a></h3>
+<p>Although we haven’t created a new file, we still need to let GameFrame know about our new <code class="docutils literal notranslate"><span class="pre">Lives</span></code> class.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Object/__init__.py</span></code> and then adjust the highlighted code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos">6</span><span class="kn">from</span> <span class="nn">Objects.Astronaut</span> <span class="kn">import</span> <span class="n">Astronaut</span>
+<span class="hll"><span class="linenos">7</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span><span class="p">,</span> <span class="n">Lives</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Object/__init__.py</span></code>.</p>
+</section>
+<section id="rooms-gameplay-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h3>
+<p>Finally we need to add a <code class="docutils literal notranslate"><span class="pre">Lives</span></code> object to the <code class="docutils literal notranslate"><span class="pre">GamePlay</span></code> Room so <strong>open</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code>, and then add or adjust the highlighted code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="hll"><span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span><span class="p">,</span> <span class="n">Lives</span>
+</span><span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set background image</span>
+<span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        
+<span class="linenos">13</span>        <span class="c1"># add objects</span>
+<span class="linenos">14</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Zork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">16</span>        
+<span class="linenos">17</span>        <span class="c1"># add HUD items</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<span class="linenos">19</span>                           <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> 
+<span class="linenos">20</span>                           <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">))</span>
+<span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+<span class="hll"><span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">lives</span> <span class="o">=</span> <span class="n">Lives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span> <span class="o">-</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lives</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>The new code is so similar to the <code class="docutils literal notranslate"><span class="pre">Score</span></code> code, we won’t bother exploring it.</p>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code> then test that our mechanism correctly loads the initial 3 lives by <strong>running</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>.</p>
+</section>
+<section id="objects-asteroid-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#objects-asteroid-py" title="Permalink to this heading">#</a></h3>
+<p>Now we need to associate the change in <code class="docutils literal notranslate"><span class="pre">Globals.LIVES</span></code> with the Asteroid and Ship collision. This collision event handler in the the <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> class, so <strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and then add or adjust the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">54</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">55</span><span class="sd">        Handles the collision events for the Asteroid</span>
+<span class="linenos">56</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">57</span>        
+<span class="linenos">58</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="hll"><span class="linenos">59</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">60</span>            <span class="n">Globals</span><span class="o">.</span><span class="n">LIVES</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span class="hll"><span class="linenos">61</span>            <span class="k">if</span> <span class="n">Globals</span><span class="o">.</span><span class="n">LIVES</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">62</span>                <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">lives</span><span class="o">.</span><span class="n">update_image</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">63</span>            <span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">64</span>                <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</span></pre></div>
+</div>
+<p>Exploring that code:</p>
+<ul class="simple">
+<li><p><strong>line 59</strong>: deletes <strong>this</strong> asteroid (<code class="docutils literal notranslate"><span class="pre">self</span></code>)</p></li>
+<li><p><strong>line 60</strong>: reduces <code class="docutils literal notranslate"><span class="pre">Global.LIVES</span></code> by <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><strong>line 61</strong>: checks if the player still has lives left</p></li>
+<li><p><strong>line 62</strong>: calls <code class="docutils literal notranslate"><span class="pre">lives.update_image</span></code> to change the number of lives on display</p></li>
+<li><p><strong>line 64</strong>: ends the game</p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code> and then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test our code. Make sure that the lives are reduced every time an Asteroid collides with the Ship.</p>
+</section>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <strong>Added lasers</strong>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">TextObject</span><span class="p">,</span> <span class="n">Globals</span><span class="p">,</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Score</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for displaying the current score</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set values         </span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;Arial Black&#39;</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+<span class="linenos">20</span>        
+<span class="linenos">21</span>    <span class="k">def</span> <span class="nf">update_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="linenos">22</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">        Updates the score and redraws the text</span>
+<span class="linenos">24</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">25</span>        <span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span> <span class="o">+=</span> <span class="n">change</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+<span class="linenos">28</span>        
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="k">class</span> <span class="nc">Lives</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos">31</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">32</span><span class="sd">    A class for displaying the number of lives remaining</span>
+<span class="linenos">33</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos">34</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="linenos">35</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">36</span><span class="sd">        Intialises the lives object</span>
+<span class="linenos">37</span><span class="sd">        &quot;&quot;&quot;</span>   
+<span class="linenos">38</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">39</span>        
+<span class="linenos">40</span>        <span class="c1"># set image</span>
+<span class="linenos">41</span>        <span class="bp">self</span><span class="o">.</span><span class="n">lives_icon</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">42</span>        <span class="c1"># load the various lives images into a live list</span>
+<span class="linenos">43</span>        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+<span class="linenos">44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">lives_icon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lives_frames/Lives_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">))</span>
+<span class="linenos">45</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_image</span><span class="p">()</span>
+<span class="linenos">46</span>        
+<span class="linenos">47</span>        
+<span class="linenos">48</span>    <span class="k">def</span> <span class="nf">update_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">49</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">50</span><span class="sd">        Updates the number of lives on the UI</span>
+<span class="linenos">51</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">52</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lives_icon</span><span class="p">[</span><span class="n">Globals</span><span class="o">.</span><span class="n">LIVES</span><span class="p">],</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">Object/__init__.py</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Objects.Title</span> <span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span> <span class="nn">Objects.Asteroid</span> <span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span> <span class="nn">Objects.Laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos">6</span><span class="kn">from</span> <span class="nn">Objects.Astronaut</span> <span class="kn">import</span> <span class="n">Astronaut</span>
+<span class="linenos">7</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span><span class="p">,</span> <span class="n">Lives</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span><span class="p">,</span> <span class="n">Lives</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set background image</span>
+<span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        
+<span class="linenos">13</span>        <span class="c1"># add objects</span>
+<span class="linenos">14</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Zork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">16</span>        
+<span class="linenos">17</span>        <span class="c1"># add HUD items</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<span class="linenos">19</span>                           <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> 
+<span class="linenos">20</span>                           <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">))</span>
+<span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">lives</span> <span class="o">=</span> <span class="n">Lives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span> <span class="o">-</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lives</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Asteroid</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for Zorks danerous obstacles</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Asteroid object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">14</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">15</span>        
+<span class="linenos">16</span>        <span class="c1"># set image</span>
+<span class="linenos">17</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;asteroid.png&quot;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">19</span>        
+<span class="linenos">20</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">21</span>        <span class="n">angle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">225</span><span class="p">)</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos">23</span>        
+<span class="linenos">24</span>        <span class="c1"># register events</span>
+<span class="linenos">25</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Ship&quot;</span><span class="p">)</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">28</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">29</span><span class="sd">        Determines what happens to the asteroid on each tick of the game clock</span>
+<span class="linenos">30</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">31</span>        <span class="bp">self</span><span class="o">.</span><span class="n">keep_in_room</span><span class="p">()</span>
+<span class="linenos">32</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">33</span>        
+<span class="linenos">34</span>    <span class="k">def</span> <span class="nf">keep_in_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">35</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">36</span><span class="sd">        Keeps the asteroid inside the top and bottom room limits</span>
+<span class="linenos">37</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">38</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">40</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">41</span>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span>
+<span class="linenos">42</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_HEIGHT</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+<span class="linenos">43</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">44</span>            
+<span class="linenos">45</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">46</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">47</span><span class="sd">        removes asteroid that have exited the room</span>
+<span class="linenos">48</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">49</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">50</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;asteroid deleted&quot;</span><span class="p">)</span>
+<span class="linenos">51</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">52</span>            
+<span class="linenos">53</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">54</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">55</span><span class="sd">        Handles the collision events for the Asteroid</span>
+<span class="linenos">56</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">57</span>        
+<span class="linenos">58</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">59</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">60</span>            <span class="n">Globals</span><span class="o">.</span><span class="n">LIVES</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="linenos">61</span>            <span class="k">if</span> <span class="n">Globals</span><span class="o">.</span><span class="n">LIVES</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">62</span>                <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">lives</span><span class="o">.</span><span class="n">update_image</span><span class="p">()</span>
+<span class="linenos">63</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos">64</span>                <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -288,8 +643,23 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Add lives</a><ul>
+<li><a class="reference internal" href="#">Add Lives</a><ul>
 <li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#coding">Coding</a><ul>
+<li><a class="reference internal" href="#objects-hud-py"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+<li><a class="reference internal" href="#object-init-py"><code class="docutils literal notranslate"><span class="pre">Object/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-asteroid-py"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Object/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Objects/Asteroid.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
