@@ -22,6 +22,7 @@ This website provides tutorials on building a Python PyGame game using the [Game
 14_laser_asteroid_collision
 15_astronaut
 16_scoring
+17_lives
 documentation
 using_thonny
 ```

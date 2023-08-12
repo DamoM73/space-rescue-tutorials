@@ -2,10 +2,12 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Add Scoring" href="16_scoring.html" />
 
-    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 --><title>Index - Space Rescue</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
+        <title>Add lives - Space Rescue</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -136,7 +138,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -160,7 +162,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
@@ -171,13 +173,13 @@
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Move Asteroids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Animate Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add lives</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -199,7 +201,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -207,16 +210,18 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<section class="genindex-section">
-  <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"></div>
+          <section id="add-lives">
+<h1>Add lives<a class="headerlink" href="#add-lives" title="Permalink to this heading">#</a></h1>
+<p>At the moment touching just one asteroid ends the game. This is a bit tough. So for the final step in our game development is giving our player lives.</p>
+<section id="planning">
+<h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
         </article>
@@ -224,8 +229,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="documentation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GameFrame Documentation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="16_scoring.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Add Scoring</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -251,8 +274,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Add lives</a><ul>
+<li><a class="reference internal" href="#planning">Planning</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

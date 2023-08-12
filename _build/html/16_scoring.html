@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Add Astronaut" href="15_astronaut.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Add lives" href="17_lives.html" /><link rel="prev" title="Add Astronaut" href="15_astronaut.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Add Scoring - Space Rescue</title>
@@ -179,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -294,9 +295,38 @@
 <span class="hll"><span class="linenos">7</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span>
 </span></pre></div>
 </div>
-<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to see if our score appears on the screen.</p>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code>.</p>
 </section>
 </section>
+</section>
+<section id="rooms-gameplay-py">
+<h2><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Permalink to this heading">#</a></h2>
+<p>Finally we need to add the Score to the GamePlay class.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code> and add the highlighted code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">Level</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">Objects.Ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">Objects.Zork</span> <span class="kn">import</span> <span class="n">Zork</span>
+<span class="hll"><span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">Objects.Hud</span> <span class="kn">import</span> <span class="n">Score</span>
+</span><span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">class</span> <span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set background image</span>
+<span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        
+<span class="linenos">13</span>        <span class="c1"># add objects</span>
+<span class="linenos">14</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Zork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">16</span>        
+<span class="hll"><span class="linenos">17</span>        <span class="c1"># add HUD items</span>
+</span><span class="hll"><span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+</span><span class="hll"><span class="linenos">19</span>                           <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> 
+</span><span class="hll"><span class="linenos">20</span>                           <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">))</span>
+</span><span class="hll"><span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to see if our score appears on the screen.</p>
 </section>
 <section id="changing-score">
 <h2>Changing score<a class="headerlink" href="#changing-score" title="Permalink to this heading">#</a></h2>
@@ -596,12 +626,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="documentation.html">
+          <a class="next-page" href="17_lives.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">GameFrame Documentation</div>
+                <div class="title">Add lives</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -663,6 +693,7 @@
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
 <li><a class="reference internal" href="#changing-score">Changing score</a><ul>
 <li><a class="reference internal" href="#id1">Planning</a></li>
 <li><a class="reference internal" href="#id2">Coding</a></li>
