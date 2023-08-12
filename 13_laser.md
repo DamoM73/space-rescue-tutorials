@@ -292,7 +292,7 @@ We have finished and tested another section of code so we should make a Git comm
 
 To do this:
 
-1. In GitHub Desktop go to the bottom left-hand box and write into the summary `Created GamePlay room`.
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary **Added lasers**.
 2. Click on **Commit to main**
 3. Click on **Push origin**
 

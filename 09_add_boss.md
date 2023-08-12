@@ -217,7 +217,17 @@ We really only need to look at two lines here:
 
 **Save** `Zork.py` then **run** `MainController.py` to test that our code works. 
 
-If it work, go to **GitHub Desktop**, add a summary, **Commit to main** then **Push origin**.
+## Commit and Push
+
+We have finished and tested another section of code so we should make a Git commit.
+
+To do this:
+
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary **Added Zork**.
+2. Click on **Commit to main**
+3. Click on **Push origin**
+
+Now the work from this lesson is committed and synced with the online repo.
 
 ## Completed file states
 
