@@ -173,7 +173,7 @@
 <li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Animate Asteroids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Move Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
@@ -218,9 +218,11 @@
         <article role="main">
           <section id="add-lives">
 <h1>Add lives<a class="headerlink" href="#add-lives" title="Permalink to this heading">#</a></h1>
-<p>At the moment touching just one asteroid ends the game. This is a bit tough. So for the final step in our game development is giving our player lives.</p>
+<p>At the moment touching just one asteroid ends the game. This is a bit tough. So for the final step in our game development journey is giving our player lives.</p>
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
+<p>We need to work out what mechanisms will use for lives. Looking at the  GameFrame documentation for <strong><a class="reference internal" href="documentation.html#globals-variables"><span class="std std-ref">Global Variables</span></a></strong> you will notice there is a variable called <code class="docutils literal notranslate"><span class="pre">LIVES</span></code>. This is similar to <code class="docutils literal notranslate"><span class="pre">SCORE</span></code>.</p>
+<p>Now we could just have the score value show as a number, but that is a bit boring. Instead we will display hearts to represent the number of lives. If you look inside the <code class="docutils literal notranslate"><span class="pre">Images/Lives_frames</span></code> and you will see five images with 1 to 5 hearts. So when a player loses a life, we will change the image showing the number of lives.</p>
 </section>
 </section>
 
