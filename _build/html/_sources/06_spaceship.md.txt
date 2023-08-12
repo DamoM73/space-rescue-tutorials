@@ -244,7 +244,7 @@ We have finished and tested another section of code so you know what you should 
 
 To do this:
 
-1. In GitHub Desktop go to the bottom left-hand box and write into the summary `Created Spaceship object`.
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary **Created Spaceship object**.
 2. Click on **Commit to main**
 3. Click on **Push origin**
 

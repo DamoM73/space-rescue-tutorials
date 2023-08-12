@@ -356,7 +356,7 @@ Now that we have finished a section of code and we have tested it to ensure it w
 
 To do this:
 
-1. In GitHub Desktop go to the bottom left-hand box and write into the summary `Created WelcomeScreen`.
+1. In GitHub Desktop go to the bottom left-hand box and write into the summary **Created WelcomeScreen**.
 2. Click on **Commit to main**
 3. Click on **Push origin**
 
