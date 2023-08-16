@@ -408,6 +408,118 @@
 </div>
 </section>
 </section>
+<section id="interactivity-mechanics">
+<h3>Interactivity Mechanics<a class="headerlink" href="#interactivity-mechanics" title="Permalink to this heading">#</a></h3>
+<p>Interactivity is about putting the player in control. Remember without interactivity, games become a passive experience.</p>
+<p>A good games leave the player <em><strong>feeling</strong></em> they are in control of the game. They <em><strong>believe</strong></em> they have influence on the outcomes and the decisions they make will significantly impact the gameplay. It is important to note that this is subjective. For example, the upgrading stats in a RPG has negligible effect, especially since the difficulty of the enemies also increases.</p>
+<p>A bad game minimises the player’s sense of control. For example, being taken-out in a PVP match by someone who is obviously using a cheat.</p>
+<p>These are some of the common mechanics for promoting the feeling of control:</p>
+<ul class="simple">
+<li><p>Choices and Control</p></li>
+<li><p>Control Overload!</p></li>
+<li><p>Unfair Punishment</p></li>
+<li><p>Audio Feedback</p></li>
+</ul>
+<section id="choices-and-control">
+<h4>Choices and Control<a class="headerlink" href="#choices-and-control" title="Permalink to this heading">#</a></h4>
+<p>Players need to be provided with choices that <strong>seem</strong> to have a real effect on the outcome of the game. They may result in different gameplay options, or seem to provide an advantage, while in reality their impact is minimal. For example, choosing different characters in Mario Cart.</p>
+<p>If a choice is perceived to provide a real difference to the game play by giving players more control, it gets the player more involved.</p>
+<p>We can incorporate choice into our game by letting the player choose between two types of ships. Each ship will have a special power they can activate for a short period by pressing the <strong>ctrl</strong> button.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ship</p></th>
+<th class="head"><p>Special Power</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Attractor</p></td>
+<td><p>When active astronauts move towards the ship</p></td>
+</tr>
+<tr class="row-odd"><td><p>Swerver</p></td>
+<td><p>When active ship’s speed increases</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="control-overload">
+<h4>Control Overload<a class="headerlink" href="#control-overload" title="Permalink to this heading">#</a></h4>
+<p>Giving the player too many choices can be self-defeating. Too many choices can overwhelm a player and reduce their sense of control. The extent that this is true depends on the type of game being played. A first person shooter that requires the use of all the keys on a keyboard will result in overload, where-as this is the standard expectation for a slight simulator.</p>
+<p>In simple games like our, it is worth remembering that most people can only remember five to nine things at once. Therefore, you need to limit the number of elements of gameplay that a player has to hold in their memory.</p>
+<p>If you need to include more element, then outsource the remembering to the UI. For example, the bottom of the Minecraft screen displays all the items bound to the <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> keys. Another example is the</p>
+<p>Another option is to make one key perform different functions according to the context. Instead of having one key for opening doors, and another key for talking to NPCs and another key to pick up items, modern RPG will have one <strong>interact key</strong> that will perform all these tasks depending on what the player is looking at.</p>
+<p>Our game has minimal feature and control, so this is not a concern at the moment. Although, it is something you should take into consideration when adding features to this game.</p>
+</section>
+<section id="unfair-punishment">
+<h4>Unfair Punishment<a class="headerlink" href="#unfair-punishment" title="Permalink to this heading">#</a></h4>
+<p>Punishing players for something that is not under their control quickly destroys their sense of control. These punishments are usually unintended and can vary greatly. For example, the below experiences can erode a players sense of control:</p>
+<ul class="simple">
+<li><p>lag between a button press and an action</p></li>
+<li><p>game crashes which loose progress</p></li>
+<li><p>enemy players shooting while clipped into a wall</p></li>
+<li><p>dialogue options with unexpected outcomes</p></li>
+</ul>
+<p>It is important to make sure that the game is playing properly, even when the player is not playing it like you intended.</p>
+<p>Lets consider out game</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unfair punishment</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A laser shot at an asteroid can pass through the asteroid and hit an astronaut</p></td>
+<td><p>Have the asteroid disappear when it collides with the first object</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="audio-feedback">
+<h4>Audio Feedback<a class="headerlink" href="#audio-feedback" title="Permalink to this heading">#</a></h4>
+<p>We have already established that confusion reduces a player’s sense of control. A effective way of reducing confusion is through reinforcement during gameplay. We already do this using the score. The score increases when the player does the correct thing, and decreases when the player does the wrong thing.</p>
+<p>Another effective way of reinforcing is through using sound. Sounds can feel positive and negative and can provide feedback to player on what they are doing. This informs player if their interactions are good or bad. It is a way of automatically instructing the player.</p>
+<p>Lets look at which game events can have sound attached to them:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Event</p></th>
+<th class="head"><p>Sound</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Shooting laser</p></td>
+<td><p>Positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shooting asteroid</p></td>
+<td><p>Positive</p></td>
+</tr>
+<tr class="row-even"><td><p>Saving astronaut</p></td>
+<td><p>Positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bonuses picked up</p></td>
+<td><p>Positive</p></td>
+</tr>
+<tr class="row-even"><td><p>Menu selection</p></td>
+<td><p>Positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ship collides with asteroid</p></td>
+<td><p>Negative</p></td>
+</tr>
+<tr class="row-even"><td><p>Shooting astronaut</p></td>
+<td><p>Negative</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="enhancing-the-game">
+<h2>Enhancing the game<a class="headerlink" href="#enhancing-the-game" title="Permalink to this heading">#</a></h2>
+<p>Now that you have a better understanding of game mechanics and ways you can enhance the game. Choose some of the suggested mechanics and implement them.</p>
 </section>
 </section>
 
@@ -487,8 +599,16 @@
 <li><a class="reference internal" href="#subgoals">Subgoals</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#interactivity-mechanics">Interactivity Mechanics</a><ul>
+<li><a class="reference internal" href="#choices-and-control">Choices and Control</a></li>
+<li><a class="reference internal" href="#control-overload">Control Overload</a></li>
+<li><a class="reference internal" href="#unfair-punishment">Unfair Punishment</a></li>
+<li><a class="reference internal" href="#audio-feedback">Audio Feedback</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enhancing-the-game">Enhancing the game</a></li>
 </ul>
 </li>
 </ul>

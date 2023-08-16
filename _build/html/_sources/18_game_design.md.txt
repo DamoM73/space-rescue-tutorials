@@ -118,3 +118,82 @@ What kind of sub-goals can we add to our game?
 | To shoot demons without taking damage | - Count the number of asteroids shot in a row<br>- Reset the count when the ship loses a life<br>- Limit number of lasers on screen to the current asteroid count |
 | Try to not accidently shoot the astronauts | - Each shot astronaut subtracts one from the goal total<br> - Goal bonus points calculated on the number of astronauts collected |
 
+### Interactivity Mechanics
+
+Interactivity is about putting the player in control. Remember without interactivity, games become a passive experience.
+
+A good games leave the player ***feeling*** they are in control of the game. They ***believe*** they have influence on the outcomes and the decisions they make will significantly impact the gameplay. It is important to note that this is subjective. For example, the upgrading stats in a RPG has negligible effect, especially since the difficulty of the enemies also increases.
+
+A bad game minimises the player's sense of control. For example, being taken-out in a PVP match by someone who is obviously using a cheat.
+
+These are some of the common mechanics for promoting the feeling of control:
+
+- Choices and Control
+- Control Overload!
+- Unfair Punishment
+- Audio Feedback
+
+#### Choices and Control
+
+Players need to be provided with choices that **seem** to have a real effect on the outcome of the game. They may result in different gameplay options, or seem to provide an advantage, while in reality their impact is minimal. For example, choosing different characters in Mario Cart.
+
+If a choice is perceived to provide a real difference to the game play by giving players more control, it gets the player more involved.
+
+We can incorporate choice into our game by letting the player choose between two types of ships. Each ship will have a special power they can activate for a short period by pressing the **ctrl** button.
+
+| Ship | Special Power |
+| --- | --- |
+| Attractor | When active astronauts move towards the ship |
+| Swerver | When active ship's speed increases |
+
+#### Control Overload
+
+Giving the player too many choices can be self-defeating. Too many choices can overwhelm a player and reduce their sense of control. The extent that this is true depends on the type of game being played. A first person shooter that requires the use of all the keys on a keyboard will result in overload, where-as this is the standard expectation for a slight simulator.
+
+In simple games like our, it is worth remembering that most people can only remember five to nine things at once. Therefore, you need to limit the number of elements of gameplay that a player has to hold in their memory.
+
+If you need to include more element, then outsource the remembering to the UI. For example, the bottom of the Minecraft screen displays all the items bound to the `1` to `0` keys. Another example is the 
+
+Another option is to make one key perform different functions according to the context. Instead of having one key for opening doors, and another key for talking to NPCs and another key to pick up items, modern RPG will have one **interact key** that will perform all these tasks depending on what the player is looking at.
+
+Our game has minimal feature and control, so this is not a concern at the moment. Although, it is something you should take into consideration when adding features to this game. 
+
+#### Unfair Punishment
+
+Punishing players for something that is not under their control quickly destroys their sense of control. These punishments are usually unintended and can vary greatly. For example, the below experiences can erode a players sense of control:
+
+- lag between a button press and an action
+- game crashes which loose progress
+- enemy players shooting while clipped into a wall
+- dialogue options with unexpected outcomes
+
+It is important to make sure that the game is playing properly, even when the player is not playing it like you intended.
+
+Lets consider out game
+
+| Unfair punishment | Solution |
+| --- | --- |
+| A laser shot at an asteroid can pass through the asteroid and hit an astronaut | Have the asteroid disappear when it collides with the first object |
+
+#### Audio Feedback
+
+We have already established that confusion reduces a player’s sense of control. A effective way of reducing confusion is through reinforcement during gameplay. We already do this using the score. The score increases when the player does the correct thing, and decreases when the player does the wrong thing.
+
+Another effective way of reinforcing is through using sound. Sounds can feel positive and negative and can provide feedback to player on what they are doing. This informs player if their interactions are good or bad. It is a way of automatically instructing the player.
+
+Lets look at which game events can have sound attached to them:
+
+| Event | Sound |
+| --- | --- |
+| Shooting laser | Positive |
+| Shooting asteroid | Positive |
+| Saving astronaut | Positive |
+| Bonuses picked up | Positive |
+| Menu selection | Positive |
+| Ship collides with asteroid | Negative |
+| Shooting astronaut | Negative |
+
+## Enhancing the game
+
+Now that you have a better understanding of game mechanics and ways you can enhance the game. Choose some of the suggested mechanics and implement them.
+
