@@ -1,6 +1,6 @@
 # Game Design
 
-There are general principles which help create better games. In fact there is an entire industry dedicated to the design of games. There is heaps of academic research into gamer's preferences and how to influence gamers. So the material we cover here, is a really simple introduction into a topic so big that it can cover a range of different careers.
+There are general principles which help create better games. In fact there is an entire industry dedicated to the design of games. There is heaps of academic research into gamer's preferences and how to influence gamers. So the material we cover here, is a really simple introduction into a topic so big that it can cover a range of different careers. If you are interested in diving deeper, I can suggest checking out **[The Psychology of Video Games](https://www.psychologyofgames.com/)**.
 
 First, what makes a game a game?
 
@@ -41,6 +41,80 @@ We are going to look at eight basic mechanics, four that address challenge and f
 
 ### Challenge Mechanics
 
-Different players want different kinds of challenges. **[Quantic Foundry](https://quanticfoundry.com/)** is a market research firm who specialises in assessing games. Below is their model detailing 12 different motivations for why gamers enjoy playing games.
+Different players want different kinds of challenges. **[Quantic Foundry](https://quanticfoundry.com/)** is a market research firm who specialises in assessing games. Their Gamer Motivation Model has 12 different motivations and is based on the idea that different gamers want different types of challenges. 
 
 ![Gamer Motivations](assets/img/gamer_motivations.jpg)
+
+If you are curious to see what your Gamer Profile is, you can **[take a survey](https://apps.quanticfoundry.com/surveys/start/gamerprofile/)**.
+
+We will look at four simple mechanics that improve a game's challenge
+
+- Difficulty
+- Goals
+- Rewards
+- Subgoals
+
+#### Difficulty
+
+Best a challenge causes our brains to release provide a little shot of dopamine. Dopamine is our reward hormone and makes us feel pleasure. But there is a trick to getting that release, we need to set the difficulty at the right level. That means challenges must be easy enough to achieve, but hard enough to be worth it.
+
+If the challenge is too hard, players will not get a success and will loose interest. On the other hand, if the challenge is too easy then the game just become boring. So, you need to aim for the just right level.
+
+You also need to consider that you will have players of different skill levels playing, the the right level of challenge will vary according to the player.
+
+
+
+If you think of our game we have already introduced some mechanics that effect its difficulty. But we can do more.
+
+| The Problem | Impact | The Solution | Implemented |
+| --- | --- | --- | --- |
+| One asteroid touch ends the game. | Make it too hard | Add spaceship lives | Yes |
+| Spaceship escapes asteroids by moving outside the screen | Makes it too easy | Restrict spaceship movement to inside the screen | Yes |
+| Not change in difficulty | Not accessible to all skill levels | Add a difficulty menu which changes asteroid frequency and speed | No |
+
+#### Goals
+
+Challenges are created by setting goals for players to achieve. It is important that goals are clear and progress towards them is obvious. Therefore players need to know what their goals are, and they need to know how they are progressing towards achieving those goals.
+
+Goals also have an interesting impact called the **what-if effect**. The what-if effect occurs when a player fails at something and then thinks "What if I had ..." and then thinks of things they could do differently. The Dark Souls series of games thrives on this effect.
+
+While the what-if effect can be felt at anytime, it is most keenly felt the closer you are to a goal. If they player fall just short of a goal, they will think of a heap of things they could have done differently to ensure success. To this extent, game designers tend to increase the difficulty the closer a player gets to a goal. This is why you find bosses at the end of quests.
+
+```{admonition} Judging Difficulty
+:class: note
+Game developers are notoriouly bad at judging the diffifult of their game. That's because they know how their games works and therefore find them easier. To judge the difficulty of games, have someone else play your games and give feedback on the difficulty
+```
+
+In our game of Space Rescue, we haven't got any goals. Just endlessly collecting astronauts. Lets change that:
+
+| The Problem | Impact | The Solution | Implemented |
+| --- | --- | --- | --- |
+| Player doesn't have a goal | No goal or what-if effect | Set a number of astronauts rescued goal | No |
+| Player doesn't know what the goal is | Goal is unclear | Display number of astronauts to be rescued | No |
+| Player doesn't know their progress towards the goal | Progress is unclear | Display number of astronauts rescued | No |
+| Player might achieve goal too quickly | Might not experience "what-if" effect | Reduce the rate of astronaut spawns as more astronauts are rescued | No |
+
+#### Rewards
+
+Rewards are extremely important for maintaining interest the challenges. They make the player feel better about the effort taken to complete the challenge. They also make the player more likely to complete other challenges.
+
+Helps to give occasional bonus rewards for no reason at all, for example, power-ups at random intervals. The random aspect is important, as it gives hope that a pickup may come at any point. This encourages players to stick with it in desperate situations and adds to the “what if…” effect.
+
+In our game we have a very simple reward system of increasing the score for rescuing astronauts and shooting asteroids, and decreasing the score for shooting astronauts. May be we should add more.
+
+| The Problem | Impact | The Solution | Implemented |
+| --- | --- | --- | --- |
+| No reward for reaching goals | Reducing motivation and undermines the goal | Give big bonus points for reaching goal | No |
+| No random bonus reward | Reduces what-if effect and excitement | Have Zork randomly spawn life and shield bonuses<br>- life bonus add one life <br>- shield bonus gives immunity for a random time | No |
+
+#### Subgoals
+
+Subgoals provide players with short-term or optional challenges. This gives the player something to aim for in the short term, on the way to achieving their Goal. In addition optional subgoals are a good way of providing extra challenges to advanced players.
+
+What kind of sub-goals can we add to our game?
+
+| Subgoal | Application |
+| --- | --- |
+| To shoot demons without taking damage | - Count the number of asteroids shot in a row<br>- Reset the count when the ship loses a life<br>- Limit number of lasers on screen to the current asteroid count |
+| Try to not accidently shoot the astronauts | - Each shot astronaut subtracts one from the goal total<br> - Goal bonus points calculated on the number of astronauts collected |
+
