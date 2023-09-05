@@ -212,7 +212,7 @@ The variable is storing a PyGame sound object, which means that you can use any 
 
 For example:
 
-- `.play(loop=1)` will loop the sound
+- `.play(loops=1)` will loop the sound
 - `.play(fade_ms=500)` will fade the sound in over half a 500ms
 - `.stop()` will stop the sound
 - `.fadeout(500)` will fade the sound out over 500ms
