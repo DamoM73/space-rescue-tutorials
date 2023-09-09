@@ -181,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -219,6 +220,14 @@
         <article role="main">
           <section id="add-lives">
 <h1>Add Lives<a class="headerlink" href="#add-lives" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>apply learnt knowledge to plan code using flow charts</p></li>
+<li><p>learn how to animate objects by dynamicaly changing their images</p></li>
+<li><p>apply learn knowledge to plan code using IPO tables</p></li>
+</ul>
+</aside>
 <p>At the moment colliding with just one asteroid ends the game. This is a bit tough. So for the final step in our game development journey is giving our player lives.</p>
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
@@ -232,7 +241,7 @@
 </ul>
 <p><img alt="Display Lives Flowcharts" src="_images/display_lives_flowchart.png" /></p>
 <p>Both methods require the same resource if you intend for players lives to only decrease. In this case each possible <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> score will only be displayed once. Therefore, each image will only be loaded once.</p>
-<p><strong>Method 2</strong> is superior if you indent player’s lives go up as well as down. In this case it is possible that any given <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> score may be displayed multiple times. <strong>Method 1</strong> may need to load each image <strong>multiple times</strong>, but <strong>Method 2</strong> will still only load each image <strong>once</strong>.</p>
+<p><strong>Method 2</strong> is superior if you intend player’s lives go up as well as down. In this case it is possible that any given <code class="docutils literal notranslate"><span class="pre">LIVES</span></code> score may be displayed multiple times. <strong>Method 1</strong> may need to load each image <strong>multiple times</strong>, but <strong>Method 2</strong> will still only load each image <strong>once</strong>.</p>
 <div class="note admonition">
 <p class="admonition-title">When to use data structures</p>
 <p>Data structures are used in computer science to organize, store, and manage data in a way that enables efficient operations and access. The most common Python data structures are: <strong>lists</strong>, <strong>tuples</strong>, <strong>dictionaries</strong> and <strong>sets</strong>.</p>

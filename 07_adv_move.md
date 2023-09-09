@@ -1,9 +1,11 @@
 # Advanced Spaceship Movement
 
 ```{topic} In this lesson you will:
-- different movement options for key event handlers
-- move objects by working directly with their coordinates
-- move objects by working with their x_speed and y_speed attributes
+- learn about different movement options for key event handlers
+- learn about GameFrame frames
+- apply learnt knowledge to use flowcharts to plan algorithms
+- learn how to move objects by working directly with their coordinates
+- learn how to move objects by working with their `x_speed` and `y_speed` attributes
 ```
 
 ## Different Movement Options

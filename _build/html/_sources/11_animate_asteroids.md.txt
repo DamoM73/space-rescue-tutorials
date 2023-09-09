@@ -2,10 +2,12 @@
 
 ```{topic} In this lesson you will:
 - learn about Object direction
-- making Objects bounce off the edges of a screen
-- testing if an Object is outside the screen
-- removing an object
-- using `print` and the terminal for testing
+- apply learnt knowledge to plan code using IPO tables
+- apply learnt knowledge to initiate movement when objects are created
+- apply learnt knowledge to make Objects bounce off the edges of a screen
+- learn how to test if an Object is outside the screen
+- learn how to delete an object from a Room
+- learn how to use `print` and the terminal for testing
 ```
 
 In this lesson we are going to cover all the animations for asteroid. In particular:

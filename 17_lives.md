@@ -1,5 +1,11 @@
 # Add Lives
 
+```{topic} In this lesson you will:
+- apply learnt knowledge to plan code using flow charts
+- learn how to animate objects by dynamicaly changing their images
+- apply learn knowledge to plan code using IPO tables
+```
+
 At the moment colliding with just one asteroid ends the game. This is a bit tough. So for the final step in our game development journey is giving our player lives.
 
 ## Planning
@@ -19,7 +25,7 @@ Below are flowcharts of two possible ways to approach this:
 
 Both methods require the same resource if you intend for players lives to only decrease. In this case each possible `LIVES` score will only be displayed once. Therefore, each image will only be loaded once.
 
-**Method 2** is superior if you indent player's lives go up as well as down. In this case it is possible that any given `LIVES` score may be displayed multiple times. **Method 1** may need to load each image **multiple times**, but **Method 2** will still only load each image **once**.
+**Method 2** is superior if you intend player's lives go up as well as down. In this case it is possible that any given `LIVES` score may be displayed multiple times. **Method 1** may need to load each image **multiple times**, but **Method 2** will still only load each image **once**.
 
 ```{admonition} When to use data structures
 :class: note

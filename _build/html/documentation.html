@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Using Thonny as the IDE" href="using_thonny.html" /><link rel="prev" title="Game Design" href="18_game_design.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Using Thonny as the IDE" href="using_thonny.html" /><link rel="prev" title="Mechanic - Audio" href="19_add_sounds.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>GameFrame Documentation - Space Rescue</title>
@@ -181,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -385,7 +386,7 @@
 </div>
 </section>
 <section id="add-room-object-room-object">
-<h4>`add_room_object(room_object)<a class="headerlink" href="#add-room-object-room-object" title="Permalink to this heading">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">add_room_object(room_object)</span></code><a class="headerlink" href="#add-room-object-room-object" title="Permalink to this heading">#</a></h4>
 <p>Add a RoomObject to the level.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
@@ -402,17 +403,17 @@
 </pre></div>
 </div>
 <section id="pygame-sound-methods">
-<h5>PyGame sound methods<a class="headerlink" href="#pygame-sound-methods" title="Permalink to this heading">#</a></h5>
-<p>The variable is storing a PyGame sound object, which means that you can use any PyGame mixer method.</p>
+<h5>Pygame sound methods<a class="headerlink" href="#pygame-sound-methods" title="Permalink to this heading">#</a></h5>
+<p>The variable is storing a Pygame sound object, which means that you can use any Pygame mixer method.</p>
 <p>For example:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">.play(loop=1)</span></code> will loop the sound</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.play(loops=1)</span></code> will loop the sound</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.play(fade_ms=500)</span></code> will fade the sound in over half a 500ms</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.stop()</span></code> will stop the sound</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.fadeout(500)</span></code> will fade the sound out over 500ms</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.set_volume(0.5)</span></code> will set the volume to half (range <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>)</p></li>
 </ul>
-<p>Other methods can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play">PyGame mixer docs</a></p>
+<p>Other methods can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play">Pygame mixer docs</a></p>
 </section>
 </section>
 <section id="delete-object-obj-name">
@@ -569,7 +570,7 @@
 </section>
 <section id="key-pressed-self-key">
 <h4><code class="docutils literal notranslate"><span class="pre">key_pressed(self,</span> <span class="pre">key)</span></code><a class="headerlink" href="#key-pressed-self-key" title="Permalink to this heading">#</a></h4>
-<p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any key presses by calling its <code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable <code class="docutils literal notranslate"><span class="pre">key</span></code>.  <a class="reference external" href="http://www.pygame.org/docs/ref/key.html">PyGame key identities can be found here.</a></p>
+<p>If the variable <code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the object will be notified of any key presses by calling its <code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable <code class="docutils literal notranslate"><span class="pre">key</span></code>.  <a class="reference external" href="http://www.pygame.org/docs/ref/key.html">Pygame key identities can be found here.</a></p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> 
     <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_LEFT</span><span class="p">]:</span>
@@ -710,14 +711,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="18_game_design.html">
+          <a class="prev-page" href="19_add_sounds.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Game Design</div>
+                <div class="title">Mechanic - Audio</div>
                 
               </div>
             </a>
@@ -800,9 +801,9 @@
 <li><a class="reference internal" href="#rooms-levels-methods">Rooms/Levels Methods</a><ul>
 <li><a class="reference internal" href="#set-background-image-image-file"><code class="docutils literal notranslate"><span class="pre">set_background_image(image_file)</span></code></a></li>
 <li><a class="reference internal" href="#set-background-scroll-speed"><code class="docutils literal notranslate"><span class="pre">set_background_scroll(speed)</span></code></a></li>
-<li><a class="reference internal" href="#add-room-object-room-object">`add_room_object(room_object)</a></li>
+<li><a class="reference internal" href="#add-room-object-room-object"><code class="docutils literal notranslate"><span class="pre">add_room_object(room_object)</span></code></a></li>
 <li><a class="reference internal" href="#load-sound-sound-file"><code class="docutils literal notranslate"><span class="pre">load_sound(sound_file)</span></code></a><ul>
-<li><a class="reference internal" href="#pygame-sound-methods">PyGame sound methods</a></li>
+<li><a class="reference internal" href="#pygame-sound-methods">Pygame sound methods</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#delete-object-obj-name"><code class="docutils literal notranslate"><span class="pre">delete_object(obj_name)</span></code></a></li>

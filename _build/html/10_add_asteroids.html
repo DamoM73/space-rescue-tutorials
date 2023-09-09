@@ -181,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -222,9 +223,11 @@
 <aside class="topic">
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
+<li><p>apply learnt knowledge to create new object</p></li>
+<li><p>apply learnt knowledge to plan code using an IPO table</p></li>
 <li><p>learn to how to make objects instatiate other objects</p></li>
-<li><p>use GameFrame timers</p></li>
-<li><p>calling functions from within other functions</p></li>
+<li><p>learn how to pass a method as an argument</p></li>
+<li><p>learn how to use GameFrame timers</p></li>
 </ul>
 </aside>
 <p>In the game the Zork will hurl asteroids back at the player’s ship, which the player will the need to dodge. To create an asteroid RoomObject we will need to go through many of the steps we also used for the Ship and Zork.</p>
@@ -348,7 +351,7 @@
 </ul>
 <div class="note admonition">
 <p class="admonition-title">Calling methods from method</p>
-<p>When we use a method to call another method (like in the timer), the target method just uses it’s name. The <code class="docutils literal notranslate"><span class="pre">()</span></code> after the name is dropped.</p>
+<p>When we pass a method as an argument (like in the timer), the argument method just uses it’s name. The <code class="docutils literal notranslate"><span class="pre">()</span></code> after the name is dropped.</p>
 <p>If you include the <code class="docutils literal notranslate"><span class="pre">()</span></code> after the method name, it will be automatically called rather then waiting for the trigger.</p>
 </div>
 <p>We currently have the timer calling the <code class="docutils literal notranslate"><span class="pre">self.spawn_asteroid</span></code> method, which does not exist, so we need to create that. Go to the bottom of the <code class="docutils literal notranslate"><span class="pre">Zork.py</span></code> file and add the code below:</p>

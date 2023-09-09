@@ -1,10 +1,12 @@
 # GamePlay Room
 
 ```{topic} In this lesson you will:
-- learn to plan using flowcharts
 - learn about event driven programming
+- apply learnt knowledge to create a new room
 - learn how listen for and handle keyboard events in GameFrame
+- learn to plan using flowcharts
 - learn how to change GameFrame Rooms
+- apply learnt knowledge to commit and push your code to GitHub
 ```
 
 In this lesson we are going to create the central room for our game. All the game play will occur in this room, so it is aptly names GamePlay. 
@@ -142,7 +144,7 @@ Putting that all together in a flowchart:
 
 ![Title key_press flowchart](assets/img/title_keypress_flowchart.png)
 
-The only tricky part is we are working inside the Tile RoomObject, but we want to change a value in the WelcomeScreen Room, how can we reference this?
+The only tricky part is we are working inside the Title RoomObject, but we want to change a value in the WelcomeScreen Room, how can we reference this?
 
 Remember when we create a RoomObject, we pass to it the room that it is being created in (that's the `self` in the code below).
 

@@ -3,7 +3,9 @@
 ```{topic} In this lesson you will:
 - learn about hitboxes and collisions
 - learn how to detect collisions
-- use the build-in GameFrame feature to detect and handle collisions
+- learn about `self` and `other` objects in collisions
+- learn to use the build-in GameFrame feature to detect and handle collisions
+- apply learnt knowledge to plan code using IPO tables
 ```
 
 ## Hitboxes

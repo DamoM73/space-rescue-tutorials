@@ -184,7 +184,7 @@ Example:
 self.set_background_scroll(5)
 ```
 
-#### `add_room_object(room_object)
+#### `add_room_object(room_object)`
 
 Add a RoomObject to the level.
 
@@ -206,9 +206,9 @@ self.explosion_sound = self.load_sound('explosion.wav')
 self.explosion_sound.play()
 ```
 
-##### PyGame sound methods
+##### Pygame sound methods
 
-The variable is storing a PyGame sound object, which means that you can use any PyGame mixer method.
+The variable is storing a Pygame sound object, which means that you can use any Pygame mixer method.
 
 For example:
 
@@ -218,7 +218,7 @@ For example:
 - `.fadeout(500)` will fade the sound out over 500ms
 - `.set_volume(0.5)` will set the volume to half (range `0.0` to `1.0`)
 
-Other methods can be found on the [PyGame mixer docs](https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play)
+Other methods can be found on the [Pygame mixer docs](https://www.pygame.org/docs/ref/music.html#pygame.mixer.music.play)
 
 #### `delete_object(obj_name)`
 
@@ -388,7 +388,7 @@ def handle_collision(self,other,other_type):
 
 #### `key_pressed(self, key)`
 
-If the variable `handle_key_events` is set to `True`, the object will be notified of any key presses by calling its `key_pressed` function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable `key`.  [PyGame key identities can be found here.](http://www.pygame.org/docs/ref/key.html)
+If the variable `handle_key_events` is set to `True`, the object will be notified of any key presses by calling its `key_pressed` function. To write the code that needs to run in a key press event, the object needs to implement the function. The key identity will be supplied as the variable `key`.  [Pygame key identities can be found here.](http://www.pygame.org/docs/ref/key.html)
 
 Example:
 

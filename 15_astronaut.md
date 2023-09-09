@@ -1,5 +1,14 @@
 # Add Astronaut
 
+```{topic} In this lesson you will:
+- apply learnt knowledge to plan code using IPO tables
+- apply learnt knowledge to create a new object
+- apply learnt knowledge to move object across a screen
+- apply learnt knowledge to keep bounce an object of the edges of the screen
+- apply learnt knowledge to delete an object once it has exited the screen
+- apply learnt knowledge to deal with collisions
+```
+
 Now we will add our target of rescue, the astronauts. All the code in the process will not introduce any new concepts, so lets get straight into the planning.
 
 ## Planning

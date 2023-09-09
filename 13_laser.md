@@ -1,5 +1,12 @@
 # Add Laser
 
+```{topic} In this lesson you will:
+- apply learnt knowledge to plan code using IPO tables
+- apply learnt knowledge to create a new object
+- apply learnt knowledge to move object across a screen
+- learn how to use **flag vairables** to track the **state** to the program
+```
+
 Since Zork is hurling Asteroids at our defenceless space ship, we better give it something to fight back. In this lesson will will arm the space ship with a laser.
 
 ## Shooting the Laser

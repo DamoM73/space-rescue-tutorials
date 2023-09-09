@@ -1,8 +1,10 @@
 # Add Zork Object
 
 ```{topic} In this lesson you will:
-- learn to intiate movement when objects are created
-- using `* -1` to negate numbers (swap + and -)
+- apply learnt knowledge to create a new object
+- apply learnt knowledge to plan code using an IPO table
+- learn how to initiate movement when objects are created
+- learn how to negate numbers (use `* -1` to swap between positve and negative numbers)
 ```
 
 Our boss for this game is called Zork, who is an evil alien. Most of the creation of Zork follows the same processes as creating the ship so we will race through those steps, then we will plan and implement the differences.

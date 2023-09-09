@@ -1,9 +1,11 @@
 # Add Asteroid Object
 
 ```{topic} In this lesson you will:
+- apply learnt knowledge to create new object
+- apply learnt knowledge to plan code using an IPO table
 - learn to how to make objects instatiate other objects
-- use GameFrame timers
-- calling functions from within other functions
+- learn how to pass a method as an argument
+- learn how to use GameFrame timers
 ```
 
 In the game the Zork will hurl asteroids back at the player's ship, which the player will the need to dodge. To create an asteroid RoomObject we will need to go through many of the steps we also used for the Ship and Zork.
@@ -148,7 +150,7 @@ Let's break that code down:
 
 ```{admonition} Calling methods from method
 :class: note
-When we use a method to call another method (like in the timer), the target method just uses it's name. The `()` after the name is dropped.
+When we pass a method as an argument (like in the timer), the argument method just uses it's name. The `()` after the name is dropped.
 
 If you include the `()` after the method name, it will be automatically called rather then waiting for the trigger.
 ```

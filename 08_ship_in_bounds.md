@@ -1,8 +1,9 @@
 # Keeping Ship in the Room
 
 ```{topic} In this lesson you will:
-- learn about how screen coordinates interact with each other
+- learn about how screen coordinates and object coordiantes interact with each other
 - learn about game clocks and how to use their ticks to time events
+- apply learnt knowledge to plan algorithms using IPO tables
 ```
 
 By now you would have noticed that the ship can move both below the bottom of the screen and above the top of the screen. Lets prevent this from happening.

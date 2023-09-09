@@ -1,5 +1,10 @@
 # Laser Asteroid Collision
 
+```{topic} In this lesson you will:
+- apply learnt knowledge to plan code using IPO tables
+- apply learnt knowledge to deal with collisions
+```
+
 We have our lasers shooting at a reasonable frequency, now we need them to do something. Specifically we will make them destroy any asteroids that they collide with.
 
 ## Planning

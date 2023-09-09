@@ -181,6 +181,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Scoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -219,6 +220,16 @@
         <article role="main">
           <section id="add-scoring">
 <h1>Add Scoring<a class="headerlink" href="#add-scoring" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>learn how to create a TestObjects</p></li>
+<li><p>apply learnt knowledge to add object to rooms</p></li>
+<li><p>apply learnt knowledge to use the variables in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></p></li>
+<li><p>apply learnt knowledge to plan code using IPO tables</p></li>
+<li><p>learn how to dynamically change values in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></p></li>
+</ul>
+</aside>
 <p>Now we have all our moving part, it’s time to reward the player for their efforts, and what better way to reward them, than using scoring.</p>
 <p>GameFrame is an event-driven framework, so the easiest way in incorporate scoring it to connect it to various events.</p>
 <p>We will be providing the player with both positive and negative scoring events:</p>
@@ -262,7 +273,10 @@
 <span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="note admonition">
+<p class="admonition-title">File name and class name can differ</p>
 <p>Before we unpack this code, it is worth noting that, for the first time, the name of the class and the file name differs. They don’t have to be the same. We are going to have two HUD (Heads Up Display) elements: score and lives. It make sense to keep these two classes in the same file. Alternatively we could have made two files <code class="docutils literal notranslate"><span class="pre">score.py</span></code> and <code class="docutils literal notranslate"><span class="pre">lives.py</span></code>. You will find that in coding there are many valid paths to the destination.</p>
+</div>
 <p>Exploring this code a bit more:</p>
 <ul class="simple">
 <li><p><strong>line 1</strong>: the <code class="docutils literal notranslate"><span class="pre">Score</span></code> class is a <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> and the variable <code class="docutils literal notranslate"><span class="pre">SCORE</span></code> is part of <code class="docutils literal notranslate"><span class="pre">GameFrame.Globals</span></code> so these need to be imported.</p></li>

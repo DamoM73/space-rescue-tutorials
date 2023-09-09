@@ -1,5 +1,13 @@
 # Add Scoring
 
+```{topic} In this lesson you will:
+- learn how to create a TestObjects
+- apply learnt knowledge to add object to rooms
+- apply learnt knowledge to use the variables in `Globals.py`
+- apply learnt knowledge to plan code using IPO tables
+- learn how to dynamically change values in `Globals.py`
+```
+
 Now we have all our moving part, it's time to reward the player for their efforts, and what better way to reward them, than using scoring.
 
 GameFrame is an event-driven framework, so the easiest way in incorporate scoring it to connect it to various events.
@@ -51,7 +59,10 @@ class Score(TextObject):
         self.update_text()
 ```
 
+```{admonition} File name and class name can differ
+:class: note
 Before we unpack this code, it is worth noting that, for the first time, the name of the class and the file name differs. They don't have to be the same. We are going to have two HUD (Heads Up Display) elements: score and lives. It make sense to keep these two classes in the same file. Alternatively we could have made two files `score.py` and `lives.py`. You will find that in coding there are many valid paths to the destination.
+```
 
 Exploring this code a bit more:
 

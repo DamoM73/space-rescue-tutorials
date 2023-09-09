@@ -1,5 +1,11 @@
 # Game Design
 
+```{topic} In this lesson you will:
+- learn about the unique characteristics that make games (challenge and interactivity)
+- learn mechanics that can be used to enhance challenge.
+- learn mechanics that can be used to enhace interactivity.
+```
+
 There are general principles which help create better games. In fact there is an entire industry dedicated to the design of games. There is heaps of academic research into gamer's preferences and how to influence gamers. So the material we cover here, is a really simple introduction into a topic so big that it can cover a range of different careers. If you are interested in diving deeper, I can suggest checking out **[The Psychology of Video Games](https://www.psychologyofgames.com/)**.
 
 First, what makes a game a game?
@@ -183,13 +189,11 @@ Another effective way of reinforcing is through using sound. Sounds can feel pos
 
 Lets look at which game events can have sound attached to them:
 
-| Event | Sound |
+| Event | Sound Effect|
 | --- | --- |
 | Shooting laser | Positive |
 | Shooting asteroid | Positive |
 | Saving astronaut | Positive |
-| Bonuses picked up | Positive |
-| Menu selection | Positive |
 | Ship collides with asteroid | Negative |
 | Shooting astronaut | Negative |
 

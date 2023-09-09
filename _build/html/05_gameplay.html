@@ -181,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -222,10 +223,12 @@
 <aside class="topic">
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
-<li><p>learn to plan using flowcharts</p></li>
 <li><p>learn about event driven programming</p></li>
+<li><p>apply learnt knowledge to create a new room</p></li>
 <li><p>learn how listen for and handle keyboard events in GameFrame</p></li>
+<li><p>learn to plan using flowcharts</p></li>
 <li><p>learn how to change GameFrame Rooms</p></li>
+<li><p>apply learnt knowledge to commit and push your code to GitHub</p></li>
 </ul>
 </aside>
 <p>In this lesson we are going to create the central room for our game. All the game play will occur in this room, so it is aptly names GamePlay.</p>
@@ -337,7 +340,7 @@
 <p>One of the Rooms/Levels variables is called <strong>running</strong>, and the GameFrame docs tell us that if this is set to False then the room stops running. That sounds like the what we want to do.</p>
 <p>Putting that all together in a flowchart:</p>
 <p><img alt="Title key_press flowchart" src="_images/title_keypress_flowchart.png" /></p>
-<p>The only tricky part is we are working inside the Tile RoomObject, but we want to change a value in the WelcomeScreen Room, how can we reference this?</p>
+<p>The only tricky part is we are working inside the Title RoomObject, but we want to change a value in the WelcomeScreen Room, how can we reference this?</p>
 <p>Remember when we create a RoomObject, we pass to it the room that it is being created in (that’s the <code class="docutils literal notranslate"><span class="pre">self</span></code> in the code below).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
 </pre></div>
