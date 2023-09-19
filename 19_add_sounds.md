@@ -2,6 +2,7 @@
 
 ```{topic} In this lesson you will:
 - apply learnt knowledge to plan code using using IPO tables
+- improve gameplay by incorporating identified mechanics
 - learn how to add background music
 - learn how to add sound effects to events
 ```

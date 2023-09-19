@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Add Astronaut" href="15_astronaut.html" /><link rel="prev" title="Add Laser" href="13_laser.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GameFrame Documentation" href="documentation.html" /><link rel="prev" title="Mechanic - Audio" href="19_add_sounds.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
-        <title>Laser Asteroid Collision - Space Rescue</title>
+        <title>Mechanic - Unfair Punishment - Space Rescue</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -176,13 +176,13 @@
 <li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Move Asteroids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Laser Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20_unfair_punishment.html">Mechanic - Unfair Punishment</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Mechanic - Unfair Punishment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
 </ul>
@@ -219,111 +219,56 @@
           </label>
         </div>
         <article role="main">
-          <section id="laser-asteroid-collision">
-<h1>Laser Asteroid Collision<a class="headerlink" href="#laser-asteroid-collision" title="Permalink to this heading">#</a></h1>
+          <section id="mechanic-unfair-punishment">
+<h1>Mechanic - Unfair Punishment<a class="headerlink" href="#mechanic-unfair-punishment" title="Permalink to this heading">#</a></h1>
 <aside class="topic">
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
-<li><p>apply learnt knowledge to plan code using IPO tables</p></li>
-<li><p>apply learnt knowledge to deal with collisions</p></li>
+<li><p>apply learnt knowledge to plan code using using IPO tables</p></li>
+<li><p>improve gameplay by incorporating an identified mechanic</p></li>
+<li><p>apply learnt knowledge to destroy an object in response to an event</p></li>
 </ul>
 </aside>
-<p>We have our lasers shooting at a reasonable frequency, now we need them to do something. Specifically we will make them destroy any asteroids that they collide with.</p>
+<p>In the <strong><a class="reference internal" href="18_game_design.html"><span class="std std-doc">Game Design lesson</span></a></strong>, we identified when a game involved unfair punishment, it undermines the players experience of interactivity. We also identified a mechanic that unfairly punished the player:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unfair punishment</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A laser shot at an asteroid can pass through the asteroid and hit an astronaut</p></td>
+<td><p>Have the asteroid disappear when it collides with the first object</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In this lesson we will remove this unfair punishment.</p>
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Permalink to this heading">#</a></h2>
-<p>We have written very similar code to address the collision between an Asteroid and the Ship. This time, instead of ending the game, we simply want to destroy the asteroid.</p>
-<p>Stating this clearly, upon collision between an Asteroid and a Laser we want:</p>
+<p>We have already identified a solution for this problem: Have the asteroid disappear when it collides with the first object. Fortunately, we already know the tool to achieve this, since we have used it before. We have used <a class="reference internal" href="documentation.html#delete_objectobj"><span class="std std-ref">delete_object()</span></a> many times throughout our code, so how should we apply it here? To answer that we need to consider two questions:</p>
 <ul class="simple">
-<li><p>the asteroid to be destroyed</p></li>
-<li><p>the laser to keep moving across the screen</p></li>
-</ul>
-<p>We need to work out how to destroy objects. Check the GameFame Documentation under the <a class="reference internal" href="documentation.html#roomobject-methods"><span class="std std-ref">RoomObjects methods</span></a> and you will find the <code class="docutils literal notranslate"><span class="pre">delete_object</span></code> method that removes an object from the room.</p>
-<p>We will place the code, summarised in the IPO table below, in the Laser class.</p>
-<p><img alt="Laser Asteroid collision IPO" src="_images/laser_asteroid_collision_IPO.png" /></p>
-</section>
-<section id="coding">
-<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h2>
-<p>Remember in GameFrame handling collisions is a two step process. First you must register which object collisions to detect using the <code class="docutils literal notranslate"><span class="pre">register_collision_object</span></code> method, and then create a methods called <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> which holds the game logic associated with the collision.</p>
-<section id="objects-laser-py">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#objects-laser-py" title="Permalink to this heading">#</a></h3>
-<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code> and add the highlighted code below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Laser</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
-<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos"> 5</span><span class="sd">    Class for the lasers shot by the Ship</span>
-<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
-<span class="linenos"> 7</span>    
-<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">10</span><span class="sd">        Inistialise the laser</span>
-<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
-<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
-<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="linenos">14</span>        
-<span class="linenos">15</span>        <span class="c1"># set image</span>
-<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Laser.png&quot;</span><span class="p">)</span>
-<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="linenos">18</span>        
-<span class="linenos">19</span>        <span class="c1"># set movement</span>
-<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="linenos">21</span>        
-<span class="hll"><span class="linenos">22</span>        <span class="c1"># handle events</span>
-</span><span class="hll"><span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Asteroid&quot;</span><span class="p">)</span>
-</span><span class="linenos">24</span>        
-<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">26</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">27</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
-<span class="linenos">28</span><span class="sd">        &quot;&quot;&quot;</span>
-<span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
-<span class="linenos">30</span>        
-<span class="linenos">31</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">32</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">33</span><span class="sd">        removes laser if it has exited the room</span>
-<span class="linenos">34</span><span class="sd">        &quot;&quot;&quot;</span>
-<span class="linenos">35</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
-<span class="linenos">36</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="linenos">37</span>            
-<span class="hll"><span class="linenos">38</span>    <span class="c1"># --- Event handlers</span>
-</span><span class="hll"><span class="linenos">39</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
-</span><span class="hll"><span class="linenos">40</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span class="hll"><span class="linenos">41</span><span class="sd">        Handles laser collisions with other registered objects</span>
-</span><span class="hll"><span class="linenos">42</span><span class="sd">        &quot;&quot;&quot;</span>
-</span><span class="hll"><span class="linenos">43</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
-</span><span class="hll"><span class="linenos">44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-</span></pre></div>
-</div>
-<p>Most of this code should be familiar, but we’ll investigate it anyway:</p>
-<ul class="simple">
-<li><p><strong>lines 22-23</strong>: registers collisions with <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> objects as an event that must be handled</p></li>
-<li><p><strong>lines 38-44</strong>: handles registered collisions</p></li>
-<li><p><strong>line 43</strong>: handles collisions with <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> objects</p></li>
-<li><p><strong>line 44</strong>:</p>
+<li><p>What object needs to be deleted?</p>
 <ul>
-<li><p>deletes the <code class="docutils literal notranslate"><span class="pre">other</span></code> object - in this case the asteroid the laser has collided with</p></li>
-<li><p>from the room that this ship (<code class="docutils literal notranslate"><span class="pre">self</span></code>) is in</p></li>
+<li><p>the Laser</p></li>
+</ul>
+</li>
+<li><p>When event trigger the deletion?</p>
+<ul>
+<li><p>Either of the two Laser collisions (asteroid or astronaut)</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Laser.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test that everything is working as planned.</p>
+<p>What does that look like in a IPO table?</p>
+<p><img alt="laser deletion IPO" src="_images/remove_laser_ipo.png" /></p>
+<p>We simply need to include the <code class="docutils literal notranslate"><span class="pre">delete_object()</span></code> method in both the asteroid collision event handler and the astronaut collision event handler. Let’s get coding.</p>
 </section>
-</section>
-<section id="commit-and-push">
-<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
-<p>We have finished and tested another section of code so we should make a Git commit.</p>
-<p>To do this:</p>
-<ol class="arabic simple">
-<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <strong>Laser asteroid collision</strong>.</p></li>
-<li><p>Click on <strong>Commit to main</strong></p></li>
-<li><p>Click on <strong>Push origin</strong></p></li>
-</ol>
-<p>Now the work from this lesson is committed and synced with the online repo.</p>
-</section>
-<section id="completed-file-states">
-<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
-<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
-<section id="id1">
-<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h2>
+<section id="objects-laser-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects\Laser.py</span></code><a class="headerlink" href="#objects-laser-py" title="Permalink to this heading">#</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects\Laser.py</span></code> and add the highlighted code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Laser</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
@@ -347,27 +292,120 @@
 <span class="linenos">21</span>        
 <span class="linenos">22</span>        <span class="c1"># handle events</span>
 <span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Asteroid&quot;</span><span class="p">)</span>
-<span class="linenos">24</span>        
-<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">26</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">27</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
-<span class="linenos">28</span><span class="sd">        &quot;&quot;&quot;</span>
-<span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
-<span class="linenos">30</span>        
-<span class="linenos">31</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">32</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">33</span><span class="sd">        removes laser if it has exited the room</span>
-<span class="linenos">34</span><span class="sd">        &quot;&quot;&quot;</span>
-<span class="linenos">35</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
-<span class="linenos">36</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="linenos">37</span>            
-<span class="linenos">38</span>    <span class="c1"># --- Event handlers</span>
-<span class="linenos">39</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
-<span class="linenos">40</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos">41</span><span class="sd">        Handles laser collisions with other registered objects</span>
-<span class="linenos">42</span><span class="sd">        &quot;&quot;&quot;</span>
-<span class="linenos">43</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
-<span class="linenos">44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Astronaut&quot;</span><span class="p">)</span>
+<span class="linenos">25</span>        
+<span class="linenos">26</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">28</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
+<span class="linenos">29</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">30</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">31</span>        
+<span class="linenos">32</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        removes laser if it has exited the room</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
+<span class="linenos">37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">38</span>            
+<span class="linenos">39</span>    <span class="c1"># --- Event handlers</span>
+<span class="linenos">40</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Handles laser collisions with other registered objects</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
+<span class="linenos">45</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">asteroid_shot</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">47</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">48</span>        <span class="k">elif</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Astronaut&quot;</span><span class="p">:</span>
+<span class="linenos">49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">astronaut_shot</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="linenos">50</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">51</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="hll"><span class="linenos">52</span>        <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Let’s unpack that code:</p>
+<ul class="simple">
+<li><p><strong>line 52</strong>: removes <code class="docutils literal notranslate"><span class="pre">self</span></code> (<strong>this instance of Laser</strong>)</p>
+<ul>
+<li><p>we could have placed the <code class="docutils literal notranslate"><span class="pre">delete_object()</span></code> in both the asteroid and astronaut collisions, but since we want to use it on all laser collisions, we can simply place it in the <code class="docutils literal notranslate"><span class="pre">handle_collision()</span></code> method.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects\Laser.py</span></code>.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p>Now run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test that the laser disappears when it hits both astronauts and asteroids.</p>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Permalink to this heading">#</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <strong>Added lasers</strong>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects\Laser.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">Laser</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Class for the lasers shot by the Ship</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Inistialise the laser</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Laser.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set movement</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>        <span class="c1"># handle events</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Asteroid&quot;</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Astronaut&quot;</span><span class="p">)</span>
+<span class="linenos">25</span>        
+<span class="linenos">26</span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">28</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
+<span class="linenos">29</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">30</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">31</span>        
+<span class="linenos">32</span>    <span class="k">def</span> <span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        removes laser if it has exited the room</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
+<span class="linenos">37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">38</span>            
+<span class="linenos">39</span>    <span class="c1"># --- Event handlers</span>
+<span class="linenos">40</span>    <span class="k">def</span> <span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Handles laser collisions with other registered objects</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
+<span class="linenos">45</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">asteroid_shot</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">47</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">48</span>        <span class="k">elif</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Astronaut&quot;</span><span class="p">:</span>
+<span class="linenos">49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">astronaut_shot</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="linenos">50</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">51</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="linenos">52</span>        <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -379,23 +417,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="15_astronaut.html">
+          <a class="next-page" href="documentation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Add Astronaut</div>
+                <div class="title">GameFrame Documentation</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="13_laser.html">
+          <a class="prev-page" href="19_add_sounds.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Add Laser</div>
+                <div class="title">Mechanic - Audio</div>
                 
               </div>
             </a>
@@ -436,15 +474,16 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Laser Asteroid Collision</a><ul>
+<li><a class="reference internal" href="#">Mechanic - Unfair Punishment</a><ul>
 <li><a class="reference internal" href="#planning">Planning</a></li>
 <li><a class="reference internal" href="#coding">Coding</a><ul>
-<li><a class="reference internal" href="#objects-laser-py"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-laser-py"><code class="docutils literal notranslate"><span class="pre">Objects\Laser.py</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
 <li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
 <li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
-<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects\Laser.py</span></code></a></li>
 </ul>
 </li>
 </ul>
