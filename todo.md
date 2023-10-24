@@ -8,7 +8,7 @@
 ## Game mechanics implementation
 
 - Difficulty selection
-- Goal 
+- Goal
   - Astronauts rescued
   - Reward upon completion
 - Random bonus rewards
