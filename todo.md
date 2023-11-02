@@ -21,8 +21,11 @@
   - Swerver
   - Attractor
 
+## Other features
+
+- using databases
+
 ## Other game types
 
 - platformer concept
 - top down concept
-- 
