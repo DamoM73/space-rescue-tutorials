@@ -95,7 +95,7 @@ Let's check the [GameFrame documentation](documentation.md#roomslevels) to see h
 
 ### `Rooms/WelcomeScreen.py`
 
-So we need to create a new file in the `Rooms` folder called `WelcomeScreen.py`.
+So we need to **create a new file** in the `Rooms` folder called `WelcomeScreen.py`.
 
 In this file we are going to create a WelcomeScreen class. This is going to be a sub-class of the Level class provided by GameFrame. So the first thing we need to do is to import the Level class from GameFrame:
 
@@ -206,7 +206,7 @@ Save `WelcomeScreen.py` and then run the program again using `MainController.py`
 
 ## Create Title RoomObject
 
-Not that we have a Room we can place the Title RoomObject inside it. So let's check the [GameFrame docs](documentation.md#roomobject) to see how to do this. This is a similar process to creating a Room:
+Note that we have a Room we can place the Title RoomObject inside it. So let's check the [GameFrame docs](documentation.md#roomobject) to see how to do this. This is a similar process to creating a Room:
 
 1. Create a new file in the `Objects` folder
 2. Import the parent class
