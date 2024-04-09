@@ -115,4 +115,121 @@ To use this style of movement, change the `key_pressed` function to the followin
 
 ### Choose your movement
 
-Give all three movement options a try, and choose the one that you want to use. Just remember that if you choose either the **in motion while key is pressed** or the **always in motion with acceleration** option, your code will be slightly different.
+Give all three movement options a try, and choose the one that you want to use.
+
+1. Open **`Objects.Ship.py`**
+2. Replace the `key_pressed` method with your chosen method
+
+Just remember that if you choose either the **in motion while key is pressed** or the **always in motion with acceleration** option, your code will be slightly different.
+
+## Completed file states
+
+Below are all the files we used in this lesson in their finished state. **Use this to check if your code is correct**.
+
+### `Objects/Ship.py` with always in motion movement
+
+```{code-block} python
+:linenos:
+from GameFrame import RoomObject
+import pygame
+
+class Ship(RoomObject):
+    """
+    A class for the player's avitar (the Ship)
+    """
+    
+    def __init__(self, room, x, y):
+        """
+        Initialise the Ship object
+        """
+        RoomObject.__init__(self, room, x, y)
+        
+        # set image
+        image = self.load_image("Ship.png")
+        self.set_image(image,100,100)
+        
+        # register events
+        self.handle_key_events = True
+        
+    def key_pressed(self, key):
+        """
+        Respond to keypress up and down
+        """
+        
+        if key[pygame.K_w]:
+            self.y_speed = -10
+        elif key[pygame.K_s]:
+            self.y_speed = 10
+```
+
+### `Objects/Ship.py` with in motion while key pressed
+
+```{code-block} python
+:linenos:
+from GameFrame import RoomObject
+import pygame
+
+class Ship(RoomObject):
+    """
+    A class for the player's avitar (the Ship)
+    """
+    
+    def __init__(self, room, x, y):
+        """
+        Initialise the Ship object
+        """
+        RoomObject.__init__(self, room, x, y)
+        
+        # set image
+        image = self.load_image("Ship.png")
+        self.set_image(image,100,100)
+        
+        # register events
+        self.handle_key_events = True
+        
+    def key_pressed(self, key):
+        """
+        Respond to keypress up and down
+        """
+        
+        if key[pygame.K_w]:
+            self.y -= 10
+        elif key[pygame.K_s]:
+            self.y += 10
+```
+
+### `Objects/Ship.py` with always in motion with acceleration
+
+```{code-block} python
+:linenos:
+from GameFrame import RoomObject
+import pygame
+
+class Ship(RoomObject):
+    """
+    A class for the player's avitar (the Ship)
+    """
+    
+    def __init__(self, room, x, y):
+        """
+        Initialise the Ship object
+        """
+        RoomObject.__init__(self, room, x, y)
+        
+        # set image
+        image = self.load_image("Ship.png")
+        self.set_image(image,100,100)
+        
+        # register events
+        self.handle_key_events = True
+        
+    def key_pressed(self, key):
+        """
+        Respond to keypress up and down
+        """
+        
+        if key[pygame.K_w]:
+            self.y_speed -= 5
+        elif key[pygame.K_s]:
+            self.y_speed += 5
+```

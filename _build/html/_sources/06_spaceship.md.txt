@@ -3,7 +3,7 @@
 ```{topic} In this lesson you will:
 - learn how Pygame handles 2D graphics
 - learn how to plan using IPO tables
-- apply leartn knowledge to create new RoomObjects
+- apply learnt knowledge to create new RoomObjects
 - apply learnt knowledge to listen for keystrokes
 - learn how to move a RoomObject in response to keystrokes
 ```

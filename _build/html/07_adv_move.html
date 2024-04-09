@@ -321,7 +321,121 @@
 </section>
 <section id="choose-your-movement">
 <h3>Choose your movement<a class="headerlink" href="#choose-your-movement" title="Permalink to this heading">#</a></h3>
-<p>Give all three movement options a try, and choose the one that you want to use. Just remember that if you choose either the <strong>in motion while key is pressed</strong> or the <strong>always in motion with acceleration</strong> option, your code will be slightly different.</p>
+<p>Give all three movement options a try, and choose the one that you want to use.</p>
+<ol class="arabic simple">
+<li><p>Open <strong><code class="docutils literal notranslate"><span class="pre">Objects.Ship.py</span></code></strong></p></li>
+<li><p>Replace the <code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> method with your chosen method</p></li>
+</ol>
+<p>Just remember that if you choose either the <strong>in motion while key is pressed</strong> or the <strong>always in motion with acceleration</strong> option, your code will be slightly different.</p>
+</section>
+</section>
+<section id="completed-file-states">
+<h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Permalink to this heading">#</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="objects-ship-py-with-always-in-motion-movement">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> with always in motion movement<a class="headerlink" href="#objects-ship-py-with-always-in-motion-movement" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># register events</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">24</span><span class="sd">        Respond to keypress up and down</span>
+<span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+<span class="linenos">28</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="linenos">29</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+<span class="linenos">30</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="objects-ship-py-with-in-motion-while-key-pressed">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> with in motion while key pressed<a class="headerlink" href="#objects-ship-py-with-in-motion-while-key-pressed" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># register events</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">24</span><span class="sd">        Respond to keypress up and down</span>
+<span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+<span class="linenos">28</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="mi">10</span>
+<span class="linenos">29</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+<span class="linenos">30</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="objects-ship-py-with-always-in-motion-with-acceleration">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> with always in motion with acceleration<a class="headerlink" href="#objects-ship-py-with-always-in-motion-with-acceleration" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">GameFrame</span> <span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    A class for the player&#39;s avitar (the Ship)</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">10</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">11</span><span class="sd">        Initialise the Ship object</span>
+<span class="linenos">12</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Ship.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># register events</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">23</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">24</span><span class="sd">        Respond to keypress up and down</span>
+<span class="linenos">25</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">26</span>        
+<span class="linenos">27</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+<span class="linenos">28</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">-=</span> <span class="mi">5</span>
+<span class="linenos">29</span>        <span class="k">elif</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+<span class="linenos">30</span>            <span class="bp">self</span><span class="o">.</span><span class="n">y_speed</span> <span class="o">+=</span> <span class="mi">5</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -394,6 +508,12 @@
 <li><a class="reference internal" href="#in-motion-while-key-pressed">In motion while key pressed</a></li>
 <li><a class="reference internal" href="#always-in-motion-with-acceleration">Always in motion with acceleration</a></li>
 <li><a class="reference internal" href="#choose-your-movement">Choose your movement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#completed-file-states">Completed file states</a><ul>
+<li><a class="reference internal" href="#objects-ship-py-with-always-in-motion-movement"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> with always in motion movement</a></li>
+<li><a class="reference internal" href="#objects-ship-py-with-in-motion-while-key-pressed"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> with in motion while key pressed</a></li>
+<li><a class="reference internal" href="#objects-ship-py-with-always-in-motion-with-acceleration"><code class="docutils literal notranslate"><span class="pre">Objects/Ship.py</span></code> with always in motion with acceleration</a></li>
 </ul>
 </li>
 </ul>

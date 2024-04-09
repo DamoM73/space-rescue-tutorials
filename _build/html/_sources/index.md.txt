@@ -26,6 +26,7 @@ This website provides tutorials on building a Python PyGame game using the [Game
 18_game_design
 19_add_sounds
 20_unfair_punishment
+99_planning
 documentation
 using_thonny
 ```
