@@ -29,3 +29,7 @@
 
 - platformer concept
 - top down concept
+
+## Other pages
+
+- common errors
