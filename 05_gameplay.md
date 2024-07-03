@@ -83,7 +83,7 @@ from Rooms.GamePlay import GamePlay
 
 To make this change we need to go back to the `Globals.py` file in the `GameFrame` folder.
 
-Look for the `levels` variable. It contains a list of strings. According to the [GameFrame docs](documentation.md#gameframeglobalspy) this holds the names of all the levels in the game, in the order that a player progresses through them.
+Look for the `levels` variable. It contains a list of strings. According to the [GameFrame docs](99_documentation.md#gameframeglobalspy) this holds the names of all the levels in the game, in the order that a player progresses through them.
 
 Currently that list is the default `["WelcomeScreen", "Maze", "ScrollingShooter", "BreakOut"]` with `"WelcomeScreen"` first. This works with our program, but the rest don't. So change the list to the highlighted code below:
 
@@ -100,7 +100,7 @@ levels = ["WelcomeScreen", "GamePlay"]
 
 Now we have created the new Room and have added it to the list of rooms, we can create the trigger to swap from the WelcomeScreen to the GamePlay. So let's investigate how to do this.
 
-Remember that the game logic resides within RoomObjects, therefore we will check out RoomObject in the [GameFrame docs](documentation.md#roomobject). 
+Remember that the game logic resides within RoomObjects, therefore we will check out RoomObject in the [GameFrame docs](99_documentation.md#roomobject). 
 
 Reading the RoomObject docs section we see that there are two references to the **keys**: the **handle_key_events** variable, and the **key_pressed** method. Lets look into these two.
 
@@ -136,7 +136,7 @@ class Title(RoomObject):
 
 The GameFrame docs tell us that when `self.handle_key_events = True` then any key presses will call the **key_pressed** function. We need to write the code that needs to run in a key press event inside the key_pressed function. The GameFrame docs also tell us that, the key identity will be supplied as the variable **key**. These are Pygame key identities, which can be found on the [Pygame docs](https://www.pygame.org/docs/ref/key.html). We want the identity for the space key which is `K_SPACE`.
 
-So we know this method will be run when a key is pressed, specifically the space key, but what do we want it to do? Well, we want it to close the WelcomeScreen Room and move onto the next Room in the list - GamePlay. How do we do this? Lets check what the [GameFrame docs](documentation.md#roomslevels) say about this.
+So we know this method will be run when a key is pressed, specifically the space key, but what do we want it to do? Well, we want it to close the WelcomeScreen Room and move onto the next Room in the list - GamePlay. How do we do this? Lets check what the [GameFrame docs](99_documentation.md#roomslevels) say about this.
 
 One of the Rooms/Levels variables is called **running**, and the GameFrame docs tell us that if this is set to False then the room stops running. That sounds like the what we want to do.
 
@@ -153,7 +153,7 @@ Remember when we create a RoomObject, we pass to it the room that it is being cr
 self.add_room_object(Title(self, 240, 200))
 ```
 
-This means the RoomObject knows what room it is in. Checking the [GameFrame docs](documentation.md#roomobject-variables) and there is a variable called `room` which stored this information.
+This means the RoomObject knows what room it is in. Checking the [GameFrame docs](99_documentation.md#roomobject-variables) and there is a variable called `room` which stored this information.
 
 With all this now worked out, we can write our code.
 

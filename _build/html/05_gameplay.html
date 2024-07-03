@@ -183,8 +183,10 @@
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_unfair_punishment.html">Mechanic - Unfair Punishment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">GameFrame Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using_thonny.html">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="96_planning.html">Creating your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="97_using_thonny.html">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="98_index_of_topics.html">Index of Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_documentation.html">GameFrame Documentation</a></li>
 </ul>
 
 </div>
@@ -295,7 +297,7 @@
 <section id="gameframe-globals-py">
 <h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Permalink to this heading">#</a></h3>
 <p>To make this change we need to go back to the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder.</p>
-<p>Look for the <code class="docutils literal notranslate"><span class="pre">levels</span></code> variable. It contains a list of strings. According to the <a class="reference internal" href="documentation.html#gameframe-globals-py"><span class="std std-ref">GameFrame docs</span></a> this holds the names of all the levels in the game, in the order that a player progresses through them.</p>
+<p>Look for the <code class="docutils literal notranslate"><span class="pre">levels</span></code> variable. It contains a list of strings. According to the <a class="reference internal" href="99_documentation.html#gameframe-globals-py"><span class="std std-ref">GameFrame docs</span></a> this holds the names of all the levels in the game, in the order that a player progresses through them.</p>
 <p>Currently that list is the default <code class="docutils literal notranslate"><span class="pre">[&quot;WelcomeScreen&quot;,</span> <span class="pre">&quot;Maze&quot;,</span> <span class="pre">&quot;ScrollingShooter&quot;,</span> <span class="pre">&quot;BreakOut&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;WelcomeScreen&quot;</span></code> first. This works with our program, but the rest don’t. So change the list to the highlighted code below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span><span class="c1"># - Set the order of the rooms - #</span>
 <span class="linenos">19</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
@@ -307,7 +309,7 @@
 <section id="changing-rooms-using-space">
 <h2>Changing Rooms using space<a class="headerlink" href="#changing-rooms-using-space" title="Permalink to this heading">#</a></h2>
 <p>Now we have created the new Room and have added it to the list of rooms, we can create the trigger to swap from the WelcomeScreen to the GamePlay. So let’s investigate how to do this.</p>
-<p>Remember that the game logic resides within RoomObjects, therefore we will check out RoomObject in the <a class="reference internal" href="documentation.html#roomobject"><span class="std std-ref">GameFrame docs</span></a>.</p>
+<p>Remember that the game logic resides within RoomObjects, therefore we will check out RoomObject in the <a class="reference internal" href="99_documentation.html#roomobject"><span class="std std-ref">GameFrame docs</span></a>.</p>
 <p>Reading the RoomObject docs section we see that there are two references to the <strong>keys</strong>: the <strong>handle_key_events</strong> variable, and the <strong>key_pressed</strong> method. Lets look into these two.</p>
 <section id="handle-key-events-variable">
 <h3>handle_key_events variable<a class="headerlink" href="#handle-key-events-variable" title="Permalink to this heading">#</a></h3>
@@ -337,7 +339,7 @@
 <section id="key-pressed-method">
 <h3>key_pressed method<a class="headerlink" href="#key-pressed-method" title="Permalink to this heading">#</a></h3>
 <p>The GameFrame docs tell us that when <code class="docutils literal notranslate"><span class="pre">self.handle_key_events</span> <span class="pre">=</span> <span class="pre">True</span></code> then any key presses will call the <strong>key_pressed</strong> function. We need to write the code that needs to run in a key press event inside the key_pressed function. The GameFrame docs also tell us that, the key identity will be supplied as the variable <strong>key</strong>. These are Pygame key identities, which can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/key.html">Pygame docs</a>. We want the identity for the space key which is <code class="docutils literal notranslate"><span class="pre">K_SPACE</span></code>.</p>
-<p>So we know this method will be run when a key is pressed, specifically the space key, but what do we want it to do? Well, we want it to close the WelcomeScreen Room and move onto the next Room in the list - GamePlay. How do we do this? Lets check what the <a class="reference internal" href="documentation.html#rooms-levels"><span class="std std-ref">GameFrame docs</span></a> say about this.</p>
+<p>So we know this method will be run when a key is pressed, specifically the space key, but what do we want it to do? Well, we want it to close the WelcomeScreen Room and move onto the next Room in the list - GamePlay. How do we do this? Lets check what the <a class="reference internal" href="99_documentation.html#rooms-levels"><span class="std std-ref">GameFrame docs</span></a> say about this.</p>
 <p>One of the Rooms/Levels variables is called <strong>running</strong>, and the GameFrame docs tell us that if this is set to False then the room stops running. That sounds like the what we want to do.</p>
 <p>Putting that all together in a flowchart:</p>
 <p><img alt="Title key_press flowchart" src="_images/title_keypress_flowchart.png" /></p>
@@ -346,7 +348,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This means the RoomObject knows what room it is in. Checking the <a class="reference internal" href="documentation.html#roomobject-variables"><span class="std std-ref">GameFrame docs</span></a> and there is a variable called <code class="docutils literal notranslate"><span class="pre">room</span></code> which stored this information.</p>
+<p>This means the RoomObject knows what room it is in. Checking the <a class="reference internal" href="99_documentation.html#roomobject-variables"><span class="std std-ref">GameFrame docs</span></a> and there is a variable called <code class="docutils literal notranslate"><span class="pre">room</span></code> which stored this information.</p>
 <p>With all this now worked out, we can write our code.</p>
 <section id="id1">
 <h4><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
