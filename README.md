@@ -1,9 +1,13 @@
 # Space Rescue Tutorials
 
-Space Rescue tutorials is my Github Pages website to teach students Python. It's aimed at secondary students who are just moving beyond basic intro lessons.
+This repository provides a set of tutorials to teach secondary students Python programming through a space-themed game development project using **Pygame**. The project is built on the **GameFrame** framework, designed to help students understand how to structure larger programming projects.
 
-The lessons are based on Pygame. It uses the excellent GameFrame framework to help students develop an understanding on how of structure larger project.
+## Features
 
-## Feedback
+- **Space-themed game** development.
+- Covers **Python OOP** and game development concepts.
+- Includes a buildable project under the `_build` folder.
 
-Any feedback is welcome, please just log an issue. This is a work-in-progress which will be constantly updated and refined as I take more students through these tutorials.
+## License
+
+This project is licensed under the MIT License.
