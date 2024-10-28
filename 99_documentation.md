@@ -334,7 +334,7 @@ Set to `False` by default, this variable determines whether an object is notifie
 
 Set to `False` by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to `True`
 
-#### `self.curr_rotation`
+#### `curr_rotation`
 
 The angle the object is currently facing, where:
 
