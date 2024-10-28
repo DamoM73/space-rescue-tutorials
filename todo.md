@@ -29,6 +29,7 @@
 
 - platformer concept
 - top down concept
+- moving window
 
 ## Other pages
 
