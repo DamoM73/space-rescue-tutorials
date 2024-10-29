@@ -460,7 +460,7 @@ Calculates the next tick coordinates for a object travelling at `angle` and `spe
 
 #### `rotate(angle)`
 
-Rotates the object so that it's direction is pointed towards `angle`.
+Rotates the object by `angle` degrees. Positive `angle` rotates in the anti-clockwise direction, negative `angle` rotates in a clockwise direction.
 
 #### `rotate_to_coordinate(x, y)`
 
