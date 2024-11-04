@@ -449,10 +449,10 @@ Use this method to run code for the object on each tick of the game clock.
 
 Sets the direction and speed of the object. `angle` is in degrees where:
 
-- 0&deg; - right &rarr;
-- 90&deg; - up &uarr;
-- 180&deg; - left &larr;
-- 270&deg; - down &darr;
+- 0&deg; - right &rarr;
+- 90&deg; - up &uarr;
+- 180&deg; - left &larr;
+- 270&deg; - down &darr;
 
 #### `get_direction_coordinates(angle, speed)`
 
