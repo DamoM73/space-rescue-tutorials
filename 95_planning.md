@@ -1,4 +1,4 @@
-# Creating your own game
+# Planning your own game
 
 ```{topic} In this lesson you will:
 - learn how to plan a new game for the GameFrame framework
@@ -67,4 +67,4 @@ Now you have sketched out the basic structure of the new game, it is time to sta
 
 The blank copy of GameFrame can be found **[here on GitHub](https://github.com/DamoM73/GameFrame)**.
 
-Follow the sames process we used in **[the Setup page](./02_setup.md)**.
+Follow the same process we used in **[the Setup page](./02_setup.md)**.

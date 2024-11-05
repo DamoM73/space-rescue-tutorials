@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Index of Topics" href="98_index_of_topics.html" />
 
     <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>GameFrame Documentation - Space Rescue</title>
@@ -162,7 +162,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
@@ -183,7 +183,10 @@
 <li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_unfair_punishment.html">Mechanic - Unfair Punishment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="99_planning.html">Creating your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95_planning.html">Planning your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="97_using_thonny.html">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="98_index_of_topics.html">Index of Topics</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GameFrame Documentation</a></li>
 </ul>
 
 </div>
@@ -521,8 +524,8 @@
 <h4><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code><a class="headerlink" href="#handle-mouse-events" title="Permalink to this heading">#</a></h4>
 <p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default, this variable determines whether an object is notified of mouse presses and movement. To listen for mouse events, set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </section>
-<section id="self-curr-rotation">
-<h4><code class="docutils literal notranslate"><span class="pre">self.curr_rotation</span></code><a class="headerlink" href="#self-curr-rotation" title="Permalink to this heading">#</a></h4>
+<section id="curr-rotation">
+<h4><code class="docutils literal notranslate"><span class="pre">curr_rotation</span></code><a class="headerlink" href="#curr-rotation" title="Permalink to this heading">#</a></h4>
 <p>The angle the object is currently facing, where:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> is →</p></li>
@@ -625,10 +628,10 @@
 <h4><code class="docutils literal notranslate"><span class="pre">set_dircetion(angle,speed)</span></code><a class="headerlink" href="#set-dircetion-angle-speed" title="Permalink to this heading">#</a></h4>
 <p>Sets the direction and speed of the object. <code class="docutils literal notranslate"><span class="pre">angle</span></code> is in degrees where:</p>
 <ul class="simple">
-<li><p>0° - right →</p></li>
-<li><p>90° - up ↑</p></li>
-<li><p>180° - left ←</p></li>
-<li><p>270° - down ↓</p></li>
+<li><p>0° - right →</p></li>
+<li><p>90° - up ↑</p></li>
+<li><p>180° - left ←</p></li>
+<li><p>270° - down ↓</p></li>
 </ul>
 </section>
 <section id="get-direction-coordinates-angle-speed">
@@ -637,7 +640,7 @@
 </section>
 <section id="rotate-angle">
 <h4><code class="docutils literal notranslate"><span class="pre">rotate(angle)</span></code><a class="headerlink" href="#rotate-angle" title="Permalink to this heading">#</a></h4>
-<p>Rotates the object so that it’s direction is pointed towards <code class="docutils literal notranslate"><span class="pre">angle</span></code>.</p>
+<p>Rotates the object by <code class="docutils literal notranslate"><span class="pre">angle</span></code> degrees. Positive <code class="docutils literal notranslate"><span class="pre">angle</span></code> rotates in the anti-clockwise direction, negative <code class="docutils literal notranslate"><span class="pre">angle</span></code> rotates in a clockwise direction.</p>
 </section>
 <section id="rotate-to-coordinate-x-y">
 <h4><code class="docutils literal notranslate"><span class="pre">rotate_to_coordinate(x,</span> <span class="pre">y)</span></code><a class="headerlink" href="#rotate-to-coordinate-x-y" title="Permalink to this heading">#</a></h4>
@@ -703,7 +706,17 @@
         
         <div class="related-pages">
           
-          
+          <a class="prev-page" href="98_index_of_topics.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Index of Topics</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -813,7 +826,7 @@
 <li><a class="reference internal" href="#gravity"><code class="docutils literal notranslate"><span class="pre">gravity</span></code></a></li>
 <li><a class="reference internal" href="#handle-key-events"><code class="docutils literal notranslate"><span class="pre">handle_key_events</span></code></a></li>
 <li><a class="reference internal" href="#handle-mouse-events"><code class="docutils literal notranslate"><span class="pre">handle_mouse_events</span></code></a></li>
-<li><a class="reference internal" href="#self-curr-rotation"><code class="docutils literal notranslate"><span class="pre">self.curr_rotation</span></code></a></li>
+<li><a class="reference internal" href="#curr-rotation"><code class="docutils literal notranslate"><span class="pre">curr_rotation</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#roomobject-methods">RoomObject Methods</a><ul>

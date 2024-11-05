@@ -18,3 +18,4 @@ Below is a list of topics and which tutorials cover them.
 | Move RoomObject using Keys | **[Add Zork Object](./09_add_boss.md)**<br>**[GamePlay Room](./05_gameplay.md)**<br>**[Spaceship Object](./06_spaceship.md)**<br>**[Add Laser](./13_laser.md)** |
 | Spawn RoomObject in response to key presses | **[Add Laser](./13_laser.md)** |
 | Spawn RoomObject in response to timers | **[Add Asteroids](./10_add_asteroids.md)**<br>**[Add Astronaut](./15_astronaut.md)**|
+| Window size | **[Welcome Screen](./04_welcome.md)** |
