@@ -273,12 +273,8 @@ VS Code will now:
 
 Finally to check that the virtual environment has been setup.
 
-1. Click the **Terminal** menu
-2. Choose **New Terminal**
-
-![New Terminal](assets/img/new_terminal.png)
-
-3. Check that the prompt in terminal (bottom of the screen) starts with **(.venv)**
+1. Click on any `.py` file
+2. Check the status bar in the bottom right
 
 ![Venv confirmation](assets/img/venv_confirm.png)
 
