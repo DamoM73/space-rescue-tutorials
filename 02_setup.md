@@ -227,38 +227,28 @@ If you are a Windows user, you might need to run a Powershell command before you
 To do this:
 
 1. Open Powershell **as Adminstrator**
-2. Type the following: `Set-ExecutionPolicy Unrestricted -Force` then Enter
+2. Type the following: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` then Enter
 
 You shouldn't need to do this again, unless you get a new computer.
 ```
 
 To create a virtual environment for this project:
 
-1. Click on the `requirements.txt` file to open it.
-2. Then click on the blue **Create Environment** button on the bottom right
+1. Press **Ctrl/Cmd** + **Shift** + **P**
+2. Type **Python** at the top
+3. Choose **Python: Create Environment...**
 
 ![Create venv 1](assets/img/create_venv_1.png)
 
-```{admonition} Create Environment button missing
-:class: error
-If the **Create Environment** button doesn't appear when you open the `requirements.txt` file, then:
-
-1. Press `Ctrl` + `Shift` + `P` (Windows) / `Shift` + `Command` + `P` (macOS)
-2. Type `Python` at the top
-3. Choose `Python: Create Environment...`
-
-![Create venv problem](assets/img/create_venv_trouble.png)
-```
-
-3. At the top choose the **Venv** option
+4. At the top choose the **Venv** option
 
 ![Create venv 2](assets/img/create_venv_2.png)
 
-4. Then choose the latest version of Python that you just installed
+5. Then choose the latest version of Python that you just installed
 
 ![Create venv 3](assets/img/create_venv_3.png)
 
-5. Tick the box beside **requirements.txt** and then **ok**
+6. Tick the box beside **requirements.txt** and then **ok**
 
 ![Create venv 4](assets/img/create_venv_4.png)
 
@@ -271,12 +261,9 @@ VS Code will now:
 
 ### Check Virtual Environment
 
-Finally to check that the virtual environment has been setup.
+To check that the virtual environment is active, look at the status bar at the bottom left for Python versions and virtual environment name (see below).
 
-1. Click on any `.py` file
-2. Check the status bar in the bottom right
-
-![Venv confirmation](assets/img/venv_confirm.png)
+![Venv confirmation](assets/img/check_venv.png)
 
 ## Make first commit and push
 
