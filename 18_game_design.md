@@ -119,7 +119,7 @@ What kind of sub-goals can we add to our game?
 
 | Subgoal | Application |
 | --- | --- |
-| To shoot demons without taking damage | - Count the number of asteroids shot in a row<br>- Reset the count when the ship loses a life<br>- Limit number of lasers on screen to the current asteroid count |
+| To shoot asteroids without taking damage | - Count the number of asteroids shot in a row<br>- Reset the count when the ship loses a life<br>- Limit number of lasers on screen to the current asteroid count |
 | Try to not accidently shoot the astronauts | - Each shot astronaut subtracts one from the goal total<br> - Goal bonus points calculated on the number of astronauts collected |
 
 ### Interactivity Mechanics
