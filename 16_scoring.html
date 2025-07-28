@@ -1,0 +1,803 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Add Lives" href="17_lives.html" /><link rel="prev" title="Add Astronaut" href="15_astronaut.html" />
+        <link rel="prefetch" href="_static/logo.png" as="image" />
+
+    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
+        <title>Add Scoring - Space Rescue</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --font-stack: gill sans, sans-serif;
+  --font-stack--monospace: monaco, monospace;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Space Rescue</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Space Rescue</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Move Asteroids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Add Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_unfair_punishment.html">Mechanic - Unfair Punishment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95_planning.html">Planning your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="96_creating.html">Coding your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="97_using_thonny.html">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="98_index_of_topics.html">Index of Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_documentation.html">GameFrame Documentation</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/16_scoring.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="add-scoring">
+<h1>Add Scoring<a class="headerlink" href="#add-scoring" title="Link to this heading">¶</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>learn how to create a TestObjects</p></li>
+<li><p>apply learnt knowledge to add object to rooms</p></li>
+<li><p>apply learnt knowledge to use the variables in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></p></li>
+<li><p>apply learnt knowledge to plan code using IPO tables</p></li>
+<li><p>learn how to dynamically change values in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></p></li>
+</ul>
+</aside>
+<p>Now we have all our moving part, it’s time to reward the player for their efforts, and what better way to reward them, than using scoring.</p>
+<p>GameFrame is an event-driven framework, so the easiest way in incorporate scoring it to connect it to various events.</p>
+<p>We will be providing the player with both positive and negative scoring events:</p>
+<ul class="simple">
+<li><p>Rescuing an astronaut → +50 points</p></li>
+<li><p>Shooting an asteroid → + 5 points</p></li>
+<li><p>Shooting an astronaut → -10 points</p></li>
+</ul>
+<p>Lets work out how we can incorporate this into our code.</p>
+<section id="display-score">
+<h2>Display Score<a class="headerlink" href="#display-score" title="Link to this heading">¶</a></h2>
+<section id="planning">
+<h3>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h3>
+<p>First thing we need to do is find the scoring mechanism. Look to the GameFrame Documentation under the <strong><a class="reference internal" href="#documentation.md#globals-variables"><span class="xref myst">Globals variables</span></a></strong> you will see a variable called <code class="docutils literal notranslate"><span class="pre">SCORE</span></code>. We can use this to keep track of the score.</p>
+<p>Next we need to work how we can draw numbers onto the screen. Again, referring to the GameFrame Documents you will notice the <strong><a class="reference internal" href="#documentation.md#text-object"><span class="xref myst">Text Object</span></a></strong> which specialises in displaying text. The docs also tell us that it is a special type of RoomObject, so we can treat it like a RoomObject. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> requires extra arguments when you instantiate a TextObject. The TextObject also has a method to write new text values to the screen.</p>
+<p>So we have our two mechanisms for recording and displaying the score. Before we start changing the score, lets try to display the current SCORE on the screen.</p>
+</section>
+<section id="coding">
+<h3>Coding<a class="headerlink" href="#coding" title="Link to this heading">¶</a></h3>
+<section id="objects-hud-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code><a class="headerlink" href="#objects-hud-py" title="Link to this heading">¶</a></h4>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder <strong>create</strong> a new file called <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code>, then enter the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Score</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for displaying the current score</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set values         </span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;Arial Black&#39;</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">File name and class name can differ</p>
+<p>Before we unpack this code, it is worth noting that, for the first time, the name of the class and the file name differs. They don’t have to be the same. We are going to have two HUD (Heads Up Display) elements: score and lives. It make sense to keep these two classes in the same file. Alternatively we could have made two files <code class="docutils literal notranslate"><span class="pre">score.py</span></code> and <code class="docutils literal notranslate"><span class="pre">lives.py</span></code>. You will find that in coding there are many valid paths to the destination.</p>
+</div>
+<p>Exploring this code a bit more:</p>
+<ul class="simple">
+<li><p><strong>line 1</strong>: the <code class="docutils literal notranslate"><span class="pre">Score</span></code> class is a <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> and the variable <code class="docutils literal notranslate"><span class="pre">SCORE</span></code> is part of <code class="docutils literal notranslate"><span class="pre">GameFrame.Globals</span></code> so these need to be imported.</p></li>
+<li><p><strong>lines 7-12</strong>:</p>
+<ul>
+<li><p>define the class as a subclass of the <code class="docutils literal notranslate"><span class="pre">TextObjects</span></code> class</p></li>
+<li><p>identifies four arguments that must be passed when creating a <code class="docutils literal notranslate"><span class="pre">Score</span></code> object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">room</span></code> → the room the object will be placed in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> → the x coordinate for the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> → the y coordinate for the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> → the text that is going to be displayed</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>lines 15-18</strong>: sets all the font values for the text</p></li>
+<li><p><strong>line 19</strong>: write the text to the screen. Without the method call nothing will appear on the screen.</p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code>.</p>
+</section>
+<section id="objects-init-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Link to this heading">¶</a></h4>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code> and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Ship</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Zork</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Asteroid</span><span class="w"> </span><span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Laser</span><span class="w"> </span><span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos">6</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Astronaut</span><span class="w"> </span><span class="kn">import</span> <span class="n">Astronaut</span>
+<span class="hll"><span class="linenos">7</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Hud</span><span class="w"> </span><span class="kn">import</span> <span class="n">Score</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="rooms-gameplay-py">
+<h2><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Link to this heading">¶</a></h2>
+<p>Finally we need to add the Score to the GamePlay class.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code> and add the highlighted code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Ship</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos"> 3</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Zork</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zork</span>
+<span class="hll"><span class="linenos"> 4</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Hud</span><span class="w"> </span><span class="kn">import</span> <span class="n">Score</span>
+</span><span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">class</span><span class="w"> </span><span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set background image</span>
+<span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        
+<span class="linenos">13</span>        <span class="c1"># add objects</span>
+<span class="linenos">14</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Ship</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Zork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="linenos">16</span>        
+<span class="hll"><span class="linenos">17</span>        <span class="c1"># add HUD items</span>
+</span><span class="hll"><span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+</span><span class="hll"><span class="linenos">19</span>                           <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> 
+</span><span class="hll"><span class="linenos">20</span>                           <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">))</span>
+</span><span class="hll"><span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to see if our score appears on the screen.</p>
+</section>
+<section id="changing-score">
+<h2>Changing score<a class="headerlink" href="#changing-score" title="Link to this heading">¶</a></h2>
+<p>We have a score on our screen, now we need a way to change that score. Looking at our objective, certain collision events will result in points being awarded or taken away. The easiest way to achieve this is to create a method that can be called to update the score.</p>
+<section id="id1">
+<h3>Planning<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>The score updating method will need to do two things:</p>
+<ol class="arabic simple">
+<li><p>change the value of the global score variable</p></li>
+<li><p>write the new score on the screen</p></li>
+</ol>
+<p>Expressing that in an IPO table:</p>
+<p><img alt="score update IPO" src="_images/score_update_IPO.png" /></p>
+<p>Lets put that into code.</p>
+</section>
+<section id="id2">
+<h3>Coding<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code> and add the following code to the end of the <code class="docutils literal notranslate"><span class="pre">Score</span></code> class</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">21</span>    <span class="k">def</span><span class="w"> </span><span class="nf">update_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="linenos">22</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">        Updates the score and redraws the text</span>
+<span class="linenos">24</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">25</span>        <span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span> <span class="o">+=</span> <span class="n">change</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Breaking that code down:</p>
+<ul class="simple">
+<li><p><strong>line 21</strong>: defines a method used to change the score</p></li>
+<li><p><strong>line 25</strong>: adjusts the <code class="docutils literal notranslate"><span class="pre">Global.SCORE</span></code> value by the provided <code class="docutils literal notranslate"><span class="pre">change</span></code> argument</p></li>
+<li><p><strong>line 26</strong>: changes the value of the Score’s text to the new value of <code class="docutils literal notranslate"><span class="pre">Globals.SCORE</span></code></p></li>
+<li><p><strong>line 27</strong>: writes the new text to the screen</p></li>
+</ul>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code> and then run the game with <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test for any errors.</p>
+</section>
+</section>
+<section id="adding-scores-to-collisions">
+<h2>Adding scores to collisions<a class="headerlink" href="#adding-scores-to-collisions" title="Link to this heading">¶</a></h2>
+<p>Our objective identify three collisions we want to add scoring to:</p>
+<ol class="arabic simple">
+<li><p>Laser → Asteroid</p></li>
+<li><p>Laser → Astronaut</p></li>
+<li><p>Astronaut → Ship</p></li>
+</ol>
+<p>We already have event handlers for all three of these collisions, so we just need to adjust them.</p>
+<p>Lets start with the Laser ones.</p>
+<section id="objects-laser-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#objects-laser-py" title="Link to this heading">¶</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code> and add the highlighted text to the <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">39</span>    <span class="c1"># --- Event handlers</span>
+<span class="linenos">40</span>    <span class="k">def</span><span class="w"> </span><span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Handles laser collisions with other registered objects</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
+<span class="linenos">45</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="hll"><span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class="linenos">47</span>        <span class="k">elif</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Astronaut&quot;</span><span class="p">:</span>
+<span class="linenos">48</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="hll"><span class="linenos">49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Unpacking these lines:</p>
+<ul class="simple">
+<li><p><strong>line 46</strong>: responds to the Asteroid collision event (ie. laser shoots an asteroid) by increasing the score by <code class="docutils literal notranslate"><span class="pre">5</span></code></p></li>
+<li><p><strong>line 49</strong>: responds to the Astronaut collision event (ie. laser shoots an astronaut) by decreasing the score by <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+</ul>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></p>
+<p>Onto the Astronaut &amp; Ship collisions</p>
+</section>
+<section id="objects-astronaut-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code><a class="headerlink" href="#objects-astronaut-py" title="Link to this heading">¶</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code> and add the highlighted code to the <code class="docutils literal notranslate"><span class="pre">handle_collision</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">31</span>    <span class="c1"># --- Event Handlers</span>
+<span class="linenos">32</span>    <span class="k">def</span><span class="w"> </span><span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        Handles the collision event for Astronaut objects</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="c1"># ship collision</span>
+<span class="linenos">37</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">38</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="hll"><span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p><strong>Line 39</strong> work exactly the same as the last two calls to <code class="docutils literal notranslate"><span class="pre">update_score</span></code>, but this time it add <code class="docutils literal notranslate"><span class="pre">50</span></code> to the score.</p>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code>.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>Time to test our code. We just made three changes to the code so we want to check for the success of all three changes. To do this we will use a <strong>testing table</strong> consisting of four columns:</p>
+<ul class="simple">
+<li><p><strong>Test</strong>: Lists what you are testing</p></li>
+<li><p><strong>Expected results</strong>: State what you expect the result to be</p></li>
+<li><p><strong>Actual results</strong>: Record what the actual result was when you tested</p></li>
+<li><p><strong>Remedy</strong>: If the actual results differ from the expected results, record has you fixed the problem.</p></li>
+</ul>
+<p>Below is our testing table with the first two columns completed. Copy it down and finish it off.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>Expected results</p></th>
+<th class="head"><p>Actual results</p></th>
+<th class="head"><p>Remedy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Laser shoots asteroid</p></td>
+<td><p>score + 5</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Laser shoots astronaut</p></td>
+<td><p>score - 10</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Ship collects astronaut</p></td>
+<td><p>score + 50</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <strong>Added scoring</strong>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Score</span><span class="p">(</span><span class="n">TextObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    A class for displaying the current score</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">        Intialises the score object</span>
+<span class="linenos">10</span><span class="sd">        &quot;&quot;&quot;</span>         
+<span class="linenos">11</span>        <span class="c1"># include attributes and methods from TextObject</span>
+<span class="linenos">12</span>        <span class="n">TextObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># set values         </span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;Arial Black&#39;</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+<span class="linenos">20</span>        
+<span class="linenos">21</span>    <span class="k">def</span><span class="w"> </span><span class="nf">update_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="linenos">22</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">        Updates the score and redraws the text</span>
+<span class="linenos">24</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">25</span>        <span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span> <span class="o">+=</span> <span class="n">change</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Globals</span><span class="o">.</span><span class="n">SCORE</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Ship</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ship</span>
+<span class="linenos">3</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Zork</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zork</span>
+<span class="linenos">4</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Asteroid</span><span class="w"> </span><span class="kn">import</span> <span class="n">Asteroid</span>
+<span class="linenos">5</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Laser</span><span class="w"> </span><span class="kn">import</span> <span class="n">Laser</span>
+<span class="linenos">6</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Astronaut</span><span class="w"> </span><span class="kn">import</span> <span class="n">Astronaut</span>
+<span class="linenos">7</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Hud</span><span class="w"> </span><span class="kn">import</span> <span class="n">Score</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span><span class="p">,</span> <span class="n">Globals</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Laser</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Class for the lasers shot by the Ship</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Inistialise the laser</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attributes and methods from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Laser.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set movement</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>        <span class="c1"># handle events</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Asteroid&quot;</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Astronaut&quot;</span><span class="p">)</span>
+<span class="linenos">25</span>        
+<span class="linenos">26</span>    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">28</span><span class="sd">        Determine what happens to the laser on each tick of the game clock</span>
+<span class="linenos">29</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">30</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">31</span>        
+<span class="linenos">32</span>    <span class="k">def</span><span class="w"> </span><span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        removes laser if it has exited the room</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">Globals</span><span class="o">.</span><span class="n">SCREEN_WIDTH</span><span class="p">:</span>
+<span class="linenos">37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">38</span>            
+<span class="linenos">39</span>    <span class="c1"># --- Event handlers</span>
+<span class="linenos">40</span>    <span class="k">def</span><span class="w"> </span><span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">41</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">42</span><span class="sd">        Handles laser collisions with other registered objects</span>
+<span class="linenos">43</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">44</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Asteroid&quot;</span><span class="p">:</span>
+<span class="linenos">45</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">47</span>        <span class="k">elif</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Astronaut&quot;</span><span class="p">:</span>
+<span class="linenos">48</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="linenos">49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Astronaut</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Class for the astronauts escaping from Zork</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    
+<span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">        Initialise the astronaut instance</span>
+<span class="linenos">11</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="c1"># include attirbutes and method from RoomObject</span>
+<span class="linenos">13</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">room</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># set image</span>
+<span class="linenos">16</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Astronaut.png&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>        <span class="c1"># set travel direction</span>
+<span class="linenos">20</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_direction</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos">21</span>        
+<span class="linenos">22</span>        <span class="c1"># handle events</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">register_collision_object</span><span class="p">(</span><span class="s2">&quot;Ship&quot;</span><span class="p">)</span>
+<span class="linenos">24</span>        
+<span class="linenos">25</span>    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">26</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">27</span><span class="sd">        Determines what happend to the astronaut on each tick of the game clock</span>
+<span class="linenos">28</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">outside_of_room</span><span class="p">()</span>
+<span class="linenos">30</span>        
+<span class="linenos">31</span>    <span class="c1"># --- Event Handlers</span>
+<span class="linenos">32</span>    <span class="k">def</span><span class="w"> </span><span class="nf">handle_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">other_type</span><span class="p">):</span>
+<span class="linenos">33</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">34</span><span class="sd">        Handles the collision event for Astronaut objects</span>
+<span class="linenos">35</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">36</span>        <span class="c1"># ship collision</span>
+<span class="linenos">37</span>        <span class="k">if</span> <span class="n">other_type</span> <span class="o">==</span> <span class="s2">&quot;Ship&quot;</span><span class="p">:</span>
+<span class="linenos">38</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos">39</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">score</span><span class="o">.</span><span class="n">update_score</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="linenos">40</span>            
+<span class="linenos">41</span>    <span class="k">def</span><span class="w"> </span><span class="nf">outside_of_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">42</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">43</span><span class="sd">        removes astronauts that have exited the room</span>
+<span class="linenos">44</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">45</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">46</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">delete_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="17_lives.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Add Lives</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="15_astronaut.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Add Astronaut</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Damien Murtagh
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/DamoM73/space-rescue-tutorials" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Add Scoring</a><ul>
+<li><a class="reference internal" href="#display-score">Display Score</a><ul>
+<li><a class="reference internal" href="#planning">Planning</a></li>
+<li><a class="reference internal" href="#coding">Coding</a><ul>
+<li><a class="reference internal" href="#objects-hud-py"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects.__init__.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#changing-score">Changing score</a><ul>
+<li><a class="reference internal" href="#id1">Planning</a></li>
+<li><a class="reference internal" href="#id2">Coding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-scores-to-collisions">Adding scores to collisions</a><ul>
+<li><a class="reference internal" href="#objects-laser-py"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-astronaut-py"><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Objects/Hud.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=a4664895"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

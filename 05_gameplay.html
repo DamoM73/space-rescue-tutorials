@@ -1,0 +1,676 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Spaceship Object" href="06_spaceship.html" /><link rel="prev" title="Welcome screen" href="04_welcome.html" />
+        <link rel="prefetch" href="_static/logo.png" as="image" />
+
+    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
+        <title>GamePlay Room - Space Rescue</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --font-stack: gill sans, sans-serif;
+  --font-stack--monospace: monaco, monospace;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Space Rescue</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Space Rescue</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_welcome.html">Welcome screen</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GamePlay Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Move Asteroids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_unfair_punishment.html">Mechanic - Unfair Punishment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95_planning.html">Planning your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="96_creating.html">Coding your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="97_using_thonny.html">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="98_index_of_topics.html">Index of Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_documentation.html">GameFrame Documentation</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/05_gameplay.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="gameplay-room">
+<h1>GamePlay Room<a class="headerlink" href="#gameplay-room" title="Link to this heading">¶</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>learn about event driven programming</p></li>
+<li><p>apply learnt knowledge to create a new room</p></li>
+<li><p>learn how listen for and handle keyboard events in GameFrame</p></li>
+<li><p>learn to plan using flowcharts</p></li>
+<li><p>learn how to change GameFrame Rooms</p></li>
+<li><p>apply learnt knowledge to commit and push your code to GitHub</p></li>
+</ul>
+</aside>
+<p>In this lesson we are going to create the central room for our game. All the game play will occur in this room, so it is aptly names GamePlay.</p>
+<p>We will:</p>
+<ul class="simple">
+<li><p>Create a new Room called GamePlay</p></li>
+<li><p>Indicate that this is the next room after the WelcomeScreen</p></li>
+<li><p>Make the game switch from WelcomeScreen to GamePlay when the player presses space.</p></li>
+</ul>
+<p>Before starting we need to understand event-driven programming.</p>
+<section id="event-driven-programming">
+<h2>Event-driven Programming<a class="headerlink" href="#event-driven-programming" title="Link to this heading">¶</a></h2>
+<p>Event-driven programming is an approach where a program waits for specific events to occur and then performs designated actions in response to those events. Instead of following a predetermined sequence, the program listens for events, such as a button press or a message arriving, and executes specific code based on those events. It allows programs to be more interactive and responsive by dynamically responding to user actions or external inputs, enhancing the overall user experience.</p>
+<p>We will be creating an event driven program, which makes sense for a computer game. You want the game to respond when the user does something, or when characters bump into each other.</p>
+<p>To create an event-driven program you need to typically follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Identify the <strong>Events</strong> that will trigger actions.</p></li>
+<li><p>Define <strong>Event Handlers</strong>: the code that will be executed when an event is triggered.</p></li>
+<li><p><strong>Register</strong> Event Handlers: associate the event handlers with their corresponding events.</p></li>
+<li><p>Start <strong>Event Loop</strong>: Begin the event loop or <strong>event listener</strong>, which continuously waits for events to occur.</p></li>
+<li><p><strong>Execute</strong> Event Handlers: When an event occurs, the event loop triggers the associated event handler.</p></li>
+<li><p><strong>Repeat</strong>: The event loop continues running, waiting for more events. This cycle repeats until the program is exited or a specific condition is met.</p></li>
+</ol>
+<p>GameFrame handles many of the tasks above, but its important to understand the terminology before we continue.</p>
+</section>
+<section id="create-gameplay-room">
+<h2>Create GamePlay Room<a class="headerlink" href="#create-gameplay-room" title="Link to this heading">¶</a></h2>
+<p>To create the GamePlay Room we follow the same steps as we did for the WelcomeScreen Room.</p>
+<ol class="arabic simple">
+<li><p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder</p></li>
+<li><p>Import the Levels class from GameFrame</p></li>
+<li><p>Create the GamePlay class</p></li>
+<li><p>Initialise the GamePlay class calling the parent class <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and then add a backdrop</p></li>
+<li><p>Add the new file to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder</p></li>
+</ol>
+<section id="rooms-gameplay-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Link to this heading">¶</a></h3>
+<p>Create a <strong>new file</strong> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code>, then add the following code to it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">class</span><span class="w"> </span><span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos">4</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos">5</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">6</span>        
+<span class="linenos">7</span>        <span class="c1"># set background image</span>
+<span class="linenos">8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">GamePlay.py</span></code> file.</p>
+</section>
+<section id="rooms-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code><a class="headerlink" href="#rooms-init-py" title="Link to this heading">¶</a></h3>
+<p>Then <strong>open</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder and add the highlighted code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Rooms.WelcomeScreen</span><span class="w"> </span><span class="kn">import</span> <span class="n">WelcomeScreen</span>
+<span class="hll"><span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Rooms.GamePlay</span><span class="w"> </span><span class="kn">import</span> <span class="n">GamePlay</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+</section>
+</section>
+<section id="make-gameplay-next-room">
+<h2>Make GamePlay next room<a class="headerlink" href="#make-gameplay-next-room" title="Link to this heading">¶</a></h2>
+<section id="gameframe-globals-py">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Link to this heading">¶</a></h3>
+<p>To make this change we need to go back to the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder.</p>
+<p>Look for the <code class="docutils literal notranslate"><span class="pre">levels</span></code> variable. It contains a list of strings. According to the <a class="reference internal" href="99_documentation.html#gameframe-globals-py"><span class="std std-ref">GameFrame docs</span></a> this holds the names of all the levels in the game, in the order that a player progresses through them.</p>
+<p>Currently that list is the default <code class="docutils literal notranslate"><span class="pre">[&quot;WelcomeScreen&quot;,</span> <span class="pre">&quot;Maze&quot;,</span> <span class="pre">&quot;ScrollingShooter&quot;,</span> <span class="pre">&quot;BreakOut&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;WelcomeScreen&quot;</span></code> first. This works with our program, but the rest don’t. So change the list to the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span><span class="c1"># - Set the order of the rooms - #</span>
+<span class="linenos">19</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code>.</p>
+</section>
+</section>
+<section id="changing-rooms-using-space">
+<h2>Changing Rooms using space<a class="headerlink" href="#changing-rooms-using-space" title="Link to this heading">¶</a></h2>
+<p>Now we have created the new Room and have added it to the list of rooms, we can create the trigger to swap from the WelcomeScreen to the GamePlay. So let’s investigate how to do this.</p>
+<p>Remember that the game logic resides within RoomObjects, therefore we will check out RoomObject in the <a class="reference internal" href="99_documentation.html#roomobject"><span class="std std-ref">GameFrame docs</span></a>.</p>
+<p>Reading the RoomObject docs section we see that there are two references to the <strong>keys</strong>: the <strong>handle_key_events</strong> variable, and the <strong>key_pressed</strong> method. Lets look into these two.</p>
+<section id="handle-key-events-variable">
+<h3>handle_key_events variable<a class="headerlink" href="#handle-key-events-variable" title="Link to this heading">¶</a></h3>
+<p>The <strong>handle_key_events</strong> variable determines whether an object is notified of keyboard presses. The GameFrame docs tell us to listen for key events, we need to set this variable to <code class="docutils literal notranslate"><span class="pre">True</span></code>. We want to the Title RoomObject to listen for keypresses, so let’s set that to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<section id="objects-title-py">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#objects-title-py" title="Link to this heading">¶</a></h4>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set image</span>
+<span class="linenos">11</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="hll"><span class="linenos">14</span>        <span class="c1"># register for key events</span>
+</span><span class="hll"><span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span> 
+</span></pre></div>
+</div>
+</section>
+</section>
+<section id="key-pressed-method">
+<h3>key_pressed method<a class="headerlink" href="#key-pressed-method" title="Link to this heading">¶</a></h3>
+<p>The GameFrame docs tell us that when <code class="docutils literal notranslate"><span class="pre">self.handle_key_events</span> <span class="pre">=</span> <span class="pre">True</span></code> then any key presses will call the <strong>key_pressed</strong> function. We need to write the code that needs to run in a key press event inside the key_pressed function. The GameFrame docs also tell us that, the key identity will be supplied as the variable <strong>key</strong>. These are Pygame key identities, which can be found on the <a class="reference external" href="https://www.pygame.org/docs/ref/key.html">Pygame docs</a>. We want the identity for the space key which is <code class="docutils literal notranslate"><span class="pre">K_SPACE</span></code>.</p>
+<p>So we know this method will be run when a key is pressed, specifically the space key, but what do we want it to do? Well, we want it to close the WelcomeScreen Room and move onto the next Room in the list - GamePlay. How do we do this? Lets check what the <a class="reference internal" href="99_documentation.html#rooms-levels"><span class="std std-ref">GameFrame docs</span></a> say about this.</p>
+<p>One of the Rooms/Levels variables is called <strong>running</strong>, and the GameFrame docs tell us that if this is set to False then the room stops running. That sounds like the what we want to do.</p>
+<p>Putting that all together in a flowchart:</p>
+<p><img alt="Title key_press flowchart" src="_images/title_keypress_flowchart.png" /></p>
+<p>The only tricky part is we are working inside the Title RoomObject, but we want to change a value in the WelcomeScreen Room, how can we reference this?</p>
+<p>Remember when we create a RoomObject, we pass to it the room that it is being created in (that’s the <code class="docutils literal notranslate"><span class="pre">self</span></code> in the code below).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This means the RoomObject knows what room it is in. Checking the <a class="reference internal" href="99_documentation.html#roomobject-variables"><span class="std std-ref">GameFrame docs</span></a> and there is a variable called <code class="docutils literal notranslate"><span class="pre">room</span></code> which stored this information.</p>
+<p>With all this now worked out, we can write our code.</p>
+<section id="id1">
+<h4><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<p>Still working in our <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> file, add the highlighted code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span><span class="w"> </span><span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set image</span>
+<span class="linenos">12</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># register for key events</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span> 
+<span class="linenos">17</span>        
+<span class="hll"><span class="linenos">18</span>    <span class="k">def</span><span class="w"> </span><span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">19</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">20</span><span class="sd">        If the key pressed is space the game will start</span>
+</span><span class="hll"><span class="linenos">21</span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">22</span>        
+</span><span class="hll"><span class="linenos">23</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+</span><span class="hll"><span class="linenos">24</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</span></pre></div>
+</div>
+<p>Let’s break those lines down:</p>
+<ul class="simple">
+<li><p><strong>line 2</strong>: since we are using the Pygame identifier <code class="docutils literal notranslate"><span class="pre">K_SPACE</span></code> we need to import the package.</p></li>
+<li><p><strong>line 18</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> → creates the event handler for when keys are pressed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> → the Pygame key identifier of the key that has been pressed.</p></li>
+</ul>
+</li>
+<li><p><strong>line 23</strong>: checks if the key pressed was <strong>space</strong></p></li>
+<li><p><strong>line 24</strong>: goes to the RoomObject’s parent Room (WelcomeScreen) and changes it’s <code class="docutils literal notranslate"><span class="pre">running</span></code> variable to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> and <strong>close</strong> it.</p>
+</section>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>Now to test that everything is working correctly.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your welcome screen should show.</p>
+<p>Next press <strong>space</strong> and the Title should disappear because you are now in the empty GamePlay room.</p>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
+<p>We have finished and tested another section of code so we should make a Git commit.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <strong>Created GamePlay room</strong>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">Globals</span><span class="p">:</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 4</span>    <span class="n">FRAMES_PER_SECOND</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">1280</span>
+<span class="linenos"> 7</span>    <span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="n">SCORE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="c1"># - Set the starting number of lives - #</span>
+<span class="linenos">12</span>    <span class="n">LIVES</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="c1"># - Set the Window display name - #</span>
+<span class="linenos">15</span>    <span class="n">window_name</span> <span class="o">=</span> <span class="s1">&#39;Space Rescue&#39;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>    <span class="c1"># - Set the order of the rooms - #</span>
+<span class="linenos">18</span>    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;GamePlay&quot;</span><span class="p">]</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="c1"># - Set the starting level - #</span>
+<span class="linenos">21</span>    <span class="n">start_level</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>    <span class="c1"># - Set this number to the level you want to jump to when the game ends - #</span>
+<span class="linenos">24</span>    <span class="n">end_game_level</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>    <span class="c1"># - This variable keeps track of the room that will follow the current room - #</span>
+<span class="linenos">27</span>    <span class="c1"># - Change this value to move through rooms in a non-sequential manner - #</span>
+<span class="linenos">28</span>    <span class="n">next_level</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="c1"># - Change variable to True to exit the program - #</span>
+<span class="linenos">31</span>    <span class="n">exiting</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># ############################################################# #</span>
+<span class="linenos">35</span><span class="c1"># ###### User Defined Global Variables below this line ######## #</span>
+<span class="linenos">36</span><span class="c1"># ############################################################# #</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span>    <span class="n">total_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">39</span>    <span class="n">destroyed_count</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">class</span><span class="w"> </span><span class="nc">GamePlay</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos">4</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos">5</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">6</span>        
+<span class="linenos">7</span>        <span class="c1"># set background image</span>
+<span class="linenos">8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Rooms.WelcomeScreen</span><span class="w"> </span><span class="kn">import</span> <span class="n">WelcomeScreen</span>
+<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Rooms.GamePlay</span><span class="w"> </span><span class="kn">import</span> <span class="n">GamePlay</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span><span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span><span class="w"> </span><span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set image</span>
+<span class="linenos">12</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+<span class="linenos">14</span>        
+<span class="linenos">15</span>        <span class="c1"># register for key events</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle_key_events</span> <span class="o">=</span> <span class="kc">True</span> 
+<span class="linenos">17</span>        
+<span class="linenos">18</span>    <span class="k">def</span><span class="w"> </span><span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="linenos">19</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">20</span><span class="sd">        If the key pressed is space the game will start</span>
+<span class="linenos">21</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">22</span>        
+<span class="linenos">23</span>        <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+<span class="linenos">24</span>            <span class="bp">self</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="06_spaceship.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Spaceship Object</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="04_welcome.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Welcome screen</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Damien Murtagh
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/DamoM73/space-rescue-tutorials" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">GamePlay Room</a><ul>
+<li><a class="reference internal" href="#event-driven-programming">Event-driven Programming</a></li>
+<li><a class="reference internal" href="#create-gameplay-room">Create GamePlay Room</a><ul>
+<li><a class="reference internal" href="#rooms-gameplay-py"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#rooms-init-py"><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#make-gameplay-next-room">Make GamePlay next room</a><ul>
+<li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#changing-rooms-using-space">Changing Rooms using space</a><ul>
+<li><a class="reference internal" href="#handle-key-events-variable">handle_key_events variable</a><ul>
+<li><a class="reference internal" href="#objects-title-py"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#key-pressed-method">key_pressed method</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed File States</a><ul>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=a4664895"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

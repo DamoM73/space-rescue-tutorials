@@ -1,0 +1,808 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GamePlay Room" href="05_gameplay.html" /><link rel="prev" title="Get to know GameFrame" href="03_gameframe.html" />
+        <link rel="prefetch" href="_static/logo.png" as="image" />
+
+    <link rel="shortcut icon" href="_static/logo.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2025.07.19 -->
+        <title>Welcome screen - Space Rescue</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --font-stack: gill sans, sans-serif;
+  --font-stack--monospace: monaco, monospace;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Space Rescue</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Space Rescue</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_gameframe.html">Get to know GameFrame</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Welcome screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_gameplay.html">GamePlay Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_spaceship.html">Spaceship Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_adv_move.html">Advanced Spaceship Movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_ship_in_bounds.html">Keeping Ship in the Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_add_boss.html">Add Zork Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_add_asteroids.html">Add Asteroid Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_animate_asteroids.html">Move Asteroids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_ship_astroid_collision.html">Ship and Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_laser.html">Add Laser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_laser_asteroid_collision.html">Laser Asteroid Collision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15_astronaut.html">Add Astronaut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16_scoring.html">Add Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17_lives.html">Add Lives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18_game_design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_add_sounds.html">Mechanic - Audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_unfair_punishment.html">Mechanic - Unfair Punishment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95_planning.html">Planning your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="96_creating.html">Coding your own game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="97_using_thonny.html">Using Thonny as the IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="98_index_of_topics.html">Index of Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_documentation.html">GameFrame Documentation</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/04_welcome.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="welcome-screen">
+<h1>Welcome screen<a class="headerlink" href="#welcome-screen" title="Link to this heading">¶</a></h1>
+<aside class="topic">
+<p class="topic-title">In this lesson you will:</p>
+<ul class="simple">
+<li><p>learn how to plan using wireframes and class diagrams</p></li>
+<li><p>learn how to make adjustment to window variables via the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file</p></li>
+<li><p>learn how to create a GameFrame Room and add a background to it</p></li>
+<li><p>learn hot to run your GameFrame game</p></li>
+<li><p>learn how to create a GameFrame Object with an image and add it to a Room</p></li>
+<li><p>learn how to commit and push your code to GitHub</p></li>
+</ul>
+</aside>
+<p>To get the ball rolling, well create a welcome screen for our game. This is a nice and easy way to introduce some of the concepts and processes we will be using throughout.</p>
+<section id="planning">
+<h2>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h2>
+<section id="wireframe">
+<h3>Wireframe<a class="headerlink" href="#wireframe" title="Link to this heading">¶</a></h3>
+<div class="note admonition">
+<p class="admonition-title">Wireframes</p>
+<p>A wireframe is like a blueprint or skeleton of a website or app. It’s a simple, basic outline that shows where different elements, like buttons, images, and text, will go on the screen. It focuses on the layout and arrangement of elements rather than the colors or details. It’s a helpful tool for visualizing and discussing ideas before creating the final design, just like making a rough sketch or draft of a drawing before adding all the details.</p>
+</div>
+<p>Below is a wireframe of our welcome screen.</p>
+<p><img alt="Welcome screen wireframe" src="_images/welcome_wf.png" /></p>
+<p>This wireframe shows three different parts of the program wee need to address:</p>
+<ul class="simple">
+<li><p>the game window (blue text):</p>
+<ul>
+<li><p>features of the window that will hold our game</p></li>
+<li><p>need to change size and title</p></li>
+</ul>
+</li>
+<li><p>the WelcomeScreen room (orange text):</p>
+<ul>
+<li><p>the main part of our window is taken up with the game surface which holds the WelcomeScreen Room</p></li>
+<li><p>it contains a background image and the Title Object</p></li>
+</ul>
+</li>
+<li><p>the Title Object (green text):</p>
+<ul>
+<li><p>represented by the placeholder (box with an x)</p></li>
+<li><p>contains an image</p></li>
+<li><p>has a key event to react to space being pressed</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="class-diagram">
+<h3>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h3>
+<p>We now know how the screen will look, but let’s also consider the Class diagram. Check out <a class="reference external" href="https://damom73.github.io/python-oop-with-deepest-dungeon/stage_1.html#class-diagram">Deepest Dungeon</a> for a refresher on Class diagrams if you need it.</p>
+<p><img alt="welcome screen class diagram" src="_images/welcome_cd.png" /></p>
+<p>We can see that the <strong>WelcomeScreen</strong> class has two attributes:</p>
+<ul class="simple">
+<li><p>background image</p></li>
+<li><p>Title RoomObject</p></li>
+</ul>
+<p>We can also see that the Title class has:</p>
+<ul class="simple">
+<li><p>attribute: image</p></li>
+<li><p>method: keypressed</p></li>
+</ul>
+<p>So we can see that there are three tasks we need to complete to create our welcome screen:</p>
+<ol class="arabic simple">
+<li><p>Adjust window values</p></li>
+<li><p>Create WelcomeScreen Room</p></li>
+<li><p>Create Title RoomObject</p></li>
+<li><p>Add Title RoomObject to WelcomeScreen Room</p></li>
+</ol>
+<p>Let’s start.</p>
+</section>
+</section>
+<section id="adjust-window-values">
+<h2>Adjust window values<a class="headerlink" href="#adjust-window-values" title="Link to this heading">¶</a></h2>
+<section id="gameframe-globals-py">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Link to this heading">¶</a></h3>
+<p>The window values reside in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder, so <strong>open</strong> it up.</p>
+<p>To change the window size, adjust the <code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code> and <code class="docutils literal notranslate"><span class="pre">SCREEN_HEIGHT</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">7</span><span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">1280</span>
+</span><span class="hll"><span class="linenos">8</span><span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">800</span>
+</span></pre></div>
+</div>
+<p>Then change the <code class="docutils literal notranslate"><span class="pre">window_name</span></code> value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">15</span><span class="c1"># - Set the Window display name - #</span>
+<span class="hll"><span class="linenos">16</span><span class="n">window_name</span> <span class="o">=</span> <span class="s1">&#39;Space Rescue&#39;</span>
+</span></pre></div>
+</div>
+<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file using <code class="docutils literal notranslate"><span class="pre">control</span></code> + <code class="docutils literal notranslate"><span class="pre">S</span></code> (Windows) <code class="docutils literal notranslate"><span class="pre">command</span></code> + S (macOS)</p>
+</section>
+</section>
+<section id="create-welcomescreen-room">
+<h2>Create WelcomeScreen Room<a class="headerlink" href="#create-welcomescreen-room" title="Link to this heading">¶</a></h2>
+<p>Let’s check the <a class="reference internal" href="#documentation.md#roomslevels"><span class="xref myst">GameFrame documentation</span></a> to see how we can create a level.</p>
+<section id="rooms-welcomescreen-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code><a class="headerlink" href="#rooms-welcomescreen-py" title="Link to this heading">¶</a></h3>
+<p>So we need to <strong>create a new file</strong> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code>.</p>
+<p>In this file we are going to create a WelcomeScreen class. This is going to be a sub-class of the Level class provided by GameFrame. So the first thing we need to do is to import the Level class from GameFrame:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+</span></pre></div>
+</div>
+<p>Now we can create our WelcomeScreen class. Following the instructions from the documentation add the following code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos">2</span>
+<span class="hll"><span class="linenos">3</span><span class="k">class</span><span class="w"> </span><span class="nc">WelcomeScreen</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">5</span><span class="sd">    Intial screen for the game</span>
+</span><span class="hll"><span class="linenos">6</span><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Lets break that down a bit:</p>
+<ul class="simple">
+<li><p><strong>line 3</strong>: defines our class → explicitly names it as a subclass of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> class.</p></li>
+<li><p><strong>lines 4-6</strong>: a doc string that explains the class.</p></li>
+<li><p><strong>line 7</strong>: the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method → called automatically when a <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> object is made.</p></li>
+<li><p><strong>line 8</strong> calling the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> parent class → the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> class will inherent all the attributes and methods from <code class="docutils literal notranslate"><span class="pre">Level</span></code>.</p></li>
+</ul>
+<p>Now <strong>save</strong> the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> file.</p>
+</section>
+<section id="testing-welcomescreen">
+<h3>Testing WelcomeScreen<a class="headerlink" href="#testing-welcomescreen" title="Link to this heading">¶</a></h3>
+<p>So we’ve made a welcome screen, let’s run the game and see what happens.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and then click the play button in the top righthand corner.</p>
+<p><img alt="play button" src="_images/run.png" /></p>
+<p>Well, that didn’t go to plan. You probably have the following error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;d:\GIT\space_rescue_pygame\MainController.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">room</span> <span class="o">=</span> <span class="n">class_name</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+           <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;module&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">callable</span>
+</pre></div>
+</div>
+<p>Have a close look at this error. I guarantee this is not the last time you will see it, that’s why I purposely caused it.</p>
+<p>Reading the error it is really obscure what the problem. Remember when looking at the file structure I said that if you add a new Room or Object you need to link it to GameFrame using the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file. This is the kind of error that occurs when you forget.</p>
+</section>
+<section id="rooms-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code><a class="headerlink" href="#rooms-init-py" title="Link to this heading">¶</a></h3>
+<p>To remedy this error, <strong>open</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder and add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Rooms.WelcomeScreen</span><span class="w"> </span><span class="kn">import</span> <span class="n">WelcomeScreen</span>
+</pre></div>
+</div>
+<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file, and run your program again using the <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>.</p>
+<p>You should now have a screen like this:</p>
+<p><img alt="Welcome Screen 1" src="_images/welcome_1.png" /></p>
+<p>Not very exciting, but it’s the correct size, and the window title reads <strong>Space Rescue</strong>, so that’s a start.</p>
+</section>
+<section id="adding-the-background">
+<h3>Adding the background<a class="headerlink" href="#adding-the-background" title="Link to this heading">¶</a></h3>
+<p>Let’s make it less boring by adding a background image. Again, check the <a class="reference internal" href="#documentation.md#roomslevels"><span class="xref myst">GameFrame docs</span></a> to see how we can do this.</p>
+<p>You will see that there is a method <strong>set_background_image</strong> which takes an image file. So we will have to call this method, but when? Well, we want the background to appear as soon as the room is created, so, it needs to be called in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method.</p>
+<section id="id1">
+<h4><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<p>Go back to the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> file and then add the highlighted code to the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">WelcomeScreen</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    Intial screen for the game</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="hll"><span class="linenos">10</span>        <span class="c1"># set background image</span>
+</span><span class="hll"><span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Breaking that down:</p>
+<ul class="simple">
+<li><p><strong>line 10</strong>: structural comment to explain what is happening (really good habit to develop).</p></li>
+<li><p><strong>line 11</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">self</span></code> → remember in OOP the need to refer all actions to the current instance of the object (self)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_background_iamge</span></code> → a method inherited from the <code class="docutils literal notranslate"><span class="pre">Level</span></code> parent class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Background.png&quot;</span></code> → image file in the <code class="docutils literal notranslate"><span class="pre">images</span></code> folder (go to the folder and see if you can find it).</p></li>
+</ul>
+</li>
+</ul>
+<p>Save <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and then run the program again using <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="create-title-roomobject">
+<h2>Create Title RoomObject<a class="headerlink" href="#create-title-roomobject" title="Link to this heading">¶</a></h2>
+<p>Note that we have a Room we can place the Title RoomObject inside it. So let’s check the <a class="reference internal" href="#documentation.md#roomobject"><span class="xref myst">GameFrame docs</span></a> to see how to do this. This is a similar process to creating a Room:</p>
+<ol class="arabic simple">
+<li><p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder</p></li>
+<li><p>Import the parent class</p></li>
+<li><p>Initialise the class</p></li>
+<li><p>Add new file to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p></li>
+</ol>
+<p>Notice that the RoomObject class has many more methods. These are used to implement the game logic.</p>
+<section id="objects-title-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#objects-title-py" title="Link to this heading">¶</a></h3>
+<p><strong>Open</strong> the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder create a <strong>new file</strong> and call it <code class="docutils literal notranslate"><span class="pre">Title.py</span></code>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">Title.py</span></code> import the parent class using the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+</span></pre></div>
+</div>
+<p>Now create your Title class using the code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos">2</span>
+<span class="hll"><span class="linenos">3</span><span class="k">class</span><span class="w"> </span><span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">5</span><span class="sd">    The object for displaying the title</span>
+</span><span class="hll"><span class="linenos">6</span><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This code is very similar to the code to create a the WelcomeScreen class. It creates the class, initialises the class, and runs the parent class’ <code class="docutils literal notranslate"><span class="pre">__init__</span></code> in order to inherent the attributes and methods.</p>
+<p>Next we need to add an image to the object. Add the highlighted code below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="hll"><span class="linenos">10</span>        <span class="c1"># set image</span>
+</span><span class="hll"><span class="linenos">11</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>This is fairly different to how we added an image to the WelcomeScreen room, so let’s unpack it:</p>
+<ul class="simple">
+<li><p><strong>line 10</strong>: a structural comment</p></li>
+<li><p><strong>line 11</strong>: retrieves <code class="docutils literal notranslate"><span class="pre">&quot;Title.png&quot;</span></code> from the Images folder → stores it in the <code class="docutils literal notranslate"><span class="pre">image</span></code> variable</p></li>
+<li><p><strong>line 12</strong>: assigns the image variable to this (self) RoomObject</p>
+<ul>
+<li><p>Note <code class="docutils literal notranslate"><span class="pre">800</span></code> and <code class="docutils literal notranslate"><span class="pre">350</span></code> this is the width and the height of the image</p></li>
+</ul>
+</li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Determine image width and height</p>
+<p>The easiest way to work out the height and width of an image is to open the image in VS Code and then look at the status bar at the bottom right of the screen.</p>
+<p><img alt="image dets" src="_images/image_dets.png" /></p>
+</div>
+<p>Finally <strong>save</strong> <code class="docutils literal notranslate"><span class="pre">Title.py</span></code>.</p>
+</section>
+<section id="objects-init-py">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Link to this heading">¶</a></h3>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder and add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
+</span></pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Keeping workspace clean</p>
+<p>During these tutorials, you will be moving between many different files, even files with the same name, but in different folder (eg. <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>).</p>
+<p>To reduce the chance of working in the wrong file, get into the habbit of closing a file once you have finished with it.</p>
+</div>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and <strong>close</strong> it.</p>
+<p>Now run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code. Nothing should change, because we haven’t added the RoomObject into the Room yet. This was just to check that there are no errors in your code so far.</p>
+</section>
+</section>
+<section id="add-title-roomobject-to-welcomescreen-room">
+<h2>Add Title RoomObject to WelcomeScreen Room<a class="headerlink" href="#add-title-roomobject-to-welcomescreen-room" title="Link to this heading">¶</a></h2>
+<p>Now that we have made the Title RoomObject and the WelcomeScreen Room, we can put them together.</p>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and add the code highlighted below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span><span class="w"> </span><span class="nc">WelcomeScreen</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    Intial screen for the game</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set background image</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="hll"><span class="linenos">14</span>        <span class="c1"># add title object</span>
+</span><span class="hll"><span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</span></pre></div>
+</div>
+<p>Breaking that down:</p>
+<ul class="simple">
+<li><p><strong>line 2</strong>: imports the Title RoomObject we just created</p></li>
+<li><p><strong>line 14</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_room_object</span></code> → a Level method that adds RoomObjects to Rooms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Title(self,</span> <span class="pre">240,</span> <span class="pre">200)</span></code> → creates a new <code class="docutils literal notranslate"><span class="pre">Title</span></code> RoomObject and tells it that it belongs to <strong>this</strong> room at the position of <code class="docutils literal notranslate"><span class="pre">x</span></code> of <code class="docutils literal notranslate"><span class="pre">240</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> of <code class="docutils literal notranslate"><span class="pre">200</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Pygame screen coordinates</p>
+<p>Pygame screen coordinates start with (0,0) in the top lefthand corner and increase as you move right and down. For example, on our screen the top left is (0,0) whilst the bottom right is (1279,799)</p>
+</div>
+<p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and <strong>close</strong> it.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>Now we have our welcome screen ready, it’s time to test it.</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your screen should look like this:</p>
+<p><img alt="welcome screen finished" src="_images/welcome_2.png" /></p>
+</section>
+<section id="commit-and-push">
+<h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
+<p><img alt="In case of fire... git" src="_images/git_commit_push.jpg" /></p>
+<p>Now that we have finished a section of code and we have tested it to ensure it works, we should make a Git commit. Each commit creates an easy roll-back point. So if we break a our code, we can always return to a point that it worked.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>In GitHub Desktop go to the bottom left-hand box and write into the summary <strong>Created WelcomeScreen</strong>.</p></li>
+<li><p>Click on <strong>Commit to main</strong></p></li>
+<li><p>Click on <strong>Push origin</strong></p></li>
+</ol>
+<p>Now the work from this lesson is committed and synced with the online repo.</p>
+</section>
+<section id="completed-file-states">
+<h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
+<p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">Globals</span><span class="p">:</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 4</span>    <span class="n">FRAMES_PER_SECOND</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">1280</span>
+<span class="linenos"> 7</span>    <span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="n">SCORE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="c1"># - Set the starting number of lives - #</span>
+<span class="linenos">12</span>    <span class="n">LIVES</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="c1"># - Set the Window display name - #</span>
+<span class="linenos">15</span>    <span class="n">window_name</span> <span class="o">=</span> <span class="s1">&#39;Space Rescue&#39;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>    <span class="c1"># - Set the order of the rooms - #</span>
+<span class="linenos">18</span>    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WelcomeScreen&quot;</span><span class="p">,</span> <span class="s2">&quot;Maze&quot;</span><span class="p">,</span> <span class="s2">&quot;ScrollingShooter&quot;</span><span class="p">,</span> <span class="s2">&quot;BreakOut&quot;</span><span class="p">]</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="c1"># - Set the starting level - #</span>
+<span class="linenos">21</span>    <span class="n">start_level</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>    <span class="c1"># - Set this number to the level you want to jump to when the game ends - #</span>
+<span class="linenos">24</span>    <span class="n">end_game_level</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>    <span class="c1"># - This variable keeps track of the room that will follow the current room - #</span>
+<span class="linenos">27</span>    <span class="c1"># - Change this value to move through rooms in a non-sequential manner - #</span>
+<span class="linenos">28</span>    <span class="n">next_level</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="c1"># - Change variable to True to exit the program - #</span>
+<span class="linenos">31</span>    <span class="n">exiting</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># ############################################################# #</span>
+<span class="linenos">35</span><span class="c1"># ###### User Defined Global Variables below this line ######## #</span>
+<span class="linenos">36</span><span class="c1"># ############################################################# #</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span>    <span class="n">total_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">39</span>    <span class="n">destroyed_count</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span><span class="w"> </span><span class="nc">WelcomeScreen</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="sd">    Intial screen for the game</span>
+<span class="linenos"> 7</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
+<span class="linenos">10</span>        
+<span class="linenos">11</span>        <span class="c1"># set background image</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_background_image</span><span class="p">(</span><span class="s2">&quot;Background.png&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>        
+<span class="linenos">14</span>        <span class="c1"># add title object</span>
+<span class="linenos">15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_room_object</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Rooms.WelcomeScreen</span><span class="w"> </span><span class="kn">import</span> <span class="n">WelcomeScreen</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoomObject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">Title</span><span class="p">(</span><span class="n">RoomObject</span><span class="p">):</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">    The object for displaying the title</span>
+<span class="linenos"> 6</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="n">RoomObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 9</span>        
+<span class="linenos">10</span>        <span class="c1"># set image</span>
+<span class="linenos">11</span>        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;Title.png&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="05_gameplay.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GamePlay Room</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="03_gameframe.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Get to know GameFrame</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Damien Murtagh
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/DamoM73/space-rescue-tutorials" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Welcome screen</a><ul>
+<li><a class="reference internal" href="#planning">Planning</a><ul>
+<li><a class="reference internal" href="#wireframe">Wireframe</a></li>
+<li><a class="reference internal" href="#class-diagram">Class diagram</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adjust-window-values">Adjust window values</a><ul>
+<li><a class="reference internal" href="#gameframe-globals-py"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-welcomescreen-room">Create WelcomeScreen Room</a><ul>
+<li><a class="reference internal" href="#rooms-welcomescreen-py"><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code></a></li>
+<li><a class="reference internal" href="#testing-welcomescreen">Testing WelcomeScreen</a></li>
+<li><a class="reference internal" href="#rooms-init-py"><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#adding-the-background">Adding the background</a><ul>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-title-roomobject">Create Title RoomObject</a><ul>
+<li><a class="reference internal" href="#objects-title-py"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+<li><a class="reference internal" href="#objects-init-py"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-title-roomobject-to-welcomescreen-room">Add Title RoomObject to WelcomeScreen Room</a><ul>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#commit-and-push">Commit and Push</a></li>
+<li><a class="reference internal" href="#completed-file-states">Completed file states</a><ul>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Rooms/__init__.py</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Objects/Title.py</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=a4664895"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>
