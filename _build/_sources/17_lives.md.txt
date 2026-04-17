@@ -28,7 +28,7 @@ Both methods require the same resource if you intend for players lives to only d
 **Method 2** is superior if you intend player's lives go up as well as down. In this case it is possible that any given `LIVES` score may be displayed multiple times. **Method 1** may need to load each image **multiple times**, but **Method 2** will still only load each image **once**.
 
 ```{admonition} When to use data structures
-:class: note
+:class: hint
 Data structures are used in computer science to organize, store, and manage data in a way that enables efficient operations and access. The most common Python data structures are: **lists**, **tuples**, **dictionaries** and **sets**.
 
 Use data structures to gather values that logically belong together. For example, we use tuples to gather coordinates together. Coordinates contain two variables `x` and `y` that logically belong together so we place them in a tuple: `(x, y)`
@@ -39,6 +39,8 @@ Since we want to leave open the option of giving bonus lives, we'll use **Method
 ![Lives update IPO](assets/img/lives_update_IPO.png)
 
 With all that sorted out, lets get on with the coding.
+
+---
 
 ## Coding
 
@@ -210,6 +212,8 @@ Exploring that code:
 
 **Save** `Objects/Asteroid.py` and then run `MainController.py` to test our code. Make sure that the lives are reduced every time an Asteroid collides with the Ship.
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -221,6 +225,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

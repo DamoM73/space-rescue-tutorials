@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -283,7 +295,7 @@
 <section id="pygame-graphics">
 <h2>Pygame Graphics<a class="headerlink" href="#pygame-graphics" title="Link to this heading">¶</a></h2>
 <p>Now that we are starting to work with sprites and graphics, we need to look a bit deeper at how graphics works in GameFrame. Since GameFrame is built on Pygame this mean understanding how Pygame handles graphics.</p>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Graphics refresher</p>
 <p>Computer screens are made up of millions of little dots called pixels. Each pixel be more than 16 million colours.</p>
 <p>Each pixel has a coordinate made up of its x value (horizontal position) and its y value (vertical position). These coordinates are written as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
@@ -402,6 +414,7 @@
 </div>
 </section>
 </section>
+<hr class="docutils" />
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h2>
 <p>To plan what our objects are going to do, we’re going to use an Input Process Output table (IPO).</p>
@@ -431,6 +444,7 @@
 <p>That’s the planning finished, now time to implement it.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="adding-spaceship-roomobject">
 <h2>Adding Spaceship RoomObject<a class="headerlink" href="#adding-spaceship-roomobject" title="Link to this heading">¶</a></h2>
 <p>Adding the Spaceship RoomObject will initially follow the same steps as the Title RoomObject.</p>
@@ -547,6 +561,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p>We have finished and tested another section of code so you know what you should do - commit and push.</p>
@@ -558,6 +573,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

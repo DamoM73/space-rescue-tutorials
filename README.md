@@ -8,6 +8,8 @@ This repository provides a set of tutorials to teach secondary students Python p
 - Covers **Python OOP** and game development concepts.
 - Includes a buildable project under the `_build` folder.
 
+---
+
 ## License
 
 This project is licensed under the MIT License.

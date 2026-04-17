@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -288,6 +300,7 @@
 <p><img alt="object boundaries" src="_images/object_boundaries.png" /></p>
 <p>We have been using hitboxes to represent all our objects. For example, when the <strong>top boundary</strong> of the Zork <strong>hitbox</strong> <strong>collides</strong> with the top of the screen, we reverse Zork’s direction.</p>
 </section>
+<hr class="docutils" />
 <section id="collisions">
 <h2>Collisions<a class="headerlink" href="#collisions" title="Link to this heading">¶</a></h2>
 <p>Collisions occur between two objects when their hitboxes touch or overlap.</p>
@@ -312,7 +325,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">register_collision_object(collision_object)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">handle_collision(self,</span> <span class="pre">other,</span> <span class="pre">other_type)</span></code></p></li>
 </ul>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Collisions Terminology</p>
 <p>In game design there are two objects involved.</p>
 <ul class="simple">
@@ -335,6 +348,7 @@
 <p>With that theory under our belt, let’s plan how to handle collisions between asteroids and the space ship</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h2>
 <p>First, we need to decide which <code class="docutils literal notranslate"><span class="pre">class</span></code> we will get to handle this collision between <code class="docutils literal notranslate"><span class="pre">Ship</span></code> and <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code>. At this stage, it could be handled by either class, but to make life easier later on, we will get <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> to handle the collision.</p>
@@ -343,6 +357,7 @@
 <p><img alt="Asteroid Collision IPO" src="_images/asteroid_collision_IPO.png" /></p>
 <p>Lets add this to the program</p>
 </section>
+<hr class="docutils" />
 <section id="coding">
 <h2>Coding<a class="headerlink" href="#coding" title="Link to this heading">¶</a></h2>
 <section id="objects-asteroid-py">
@@ -390,6 +405,7 @@
 <p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Asteroid.py</span></code> and run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p>We have finished and tested another section of code so we should make a Git commit.</p>
@@ -401,6 +417,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

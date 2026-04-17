@@ -5,6 +5,8 @@
 - Designing thought process flowchart (poster)
 - Finished game example
 
+---
+
 ## Game mechanics implementation
 
 - Difficulty selection
@@ -21,15 +23,21 @@
   - Swerver
   - Attractor
 
+---
+
 ## Other features
 
 - using databases
+
+---
 
 ## Other game types
 
 - platformer concept
 - top down concept
 - moving window
+
+---
 
 ## Other pages
 

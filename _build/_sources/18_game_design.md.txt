@@ -30,6 +30,8 @@ Without challenge the game becomes play, like playing with a toy.
 
 So we know games need both interactivity and challenge, but how do we incorporate these to create a good game. Is it the graphics and sound or something else?
 
+---
+
 ## Game Mechanics
 
 Game **mechanics** are the basic rules and interactions that make games fun to play. Mechanics are how we incorporate both interactivity and challenge to produce our game. For example, if games were a car, then game mechanics are the engine. The graphics, characters, storylines and music are the bodywork. It doesn't matter how good the bodywork is, if your engine is poor, so is your car's performance.
@@ -85,7 +87,7 @@ Goals also have an interesting impact called the **what-if effect**. The what-if
 While the what-if effect can be felt at anytime, it is most keenly felt the closer a player gets to a goal. If the player falls just short of a goal, they will think of many ways they could have ensured success. To this extent, game designers tend to increase difficulty the closer a player gets to a goal. This is why you find bosses at the end of quests.
 
 ```{admonition} Judging Difficulty
-:class: note
+:class: hint
 Game developers are notoriouly bad at judging the diffifult of their own game. That's because they know how their games works and, therefore, find them easier. To judge the difficulty of you game, have someone else play your games and provide feedback on the difficulty
 ```
 
@@ -194,6 +196,8 @@ Lets look at which game events can have sound attached to them:
 | Saving astronaut | Positive |
 | Ship collides with asteroid | Negative |
 | Shooting astronaut | Negative |
+
+---
 
 ## Enhancing the game
 

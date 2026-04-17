@@ -1,60 +1,80 @@
 # Get to know GameFrame
 
 ```{topic} In this lesson you will:
-- Learn the file structure of the GameFrame framework
-- Learn about the important files in the GameFrame framework
+* understand how the GameFrame project is organised into files and folders
+* identify the key files in the GameFrame framework and what they do
 ```
 
 ## How GameFrame works
 
-The GameFrame framework is driven by the **Objects**. You will create objects that contain all the game logic. These objects are then placed in **Rooms**.
+The GameFrame framework is built around **Objects**.
+
+You will create objects that contain the logic for how your game works. These objects are then placed inside **Rooms**, where the game takes place.
 
 ```{admonition} Game Logic
-:class: note
-Game Logic is the all the algorithms that make a game work. They govern such things as what happens when a player presses certain keys, or what happens when sepecific object collide with each other, or when the score changes etc.
+:class: hint
+Game logic is all the code that makes a game work.
+
+It controls things like:
+
+* what happens when a player presses keys
+* what happens when objects collide
+* how and when the score changes
 ```
 
-The image below is a screen shot of the game we will be creating.
+The image below shows what the game you will create will look like.
 
 ![Game Play](assets/img/game_play.png)
 
-Everything that you see in the screen is an Object:
+Everything you see on the screen is an **Object**:
 
-- player's spaceship on the left
-- enemy spaceship (called Zork) on the right
-- asteroids
-- astronauts
-- score
-- player's lives
-- the sub-goal tally
+* the player’s spaceship on the left
+* the enemy spaceship (called Zork) on the right
+* asteroids
+* astronauts
+* score
+* player’s lives
+* the sub-goal counter
 
-They are all inside a Room called **GamePlay**.
+All of these are inside a **Room** called **GamePlay**.
 
-Let's look a little deeper.
+### Looking closer
 
-The player's ship object called **Ship** contains:
+The player’s ship object, called **Ship**, includes:
 
-- the associated sprite (image)
-- the logic that deals with the played pressing keys
-- the logic to prevent the ship from moving outside the upper and lower bounds of the room
-- the logic that shoot lasers
+* its sprite (image)
+* code that responds to key presses
+* code that stops it moving outside the top and bottom of the room
+* code that shoots lasers
 
-Other objects have different game logic. For example:
+Other objects have their own game logic. For example:
 
-- the Zork object determines when asteroids and astronauts spawn
-- the Asteroid object reduces the players health when it collides with the ship
-- the Astronaut object increases the score when it collides with the ship
-- the Laser object destroys asteroids and astronauts when it collides with them.
+* the **Zork** object controls when asteroids and astronauts appear
+* the **Asteroid** object reduces the player’s health when it hits the ship
+* the **Astronaut** object increases the score when collected
+* the **Laser** object destroys asteroids and astronauts on contact
 
-Therefore, when creating a game in GameFrame we need to think about the object involved and how the interact with each other and the player.
+When creating a game in GameFrame, you need to think about:
+
+* which objects are in your game
+* how they interact with each other
+* how they interact with the player
+
+---
 
 ## Documentation
 
-We will cover many of the features on GameFrame through this tutorial. If you want to dig deeper, or use GameFrame for other purposes, then the full documentation can be found on the [GameFrame API](./documentation.md) page.
+This tutorial will cover many of the features of GameFrame.
+
+If you want to explore further or use GameFrame for your own projects, you can find the full details on the **[GameFrame API](./documentation.md)** page.
+
+---
 
 ## File Structure
 
-Another important aspect of GameFrame to understand is it file structure and some of the important files within it. Below is an image of the file structure.
+Another important part of GameFrame is understanding its file structure and the key files it uses.
+
+The image below shows how the files are organised.
 
 ```{figure} assets/img/file_structure.png
 ---
@@ -62,22 +82,24 @@ align: left
 ---
 ```
 
-First is the yellow **SPACE RESCUE** folder. This is called the **root** folder and it contains everything.
+The yellow **SPACE RESCUE** folder is the **root** folder. It contains everything for the project.
 
-The next folder is the green **.venv** folder. This folder contains the files for your virtual environment. Visual Studio Code created this when you made your virtual environment.
+The green **.venv** folder stores your virtual environment files. This was created by Visual Studio Code when you set up the environment.
 
-The rest of the files and folders are part of our GameFrame framework. All the GameFrame folders (root, GameFrame, Images, Objects, Rooms and Sounds) have a **`notes.md`** file. These file contain the documentation relevant for that specific folder. The entire documentation can be found on the [GameFrame API](./documentation.md) page.
+All the remaining folders and files belong to the GameFrame framework. Each GameFrame folder (root, GameFrame, Images, Objects, Rooms, and Sounds) includes a **`notes.md`** file. These files contain documentation for that specific folder. The full documentation is available on the **[GameFrame API](./documentation.md)** page.
 
-Next is the red **GameFrame** folder. This folder is the engine behind GameFrame. It has many files which hold most of the code. The only file you need to be concerned about is the **`Globals.py`** file. This file contain the variables that are applicable to the entire program.
+The red **GameFrame** folder is the engine of the framework. It contains most of the core code. The main file you need to know is **`Globals.py`**, which stores variables used across the entire program.
 
-The blue **Images** and **Sounds** folders contain all the images and sounds that your game uses. They have pre-populated with the assets we need for Space Rescue, but if you want to add more, or if you are using GameFrame for other projects, then this is where the files should go.
+The blue **Images** and **Sounds** folders store all the assets used in the game. They already include the files needed for Space Rescue. If you want to add your own images or sounds, place them in these folders.
 
-The purple **Objects** and **Rooms** folders are where you will write most of your code. Your object and room classes will go into these folders in new files. For example, we will be creating a `Ship.py` file that contains our `Ship` class in the **Objects** folder.
+The purple **Objects** and **Rooms** folders are where you will write most of your code. This is where you create your own classes. For example, you will create a file called `Ship.py` that contains the `Ship` class inside the **Objects** folder.
 
-Notice that both of the purple folder have a **`__init__.py`** file. This is very important. Since our GameFrame files are spread across various folders, we need to link them all together. This is done using the `__init__.py` files. This means that when you create a new file and class you need to link it to the rest of GameFrame using the `__init__.py` files. Going back to our previous ship example, we would need to add the following line to the `__init__.py` in the **Objects** folder:
+Both of these folders also contain a **`__init__.py`** file. This file is important because it connects all parts of the program together. When you create a new file and class, you must add it to the **`__init__.py`** file so GameFrame can find and use it.
 
 ``` python
 from Objects.Ship import Ship
 ```
 
-The last file of note is the **MainController.py** in the root folder. This is the file that you run to start the program.
+The final important file is **MainController.py** in the root folder.
+
+This is the file you run to start the game.

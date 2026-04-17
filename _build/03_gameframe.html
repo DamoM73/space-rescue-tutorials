@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -272,68 +284,87 @@
 <aside class="topic">
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
-<li><p>Learn the file structure of the GameFrame framework</p></li>
-<li><p>Learn about the important files in the GameFrame framework</p></li>
+<li><p>understand how the GameFrame project is organised into files and folders</p></li>
+<li><p>identify the key files in the GameFrame framework and what they do</p></li>
 </ul>
 </aside>
 <section id="how-gameframe-works">
 <h2>How GameFrame works<a class="headerlink" href="#how-gameframe-works" title="Link to this heading">¶</a></h2>
-<p>The GameFrame framework is driven by the <strong>Objects</strong>. You will create objects that contain all the game logic. These objects are then placed in <strong>Rooms</strong>.</p>
-<div class="note admonition">
+<p>The GameFrame framework is built around <strong>Objects</strong>.</p>
+<p>You will create objects that contain the logic for how your game works. These objects are then placed inside <strong>Rooms</strong>, where the game takes place.</p>
+<div class="hint admonition">
 <p class="admonition-title">Game Logic</p>
-<p>Game Logic is the all the algorithms that make a game work. They govern such things as what happens when a player presses certain keys, or what happens when sepecific object collide with each other, or when the score changes etc.</p>
-</div>
-<p>The image below is a screen shot of the game we will be creating.</p>
-<p><img alt="Game Play" src="_images/game_play.png" /></p>
-<p>Everything that you see in the screen is an Object:</p>
+<p>Game logic is all the code that makes a game work.</p>
+<p>It controls things like:</p>
 <ul class="simple">
-<li><p>player’s spaceship on the left</p></li>
-<li><p>enemy spaceship (called Zork) on the right</p></li>
+<li><p>what happens when a player presses keys</p></li>
+<li><p>what happens when objects collide</p></li>
+<li><p>how and when the score changes</p></li>
+</ul>
+</div>
+<p>The image below shows what the game you will create will look like.</p>
+<p><img alt="Game Play" src="_images/game_play.png" /></p>
+<p>Everything you see on the screen is an <strong>Object</strong>:</p>
+<ul class="simple">
+<li><p>the player’s spaceship on the left</p></li>
+<li><p>the enemy spaceship (called Zork) on the right</p></li>
 <li><p>asteroids</p></li>
 <li><p>astronauts</p></li>
 <li><p>score</p></li>
 <li><p>player’s lives</p></li>
-<li><p>the sub-goal tally</p></li>
+<li><p>the sub-goal counter</p></li>
 </ul>
-<p>They are all inside a Room called <strong>GamePlay</strong>.</p>
-<p>Let’s look a little deeper.</p>
-<p>The player’s ship object called <strong>Ship</strong> contains:</p>
+<p>All of these are inside a <strong>Room</strong> called <strong>GamePlay</strong>.</p>
+<section id="looking-closer">
+<h3>Looking closer<a class="headerlink" href="#looking-closer" title="Link to this heading">¶</a></h3>
+<p>The player’s ship object, called <strong>Ship</strong>, includes:</p>
 <ul class="simple">
-<li><p>the associated sprite (image)</p></li>
-<li><p>the logic that deals with the played pressing keys</p></li>
-<li><p>the logic to prevent the ship from moving outside the upper and lower bounds of the room</p></li>
-<li><p>the logic that shoot lasers</p></li>
+<li><p>its sprite (image)</p></li>
+<li><p>code that responds to key presses</p></li>
+<li><p>code that stops it moving outside the top and bottom of the room</p></li>
+<li><p>code that shoots lasers</p></li>
 </ul>
-<p>Other objects have different game logic. For example:</p>
+<p>Other objects have their own game logic. For example:</p>
 <ul class="simple">
-<li><p>the Zork object determines when asteroids and astronauts spawn</p></li>
-<li><p>the Asteroid object reduces the players health when it collides with the ship</p></li>
-<li><p>the Astronaut object increases the score when it collides with the ship</p></li>
-<li><p>the Laser object destroys asteroids and astronauts when it collides with them.</p></li>
+<li><p>the <strong>Zork</strong> object controls when asteroids and astronauts appear</p></li>
+<li><p>the <strong>Asteroid</strong> object reduces the player’s health when it hits the ship</p></li>
+<li><p>the <strong>Astronaut</strong> object increases the score when collected</p></li>
+<li><p>the <strong>Laser</strong> object destroys asteroids and astronauts on contact</p></li>
 </ul>
-<p>Therefore, when creating a game in GameFrame we need to think about the object involved and how the interact with each other and the player.</p>
+<p>When creating a game in GameFrame, you need to think about:</p>
+<ul class="simple">
+<li><p>which objects are in your game</p></li>
+<li><p>how they interact with each other</p></li>
+<li><p>how they interact with the player</p></li>
+</ul>
 </section>
+</section>
+<hr class="docutils" />
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
-<p>We will cover many of the features on GameFrame through this tutorial. If you want to dig deeper, or use GameFrame for other purposes, then the full documentation can be found on the <a class="reference internal" href="#./documentation.md"><span class="xref myst">GameFrame API</span></a> page.</p>
+<p>This tutorial will cover many of the features of GameFrame.</p>
+<p>If you want to explore further or use GameFrame for your own projects, you can find the full details on the <strong><a class="reference internal" href="#./documentation.md"><span class="xref myst">GameFrame API</span></a></strong> page.</p>
 </section>
+<hr class="docutils" />
 <section id="file-structure">
 <h2>File Structure<a class="headerlink" href="#file-structure" title="Link to this heading">¶</a></h2>
-<p>Another important aspect of GameFrame to understand is it file structure and some of the important files within it. Below is an image of the file structure.</p>
+<p>Another important part of GameFrame is understanding its file structure and the key files it uses.</p>
+<p>The image below shows how the files are organised.</p>
 <figure class="align-left">
 <img alt="_images/file_structure.png" src="_images/file_structure.png" />
 </figure>
-<p>First is the yellow <strong>SPACE RESCUE</strong> folder. This is called the <strong>root</strong> folder and it contains everything.</p>
-<p>The next folder is the green <strong>.venv</strong> folder. This folder contains the files for your virtual environment. Visual Studio Code created this when you made your virtual environment.</p>
-<p>The rest of the files and folders are part of our GameFrame framework. All the GameFrame folders (root, GameFrame, Images, Objects, Rooms and Sounds) have a <strong><code class="docutils literal notranslate"><span class="pre">notes.md</span></code></strong> file. These file contain the documentation relevant for that specific folder. The entire documentation can be found on the <a class="reference internal" href="#./documentation.md"><span class="xref myst">GameFrame API</span></a> page.</p>
-<p>Next is the red <strong>GameFrame</strong> folder. This folder is the engine behind GameFrame. It has many files which hold most of the code. The only file you need to be concerned about is the <strong><code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></strong> file. This file contain the variables that are applicable to the entire program.</p>
-<p>The blue <strong>Images</strong> and <strong>Sounds</strong> folders contain all the images and sounds that your game uses. They have pre-populated with the assets we need for Space Rescue, but if you want to add more, or if you are using GameFrame for other projects, then this is where the files should go.</p>
-<p>The purple <strong>Objects</strong> and <strong>Rooms</strong> folders are where you will write most of your code. Your object and room classes will go into these folders in new files. For example, we will be creating a <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> file that contains our <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class in the <strong>Objects</strong> folder.</p>
-<p>Notice that both of the purple folder have a <strong><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></strong> file. This is very important. Since our GameFrame files are spread across various folders, we need to link them all together. This is done using the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files. This means that when you create a new file and class you need to link it to the rest of GameFrame using the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files. Going back to our previous ship example, we would need to add the following line to the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the <strong>Objects</strong> folder:</p>
+<p>The yellow <strong>SPACE RESCUE</strong> folder is the <strong>root</strong> folder. It contains everything for the project.</p>
+<p>The green <strong>.venv</strong> folder stores your virtual environment files. This was created by Visual Studio Code when you set up the environment.</p>
+<p>All the remaining folders and files belong to the GameFrame framework. Each GameFrame folder (root, GameFrame, Images, Objects, Rooms, and Sounds) includes a <strong><code class="docutils literal notranslate"><span class="pre">notes.md</span></code></strong> file. These files contain documentation for that specific folder. The full documentation is available on the <strong><a class="reference internal" href="#./documentation.md"><span class="xref myst">GameFrame API</span></a></strong> page.</p>
+<p>The red <strong>GameFrame</strong> folder is the engine of the framework. It contains most of the core code. The main file you need to know is <strong><code class="docutils literal notranslate"><span class="pre">Globals.py</span></code></strong>, which stores variables used across the entire program.</p>
+<p>The blue <strong>Images</strong> and <strong>Sounds</strong> folders store all the assets used in the game. They already include the files needed for Space Rescue. If you want to add your own images or sounds, place them in these folders.</p>
+<p>The purple <strong>Objects</strong> and <strong>Rooms</strong> folders are where you will write most of your code. This is where you create your own classes. For example, you will create a file called <code class="docutils literal notranslate"><span class="pre">Ship.py</span></code> that contains the <code class="docutils literal notranslate"><span class="pre">Ship</span></code> class inside the <strong>Objects</strong> folder.</p>
+<p>Both of these folders also contain a <strong><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></strong> file. This file is important because it connects all parts of the program together. When you create a new file and class, you must add it to the <strong><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></strong> file so GameFrame can find and use it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Ship</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ship</span>
 </pre></div>
 </div>
-<p>The last file of note is the <strong>MainController.py</strong> in the root folder. This is the file that you run to start the program.</p>
+<p>The final important file is <strong>MainController.py</strong> in the root folder.</p>
+<p>This is the file you run to start the game.</p>
 </section>
 </section>
 
@@ -400,7 +431,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Get to know GameFrame</a><ul>
-<li><a class="reference internal" href="#how-gameframe-works">How GameFrame works</a></li>
+<li><a class="reference internal" href="#how-gameframe-works">How GameFrame works</a><ul>
+<li><a class="reference internal" href="#looking-closer">Looking closer</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#file-structure">File Structure</a></li>
 </ul>

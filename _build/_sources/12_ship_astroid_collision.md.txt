@@ -22,6 +22,8 @@ But we have used the image below to represent asteroids.
 
 We have been using hitboxes to represent all our objects. For example, when the **top boundary** of the Zork **hitbox** **collides** with the top of the screen, we reverse Zork's direction.
 
+---
+
 ## Collisions
 
 Collisions occur between two objects when their hitboxes touch or overlap. 
@@ -52,7 +54,7 @@ Lets check the GameFrame docs to how it handles collisions. If we look at the [R
 - `handle_collision(self, other, other_type)`
 
 ```{admonition} Collisions Terminology
-:class: note
+:class: hint
 In game design there are two objects involved.
 
 - **self** &rarr; the object that contains the event handler
@@ -74,6 +76,8 @@ Every tick GameFrame will check if any of the registered collisions have occurre
 
 With that theory under our belt, let's plan how to handle collisions between asteroids and the space ship
 
+---
+
 ## Planning
 
 First, we need to decide which `class` we will get to handle this collision between `Ship` and `Asteroid`. At this stage, it could be handled by either class, but to make life easier later on, we will get `Asteroid` to handle the collision.
@@ -85,6 +89,8 @@ Putting this into a IPO table:
 ![Asteroid Collision IPO](assets/img/asteroid_collision_IPO.png)
 
 Lets add this to the program
+
+---
 
 ## Coding
 
@@ -141,6 +147,8 @@ Breaking that code down:
 
 **Save** `Asteroid.py` and run `MainController.py` to test your code.
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -152,6 +160,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

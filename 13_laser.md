@@ -168,7 +168,7 @@ Lets break that down:
   - adds the laser object to the Room the Ship is in
 
 ```{admonition} Spliting instructions over multiple lines
-:class: note
+:class: hint
 Lines **54 - 56** are actually one instruction split over 3 lines to make it easier to read.
 
 The **[Python Style Guide](https://peps.python.org/pep-0008/)** recommends that lines of code shouldn't be more than 79 characters long. Although this isn't followed religiously, it is frown upon to write lines of code that are two long to read without scrolling sideway.
@@ -182,6 +182,8 @@ This method can also be used to logically group operations in a exteremely long 
 
 **Save** `Ship.py` and then test the code by running `MainController.py`.
 
+---
+
 ## Restricting the laser
 
 When testing, did you notice what happens if you hold down the space key? There is a constant stream of lasers flowing across the screen. You might even notice that some of the other object freeze. What is that?
@@ -193,7 +195,7 @@ Since our event lister is tied to the frame rate, it is detecting the space key 
 To address this issue we will limit how frequently the Ship can spawn a Laser. To do this we are going to use a **flag variable**.
 
 ```{admonition} Flag variables
-:class: note
+:class: hint
 Flag variables, also known as Boolean flags, are variables used in computer programming to represent the state of a condition or a specific situation. Flag variables act as signals, indicating whether a particular condition is true or false, and they help control the flow of a program.
 ```
 
@@ -293,6 +295,8 @@ Investigating those changes:
 
 **Save** `Ship.py` then run `MainController.py` to test that everything is working as planned.
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -304,6 +308,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

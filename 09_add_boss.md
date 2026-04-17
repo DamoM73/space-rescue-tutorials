@@ -78,6 +78,8 @@ class GamePlay(Level):
 
 If everything tests ok, you should now have our boss on the screen. Now it is time to think about it's unique features.
 
+---
+
 ## Planning
 
 Since Zork is run by the computer we will have to animate it's movement. Just like our spaceship, Zork will only move up and down. Unlike our spaceship, this will not be in response to a keystroke.
@@ -100,7 +102,7 @@ So our IPO table would look as such:
 ![Initial Zork movement IPO](assets/img/zork_movement.png)
 
 ```{admonition} Instantiation
-:class: note
+:class: hint
 Remember classes are like blueprints that we use to create object instances. The term **object** refers to all the objects created from the same class (ie. Zork object), while the term instance refers to each individual object.
 
 When we create an **instance** of an **object** from a **class**, this is called **instantiation**.
@@ -121,6 +123,8 @@ So our IPO table would be something like this:
 ![Change Zork direction IPO](assets/img/zork_change_direction.png)
 
 Now we have conceptualised how we will make these happen, let's get to the coding.
+
+---
 
 ## Initial movement code
 
@@ -161,6 +165,8 @@ Unpacking this:
 - **line 20** &rarr; randomly choose between `-10` and `10` and set that as Zork's `y_speed`
 
 Now **save** `Zork.py` and **run** `MainController.py` to test our code. Zork should either move up or down until it is off the screen.
+
+---
 
 ## Reverse Zork Direction
 
@@ -215,9 +221,13 @@ We really only need to look at two lines here:
   - negate a number (change its sign) &rarr; multiply it by `-1`
   - `*=` is similar to `+=`, it means take the value stored in `y_speed` multiply it by `-1`, then store it back in `y_speed`
 
+---
+
 ## Testing
 
 **Save** `Zork.py` then **run** `MainController.py` to test that our code works. 
+
+---
 
 ## Commit and Push
 
@@ -230,6 +240,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed file states
 

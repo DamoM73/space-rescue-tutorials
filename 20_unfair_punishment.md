@@ -29,6 +29,8 @@ What does that look like in a IPO table?
 
 We simply need to include the `delete_object()` method in both the asteroid collision event handler and the astronaut collision event handler. Let's get coding.
 
+---
+
 ## Coding
 
 ### `Objects\Laser.py`
@@ -99,9 +101,13 @@ Let's unpack that code:
 
 **Save** and **close** `Objects\Laser.py`.
 
+---
+
 ## Testing
 
 Now run `MainController.py` to test that the laser disappears when it hits both astronauts and asteroids.
+
+---
 
 ## Commit and Push
 
@@ -114,6 +120,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -295,6 +307,7 @@
 <p>So we know games need both interactivity and challenge, but how do we incorporate these to create a good game. Is it the graphics and sound or something else?</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="game-mechanics">
 <h2>Game Mechanics<a class="headerlink" href="#game-mechanics" title="Link to this heading">¶</a></h2>
 <p>Game <strong>mechanics</strong> are the basic rules and interactions that make games fun to play. Mechanics are how we incorporate both interactivity and challenge to produce our game. For example, if games were a car, then game mechanics are the engine. The graphics, characters, storylines and music are the bodywork. It doesn’t matter how good the bodywork is, if your engine is poor, so is your car’s performance.</p>
@@ -375,7 +388,7 @@
 <p>Challenges are created by setting goals for players to achieve. It is important that goals are clear and a players progress towards achieving them is obvious. Therefore, players need to know what their goals are and how they are progressing in achieving those goals.</p>
 <p>Goals also have an interesting impact called the <strong>what-if effect</strong>. The what-if effect occurs when a player fails at something and then thinks “What if I had …” and thinks of things they could do differently. The Dark Souls series of games thrives on this effect.</p>
 <p>While the what-if effect can be felt at anytime, it is most keenly felt the closer a player gets to a goal. If the player falls just short of a goal, they will think of many ways they could have ensured success. To this extent, game designers tend to increase difficulty the closer a player gets to a goal. This is why you find bosses at the end of quests.</p>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Judging Difficulty</p>
 <p>Game developers are notoriouly bad at judging the diffifult of their own game. That’s because they know how their games works and, therefore, find them easier. To judge the difficulty of you game, have someone else play your games and provide feedback on the difficulty</p>
 </div>
@@ -569,6 +582,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="enhancing-the-game">
 <h2>Enhancing the game<a class="headerlink" href="#enhancing-the-game" title="Link to this heading">¶</a></h2>
 <p>Now that you have a better understanding of game mechanics and ways you can enhance the game. Choose some of the suggested mechanics and implement them.</p>

@@ -59,6 +59,8 @@ The sound effects are a bit more complicated. They all occur in the `GamePlay` R
 
 Now we know what we have to, lets start coding.
 
+---
+
 ## Coding
 
 ### `Rooms/WelcomeScreen.py`
@@ -272,6 +274,8 @@ Looking at the code:
 
 **Save** and close `Objects/Astronaut.py`
 
+---
+
 ## Testing
 
 Now it is time to test that the sounds effects are working. 
@@ -285,6 +289,8 @@ In testing, use a testing table to make sure that you check all five of the soun
 | Saving astronaut | Astronaut_saved | | |
 | Ship collides with asteroid | Ship_damage | | |
 | Shooting astronaut | Astronaut_hit | | |
+
+---
 
 ## Adjusting volume
 
@@ -323,6 +329,8 @@ class WelcomeScreen(Level):
 
 **Save** and close `Rooms/WelcemeScreen.py` and test that the volume levels are now correct using `MainController.py`
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -334,6 +342,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

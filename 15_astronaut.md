@@ -28,6 +28,8 @@ Lets look at all of these in IPO tables.
 
 Each of the parts of these IPO tables we have done before, the only difference is that they're arranged differently. Therefore, we should be able to get on with the coding.
 
+---
+
 ## Coding
 
 ### `Objects.Astronaut.py`
@@ -93,6 +95,8 @@ This code:
 - **lines 40-45**: deletes the Astronaut if it is outside of the room
 
 **Save** `Astronaut.py`
+
+---
 
 ## `Objects/__init__.py`
 
@@ -226,6 +230,8 @@ class Laser(RoomObject):
 
 **Save** `Objects/Laser.py` and the test it by running `MainController.py`
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -237,6 +243,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

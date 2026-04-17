@@ -83,6 +83,8 @@ Let's unpack that code:
 
 **Save** `Asteroid.py` and then **run** `MainController.py` to test your code.
 
+---
+
 ## Bouncing off top and bottom of screen
 
 ### Planning
@@ -160,12 +162,14 @@ This is almost a copy and paste from the `Zork` class, so we won't bother breaki
 
 **Save** `Asteroid.py` and then **run** `MainController.py` to test your code.
 
+---
+
 ## De-spawning asteroids
 
 When a asteroid exits the screen to the left, we want to destroy it. Why? Well, each object takes up a small bit of memory. If we fail to destroy them, all these little bits of memory will add up and degrade the computer's performance and eventually crash the system. This is called a **memory leak**. Although it would take a very long game for our asteroids to overwhelm your computer, it is good programming practice to destroy objects no longer in use.
 
 ```{admonition} Memory leaks
-:class: note
+:class: hint
 A memory leak is a situation in computer programming when a program or process fails to release memory that it no longer needs or is not actively using. As a result, the program keeps consuming more and more memory over time, which can eventually lead to performance issues and even crashes. 
 ```
 
@@ -258,7 +262,7 @@ Lets unpack some of the code we added:
   - `(self)` &rarr; the object is **this** object
 
 ```{admonition} self vs other
-:class: note
+:class: hint
 The syntax for `delete_object` seems unnecessarily repeatative. Why couldn't we just say delete this object? Well the syntax hints at a wider application of the `delete_object` method.
 
 It is possible to:
@@ -290,6 +294,8 @@ Go back to `Objects/Asteroid.py` and add the highlighted code below:
 
 Again **Save** `Objects/Asteroid.py` and run `MainController.py` to test your code. Now, every time the `outside_of_room` method is called `asteroid deleted` will be printed in the terminal.
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -301,6 +307,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

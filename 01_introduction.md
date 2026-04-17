@@ -1,65 +1,94 @@
 # Introduction
 
 ```{topic} In this lesson you will:
-- develop an overall understanding of technology using in this course and how they interact with each other.
+* understand what the course is about and the type of game you will build
+* identify how Python, Pygame, and GameFrame are used to create a game
+* recall the Python knowledge needed to complete this tutorial 
+* explain how Pygame is used to create 2D games
+* explain how GameFrame makes building games easier by extending Pygame
+* describe how the full technology stack works together, from Python code to the finished game
+
 ```
 
-In this course we will develop a 2D computer game using Python, Pygame and GameFrame. We will also explore some simple game design concepts.
+In this course, you will build a 2D game using Python, Pygame, and GameFrame. You will also learn some basic game design ideas.
 
-Before we go any further, let's look at the technology we will be using.
+Before starting, look at the tools you will use.
 
 ## Python
 
-To understand this course you will need a solid understanding of the basics of Python programming. You will need to understand:
+To follow this course, you need a good understanding of basic Python programming. You should be familiar with:
 
-- foundational syntax such as:
-  - `for` and `while` loops
-  - `if elif else` statements
-  - creating and using functions
-  - mathematical, conditional and Boolean operations
-  - data types
-- screen coordinates
-- importing and using libraries
-- object orientated programming
-  - using objects
-  - creating objects using `class`
+* core syntax, including:
 
-If you are yet to develop this knowledge, then I would suggest completing the following courses before continuing here:
+  * `for` and `while` loops
+  * `if`, `elif`, and `else` statements
+  * how to create and use functions
+  * mathematical, conditional, and Boolean operations
+  * different data types
+* how screen coordinates work
+* how to import and use libraries
+* object-oriented programming (OOP), including:
+
+  * using objects
+  * creating your own objects with `class`
+
+If you are not confident with these skills yet, complete the following Python beginner courses before continuing:
 
 - [A Turtle Introduction to Python](https://damom73.github.io/turtle-introduction-to-python/) for foundational syntax.
 - [Deepest Dungeon - Python OOP](https://damom73.github.io/python-oop-with-deepest-dungeon/) for object orientated programming.
 
+---
+
 ## Pygame
 
-Pygame is a popular open-source library for building 2D video games and multimedia applications in the Python . It provides developers with the necessary tools and functionality to create games, simulations, and interactive graphical applications.
+Pygame is a popular, open-source library used to build 2D games and interactive programs in Python. It gives you the tools needed to create games, simulations, and graphical applications.
 
-Pygame uses abstraction to simplify many complicated programming tasks which computer game programming requires. For example, detecting when different sprites collide with each other. This makes developing games using Pygame much easier then if you were using Python alone.
+Pygame simplifies complex programming tasks by using abstraction. For example, it can automatically detect when two sprites collide. This makes game development much easier than trying to build everything from scratch in Python.
 
-Being at 2D game engine, Pygame is not used to AAA titles such as Call of Duty, but it can be used to create extensive computer games. There are many games available on Steam that have been created using Pygame.
+Pygame is a 2D game engine, so it is not used for large, high-budget (AAA) games like Call of Duty. However, it is still capable of creating large and detailed games. Some games on Steam have been built using Pygame.
 
-If you are interested you can find more information on the [Pygame official website](https://www.pygame.org/news).
+More information is available on the [Pygame official website](https://www.pygame.org/news).
+
+---
 
 ## GameFrame
 
-In the words of it developer (Steven Tucker) 'GameFrame has been developed to take the excellent PyGame libraries and make them more accessible and easy to use for beginner to intermediate programmers.' Just as Pygame makes developing games with Python easier, GameFrame makes developing games using Pygame easier.
+In the words of its developer, Steven Tucker, “GameFrame has been developed to take the excellent Pygame libraries and make them more accessible and easy to use for beginner to intermediate programmers.”
 
-GameFrame is not a library like Pygame, but rather it is an event driven framework. It is made up of a directory structure and a range of different Python files containing classes. Programmers define Rooms and Room Objects, then write functions to handle certain events such as collisions, button clicks and so on. It has clear rules about where files should be saved as well as a range of commands that can be used to develop your program.
+Just as Pygame makes it easier to create games in Python, GameFrame makes it easier to build games using Pygame.
+
+GameFrame is not a library like Pygame. Instead, it is an event-driven framework. It includes a set folder structure and a collection of Python files that contain classes.
+
+When using GameFrame, you:
+
+* define Rooms and Room Objects
+* write functions that respond to events such as collisions or button clicks
+
+GameFrame also has clear rules about where files must be stored, along with built-in commands that help you develop your game.
+
+---
 
 ## The Stack
 
-Below is an diagram showing the full stack of what we will be using for this course.
+Below is a diagram showing the full stack of tools and technologies used in this course.
 
 ![GameFrame stack](assets/img/gf_stack.png)
 
-Lets explore this:
+Let’s break this down:
 
-- On top, the **programmer** interacts with **GameFrame**, using its file structure and the commands in its API.
-- **GameFrame** interacts with **Pygame** using the commands available in its API.
-- **Pygame** interacts with the **core Python libraries**.
+* At the top, the **programmer** works with **GameFrame**, using its folder structure and built-in commands (API).
+* **GameFrame** then communicates with Pygame through its API.
+* Pygame then interacts with the core Python libraries to run the program.
 
 ```{admonition} Languages
-:class: note
-Your code, GameFrame, and Pygame are all written in Python, but this doesn't have to be the case. For example, Pygame uses a library called NumPy which is written in C or C++.
+:class: hint
+Your code, GameFrame, and Pygame are all written in Python, but this is not always the case.
+
+Some libraries used by Pygame are written in other languages. For example, NumPy is written in C or C++, which helps make it faster and more efficient.
 ```
 
-If you wish you can access the Pygame API directly. This means that you can use Pygame commands that aren't in the GameFrame API. You won't need to use them to complete this course, although you may wish to use them to add extra features. The [Pygame Documents](https://www.pygame.org/docs/) has all the details.
+You can access the Pygame API directly if you want. This means you can use Pygame commands that are not included in the GameFrame API.
+
+You will not need these commands to complete this course, but you can use them to add extra features to your projects.
+
+Full details are available in the [Pygame documentation](https://www.pygame.org/docs/).

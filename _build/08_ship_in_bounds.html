@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -309,7 +321,7 @@
 </ul>
 <p>What we need is a way to do this. Let’s consult the docs. Remember we said that the game logic resides in the objects, so let’s look specifically at the <a class="reference internal" href="#documentation.md#roomobject-methods"><span class="xref myst">RoomObject methods</span></a>.</p>
 <p>Notice the <strong>step</strong> method? According to the docs, we can use it to run code for the object on each tick of the game clock.</p>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Game Clock</p>
 <p>In the early days of computers, games use to run as fast as the hardware they were running on wouild let them. This meant that the same game could run faster or slower depending on the computer you were using. This also presented a problem when computers rapidly increased their power, resulting in games that were unplayable. The game clock was created to address this issue.</p>
 <p>Game clocks ensure that each run of the game loop takes a consistent time. During the run the game loop will, handle inputs, update the game state, update the screen. If all this is finished with time to spare, the computer (sleeps) waits until the next <strong>tick</strong> of the game clock.</p>
@@ -324,6 +336,7 @@
 <p><img alt="Out of bounds IPO process" src="_images/out_of_bounds_ipo_3.png" /></p>
 <p>In summary, every tick of the game clock we will check if the ship is outside the screen, and if it is, we will move it back in.</p>
 </section>
+<hr class="docutils" />
 <section id="coding">
 <h2>Coding<a class="headerlink" href="#coding" title="Link to this heading">¶</a></h2>
 <section id="object-ship-py">
@@ -372,10 +385,12 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
 <p>Now go to <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run the program and make sure that our spaceship stays within the window.</p>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p>We have finished and tested another section of code so we should make a Git commit.</p>
@@ -387,6 +402,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

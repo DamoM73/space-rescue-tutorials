@@ -10,6 +10,8 @@ GameFrame is set up as an event driven framework. Programmers define `Rooms` and
 
 GameFrame was primarily written for education, however it can be used to make a variety of games that can be can be freely shared, altered and improved. It's free and available for everyone to use, students, hobbyist and accomplished programmers alike.
 
+---
+
 ## GameFrame folder structure
 
 GameFrame organises files so that the same types of files are together. This organization makes it easier to setup and maintain a game. By keeping files of the same type together, it makes it easy to locate particular files and to create a 'birds eye view' of the project.
@@ -57,6 +59,8 @@ You will need to include code in this format
 ```python
 from Folder.FileName import ClassName
 ```
+
+---
 
 ## `GameFrame/Globals.py`
 
@@ -122,11 +126,15 @@ The level index from the levels array, that will be launched when the game start
 
 The level index from the levels array, that will be run when the game ends (usually an end screen or high score screen)
 
+---
+
 ## `GameFrame/DataBaseController.py`
 
 The `DataBaseController` is a class which connects the provided SQL database file.
 
 If you wish to use a database in your game you will need to use this Class and write methods for the class in this file.
+
+---
 
 ## Rooms/Levels
 
@@ -251,6 +259,8 @@ For example, if I wanted to know how many enemy planes are win the room, I could
 ``` python
 self.room.count_object('enemy_plane')
 ```
+
+---
 
 ## RoomObject
 
@@ -465,6 +475,8 @@ Rotates the object by `angle` degrees. Positive `angle` rotates in the anti-cloc
 #### `rotate_to_coordinate(x, y)`
 
 Rotates the object so that it's direction is pointed at the coordinates of `x` and `y`.
+
+---
 
 ## Text Object
 

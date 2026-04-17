@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -296,6 +308,7 @@
 <p><img alt="Astronaut IPO tables" src="_images/astronaut_IPOs.png" /></p>
 <p>Each of the parts of these IPO tables we have done before, the only difference is that they’re arranged differently. Therefore, we should be able to get on with the coding.</p>
 </section>
+<hr class="docutils" />
 <section id="coding">
 <h2>Coding<a class="headerlink" href="#coding" title="Link to this heading">¶</a></h2>
 <section id="objects-astronaut-py">
@@ -360,6 +373,7 @@
 <p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Astronaut.py</span></code></p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="objects-init-py">
 <h2><code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code><a class="headerlink" href="#objects-init-py" title="Link to this heading">¶</a></h2>
 <p>We have just created a new RoomObject, so we need to let GameFrame know by editing the <code class="docutils literal notranslate"><span class="pre">Objects/__init__.py</span></code>.</p>
@@ -472,6 +486,7 @@
 <p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Laser.py</span></code> and the test it by running <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code></p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p>We have finished and tested another section of code so we should make a Git commit.</p>
@@ -483,6 +498,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

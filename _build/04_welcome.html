@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -272,101 +284,110 @@
 <aside class="topic">
 <p class="topic-title">In this lesson you will:</p>
 <ul class="simple">
-<li><p>learn how to plan using wireframes and class diagrams</p></li>
-<li><p>learn how to make adjustment to window variables via the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file</p></li>
-<li><p>learn how to create a GameFrame Room and add a background to it</p></li>
-<li><p>learn hot to run your GameFrame game</p></li>
-<li><p>learn how to create a GameFrame Object with an image and add it to a Room</p></li>
-<li><p>learn how to commit and push your code to GitHub</p></li>
+<li><p>plan your program using wireframes and class diagrams</p></li>
+<li><p>change window settings using the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file</p></li>
+<li><p>create a GameFrame Room and add a background image</p></li>
+<li><p>run your GameFrame game</p></li>
+<li><p>create a GameFrame Object with an image and add it to a Room</p></li>
+<li><p>commit and push your code to GitHub</p></li>
 </ul>
 </aside>
-<p>To get the ball rolling, well create a welcome screen for our game. This is a nice and easy way to introduce some of the concepts and processes we will be using throughout.</p>
+<p>To get started, we will create a welcome screen for the game. This is a simple way to introduce the key concepts and processes you will use throughout the course.</p>
 <section id="planning">
 <h2>Planning<a class="headerlink" href="#planning" title="Link to this heading">¶</a></h2>
 <section id="wireframe">
 <h3>Wireframe<a class="headerlink" href="#wireframe" title="Link to this heading">¶</a></h3>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Wireframes</p>
-<p>A wireframe is like a blueprint or skeleton of a website or app. It’s a simple, basic outline that shows where different elements, like buttons, images, and text, will go on the screen. It focuses on the layout and arrangement of elements rather than the colors or details. It’s a helpful tool for visualizing and discussing ideas before creating the final design, just like making a rough sketch or draft of a drawing before adding all the details.</p>
+<p>A wireframe is a simple plan for a website or app. It shows where things like buttons, images, and text will go on the screen.</p>
+<p>It focuses on layout, not colours or small details.</p>
+<p>Wireframes help you plan and explain your ideas before you build the final design, like sketching before creating a finished drawing.</p>
 </div>
-<p>Below is a wireframe of our welcome screen.</p>
+<p>Below is a wireframe of the welcome screen.</p>
 <p><img alt="Welcome screen wireframe" src="_images/welcome_wf.png" /></p>
-<p>This wireframe shows three different parts of the program wee need to address:</p>
+<p>This wireframe shows three parts of the program we need to work on:</p>
 <ul class="simple">
 <li><p>the game window (blue text):</p>
 <ul>
-<li><p>features of the window that will hold our game</p></li>
-<li><p>need to change size and title</p></li>
+<li><p>this is the window that displays the game</p></li>
+<li><p>we need to change its size and title</p></li>
 </ul>
 </li>
 <li><p>the WelcomeScreen room (orange text):</p>
 <ul>
-<li><p>the main part of our window is taken up with the game surface which holds the WelcomeScreen Room</p></li>
-<li><p>it contains a background image and the Title Object</p></li>
+<li><p>this is the main area inside the window where the game runs</p></li>
+<li><p>it includes a background image and the Title object</p></li>
 </ul>
 </li>
-<li><p>the Title Object (green text):</p>
+<li><p>the Title object (green text):</p>
 <ul>
-<li><p>represented by the placeholder (box with an x)</p></li>
-<li><p>contains an image</p></li>
-<li><p>has a key event to react to space being pressed</p></li>
+<li><p>shown as a placeholder (a box with an X)</p></li>
+<li><p>it uses an image</p></li>
+<li><p>it responds when the space key is pressed</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="class-diagram">
 <h3>Class diagram<a class="headerlink" href="#class-diagram" title="Link to this heading">¶</a></h3>
-<p>We now know how the screen will look, but let’s also consider the Class diagram. Check out <a class="reference external" href="https://damom73.github.io/python-oop-with-deepest-dungeon/stage_1.html#class-diagram">Deepest Dungeon</a> for a refresher on Class diagrams if you need it.</p>
+<p>We now know what the screen will look like, but we also need to think about the class diagram. Check out <a class="reference external" href="https://damom73.github.io/python-oop-with-deepest-dungeon/stage_1.html#class-diagram">Deepest Dungeon</a> if you need a refresher on class diagrams.</p>
 <p><img alt="welcome screen class diagram" src="_images/welcome_cd.png" /></p>
 <p>We can see that the <strong>WelcomeScreen</strong> class has two attributes:</p>
 <ul class="simple">
-<li><p>background image</p></li>
-<li><p>Title RoomObject</p></li>
+<li><p>a background image</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">Title</span></code> RoomObject</p></li>
 </ul>
-<p>We can also see that the Title class has:</p>
+<p>We can also see that the <code class="docutils literal notranslate"><span class="pre">Title</span></code> class has:</p>
 <ul class="simple">
-<li><p>attribute: image</p></li>
-<li><p>method: keypressed</p></li>
+<li><p>an <code class="docutils literal notranslate"><span class="pre">image</span></code> attribute</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">key_pressed</span></code> method</p></li>
 </ul>
-<p>So we can see that there are three tasks we need to complete to create our welcome screen:</p>
+<p>This means there are four tasks we need to complete to create the welcome screen:</p>
 <ol class="arabic simple">
-<li><p>Adjust window values</p></li>
-<li><p>Create WelcomeScreen Room</p></li>
-<li><p>Create Title RoomObject</p></li>
-<li><p>Add Title RoomObject to WelcomeScreen Room</p></li>
+<li><p>Adjust the window values</p></li>
+<li><p>Create the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> Room</p></li>
+<li><p>Create the <code class="docutils literal notranslate"><span class="pre">Title</span></code> RoomObject</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">Title</span></code> RoomObject to the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> Room</p></li>
 </ol>
-<p>Let’s start.</p>
+<p>Let’s get started.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="adjust-window-values">
 <h2>Adjust window values<a class="headerlink" href="#adjust-window-values" title="Link to this heading">¶</a></h2>
 <section id="gameframe-globals-py">
 <h3><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Link to this heading">¶</a></h3>
-<p>The window values reside in <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder, so <strong>open</strong> it up.</p>
-<p>To change the window size, adjust the <code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code> and <code class="docutils literal notranslate"><span class="pre">SCREEN_HEIGHT</span></code>:</p>
+<p>The window settings are in the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file inside the <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> folder, so <strong>open</strong> that file.</p>
+<p>To change the window size, update the <code class="docutils literal notranslate"><span class="pre">SCREEN_WIDTH</span></code> and <code class="docutils literal notranslate"><span class="pre">SCREEN_HEIGHT</span></code> values:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">7</span><span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">1280</span>
 </span><span class="hll"><span class="linenos">8</span><span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">800</span>
 </span></pre></div>
 </div>
-<p>Then change the <code class="docutils literal notranslate"><span class="pre">window_name</span></code> value:</p>
+<p>Then update the <code class="docutils literal notranslate"><span class="pre">window_name</span></code> value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">15</span><span class="c1"># - Set the Window display name - #</span>
 <span class="hll"><span class="linenos">16</span><span class="n">window_name</span> <span class="o">=</span> <span class="s1">&#39;Space Rescue&#39;</span>
 </span></pre></div>
 </div>
-<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file using <code class="docutils literal notranslate"><span class="pre">control</span></code> + <code class="docutils literal notranslate"><span class="pre">S</span></code> (Windows) <code class="docutils literal notranslate"><span class="pre">command</span></code> + S (macOS)</p>
+<p><strong>Save</strong> the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file using:</p>
+<ul class="simple">
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code></p></li>
+<li><p>macOS: <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">S</span></code></p></li>
+</ul>
 </section>
 </section>
 <section id="create-welcomescreen-room">
 <h2>Create WelcomeScreen Room<a class="headerlink" href="#create-welcomescreen-room" title="Link to this heading">¶</a></h2>
-<p>Let’s check the <a class="reference internal" href="#documentation.md#roomslevels"><span class="xref myst">GameFrame documentation</span></a> to see how we can create a level.</p>
+<p>Let’s check the <a class="reference internal" href="#documentation.md#roomslevels"><span class="xref myst">GameFrame documentation</span></a> to see how to create a Room.</p>
 <section id="rooms-welcomescreen-py">
 <h3><code class="docutils literal notranslate"><span class="pre">Rooms/WelcomeScreen.py</span></code><a class="headerlink" href="#rooms-welcomescreen-py" title="Link to this heading">¶</a></h3>
-<p>So we need to <strong>create a new file</strong> in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code>.</p>
-<p>In this file we are going to create a WelcomeScreen class. This is going to be a sub-class of the Level class provided by GameFrame. So the first thing we need to do is to import the Level class from GameFrame:</p>
+<p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> folder called <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code>.</p>
+<p>In this file, you will create a <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> class. This class will be a subclass of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> class from GameFrame.</p>
+<p>Start by importing the <code class="docutils literal notranslate"><span class="pre">Level</span></code> class from GameFrame:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
 </span></pre></div>
 </div>
-<p>Now we can create our WelcomeScreen class. Following the instructions from the documentation add the following code.</p>
+<p>Now create the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> class.</p>
+<p>Follow the documentation and add the code shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">GameFrame</span><span class="w"> </span><span class="kn">import</span> <span class="n">Level</span>
 <span class="linenos">2</span>
 <span class="hll"><span class="linenos">3</span><span class="k">class</span><span class="w"> </span><span class="nc">WelcomeScreen</span><span class="p">(</span><span class="n">Level</span><span class="p">):</span>
@@ -377,26 +398,29 @@
 </span><span class="hll"><span class="linenos">8</span>        <span class="n">Level</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
 </span></pre></div>
 </div>
-<p>Lets break that down a bit:</p>
+<div class="note admonition">
+<p class="admonition-title">Code Explanation</p>
+<p>Let’s break this down:</p>
 <ul class="simple">
-<li><p><strong>line 3</strong>: defines our class → explicitly names it as a subclass of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> class.</p></li>
-<li><p><strong>lines 4-6</strong>: a doc string that explains the class.</p></li>
-<li><p><strong>line 7</strong>: the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method → called automatically when a <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> object is made.</p></li>
-<li><p><strong>line 8</strong> calling the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> parent class → the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> class will inherent all the attributes and methods from <code class="docutils literal notranslate"><span class="pre">Level</span></code>.</p></li>
+<li><p><strong>line 3</strong>: defines the class → it is set up as a subclass of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> class</p></li>
+<li><p><strong>lines 4–6</strong>: a docstring that explains what the class does</p></li>
+<li><p><strong>line 7</strong>: the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method → runs automatically when a <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> object is created</p></li>
+<li><p><strong>line 8</strong>: calls the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Level</span></code> parent class → this allows <code class="docutils literal notranslate"><span class="pre">WelcomeScreen</span></code> to inherit all attributes and methods from <code class="docutils literal notranslate"><span class="pre">Level</span></code></p></li>
 </ul>
+</div>
 <p>Now <strong>save</strong> the <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> file.</p>
 </section>
 <section id="testing-welcomescreen">
 <h3>Testing WelcomeScreen<a class="headerlink" href="#testing-welcomescreen" title="Link to this heading">¶</a></h3>
-<p>So we’ve made a welcome screen, let’s run the game and see what happens.</p>
-<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and then click the play button in the top righthand corner.</p>
+<p>Now that we have made the welcome screen, let’s run the game and see what happens.</p>
+<p><strong>Open</strong> <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>, then click the play button in the top right-hand corner.</p>
 <p><img alt="play button" src="_images/run.png" /></p>
-<p>Well, that didn’t go to plan. You probably have the following error:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;d:\GIT\space_rescue_pygame\MainController.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="n">room</span> <span class="o">=</span> <span class="n">class_name</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">joysticks</span><span class="p">)</span>
-           <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;module&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">callable</span>
+<p>That did not go to plan. You will probably see the following error:</p>
+<div class="highlight-error notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;d:\GIT\space_rescue_pygame\MainController.py&quot;, line 34, in &lt;module&gt;
+    room = class_name(screen, joysticks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: &#39;module&#39; object is not callable
 </pre></div>
 </div>
 <p>Have a close look at this error. I guarantee this is not the last time you will see it, that’s why I purposely caused it.</p>
@@ -448,6 +472,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="create-title-roomobject">
 <h2>Create Title RoomObject<a class="headerlink" href="#create-title-roomobject" title="Link to this heading">¶</a></h2>
 <p>Note that we have a Room we can place the Title RoomObject inside it. So let’s check the <a class="reference internal" href="#documentation.md#roomobject"><span class="xref myst">GameFrame docs</span></a> to see how to do this. This is a similar process to creating a Room:</p>
@@ -502,7 +527,7 @@
 </ul>
 </li>
 </ul>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Determine image width and height</p>
 <p>The easiest way to work out the height and width of an image is to open the image in VS Code and then look at the status bar at the bottom right of the screen.</p>
 <p><img alt="image dets" src="_images/image_dets.png" /></p>
@@ -515,7 +540,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">Objects.Title</span><span class="w"> </span><span class="kn">import</span> <span class="n">Title</span>
 </span></pre></div>
 </div>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Keeping workspace clean</p>
 <p>During these tutorials, you will be moving between many different files, even files with the same name, but in different folder (eg. <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>).</p>
 <p>To reduce the chance of working in the wrong file, get into the habbit of closing a file once you have finished with it.</p>
@@ -524,6 +549,7 @@
 <p>Now run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test your code. Nothing should change, because we haven’t added the RoomObject into the Room yet. This was just to check that there are no errors in your code so far.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="add-title-roomobject-to-welcomescreen-room">
 <h2>Add Title RoomObject to WelcomeScreen Room<a class="headerlink" href="#add-title-roomobject-to-welcomescreen-room" title="Link to this heading">¶</a></h2>
 <p>Now that we have made the Title RoomObject and the WelcomeScreen Room, we can put them together.</p>
@@ -557,19 +583,21 @@
 </ul>
 </li>
 </ul>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Pygame screen coordinates</p>
 <p>Pygame screen coordinates start with (0,0) in the top lefthand corner and increase as you move right and down. For example, on our screen the top left is (0,0) whilst the bottom right is (1279,799)</p>
 </div>
 <p><strong>Save</strong> <code class="docutils literal notranslate"><span class="pre">WelcomeScreen.py</span></code> and <strong>close</strong> it.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
 <p>Now we have our welcome screen ready, it’s time to test it.</p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> and run it. Your screen should look like this:</p>
 <p><img alt="welcome screen finished" src="_images/welcome_2.png" /></p>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p><img alt="In case of fire... git" src="_images/git_commit_push.jpg" /></p>
@@ -582,6 +610,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed file states<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

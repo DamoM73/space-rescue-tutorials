@@ -45,7 +45,7 @@ What we need is a way to do this. Let's consult the docs. Remember we said that 
 Notice the **step** method? According to the docs, we can use it to run code for the object on each tick of the game clock.
 
 ```{admonition} Game Clock
-:class: note
+:class: hint
 In the early days of computers, games use to run as fast as the hardware they were running on wouild let them. This meant that the same game could run faster or slower depending on the computer you were using. This also presented a problem when computers rapidly increased their power, resulting in games that were unplayable. The game clock was created to address this issue.
 
 Game clocks ensure that each run of the game loop takes a consistent time. During the run the game loop will, handle inputs, update the game state, update the screen. If all this is finished with time to spare, the computer (sleeps) waits until the next **tick** of the game clock.
@@ -68,6 +68,8 @@ Finally, what process can get us from the input to the output?
 ![Out of bounds IPO process](assets/img/out_of_bounds_ipo_3.png)
 
 In summary, every tick of the game clock we will check if the ship is outside the screen, and if it is, we will move it back in.
+
+---
 
 ## Coding
 
@@ -130,9 +132,13 @@ Go to the bottom of the `Ship` class and add the code below:
         self.keep_in_room()
 ```
 
+---
+
 ## Testing
 
 Now go to `MainController.py` and run the program and make sure that our spaceship stays within the window.
+
+---
 
 ## Commit and Push
 
@@ -145,6 +151,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed file states
 

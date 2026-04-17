@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -322,7 +334,7 @@
 <span class="linenos">19</span>        <span class="bp">self</span><span class="o">.</span><span class="n">update_text</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">File name and class name can differ</p>
 <p>Before we unpack this code, it is worth noting that, for the first time, the name of the class and the file name differs. They don’t have to be the same. We are going to have two HUD (Heads Up Display) elements: score and lives. It make sense to keep these two classes in the same file. Alternatively we could have made two files <code class="docutils literal notranslate"><span class="pre">score.py</span></code> and <code class="docutils literal notranslate"><span class="pre">lives.py</span></code>. You will find that in coding there are many valid paths to the destination.</p>
 </div>
@@ -363,6 +375,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="rooms-gameplay-py">
 <h2><code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code><a class="headerlink" href="#rooms-gameplay-py" title="Link to this heading">¶</a></h2>
 <p>Finally we need to add the Score to the GamePlay class.</p>
@@ -392,6 +405,7 @@
 </div>
 <p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Rooms/GamePlay.py</span></code> then run <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to see if our score appears on the screen.</p>
 </section>
+<hr class="docutils" />
 <section id="changing-score">
 <h2>Changing score<a class="headerlink" href="#changing-score" title="Link to this heading">¶</a></h2>
 <p>We have a score on our screen, now we need a way to change that score. Looking at our objective, certain collision events will result in points being awarded or taken away. The easiest way to achieve this is to create a method that can be called to update the score.</p>
@@ -428,6 +442,7 @@
 <p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Hud.py</span></code> and then run the game with <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code> to test for any errors.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="adding-scores-to-collisions">
 <h2>Adding scores to collisions<a class="headerlink" href="#adding-scores-to-collisions" title="Link to this heading">¶</a></h2>
 <p>Our objective identify three collisions we want to add scoring to:</p>
@@ -480,6 +495,7 @@
 <p><strong>Save</strong> and <strong>close</strong> <code class="docutils literal notranslate"><span class="pre">Objects/Astronaut.py</span></code>.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
 <p>Time to test our code. We just made three changes to the code so we want to check for the success of all three changes. To do this we will use a <strong>testing table</strong> consisting of four columns:</p>
@@ -519,6 +535,7 @@
 </table>
 </div>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p>We have finished and tested another section of code so we should make a Git commit.</p>
@@ -530,6 +547,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

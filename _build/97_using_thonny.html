@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -284,9 +296,10 @@
 </ul>
 <p><img alt="setup view" src="_images/setup_view.png" /></p>
 </section>
+<hr class="docutils" />
 <section id="gameframe-and-resources">
 <h2>GameFrame and resources<a class="headerlink" href="#gameframe-and-resources" title="Link to this heading">¶</a></h2>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">GameFrame</p>
 <p>GameFrame was developed by a Steven Tucker, a Queensland teacher. If you wish to use the latest versions of GameFrame, it can be found at his <a class="reference external" href="https://gitlab.com/tuxta/gameframe?fbclid=IwAR0GnSkDPy-IdeoNZofh0YwVJ63i4m2wVyzXwBrFqpbG2cLuYox8dkbU2Ss">Gitlab repository</a>.</p>
 </div>
@@ -313,6 +326,7 @@
 <p><img alt="Github desktop clone repo dialogue" src="_images/ghdt_cloning_dialogue_thonny.png" /></p>
 <p>The repo should now be copied onto your computer and ready for use.</p>
 </section>
+<hr class="docutils" />
 <section id="navigating-to-repo-in-thonny">
 <h2>Navigating to repo in Thonny<a class="headerlink" href="#navigating-to-repo-in-thonny" title="Link to this heading">¶</a></h2>
 <p>We now have to direct Thonny to the repo we just created.</p>
@@ -327,6 +341,7 @@
 </ol>
 <p><img alt="Thonny with the repo open" src="_images/thonny_repo_files.png" /></p>
 </section>
+<hr class="docutils" />
 <section id="virtual-environment">
 <h2>Virtual Environment<a class="headerlink" href="#virtual-environment" title="Link to this heading">¶</a></h2>
 <p>Python virtual environments enables you to designate distinct areas for various Python projects. It’s like having various rooms in your home, each with its unique furnishings and accents. You can work on various projects in a virtual environment without their interfering with one another. Each project gets a special “playground” with its own Python installation and particular libraries. A virtual environment is similar to walking into a specific room, and any Python programmes or libraries you use are exclusive to that project once you enter it. You can easily work on numerous Python projects because everything is kept organised and conflicts between projects are avoided.</p>
@@ -381,9 +396,10 @@
 <p><img alt="Thonny check venv" src="_images/thonny_venv_in_shell.png" /></p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="make-first-commit-and-push">
 <h2>Make first commit and push<a class="headerlink" href="#make-first-commit-and-push" title="Link to this heading">¶</a></h2>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Git and GitHub terminology</p>
 <p>Git and GitHub uses a range of different terminology. Here are some of the terms we will be using:</p>
 <ul class="simple">

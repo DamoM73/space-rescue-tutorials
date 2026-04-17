@@ -15,7 +15,7 @@ Every game needs a player avatar, and for our game it will be a spaceship. In th
 Now that we are starting to work with sprites and graphics, we need to look a bit deeper at how graphics works in GameFrame. Since GameFrame is built on Pygame this mean understanding how Pygame handles graphics.
 
 ```{admonition} Graphics refresher
-:class: note
+:class: hint
 Computer screens are made up of millions of little dots called pixels. Each pixel be more than 16 million colours.
 
 Each pixel has a coordinate made up of its x value (horizontal position) and its y value (vertical position). These coordinates are written as `(x, y)`.
@@ -73,6 +73,8 @@ We can make an object move around the screen by changing its origin coordinates.
 | Increase in **y** | Object moves down |
 | Decrease in **y** | Object moves up |
 
+---
+
 ## Planning
 
 To plan what our objects are going to do, we're going to use an Input Process Output table (IPO). 
@@ -108,6 +110,8 @@ We could change the value of `y_speed`. The docs say that this represents the nu
 ![Ship IPO 1 Process](assets/img/ship_ipo_1c.png)
 
 That's the planning finished, now time to implement it.
+
+---
 
 ## Adding Spaceship RoomObject
 
@@ -240,6 +244,8 @@ This is the first bit of code with something a little different, so we will unpa
 
 So you ship should be moving now. Save `Ship.py` and then run the game using `MainController.py`
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so you know what you should do - commit and push.
@@ -251,6 +257,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed file states
 

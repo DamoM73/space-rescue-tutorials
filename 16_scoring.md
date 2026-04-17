@@ -60,7 +60,7 @@ class Score(TextObject):
 ```
 
 ```{admonition} File name and class name can differ
-:class: note
+:class: hint
 Before we unpack this code, it is worth noting that, for the first time, the name of the class and the file name differs. They don't have to be the same. We are going to have two HUD (Heads Up Display) elements: score and lives. It make sense to keep these two classes in the same file. Alternatively we could have made two files `score.py` and `lives.py`. You will find that in coding there are many valid paths to the destination.
 ```
 
@@ -97,6 +97,8 @@ from Objects.Hud import Score
 
 **Save** and **close** `Objects.__init__.py`.
 
+---
+
 ## `Rooms/GamePlay.py`
 
 Finally we need to add the Score to the GamePlay class.
@@ -131,6 +133,8 @@ class GamePlay(Level):
 
 
 **Save** and **close** `Rooms/GamePlay.py` then run `MainController.py` to see if our score appears on the screen.
+
+---
 
 ## Changing score
 
@@ -173,6 +177,8 @@ Breaking that code down:
 - **line 27**: writes the new text to the screen
 
 **Save** and **close** `Hud.py` and then run the game with `MainController.py` to test for any errors.
+
+---
 
 ## Adding scores to collisions
 
@@ -239,6 +245,8 @@ Onto the Astronaut & Ship collisions
 
 **Save** and **close** `Objects/Astronaut.py`.
 
+---
+
 ## Testing
 
 Time to test our code. We just made three changes to the code so we want to check for the success of all three changes. To do this we will use a **testing table** consisting of four columns:
@@ -256,6 +264,8 @@ Below is our testing table with the first two columns completed. Copy it down an
 | Laser shoots astronaut | score - 10 | | |
 | Ship collects astronaut | score + 50 | | |
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -267,6 +277,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

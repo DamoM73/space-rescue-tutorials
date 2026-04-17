@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -323,6 +335,7 @@
 <p><strong>Run</strong> the code using <code class="docutils literal notranslate"><span class="pre">MainController.py</span></code>. There should be no changes, but this just checks that we haven’t made a mistake.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="spawn-asteroid-object">
 <h2>Spawn Asteroid Object<a class="headerlink" href="#spawn-asteroid-object" title="Link to this heading">¶</a></h2>
 <p>Now we have an Asteroid Object we need to:</p>
@@ -334,6 +347,7 @@
 </ol>
 <p>Let’s do that in order.</p>
 </section>
+<hr class="docutils" />
 <section id="spawn-asteroids">
 <h2>Spawn asteroids<a class="headerlink" href="#spawn-asteroids" title="Link to this heading">¶</a></h2>
 <section id="planning">
@@ -398,7 +412,7 @@
 <li><p><strong>line 25</strong> - creates a random timer number between 15 ticks and 150 ticks.</p></li>
 <li><p><strong>line 26</strong> - sets timer and declares <code class="docutils literal notranslate"><span class="pre">self.spawn_asteroid</span></code> as the method to call when the timer is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 </ul>
-<div class="note admonition">
+<div class="hint admonition">
 <p class="admonition-title">Calling methods from method</p>
 <p>When we pass a method as an argument (like in the timer), the argument method just uses it’s name. The <code class="docutils literal notranslate"><span class="pre">()</span></code> after the name is dropped.</p>
 <p>If you include the <code class="docutils literal notranslate"><span class="pre">()</span></code> after the method name, it will be automatically called rather then waiting for the trigger.</p>
@@ -424,6 +438,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="commit-and-push">
 <h2>Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">¶</a></h2>
 <p>We have finished and tested another section of code so we should make a Git commit.</p>
@@ -435,6 +450,7 @@
 </ol>
 <p>Now the work from this lesson is committed and synced with the online repo.</p>
 </section>
+<hr class="docutils" />
 <section id="completed-file-states">
 <h2>Completed File States<a class="headerlink" href="#completed-file-states" title="Link to this heading">¶</a></h2>
 <p>Below are all the files we used in this lesson in their finished state. <strong>Use this to check if your code is correct</strong>.</p>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3142f5f7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3bcbba8a" />
     
     
 
@@ -21,24 +21,36 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  --font-stack: Verdana, Geneva, sans-serif;
-  --font-stack--monospace: "Courier New", Courier, monospace;
+  --font-stack: Verdana, sans-serif;
+  --font-stack--monospace: 'Courier New', monospace;
+  --code-font-size: 100%;
+  --color-sidebar-background: #cabcdc;
+  --color-sidebar-brand-text: #533a71;
+  --color-sidebar-caption-text: #533a71;
   
       }
     }
@@ -276,6 +288,7 @@
 <p>GameFrame is set up as an event driven framework. Programmers define <code class="docutils literal notranslate"><span class="pre">Rooms</span></code> and <code class="docutils literal notranslate"><span class="pre">Room</span> <span class="pre">Objects</span></code>, then write functions to handle certain events such as collisions, button clicks and so on. Just define all the items of your game, then let it run. GameFrame handles the Game loop and collision detection, just register your object for an event and write the code that will run when that event occurs.</p>
 <p>GameFrame was primarily written for education, however it can be used to make a variety of games that can be can be freely shared, altered and improved. It’s free and available for everyone to use, students, hobbyist and accomplished programmers alike.</p>
 </section>
+<hr class="docutils" />
 <section id="gameframe-folder-structure">
 <h2>GameFrame folder structure<a class="headerlink" href="#gameframe-folder-structure" title="Link to this heading">¶</a></h2>
 <p>GameFrame organises files so that the same types of files are together. This organization makes it easier to setup and maintain a game. By keeping files of the same type together, it makes it easy to locate particular files and to create a ‘birds eye view’ of the project.</p>
@@ -321,6 +334,7 @@
 </div>
 </section>
 </section>
+<hr class="docutils" />
 <section id="gameframe-globals-py">
 <h2><code class="docutils literal notranslate"><span class="pre">GameFrame/Globals.py</span></code><a class="headerlink" href="#gameframe-globals-py" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file holds the overall game information and variables that can be accessed from any code file. As well as editing the <code class="docutils literal notranslate"><span class="pre">Globals.py</span></code> file to set game information, you may need to access or update information in the file from other parts of the program.</p>
@@ -380,11 +394,13 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="gameframe-databasecontroller-py">
 <h2><code class="docutils literal notranslate"><span class="pre">GameFrame/DataBaseController.py</span></code><a class="headerlink" href="#gameframe-databasecontroller-py" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">DataBaseController</span></code> is a class which connects the provided SQL database file.</p>
 <p>If you wish to use a database in your game you will need to use this Class and write methods for the class in this file.</p>
 </section>
+<hr class="docutils" />
 <section id="rooms-levels">
 <h2>Rooms/Levels<a class="headerlink" href="#rooms-levels" title="Link to this heading">¶</a></h2>
 <p>In a game made with GameFrame, a room is the area in which a game is played. To have a game, there must be at least one room, but there can be many rooms, with the game progressing through different rooms.</p>
@@ -492,6 +508,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="roomobject">
 <h2>RoomObject<a class="headerlink" href="#roomobject" title="Link to this heading">¶</a></h2>
 <p>Everything that placed inside a Room, must be a <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code> (A <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> is also a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>). You define room objects in the “Objects” folder, and each object is a type of <code class="docutils literal notranslate"><span class="pre">GameFrame</span></code> <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>.</p>
@@ -694,6 +711,7 @@
 </section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="text-object">
 <h2>Text Object<a class="headerlink" href="#text-object" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TextObject</span></code> is a type of <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>. It has all the same attributes of a <code class="docutils literal notranslate"><span class="pre">RoomObject</span></code>, but specialises in displaying text. The text can be set to various sizes and colours as well as specifying a given font type. To access the <code class="docutils literal notranslate"><span class="pre">TextObject</span></code>’ code, you need to import the file as follows:</p>

@@ -36,6 +36,8 @@ To create an event-driven program you need to typically follow these steps:
 
 GameFrame handles many of the tasks above, but its important to understand the terminology before we continue.
 
+---
+
 ## Create GamePlay Room
 
 To create the GamePlay Room we follow the same steps as we did for the WelcomeScreen Room.
@@ -76,6 +78,8 @@ from Rooms.GamePlay import GamePlay
 ```
 
 **Save** and **close** the `__init__.py` file.
+
+---
 
 ## Make GamePlay next room
 
@@ -201,6 +205,8 @@ Let's break those lines down:
 
 **Save** `Title.py` and **close** it.
 
+---
+
 ## Testing
 
 Now to test that everything is working correctly.
@@ -208,6 +214,8 @@ Now to test that everything is working correctly.
 **Open** `MainController.py` and run it. Your welcome screen should show. 
 
 Next press **space** and the Title should disappear because you are now in the empty GamePlay room.
+
+---
 
 ## Commit and Push
 
@@ -220,6 +228,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

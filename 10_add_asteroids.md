@@ -60,6 +60,8 @@ from Objects.Asteroid import Asteroid
 
 **Run** the code using `MainController.py`. There should be no changes, but this just checks that we haven't made a mistake.
 
+---
+
 ## Spawn Asteroid Object
 
 Now we have an Asteroid Object we need to:
@@ -70,6 +72,8 @@ Now we have an Asteroid Object we need to:
 4. de-spawn the asteroid once if exits the left of screen 
 
 Let's do that in order.
+
+---
 
 ## Spawn asteroids
 
@@ -149,7 +153,7 @@ Let's break that code down:
 - **line 26** - sets timer and declares `self.spawn_asteroid` as the method to call when the timer is `0`.
 
 ```{admonition} Calling methods from method
-:class: note
+:class: hint
 When we pass a method as an argument (like in the timer), the argument method just uses it's name. The `()` after the name is dropped.
 
 If you include the `()` after the method name, it will be automatically called rather then waiting for the trigger.
@@ -181,6 +185,8 @@ Zork should move up and down, spawning asteroids, much like below:
 
 Obviously the next thing we need to do is make the asteroids move. We'll do that in the next lesson.
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -192,6 +198,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

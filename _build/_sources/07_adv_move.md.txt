@@ -25,7 +25,7 @@ According to the [GameFrame documents](documentation.md#roomobject-variables) th
 - `x_speed` and `y_speed` which indicate the movement in the respective `x` and `y` direction each frame
 
 ```{admonition} Frames
-:class: note
+:class: hint
 In GameFrame, frames refers to every time the computer screen is redrawn. The frequency of this is determined by the Global variable `FRAMES_PER_SECOND` which is set at 30. This means the computer will redraw the screen every 1/30 seconds (approx 33 nanoseconds). Therefore `x_speed` and `y_speed` show the difference in `x` and `y` positions every 33 nanoseconds.
 ```
 
@@ -121,6 +121,8 @@ Give all three movement options a try, and choose the one that you want to use.
 2. Replace the `key_pressed` method with your chosen method
 
 Just remember that if you choose either the **in motion while key is pressed** or the **always in motion with acceleration** option, your code will be slightly different.
+
+---
 
 ## Completed file states
 

@@ -18,10 +18,12 @@ Then open the **View** menu and tick
 
 ![setup view](assets/img/setup_view.png)
 
+---
+
 ## GameFrame and resources
 
 ```{admonition} GameFrame
-:class: note
+:class: hint
 GameFrame was developed by a Steven Tucker, a Queensland teacher. If you wish to use the latest versions of GameFrame, it can be found at his [Gitlab repository](https://gitlab.com/tuxta/gameframe?fbclid=IwAR0GnSkDPy-IdeoNZofh0YwVJ63i4m2wVyzXwBrFqpbG2cLuYox8dkbU2Ss).
 ```
 
@@ -50,6 +52,8 @@ To do this:
 
 The repo should now be copied onto your computer and ready for use.
 
+---
+
 ## Navigating to repo in Thonny
 
 We now have to direct Thonny to the repo we just created.
@@ -63,6 +67,8 @@ We now have to direct Thonny to the repo we just created.
 4. Make sure that the file in your repo folder directories match those in the image below.
 
 ![Thonny with the repo open](assets/img/thonny_repo_files.png)
+
+---
 
 ## Virtual Environment
 
@@ -122,10 +128,12 @@ Then recheck your Shell panel
 
 ![Thonny check venv](assets/img/thonny_venv_in_shell.png)
 
+---
+
 ## Make first commit and push
 
 ```{admonition} Git and GitHub terminology
-:class: note
+:class: hint
 Git and GitHub uses a range of different terminology. Here are some of the terms we will be using:
 
 - **Repository or repo**: A repository is a special folder that stores all the files and their history for a project.

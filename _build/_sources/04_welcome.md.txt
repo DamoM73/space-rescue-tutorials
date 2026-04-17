@@ -1,74 +1,85 @@
 # Welcome screen
 
 ```{topic} In this lesson you will:
-- learn how to plan using wireframes and class diagrams
-- learn how to make adjustment to window variables via the `Globals.py` file
-- learn how to create a GameFrame Room and add a background to it
-- learn hot to run your GameFrame game
-- learn how to create a GameFrame Object with an image and add it to a Room
-- learn how to commit and push your code to GitHub
+* plan your program using wireframes and class diagrams
+* change window settings using the `Globals.py` file
+* create a GameFrame Room and add a background image
+* run your GameFrame game
+* create a GameFrame Object with an image and add it to a Room
+* commit and push your code to GitHub
 ```
 
-To get the ball rolling, well create a welcome screen for our game. This is a nice and easy way to introduce some of the concepts and processes we will be using throughout.
+To get started, we will create a welcome screen for the game. This is a simple way to introduce the key concepts and processes you will use throughout the course.
 
 ## Planning
 
 ### Wireframe
 
 ```{admonition} Wireframes
-:class: note
-A wireframe is like a blueprint or skeleton of a website or app. It's a simple, basic outline that shows where different elements, like buttons, images, and text, will go on the screen. It focuses on the layout and arrangement of elements rather than the colors or details. It's a helpful tool for visualizing and discussing ideas before creating the final design, just like making a rough sketch or draft of a drawing before adding all the details.
+:class: hint
+A wireframe is a simple plan for a website or app. It shows where things like buttons, images, and text will go on the screen.
+
+It focuses on layout, not colours or small details.
+
+Wireframes help you plan and explain your ideas before you build the final design, like sketching before creating a finished drawing.
 ```
 
-Below is a wireframe of our welcome screen.
+Below is a wireframe of the welcome screen.
 
 ![Welcome screen wireframe](assets/img/welcome_wf.png)
 
-This wireframe shows three different parts of the program wee need to address:
+This wireframe shows three parts of the program we need to work on:
 
-- the game window (blue text):
-  - features of the window that will hold our game
-  - need to change size and title
-- the WelcomeScreen room (orange text):
-  - the main part of our window is taken up with the game surface which holds the WelcomeScreen Room
-  - it contains a background image and the Title Object
-- the Title Object (green text):
-  - represented by the placeholder (box with an x)
-  - contains an image
-  - has a key event to react to space being pressed
+* the game window (blue text):
+
+  * this is the window that displays the game
+  * we need to change its size and title
+
+* the WelcomeScreen room (orange text):
+
+  * this is the main area inside the window where the game runs
+  * it includes a background image and the Title object
+
+* the Title object (green text):
+
+  * shown as a placeholder (a box with an X)
+  * it uses an image
+  * it responds when the space key is pressed
 
 ### Class diagram
 
-We now know how the screen will look, but let's also consider the Class diagram. Check out [Deepest Dungeon](https://damom73.github.io/python-oop-with-deepest-dungeon/stage_1.html#class-diagram) for a refresher on Class diagrams if you need it.
+We now know what the screen will look like, but we also need to think about the class diagram. Check out [Deepest Dungeon](https://damom73.github.io/python-oop-with-deepest-dungeon/stage_1.html#class-diagram) if you need a refresher on class diagrams.
 
 ![welcome screen class diagram](assets/img/welcome_cd.png)
 
 We can see that the **WelcomeScreen** class has two attributes:
 
-- background image
-- Title RoomObject
+* a background image
+* a `Title` RoomObject
 
-We can also see that the Title class has:
+We can also see that the `Title` class has:
 
-- attribute: image
-- method: keypressed
+* an `image` attribute
+* a `key_pressed` method
 
-So we can see that there are three tasks we need to complete to create our welcome screen:
+This means there are four tasks we need to complete to create the welcome screen:
 
-1. Adjust window values
-2. Create WelcomeScreen Room
-3. Create Title RoomObject
-4. Add Title RoomObject to WelcomeScreen Room
+1. Adjust the window values
+2. Create the `WelcomeScreen` Room
+3. Create the `Title` RoomObject
+4. Add the `Title` RoomObject to the `WelcomeScreen` Room
 
-Let's start.
+Let's get started.
+
+---
 
 ## Adjust window values
 
 ### `GameFrame/Globals.py`
 
-The window values reside in `Globals.py` in the `GameFrame` folder, so **open** it up.
+The window settings are in the `Globals.py` file inside the `GameFrame` folder, so **open** that file.
 
-To change the window size, adjust the `SCREEN_WIDTH` and `SCREEN_HEIGHT`:
+To change the window size, update the `SCREEN_WIDTH` and `SCREEN_HEIGHT` values:
 
 ```{code-block} python
 :linenos:
@@ -78,7 +89,7 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 800
 ```
 
-Then change the `window_name` value:
+Then update the `window_name` value:
 
 ```{code-block} python
 :lineno-start: 15
@@ -87,17 +98,22 @@ Then change the `window_name` value:
 window_name = 'Space Rescue'
 ```
 
-**Save** the `Globals.py` file using `control` + `S` (Windows) `command` + S (macOS)
+**Save** the `Globals.py` file using:
+
+* Windows: `Ctrl + S`
+* macOS: `Command + S`
 
 ## Create WelcomeScreen Room
 
-Let's check the [GameFrame documentation](documentation.md#roomslevels) to see how we can create a level.
+Let's check the [GameFrame documentation](documentation.md#roomslevels) to see how to create a Room.
 
 ### `Rooms/WelcomeScreen.py`
 
-So we need to **create a new file** in the `Rooms` folder called `WelcomeScreen.py`.
+Create a new file in the `Rooms` folder called `WelcomeScreen.py`.
 
-In this file we are going to create a WelcomeScreen class. This is going to be a sub-class of the Level class provided by GameFrame. So the first thing we need to do is to import the Level class from GameFrame:
+In this file, you will create a `WelcomeScreen` class. This class will be a subclass of the `Level` class from GameFrame.
+
+Start by importing the `Level` class from GameFrame:
 
 ```{code-block} python
 :linenos:
@@ -105,7 +121,9 @@ In this file we are going to create a WelcomeScreen class. This is going to be a
 from GameFrame import Level
 ```
 
-Now we can create our WelcomeScreen class. Following the instructions from the documentation add the following code.
+Now create the `WelcomeScreen` class.
+
+Follow the documentation and add the code shown below.
 
 ```{code-block} python
 :linenos:
@@ -120,26 +138,29 @@ class WelcomeScreen(Level):
         Level.__init__(self, screen, joysticks)
 ```
 
-Lets break that down a bit:
+```{admonition} Code Explanation
+:class: note
+Let’s break this down:
 
-- **line 3**: defines our class &rarr; explicitly names it as a subclass of the `Level` class.
-- **lines 4-6**: a doc string that explains the class.
-- **line 7**: the `__init__` method &rarr; called automatically when a `WelcomeScreen` object is made.
-- **line 8** calling the `__init__` method of the `Level` parent class &rarr; the `WelcomeScreen` class will inherent all the attributes and methods from `Level`.
+* **line 3**: defines the class → it is set up as a subclass of the `Level` class
+* **lines 4–6**: a docstring that explains what the class does
+* **line 7**: the `__init__` method → runs automatically when a `WelcomeScreen` object is created
+* **line 8**: calls the `__init__` method of the `Level` parent class → this allows `WelcomeScreen` to inherit all attributes and methods from `Level`
+```
 
 Now **save** the `WelcomeScreen.py` file.
 
 ### Testing WelcomeScreen
 
-So we've made a welcome screen, let's run the game and see what happens.
+Now that we have made the welcome screen, let’s run the game and see what happens.
 
-**Open** `MainController.py` and then click the play button in the top righthand corner.
+**Open** `MainController.py`, then click the play button in the top right-hand corner.
 
 ![play button](assets/img/run.png)
 
-Well, that didn't go to plan. You probably have the following error:
+That did not go to plan. You will probably see the following error:
 
-```{code-block}
+```{code-block} error
 Traceback (most recent call last):
   File "d:\GIT\space_rescue_pygame\MainController.py", line 34, in <module>
     room = class_name(screen, joysticks)
@@ -203,6 +224,8 @@ Breaking that down:
   - `"Background.png"` &rarr; image file in the `images` folder (go to the folder and see if you can find it).
 
 Save `WelcomeScreen.py` and then run the program again using `MainController.py`.
+
+---
 
 ## Create Title RoomObject
 
@@ -271,7 +294,7 @@ This is fairly different to how we added an image to the WelcomeScreen room, so 
   - Note `800` and `350` this is the width and the height of the image
 
 ```{admonition} Determine image width and height
-:class: note
+:class: hint
 The easiest way to work out the height and width of an image is to open the image in VS Code and then look at the status bar at the bottom right of the screen.
 
 ![image dets](assets/img/image_dets.png)
@@ -290,7 +313,7 @@ from Objects.Title import Title
 ```
 
 ```{admonition} Keeping workspace clean
-:class: note
+:class: hint
 During these tutorials, you will be moving between many different files, even files with the same name, but in different folder (eg. `__init__.py`).
 
 To reduce the chance of working in the wrong file, get into the habbit of closing a file once you have finished with it.
@@ -299,6 +322,8 @@ To reduce the chance of working in the wrong file, get into the habbit of closin
 **Save** `__init__.py` and **close** it.
 
 Now run `MainController.py` to test your code. Nothing should change, because we haven't added the RoomObject into the Room yet. This was just to check that there are no errors in your code so far.
+
+---
 
 ## Add Title RoomObject to WelcomeScreen Room
 
@@ -336,11 +361,13 @@ Breaking that down:
   - `Title(self, 240, 200)` &rarr; creates a new `Title` RoomObject and tells it that it belongs to **this** room at the position of `x` of `240` and `y` of `200`.
 
 ```{admonition} Pygame screen coordinates
-:class: note
+:class: hint
 Pygame screen coordinates start with (0,0) in the top lefthand corner and increase as you move right and down. For example, on our screen the top left is (0,0) whilst the bottom right is (1279,799)
 ```
 
 **Save** `WelcomeScreen.py` and **close** it.
+
+---
 
 ## Testing
 
@@ -349,6 +376,8 @@ Now we have our welcome screen ready, it's time to test it.
 Open `MainController.py` and run it. Your screen should look like this:
 
 ![welcome screen finished](assets/img/welcome_2.png)
+
+---
 
 ## Commit and Push
 
@@ -363,6 +392,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed file states
 

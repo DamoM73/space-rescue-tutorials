@@ -22,6 +22,8 @@ We will place the code, summarised in the IPO table below, in the Laser class.
 
 ![Laser Asteroid collision IPO](assets/img/laser_asteroid_collision_IPO.png)
 
+---
+
 ## Coding
 
 Remember in GameFrame handling collisions is a two step process. First you must register which object collisions to detect using the `register_collision_object` method, and then create a methods called `handle_collision` which holds the game logic associated with the collision.
@@ -90,6 +92,8 @@ Most of this code should be familiar, but we'll investigate it anyway:
 
 **Save** `Laser.py` then run `MainController.py` to test that everything is working as planned.
 
+---
+
 ## Commit and Push
 
 We have finished and tested another section of code so we should make a Git commit.
@@ -101,6 +105,8 @@ To do this:
 3. Click on **Push origin**
 
 Now the work from this lesson is committed and synced with the online repo.
+
+---
 
 ## Completed File States
 

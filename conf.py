@@ -3,6 +3,11 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import os
+import sys
+
+sys.path.append(os.path.abspath("_ext"))
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -17,6 +22,9 @@ release = '2023'
 extensions = [
     "myst_parser",
     "sphinx_copybutton",
+    "error_lexer",
+    "question_admonition",
+    "custom_titled_admonitions",
 ]
 
 source_suffix = {
@@ -63,11 +71,19 @@ html_theme_options = {
         },
     ],
     "light_css_variables": {
-        "font-stack": "Verdana, Geneva, sans-serif",
-        "font-stack--monospace": "\"Courier New\", Courier, monospace",
+        "font-stack": "Verdana, sans-serif",
+        "font-stack--monospace": "'Courier New', monospace",
+        "code-font-size": "100%",
+        "color-sidebar-background": "#cabcdc",
+        "color-sidebar-brand-text": "#533a71",
+        "color-sidebar-caption-text": "#533a71",
     },
     "dark_css_variables": {
-        "font-stack": "Verdana, Geneva, sans-serif",
-        "font-stack--monospace": "\"Courier New\", Courier, monospace",
+        "font-stack": "Verdana, sans-serif",
+        "font-stack--monospace": "'Courier New', monospace",
+        "code-font-size": "100%",
+        "color-sidebar-background": "#cabcdc",
+        "color-sidebar-brand-text": "#533a71",
+        "color-sidebar-caption-text": "#533a71",
     },
 }

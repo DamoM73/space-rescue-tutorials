@@ -18,7 +18,7 @@ The first step is to work out how many levels (Rooms) the new game will have. Fo
 Once the number of Rooms have been determined, you will need to draw a wireframe for each of the Rooms.
 
 ```{admonition} Wireframes
-:class: note
+:class: hint
 A wireframe is like a blueprint or skeleton of a website or app. It's a simple, basic outline that shows where different elements, like buttons, images, and text, will go on the screen. It focuses on the layout and arrangement of elements rather than the colors or details. It's a helpful tool for visualizing and discussing ideas before creating the final design, just like making a rough sketch or draft of a drawing before adding all the details.
 ```
 
