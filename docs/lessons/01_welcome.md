@@ -64,7 +64,7 @@ Let's get started.
 
 The window settings are in ***Globals.py*** in the ***GameFrame*** folder. Open ***GameFrame/Globals.py*** and change the highlighted code below, then save it.
 
-```python linenums="7" hl_lines="1-2 10" title="step01/GameFrame/Globals.py"
+```python linenums="7" hl_lines="1-2 10" title="GameFrame/Globals.py"
 --8<-- "examples/lessons/01_welcome/step01/GameFrame/Globals.py:7:16"
 ```
 
@@ -80,7 +80,7 @@ Let's check the [GameFrame API](../reference/gameframe_api.md#roomslevels) to se
 
 Create a new file in the ***Rooms*** folder, add the code below and save it as ***WelcomeScreen.py***.
 
-```python linenums="1" hl_lines="1 3-8" title="step02/Rooms/WelcomeScreen.py"
+```python linenums="1" hl_lines="1 3-8" title="Rooms/WelcomeScreen.py"
 --8<-- "examples/lessons/01_welcome/step02/Rooms/WelcomeScreen.py"
 ```
 
@@ -115,7 +115,7 @@ We'll see this error again, so it's worth remembering. Back in [Get to Know Game
 
 Open ***Rooms/\_\_init\_\_.py***, add the code below and save it.
 
-```python linenums="1" hl_lines="1" title="step03/Rooms/__init__.py"
+```python linenums="1" hl_lines="1" title="Rooms/__init__.py"
 --8<-- "examples/lessons/01_welcome/step03/Rooms/__init__.py"
 ```
 
@@ -139,7 +139,7 @@ Let's make it less boring with a background image. Checking the [GameFrame API](
 
 Go back to ***Rooms/WelcomeScreen.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="10-11" title="step04/Rooms/WelcomeScreen.py"
+```python linenums="1" hl_lines="10-11" title="Rooms/WelcomeScreen.py"
 --8<-- "examples/lessons/01_welcome/step04/Rooms/WelcomeScreen.py"
 ```
 
@@ -172,7 +172,7 @@ Notice that `RoomObject` has many more methods than `Level`. That's because the 
 
 Create a new file in the ***Objects*** folder, add the code below and save it as ***Title.py***.
 
-```python linenums="1" hl_lines="1 3-8" title="step05/Objects/Title.py"
+```python linenums="1" hl_lines="1 3-8" title="Objects/Title.py"
 --8<-- "examples/lessons/01_welcome/step05/Objects/Title.py"
 ```
 
@@ -185,7 +185,7 @@ Create a new file in the ***Objects*** folder, add the code below and save it as
 
 This is very like the `WelcomeScreen` class. Next we need to give the object an image. Go back to ***Objects/Title.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="10-12" title="step06/Objects/Title.py"
+```python linenums="1" hl_lines="10-12" title="Objects/Title.py"
 --8<-- "examples/lessons/01_welcome/step06/Objects/Title.py"
 ```
 
@@ -200,7 +200,7 @@ This is very like the `WelcomeScreen` class. Next we need to give the object an 
 
 Open ***Objects/\_\_init\_\_.py***, add the code below and save it.
 
-```python linenums="1" hl_lines="1" title="step07/Objects/__init__.py"
+```python linenums="1" hl_lines="1" title="Objects/__init__.py"
 --8<-- "examples/lessons/01_welcome/step07/Objects/__init__.py"
 ```
 
@@ -218,7 +218,7 @@ Run ***MainController.py*** again. Nothing should change, because we haven't put
 
 Now we can put the Title RoomObject into the WelcomeScreen Room. Go back to ***Rooms/WelcomeScreen.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="2 14-15" title="step08/Rooms/WelcomeScreen.py"
+```python linenums="1" hl_lines="2 14-15" title="Rooms/WelcomeScreen.py"
 --8<-- "examples/lessons/01_welcome/step08/Rooms/WelcomeScreen.py"
 ```
 

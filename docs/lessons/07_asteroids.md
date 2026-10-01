@@ -12,7 +12,7 @@ In the game, Zork hurls asteroids at the player's ship, and the player has to do
 
 The code for a new RoomObject should be very familiar by now. Create a new file in the ***Objects*** folder, add the code below and save it as ***Asteroid.py***.
 
-```python linenums="1" hl_lines="1 3-6 8-13 15-17" title="step01/Objects/Asteroid.py"
+```python linenums="1" hl_lines="1 3-6 8-13 15-17" title="Objects/Asteroid.py"
 --8<-- "examples/lessons/07_asteroids/step01/Objects/Asteroid.py"
 ```
 
@@ -27,7 +27,7 @@ The code for a new RoomObject should be very familiar by now. Create a new file 
 
 Open ***Objects/\_\_init\_\_.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="4" title="step02/Objects/__init__.py"
+```python linenums="1" hl_lines="4" title="Objects/__init__.py"
 --8<-- "examples/lessons/07_asteroids/step02/Objects/__init__.py"
 ```
 
@@ -73,7 +73,7 @@ There are two steps to this:
 
 Open ***Objects/Zork.py*** and add the highlighted code below. Starting the timer needs to happen when Zork is created, so it goes in `__init__`.
 
-```python linenums="1" hl_lines="2 23-25" title="step03/Objects/Zork.py"
+```python linenums="1" hl_lines="2 23-25" title="Objects/Zork.py"
 --8<-- "examples/lessons/07_asteroids/step03/Objects/Zork.py"
 ```
 
@@ -91,7 +91,7 @@ Open ***Objects/Zork.py*** and add the highlighted code below. Starting the time
 
 The timer calls `self.spawn_asteroid`, which doesn't exist yet, so let's create it. Add the highlighted code below to the bottom of the `Zork` class, then save the file.
 
-```python linenums="1" hl_lines="40-46 48-50" title="step04/Objects/Zork.py"
+```python linenums="1" hl_lines="40-46 48-50" title="Objects/Zork.py"
 --8<-- "examples/lessons/07_asteroids/step04/Objects/Zork.py"
 ```
 

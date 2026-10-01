@@ -65,6 +65,11 @@ PLAN = {
     pygame.K_RETURN: lambda f: f % 53 == 10,
     pygame.K_LCTRL: lambda f: f % 150 == 75,
     pygame.K_RCTRL: lambda f: f % 150 == 75,
+    pygame.K_d: lambda f: (f // 60) % 3 == 0,
+    pygame.K_LEFT: lambda f: (f // 40) % 4 == 0,
+    pygame.K_RIGHT: lambda f: (f // 40) % 4 == 1,
+    pygame.K_UP: lambda f: (f // 40) % 4 == 2,
+    pygame.K_DOWN: lambda f: (f // 40) % 4 == 3,
 }
 
 class Keys(list):
@@ -117,6 +122,11 @@ def main():
         with tempfile.TemporaryDirectory() as tmp:
             game = Path(tmp) / "game"
             shutil.copytree(starter, game, ignore=shutil.ignore_patterns(".git", ".venv"))
+            if any(name.startswith("Rooms/") for name in files) and "own_game/" in page and page != "own_game/databases":
+                # demo games replace the starter's Rooms and Objects
+                for folder in ("Rooms", "Objects"):
+                    for old in (game / folder).glob("*.py"):
+                        old.unlink()
             for name, source in files.items():
                 (game / name).parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy(source, game / name)

@@ -12,6 +12,9 @@ Students copy a checkpoint's Objects, Rooms and GameFrame folders over
 the same folders in their space-rescue-resources repo. The images, sounds
 and the rest of GameFrame come from that repo, so they aren't in the zip.
 
+The demo games in STANDALONE don't build on Space Rescue, so their
+folders only hold the demo's own files.
+
 Folders that don't start with "step" (for example the movement options in
 lessons/04_advanced_movement) are alternatives and aren't carried forward.
 
@@ -48,6 +51,14 @@ CHECKPOINTS = [
     "design/bonuses",
     "design/subgoals",
     "design/ship_choice",
+    "own_game/databases",
+]
+
+# Small demo games that start from an empty project, not from Space Rescue.
+STANDALONE = [
+    "own_game/platformer",
+    "own_game/top_down",
+    "own_game/scrolling",
 ]
 
 
@@ -69,6 +80,8 @@ def checkpoints():
     for page in CHECKPOINTS:
         files = apply_steps(page, files)
         yield page, files
+    for page in STANDALONE:
+        yield page, apply_steps(page, {})
 
 
 def main():

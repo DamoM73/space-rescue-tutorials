@@ -122,7 +122,7 @@ Then we'll make it respond to keys:
 
 Create a new file in the ***Objects*** folder, add the code below and save it as ***Ship.py***.
 
-```python linenums="1" hl_lines="1 3-6 8-12 14-16" title="step01/Objects/Ship.py"
+```python linenums="1" hl_lines="1 3-6 8-12 14-16" title="Objects/Ship.py"
 --8<-- "examples/lessons/03_spaceship/step01/Objects/Ship.py"
 ```
 
@@ -138,7 +138,7 @@ Create a new file in the ***Objects*** folder, add the code below and save it as
 
 Open ***Objects/\_\_init\_\_.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="2" title="step02/Objects/__init__.py"
+```python linenums="1" hl_lines="2" title="Objects/__init__.py"
 --8<-- "examples/lessons/03_spaceship/step02/Objects/__init__.py"
 ```
 
@@ -147,7 +147,7 @@ Open ***Objects/\_\_init\_\_.py***, add the highlighted code below and save it.
 
 Open ***Rooms/GamePlay.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="2 11-12" title="step03/Rooms/GamePlay.py"
+```python linenums="1" hl_lines="2 11-12" title="Rooms/GamePlay.py"
 --8<-- "examples/lessons/03_spaceship/step03/Rooms/GamePlay.py"
 ```
 
@@ -166,7 +166,7 @@ We should have a spaceship in the GamePlay Room, but it doesn't move yet.
 
 Go back to ***Objects/Ship.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="2 19-20 22-25 27-30" title="step04/Objects/Ship.py"
+```python linenums="1" hl_lines="2 19-20 22-25 27-30" title="Objects/Ship.py"
 --8<-- "examples/lessons/03_spaceship/step04/Objects/Ship.py"
 ```
 

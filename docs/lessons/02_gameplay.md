@@ -45,7 +45,7 @@ We create the GamePlay Room the same way we created the WelcomeScreen Room:
 
 Create a new file in the ***Rooms*** folder, add the code below and save it as ***GamePlay.py***.
 
-```python linenums="1" hl_lines="1 3-5 7-8" title="step01/Rooms/GamePlay.py"
+```python linenums="1" hl_lines="1 3-5 7-8" title="Rooms/GamePlay.py"
 --8<-- "examples/lessons/02_gameplay/step01/Rooms/GamePlay.py"
 ```
 
@@ -58,7 +58,7 @@ Create a new file in the ***Rooms*** folder, add the code below and save it as *
 
 Open ***Rooms/\_\_init\_\_.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="2" title="step02/Rooms/__init__.py"
+```python linenums="1" hl_lines="2" title="Rooms/__init__.py"
 --8<-- "examples/lessons/02_gameplay/step02/Rooms/__init__.py"
 ```
 
@@ -73,7 +73,7 @@ Now we need to tell GameFrame that GamePlay comes after the WelcomeScreen. Open 
 
 Right now it's the default list `["WelcomeScreen", "Maze", "ScrollingShooter", "BreakOut"]`. Our game doesn't have the last three Rooms, so change the highlighted code below and save the file.
 
-```python linenums="18" hl_lines="2 8" title="step03/GameFrame/Globals.py"
+```python linenums="18" hl_lines="2 8" title="GameFrame/Globals.py"
 --8<-- "examples/lessons/02_gameplay/step03/GameFrame/Globals.py:18:25"
 ```
 
@@ -96,7 +96,7 @@ There are two things about keys: the `handle_key_events` variable and the `key_p
 
 The `handle_key_events` variable decides whether an object is told about key presses. To listen for key events we set it to `True`. We want the Title to listen for key presses, so go back to ***Objects/Title.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="14-15" title="step04/Objects/Title.py"
+```python linenums="1" hl_lines="14-15" title="Objects/Title.py"
 --8<-- "examples/lessons/02_gameplay/step04/Objects/Title.py"
 ```
 
@@ -117,7 +117,7 @@ The only tricky part is that our code is in the Title, but `running` belongs to 
 
 Remember how we added the Title to the WelcomeScreen:
 
-```python linenums="15" title="step08/Rooms/WelcomeScreen.py"
+```python linenums="15" title="Rooms/WelcomeScreen.py"
 --8<-- "examples/lessons/01_welcome/step08/Rooms/WelcomeScreen.py:15:15"
 ```
 
@@ -125,7 +125,7 @@ The `self` we passed in is the WelcomeScreen, so the Title knows which Room it's
 
 Now we can write our code. Still in ***Objects/Title.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="2 18-21 23-24" title="step05/Objects/Title.py"
+```python linenums="1" hl_lines="2 18-21 23-24" title="Objects/Title.py"
 --8<-- "examples/lessons/02_gameplay/step05/Objects/Title.py"
 ```
 

@@ -77,7 +77,7 @@ To keep our code **maintainable**, we'll keep `step` as small as possible. We'll
 
 Let's put this game logic in a method called `keep_in_room`. Add the code below to the bottom of the `Ship` class.
 
-```python linenums="32" hl_lines="1-8" title="step01/Objects/Ship.py"
+```python linenums="32" hl_lines="1-8" title="Objects/Ship.py"
 --8<-- "examples/lessons/05_ship_in_room/step01/Objects/Ship.py:32:39"
 ```
 
@@ -91,7 +91,7 @@ Let's put this game logic in a method called `keep_in_room`. Add the code below 
 
 Notice the squiggly line under `Globals`? That's VS Code telling us it can't find it, because we haven't imported it. At the top of ***Objects/Ship.py***, change the highlighted code below.
 
-```python linenums="1" hl_lines="1" title="step02/Objects/Ship.py"
+```python linenums="1" hl_lines="1" title="Objects/Ship.py"
 --8<-- "examples/lessons/05_ship_in_room/step02/Objects/Ship.py:1:2"
 ```
 
@@ -102,7 +102,7 @@ Notice the squiggly line under `Globals`? That's VS Code telling us it can't fin
 
 Now we need to call `keep_in_room` from the `step` method. Add the code below to the bottom of the `Ship` class, then save the file.
 
-```python linenums="41" hl_lines="1-5" title="step03/Objects/Ship.py"
+```python linenums="41" hl_lines="1-5" title="Objects/Ship.py"
 --8<-- "examples/lessons/05_ship_in_room/step03/Objects/Ship.py:41:45"
 ```
 
@@ -118,7 +118,7 @@ Now we need to call `keep_in_room` from the `step` method. Add the code below to
 
 Here's the whole of ***Objects/Ship.py*** so far, so you can check your code:
 
-```python linenums="1" title="step03/Objects/Ship.py"
+```python linenums="1" title="Objects/Ship.py"
 --8<-- "examples/lessons/05_ship_in_room/step03/Objects/Ship.py"
 ```
 

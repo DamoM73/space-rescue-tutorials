@@ -36,7 +36,7 @@ Below is the flowchart for **always in motion**. On every loop:
 
 This is the movement we already have in our `key_pressed` method:
 
-```python linenums="22" title="option_always/Objects/Ship.py"
+```python linenums="22" title="Objects/Ship.py"
 --8<-- "examples/lessons/04_advanced_movement/option_always/Objects/Ship.py:22:30"
 ```
 
@@ -51,7 +51,7 @@ Below is the flowchart for **in motion while a key is pressed**. Notice that:
 
 To try this movement, change the highlighted lines in the `key_pressed` method in ***Objects/Ship.py***.
 
-```python linenums="22" hl_lines="7 9" title="option_while_pressed/Objects/Ship.py"
+```python linenums="22" hl_lines="7 9" title="Objects/Ship.py"
 --8<-- "examples/lessons/04_advanced_movement/option_while_pressed/Objects/Ship.py:22:30"
 ```
 
@@ -76,7 +76,7 @@ Below is the flowchart for **always in motion with acceleration**. It combines t
 
 To try this movement, change the highlighted lines in the `key_pressed` method.
 
-```python linenums="22" hl_lines="7 9" title="option_acceleration/Objects/Ship.py"
+```python linenums="22" hl_lines="7 9" title="Objects/Ship.py"
 --8<-- "examples/lessons/04_advanced_movement/option_acceleration/Objects/Ship.py:22:30"
 ```
 

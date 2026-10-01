@@ -12,7 +12,7 @@ Our boss for this game is **Zork**, an evil alien. Creating Zork follows the sam
 
 Create a new file in the ***Objects*** folder, add the code below and save it as ***Zork.py***.
 
-```python linenums="1" hl_lines="1 3-12 14-16" title="step01/Objects/Zork.py"
+```python linenums="1" hl_lines="1 3-12 14-16" title="Objects/Zork.py"
 --8<-- "examples/lessons/06_zork/step01/Objects/Zork.py"
 ```
 
@@ -27,7 +27,7 @@ Create a new file in the ***Objects*** folder, add the code below and save it as
 
 Open ***Objects/\_\_init\_\_.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="3" title="step02/Objects/__init__.py"
+```python linenums="1" hl_lines="3" title="Objects/__init__.py"
 --8<-- "examples/lessons/06_zork/step02/Objects/__init__.py"
 ```
 
@@ -36,7 +36,7 @@ Open ***Objects/\_\_init\_\_.py***, add the highlighted code below and save it.
 
 Open ***Rooms/GamePlay.py***, add the highlighted code below and save it.
 
-```python linenums="1" hl_lines="3 14" title="step03/Rooms/GamePlay.py"
+```python linenums="1" hl_lines="3 14" title="Rooms/GamePlay.py"
 --8<-- "examples/lessons/06_zork/step03/Rooms/GamePlay.py"
 ```
 
@@ -93,7 +93,7 @@ Our IPO table says the trigger is Zork being created. When an object is instanti
 
 We can use `random.choice` to pick a random item from a list. If we give it a list of `-10` and `10`, it will choose one of them. Go back to ***Objects/Zork.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="2 19-20" title="step04/Objects/Zork.py"
+```python linenums="1" hl_lines="2 19-20" title="Objects/Zork.py"
 --8<-- "examples/lessons/06_zork/step04/Objects/Zork.py"
 ```
 
@@ -116,7 +116,7 @@ To reverse Zork's direction, we'll use the same pattern we used to keep the ship
 
 Go back to ***Objects/Zork.py*** and add the highlighted code below.
 
-```python linenums="1" hl_lines="1 22-27 29-33" title="step05/Objects/Zork.py"
+```python linenums="1" hl_lines="1 22-27 29-33" title="Objects/Zork.py"
 --8<-- "examples/lessons/06_zork/step05/Objects/Zork.py"
 ```
 
