@@ -1,0 +1,115 @@
+[project]
+site_name = "Space Rescue"
+site_description = "Build a 2D space game in Python with Pygame and the GameFrame framework, for Year 9/10 students using VS Code."
+site_author = "Damien Murtagh"
+site_url = "https://damom73.github.io/space-rescue-tutorials/"
+repo_url = "https://github.com/DamoM73/space-rescue-tutorials"
+repo_name = "DamoM73/space-rescue-tutorials"
+copyright = "Content licensed under CC BY-NC-SA 4.0. Code licensed under GPLv3."
+docs_dir = "docs"
+extra_css = ["stylesheets/extra.css"]
+
+nav = [
+  { "Home" = "index.md" },
+  { "Start" = [
+    { "Introduction" = "start/introduction.md" },
+    { "Setup" = "start/setup.md" },
+    { "Get to Know GameFrame" = "start/gameframe.md" },
+  ] },
+  { "Build the Game" = [
+    { "1. Welcome Screen" = "lessons/01_welcome.md" },
+    { "2. GamePlay Room" = "lessons/02_gameplay.md" },
+    { "3. Spaceship" = "lessons/03_spaceship.md" },
+    { "4. Advanced Movement" = "lessons/04_advanced_movement.md" },
+    { "5. Keeping the Ship in the Room" = "lessons/05_ship_in_room.md" },
+    { "6. Zork" = "lessons/06_zork.md" },
+    { "7. Asteroids" = "lessons/07_asteroids.md" },
+    { "8. Moving Asteroids" = "lessons/08_moving_asteroids.md" },
+    { "9. Ship and Asteroid Collision" = "lessons/09_ship_asteroid_collision.md" },
+    { "10. Laser" = "lessons/10_laser.md" },
+    { "11. Laser and Asteroid Collision" = "lessons/11_laser_asteroid_collision.md" },
+    { "12. Astronauts" = "lessons/12_astronauts.md" },
+    { "13. Scoring" = "lessons/13_scoring.md" },
+    { "14. Lives" = "lessons/14_lives.md" },
+  ] },
+  { "Game Design" = [
+    { "Game Design" = "design/game_design.md" },
+    { "Audio" = "design/audio.md" },
+    { "Unfair Punishment" = "design/unfair_punishment.md" },
+    { "Difficulty" = "design/difficulty.md" },
+    { "Goals and Rewards" = "design/goals_rewards.md" },
+    { "Bonus Pickups" = "design/bonuses.md" },
+    { "Subgoals" = "design/subgoals.md" },
+    { "Ship Choice" = "design/ship_choice.md" },
+  ] },
+  { "Your Own Game" = [
+    { "Planning Your Game" = "own_game/planning.md" },
+    { "Design Thinking Flowchart" = "own_game/design_flowchart.md" },
+    { "Coding Flowcharts" = "own_game/coding_flowcharts.md" },
+    { "Other Game Types" = "own_game/other_game_types.md" },
+    { "Saving Data with a Database" = "own_game/databases.md" },
+  ] },
+  { "Reference" = [
+    { "GameFrame API" = "reference/gameframe_api.md" },
+    { "Index of Topics" = "reference/index_of_topics.md" },
+    { "Common Errors" = "reference/common_errors.md" },
+    { "Finished Game" = "reference/finished_game.md" },
+    { "Using Thonny" = "reference/using_thonny.md" },
+    { "Licence" = "reference/licence.md" },
+  ] },
+]
+
+[project.theme]
+language = "en"
+logo = "assets/logo_header.png"
+favicon = "assets/favicon.ico"
+features = [
+  "content.code.copy",
+  "content.code.select",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.path",
+  "navigation.sections",
+  "navigation.tabs",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.details = {}
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.snippets.base_path = ["docs"]
+pymdownx.snippets.check_paths = true
+pymdownx.superfences = {}
