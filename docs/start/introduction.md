@@ -44,7 +44,7 @@ Pygame makes complex programming tasks simpler by using **abstraction**. For exa
 
 Pygame is a 2D game engine, so it isn't used for large, high-budget (AAA) games like Call of Duty. It can still make large and detailed games, though, and some games on Steam have been built with Pygame.
 
-More information is on the [Pygame website](https://www.pygame.org/news).
+More information is on the [Pygame website](https://www.pygame.org/docs/).
 
 ---
 

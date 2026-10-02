@@ -89,6 +89,7 @@ class Clock:
             if case:
                 print("CASE", " ".join(sorted(case)))
             print("PASS")
+            sys.stdout.flush()
             os._exit(0)
         return 33
     def get_fps(self):
