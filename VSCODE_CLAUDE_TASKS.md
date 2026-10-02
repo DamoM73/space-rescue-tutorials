@@ -34,13 +34,13 @@ The old site is still on `main` and will be tagged before merging (task 6), so n
 - root pages: `index.md`, `01_introduction.md` to `20_unfair_punishment.md`, `95_planning.md`, `96_creating.md`, `97_using_thonny.md`, `98_index_of_topics.md`, `99_documentation.md`
 - Sphinx files: `conf.py`, `Makefile`, `make.bat`, `_build/`, `_ext/`, `_static/`
 - old content folder: `assets/` (the images in use were copied to `docs/assets/`; the draw.io sources were copied to `design/`)
-- stray notes: `style.md` (the old Sphinx admonition guide), `todo.md` (every item is now a page)
+- stray notes: `style.md` (the old Sphinx admonition guide)
 - `%GIT%space-rescue-tutorials/` (a stray chat history folder)
 - `assets/.$diagrams.drawio.bkp` and `assets/.$Designing in GameFrame.drawio.bkp` (draw.io backups, removed with `assets/`)
 
 These images in `assets/img/` weren't used by the old site and weren't copied: `create_room.png`, `create_venv_trouble.png`, `handle_collisions.png`, `move_object_with_keys.png`, `new_terminal.png`, `spaceship_out_of_bounds.png`, `title.png`, `venv_confirm.png`. Ask Damien if any should be kept (they'll go with `assets/`).
 
-Keep `README.md`, `.gitignore`, `.gitattributes`, `requirements.txt`, `zensical.toml`, `VSCODE_CLAUDE_TASKS.md`, `docs/`, `scripts/`, `design/` and `.github/`. `.venv/` is local and already ignored.
+Keep `README.md`, `todo.md` (Damien's own task list), `.gitignore`, `.gitattributes`, `requirements.txt`, `zensical.toml`, `VSCODE_CLAUDE_TASKS.md`, `docs/`, `scripts/`, `design/` and `.github/`. `.venv/` is local and already ignored.
 
 Before deleting, search the repo to confirm nothing in `docs/`, `scripts/` or `zensical.toml` references these files. Then run `zensical build --clean`.
 
@@ -119,6 +119,9 @@ If `pygame` is installed, also run `python scripts/test_checkpoints.py --starter
 6. From now on, all work happens on `main`. Update the intro of this file to say so.
 
 ## Tasks for Damien (not for Claude)
+
+These are also in `todo.md`, which Damien keeps up to date. Don't delete or edit it unless he asks.
+
 
 - Play through the game from each checkpoint, especially the new mechanic pages, and decide whether the difficulty settings, the rescue goal (10), the bonus timers and the power timings feel right.
 - Check the subgoal interpretation: shooting an astronaut takes one off the **rescued count** (Game Design said "subtracts one from the goal total"). Change it on the Subgoals page if you meant something else.
