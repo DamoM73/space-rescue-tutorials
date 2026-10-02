@@ -1,8 +1,8 @@
 # Tasks for Claude in VS Code
 
-These tasks finish the Zensical rework of *Space Rescue*. They couldn't be done from Cowork, which could only create and overwrite files in this folder. It couldn't delete files, run git, access GitHub or write inside `.github/`.
+These tasks finished the Zensical rework of *Space Rescue*. They couldn't be done from Cowork, which could only create and overwrite files in this folder. It couldn't delete files, run git, access GitHub or write inside `.github/`.
 
-Work on the `zensical` branch, and do the tasks in order. Check with Damien before each task marked **Confirm first**. Report the output of the checks after each task.
+The rework is live. All work now happens on `main` — the `zensical` branch is no longer used. Check with Damien before each task marked **Confirm first**. Report the output of the checks after each task.
 
 ## Context
 
