@@ -7,6 +7,10 @@
     - how to add sound effects to events
     - how to change the volume of a sound
 
+!!! terms "Terminology"
+    - **background music** – music that plays continuously while the game is running.
+    - **sound effect** – a short sound that plays when a particular event happens in the game.
+
 In [Game Design](game_design.md) we found that **audio feedback** would make our game feel more interactive. These are the events we could add sound effects to:
 
 | Event | Sound effect |

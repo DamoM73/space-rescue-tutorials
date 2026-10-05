@@ -7,6 +7,18 @@
     - how to let the player type text with an `EntryTextObject`
     - how to create TextObjects without writing a new class
 
+!!! terms "Terminology"
+    - **database** – an organised store of data that is saved permanently, so it is kept after the program closes.
+    - **table** – the part of a database that stores data in rows and columns, a bit like a spreadsheet.
+    - **row** – one record in a database table.
+    - **column** – one piece of information that is stored for every row in a database table.
+    - **SQL** – short for Structured Query Language, the language used to create, add to and get data from a database.
+    - **query** – an SQL statement that asks a database for data.
+    - **SQLite** – a type of database that stores a whole database in a single file, which Python can use with its built-in library.
+    - **cursor** – the object that runs SQL statements on a database.
+    - **override** – to replace a method inherited from the parent class with a new version in the subclass.
+    - **unpack** – to split the values in a tuple into separate variables in one step.
+
 Everything in our game so far disappears when we close it. The score, the lives and the rescued count are all stored in variables, and variables only last while the program runs. To keep data between games, we need to save it somewhere permanent, like a **database**.
 
 In this extension, we'll add a **high score table** to Space Rescue. When a game ends, the player types their initials, their score is saved in a database, and the top five scores are shown.

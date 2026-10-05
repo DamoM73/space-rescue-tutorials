@@ -6,6 +6,12 @@
     - how to plan an algorithm with an IPO table
     - how to keep an object inside the Room
 
+!!! terms "Terminology"
+    - **game clock** – a timer that makes every run of the game loop take the same amount of time, so the game runs at the same speed on any computer.
+    - **game loop** – the loop that runs over and over while a game is playing, handling inputs, updating the game and redrawing the screen.
+    - **tick** – one beat of the game clock, which in GameFrame happens every 1/30 of a second.
+    - **maintainable** – describes code that is organised so it is easy to read, change and add to later.
+
 By now you've probably noticed that the ship can fly off the top and bottom of the screen. Let's stop that from happening.
 
 ## Planning

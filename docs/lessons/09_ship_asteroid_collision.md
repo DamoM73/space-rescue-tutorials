@@ -6,6 +6,11 @@
     - what `self` and `other` mean in a collision
     - how to use GameFrame's built-in collision handling
 
+!!! terms "Terminology"
+    - **collision** – when two objects in a game touch or overlap.
+    - **rectangular collision** – a way of detecting collisions by putting a rectangle around each object and checking whether the rectangles touch or overlap.
+    - **hitbox** – the invisible rectangle around an object that is used to detect collisions.
+
 ## Hitboxes
 
 **Collisions** are when two objects in a game touch or overlap. GameFrame uses **rectangular collisions**, which put a rectangle around each object. These rectangles are often called **hitboxes**.

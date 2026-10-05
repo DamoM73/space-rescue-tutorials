@@ -6,6 +6,11 @@
     - how to change the score when events happen
     - how to test several changes with a testing table
 
+!!! terms "Terminology"
+    - **TextObject** – a special kind of GameFrame RoomObject that displays text on the screen.
+    - **HUD** – short for heads-up display, the information such as score and lives that is shown on the screen while the game is played.
+    - **testing table** – a table for recording tests, with columns for the test, the expected result, the actual result and the remedy.
+
 Now we have all our moving parts, it's time to reward the player for their efforts, and what better reward than a score?
 
 GameFrame is event-driven, so the easiest way to add scoring is to connect it to events. We'll give the player both positive and negative scoring events:

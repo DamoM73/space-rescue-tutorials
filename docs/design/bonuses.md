@@ -7,6 +7,10 @@
     - how to choose a random class from a list and create an object from it
     - how to use a timer to turn a power-up off again
 
+!!! terms "Terminology"
+    - **pickup** – an item in a game that the player collects to get a reward or bonus.
+    - **power-up** – a pickup that gives the player a special ability or advantage, often for a limited time.
+
 In [Game Design](game_design.md) we learnt that random bonus rewards add excitement and give players hope when things look desperate. Let's have Zork drop two kinds of bonus pickups:
 
 | Pickup | Image | What it does |

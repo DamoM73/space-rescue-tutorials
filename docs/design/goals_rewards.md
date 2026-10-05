@@ -6,6 +6,10 @@
     - how to make the game harder as the player gets closer to the goal
     - how to use an f-string to build text from variables
 
+!!! terms "Terminology"
+    - **f-string** – a Python string with an `f` before the quotes that puts the values of variables inside `{ }` into the text.
+    - **robust** – describes code that still works correctly when something unexpected happens.
+
 In [Game Design](game_design.md) we found that Space Rescue has no goal: the player just collects astronauts forever. That means there's no what-if effect and no reason to keep trying. Let's fix that.
 
 ## Planning

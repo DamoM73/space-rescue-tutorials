@@ -6,6 +6,11 @@
     - how to use flowcharts to compare algorithms
     - how to move an object by changing its coordinates or its speed
 
+!!! terms "Terminology"
+    - **acceleration** – a change in speed over time, such as the ship moving faster the longer a key is held.
+    - **frame** – each time the screen is redrawn while the game runs.
+    - **frame rate** – how many frames are drawn each second, which in GameFrame is 30.
+
 ## Different ways to move
 
 In the last lesson we made the spaceship move when a key is pressed. Pressing ++w++ starts the ship moving up and pressing ++s++ starts it moving down, and it keeps going until we press the other key. That's not the only way movement can work, though. We could have:

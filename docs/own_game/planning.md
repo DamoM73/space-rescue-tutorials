@@ -6,6 +6,11 @@
     - how to describe RoomObjects with annotations and class diagrams
     - how to set up a new GameFrame project
 
+!!! terms "Terminology"
+    - **annotation** – a note added to a plan or diagram that explains what part of it does.
+    - **attribute** – a variable that belongs to an object and describes one of its features.
+    - **method** – a function that belongs to an object and describes an action the object can take.
+
 ## Planning the game
 
 Back in [Get to Know GameFrame](../start/gameframe.md) we learnt that a GameFrame game is made of RoomObjects inside a series of Rooms. We'll use that idea to plan a new game.

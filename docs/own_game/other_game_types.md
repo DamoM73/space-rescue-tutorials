@@ -6,6 +6,13 @@
     - how to build a level from a list of strings
     - how to scroll the background to make the player feel like they're moving
 
+!!! terms "Terminology"
+    - **platform game** – a game where the player runs and jumps between platforms while gravity pulls them down.
+    - **gravity** – a force in a game that pulls objects down, making them fall faster and faster.
+    - **top-down game** – a game where we look down on the player from above as they move up, down, left and right.
+    - **four-way movement** – movement where the player can only go up, down, left or right, and not diagonally.
+    - **scrolling game** – a game where the background moves past the player to make it feel like they are travelling.
+
 Space Rescue is a side-on shooter, but GameFrame can make lots of other kinds of games. This page has three small demo games to show how. Each one is a starting point for your own game, not a finished game.
 
 ## Setting up a demo

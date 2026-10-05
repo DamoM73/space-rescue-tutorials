@@ -6,6 +6,12 @@
     - how to use GameFrame timers to make things happen at random times
     - how to pass a method as an argument
 
+!!! terms "Terminology"
+    - **spawn** – to make a new object appear in the game.
+    - **de-spawn** – to remove an object from the game.
+    - **timer** – a countdown that calls a chosen method when it reaches `0`.
+    - **argument** – a value we pass into a method or function when we call it.
+
 In the game, Zork hurls asteroids at the player's ship, and the player has to dodge them. Creating the Asteroid RoomObject uses many of the steps we used for the Ship and Zork.
 
 ## Create the Asteroid object
