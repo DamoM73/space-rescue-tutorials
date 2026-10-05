@@ -52,6 +52,7 @@ nav = [
   { "Reference" = [
     { "GameFrame API" = "reference/gameframe_api.md" },
     { "Index of Topics" = "reference/index_of_topics.md" },
+    { "Glossary" = "reference/glossary.md" },
     { "Common Errors" = "reference/common_errors.md" },
     { "Finished Game" = "reference/finished_game.md" },
     { "Using Thonny" = "reference/using_thonny.md" },

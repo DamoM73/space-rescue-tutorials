@@ -5,6 +5,12 @@
     - how to create and check a virtual environment in Thonny
     - how to install Pygame in Thonny
 
+!!! terms "Terminology"
+    - **Thonny** – a Python editor designed for beginners that comes with Python built in.
+    - **Shell** – the panel in Thonny that shows errors and `print` output.
+    - **interpreter** – the program that runs our Python code, such as the Python in our virtual environment.
+    - **package** – an extra library, such as Pygame, that we install so our program can use it.
+
 !!! warning "Thonny instead of VS Code"
     This page finishes setting up your computer with **Thonny** instead of VS Code. Before you start, complete the [Setup](../start/setup.md) page up to and including [GitHub Desktop](../start/setup.md#github-desktop).
 

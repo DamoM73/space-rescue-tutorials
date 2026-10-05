@@ -6,6 +6,15 @@
     - how to store images in a list and choose one with an index
     - how to reset global variables so the game can be played again
 
+!!! terms "Terminology"
+    - **life** – one of a limited number of chances a player has before the game ends.
+    - **data structure** – a way of organising and storing data so it is easy to use.
+    - **list** – a data structure that stores items in order, which we can find by their index.
+    - **tuple** – a data structure that groups values that belong together, such as the `x` and `y` of a coordinate.
+    - **dictionary** – a data structure that stores values with a key for each one.
+    - **set** – a data structure that stores a group of values with no repeats.
+    - **global variable** – a variable that can be used anywhere in the program and keeps its value for as long as the program runs.
+
 At the moment, hitting just one asteroid ends the game. That's a bit harsh, so the last step in building our game is to give the player **lives**.
 
 ## Planning

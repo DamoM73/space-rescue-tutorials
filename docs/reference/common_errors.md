@@ -5,6 +5,9 @@
     - what the most common GameFrame errors mean
     - how to fix each one
 
+!!! terms "Terminology"
+    - **indentation** – the spaces at the start of a line of code, which Python uses to show which block the line belongs to.
+
 When something goes wrong, Python stops the game and prints a **traceback** in the terminal. A traceback lists the path Python took to reach the error, with the **most recent step last**. So the most useful lines are usually at the **bottom**:
 
 - the last line says **what** went wrong (the type of error and a message)

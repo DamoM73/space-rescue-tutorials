@@ -7,6 +7,20 @@
     - four mechanics that improve a game's interactivity
     - how to spot where Space Rescue could be better
 
+!!! terms "Terminology"
+    - **interactive challenge** – a description of a game as something that has both interactivity and challenge.
+    - **interactivity** – when the player has some control over what happens, because the game responds to the player's inputs.
+    - **challenge** – something the player has to overcome to win a game.
+    - **game mechanic** – one of the basic rules and interactions that build interactivity and challenge into a game and make it fun to play.
+    - **goal** – a clear target that the player is trying to achieve in a game.
+    - **what-if effect** – when a player who fails thinks of things they could have done differently, which makes them want to try again.
+    - **reward** – something that makes the player feel good about their effort, such as points, and keeps them interested in challenges.
+    - **subgoal** – a short-term or optional challenge on the way to the game's main goal.
+    - **streak** – the number of times in a row the player succeeds at something, such as shooting asteroids without losing a life.
+    - **control overload** – when a game gives the player so many controls or choices that they feel overwhelmed and less in control.
+    - **unfair punishment** – when a game punishes the player for something they couldn't control, which damages their sense of control.
+    - **audio feedback** – using sounds to tell the player whether what they just did was good or bad.
+
 There are general principles that help us make better games. In fact, there's a whole industry built around game design, with research into what players like and how to keep them playing. What we cover here is a simple introduction to a topic big enough to fill many different careers.
 
 If you're interested in going deeper, check out [The Psychology of Video Games](https://www.psychologyofgames.com/).

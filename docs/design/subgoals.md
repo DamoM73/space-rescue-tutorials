@@ -7,6 +7,9 @@
     - how to write a method that returns a value
     - how to make a mistake cost the player progress
 
+!!! terms "Terminology"
+    - **return value** – the value a method or function sends back to the code that called it.
+
 In [Game Design](game_design.md) we planned two **subgoals** for Space Rescue:
 
 | Subgoal | How it works |

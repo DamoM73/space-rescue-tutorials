@@ -7,6 +7,17 @@
     - how GameFrame makes building games with Pygame easier
     - how Python, Pygame and GameFrame work together as a stack
 
+!!! terms "Terminology"
+    - **Pygame** – a free, open-source Python library for building 2D games and other interactive graphical programs.
+    - **open source** – software whose code is freely available for anyone to use, study and change.
+    - **abstraction** – hiding complicated details behind simpler tools, so we can use something without knowing exactly how it works inside.
+    - **game engine** – software that provides the tools needed to build and run games, such as drawing graphics and detecting collisions.
+    - **event-driven framework** – a set folder structure and collection of ready-made classes that we build on, where our code runs in response to events such as key presses or collisions.
+    - **Room** – a GameFrame screen or level where the game takes place and which holds the game's objects.
+    - **RoomObject** – a GameFrame object, such as the ship or an asteroid, that is placed inside a Room and contains game logic.
+    - **stack** – the layers of tools and technologies that work together to run a program, with each layer building on the one below it.
+    - **API** – short for application programming interface, the set of commands one piece of software provides so other code can use it.
+
 In this course we will build a 2D game called **Space Rescue** using Python, Pygame and GameFrame. Along the way we will also learn some basic game design ideas, and use them to make our game better.
 
 ![Space Rescue gameplay](../assets/game_play.png)

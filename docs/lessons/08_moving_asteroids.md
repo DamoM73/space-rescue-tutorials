@@ -7,6 +7,12 @@
     - how to delete an object from a Room
     - how to use `print` and the terminal for testing
 
+!!! terms "Terminology"
+    - **Cartesian plane** – a flat surface where every position is described by an x and a y coordinate.
+    - **x and y components** – the horizontal and vertical parts that any movement on the screen can be split into.
+    - **memory leak** – when a program keeps using memory it no longer needs, so it uses more and more over time and may slow down or crash.
+    - **terminal** – the panel where a program's text output, such as messages from `print` and errors, is shown.
+
 In this lesson we'll add all the movement for the asteroids:
 
 - moving left at a random angle when they spawn

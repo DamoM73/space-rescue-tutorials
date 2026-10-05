@@ -7,6 +7,11 @@
     - how to build a power-up with an active time and a cooldown
     - how one object can change its movement because of another object
 
+!!! terms "Terminology"
+    - **special power** – an ability the player can turn on for a short time to get an advantage.
+    - **cooldown** – the waiting time after a power has been used before it can be used again.
+    - **power meter** – a HUD item that shows whether a special power is ready, active or cooling down.
+
 In [Game Design](game_design.md) we learnt that choices that **seem** to change the game give players more control and get them more involved. Let's give the player a choice of two ships, each with its own special power.
 
 | Ship | Image | Special power (++ctrl++) |

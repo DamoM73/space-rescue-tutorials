@@ -6,6 +6,20 @@
     - how to create a virtual environment for our project
     - how to commit and push our code to GitHub
 
+!!! terms "Terminology"
+    - **version control** – a system that tracks changes to our files over time, so we can save versions of our work and go back to an earlier one if something breaks.
+    - **Git** – the industry-standard version control system, which is free and open source.
+    - **repository** – a special folder, often called a repo, that stores our project files and the history of every change made to them.
+    - **GitHub** – a website that stores Git repositories online, syncs them with our computer and adds features for sharing and collaboration.
+    - **GitHub Desktop** – an app that lets us use Git and GitHub without typing commands.
+    - **IDE** – short for Integrated Development Environment, a program that lets us write, edit, test and run code in one place.
+    - **VS Code** – short for Visual Studio Code, a professional IDE that works with many programming languages through extensions.
+    - **clone** – to copy a repository from GitHub onto our computer.
+    - **commit** – a saved snapshot of our changes, with a message saying what we did.
+    - **push** – to send our commits from our computer to the online copy of the repository.
+    - **fork** – our own copy of someone else's repository on GitHub, which we are allowed to push to.
+    - **virtual environment** – a separate space for one Python project with its own Python setup and libraries, so changes in one project don't affect another.
+
 In this course we will build good programming habits. That means using a proper development environment and **version control** to manage our code. So before we write any code, we need to install a few programs and set them up to work together.
 
 !!! tip "Why this workflow?"
