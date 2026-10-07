@@ -9,7 +9,6 @@
 !!! terms "Terminology"
     - **boss** – a powerful enemy in a game, often faced at the end of a challenge.
     - **automate** – to make something happen by itself under the computer's control, instead of through the player's input.
-    - **instance** – one object made from a class.
     - **instantiation** – creating a new object from a class, which runs the class's `__init__` method.
     - **negate** – to change a number to its opposite sign, such as `-10` to `10`, by multiplying it by `-1`.
 

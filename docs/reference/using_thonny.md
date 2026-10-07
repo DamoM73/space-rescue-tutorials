@@ -6,9 +6,6 @@
     - how to install Pygame in Thonny
 
 !!! terms "Terminology"
-    - **Thonny** – a Python editor designed for beginners that comes with Python built in.
-    - **Shell** – the panel in Thonny that shows errors and `print` output.
-    - **interpreter** – the program that runs our Python code, such as the Python in our virtual environment.
     - **package** – an extra library, such as Pygame, that we install so our program can use it.
 
 !!! warning "Thonny instead of VS Code"

@@ -8,8 +8,6 @@
 
 !!! terms "Terminology"
     - **style guide** – a set of rules for how code should be written and laid out so it is easy to read, such as keeping lines to 79 characters or fewer.
-    - **flag variable** – a variable that is either `True` or `False` and records the state of something, which our code checks to decide what to do.
-    - **state** – the current condition of something in a program, such as whether the ship is allowed to shoot.
 
 Zork is hurling asteroids at our defenceless spaceship, so we'd better give it a way to fight back. In this lesson we'll arm the ship with a laser.
 

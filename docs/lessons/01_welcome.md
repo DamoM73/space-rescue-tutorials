@@ -10,14 +10,9 @@
 !!! terms "Terminology"
     - **wireframe** – a simple plan of a screen that shows where things like buttons, images and text will go, focusing on layout rather than colours or details.
     - **placeholder** – a simple shape, such as a box with an X, that marks where something will go in a plan.
-    - **class diagram** – a diagram that shows a class's name, its attributes and its methods.
-    - **subclass** – a class that is built from another class (its parent) and gets all of the parent's attributes and methods.
     - **docstring** – a block of text in triple quotes at the start of a class or method that explains what it is for.
-    - **inheritance** – when a subclass automatically receives all the attributes and methods of its parent class.
     - **traceback** – the error report Python prints when a program crashes, showing the path it took to the error with the most recent step last.
-    - **module** – a Python file containing code, such as classes or functions, that can be imported into other files.
     - **structural comment** – a comment that says what the next block of code does, making our code easier to find our way around.
-    - **case-sensitive** – treating capital and lower-case letters as different, so `background.png` and `Background.png` are not the same name.
 
 To get started, we will create a welcome screen for the game. It's a simple screen, but it introduces the key ideas and processes we'll use in every lesson.
 

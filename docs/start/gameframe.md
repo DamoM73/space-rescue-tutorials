@@ -6,7 +6,6 @@
     - which GameFrame files we will work with and what they do
 
 !!! terms "Terminology"
-    - **object** – a part of the game, such as the player's ship or the score, that combines data with the code that controls how it behaves.
     - **game logic** – all the code that makes a game work, such as what happens when keys are pressed, when objects collide or when the score changes.
     - **sprite** – the image used to show an object on the screen.
     - **root folder** – the top-level folder of a project, which contains all of its other files and folders.

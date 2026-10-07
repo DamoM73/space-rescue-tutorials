@@ -16,8 +16,6 @@
     - **query** – an SQL statement that asks a database for data.
     - **SQLite** – a type of database that stores a whole database in a single file, which Python can use with its built-in library.
     - **cursor** – the object that runs SQL statements on a database.
-    - **override** – to replace a method inherited from the parent class with a new version in the subclass.
-    - **unpack** – to split the values in a tuple into separate variables in one step.
 
 Everything in our game so far disappears when we close it. The score, the lives and the rescued count are all stored in variables, and variables only last while the program runs. To keep data between games, we need to save it somewhere permanent, like a **database**.
 

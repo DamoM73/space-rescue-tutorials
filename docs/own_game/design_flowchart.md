@@ -6,7 +6,6 @@
     - why we keep looping back to improve the game
 
 !!! terms "Terminology"
-    - **debugging** – finding and fixing the mistakes in a program, for example by reading the error and checking the code.
     - **play-testing** – getting other people to play our game so we can find out whether it is fun and fair.
 
 Making a game isn't a straight line from idea to finished product. We plan a little, build a little, test, and then improve. The flowchart below shows the whole process we followed for Space Rescue, so you can use it for your own game.

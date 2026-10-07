@@ -9,7 +9,6 @@
 !!! terms "Terminology"
     - **TextObject** – a special kind of GameFrame RoomObject that displays text on the screen.
     - **HUD** – short for heads-up display, the information such as score and lives that is shown on the screen while the game is played.
-    - **testing table** – a table for recording tests, with columns for the test, the expected result, the actual result and the remedy.
 
 Now we have all our moving parts, it's time to reward the player for their efforts, and what better reward than a score?
 

@@ -12,7 +12,6 @@
     - **repository** – a special folder, often called a repo, that stores our project files and the history of every change made to them.
     - **GitHub** – a website that stores Git repositories online, syncs them with our computer and adds features for sharing and collaboration.
     - **GitHub Desktop** – an app that lets us use Git and GitHub without typing commands.
-    - **IDE** – short for Integrated Development Environment, a program that lets us write, edit, test and run code in one place.
     - **VS Code** – short for Visual Studio Code, a professional IDE that works with many programming languages through extensions.
     - **clone** – to copy a repository from GitHub onto our computer.
     - **commit** – a saved snapshot of our changes, with a message saying what we did.

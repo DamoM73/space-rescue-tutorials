@@ -8,8 +8,6 @@
 
 !!! terms "Terminology"
     - **annotation** – a note added to a plan or diagram that explains what part of it does.
-    - **attribute** – a variable that belongs to an object and describes one of its features.
-    - **method** – a function that belongs to an object and describes an action the object can take.
 
 ## Planning the game
 

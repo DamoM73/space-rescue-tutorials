@@ -8,14 +8,10 @@
     - how to change from one Room to the next
 
 !!! terms "Terminology"
-    - **event-driven programming** – a style of programming where the program waits for events to happen and then runs the code that responds to each one.
-    - **event** – something that happens while a program runs, such as a key press or two objects colliding, that the program can respond to.
-    - **event handler** – the code, usually a method, that runs when a particular event happens.
     - **register** – to link an object or event handler to an event, so the program tells it when that event happens.
     - **event loop** – the part of an event-driven program that keeps checking for events and runs the matching event handlers.
     - **index** – the number that gives an item's position in a list, starting from `0`.
     - **trigger** – the event or condition that causes an action to happen.
-    - **flowchart** – a diagram that uses shapes and arrows to show the steps and decisions in an algorithm.
 
 In this lesson we'll create the main Room for our game. All the gameplay happens in this Room, so we'll call it **GamePlay**. We will:
 

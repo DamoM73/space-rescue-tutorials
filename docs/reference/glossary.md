@@ -1,18 +1,18 @@
 # Glossary
 
-This glossary lists every technical term introduced on this site, in alphabetical order. Each term links to the page where it is first explained, and each page lists its new terms in a Terminology callout at the top.
+This glossary lists every technical term used on this site, in alphabetical order. Each term links to the page where it is first explained. Each page lists its new terms in a Terminology callout at the top. Terms already introduced in an earlier tutorial site aren't repeated in those callouts, but they are all listed here.
 
 [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · [X](#x)
 
 ## A
 
-- **abstraction** – hiding complicated details behind simpler tools, so we can use something without knowing exactly how it works inside. ([Introduction](../start/introduction.md))
+- **abstraction** – the OOP principle of hiding the complicated code inside an object so we only need to call its methods. ([Introduction](../start/introduction.md))
 - **acceleration** – a change in speed over time, such as the ship moving faster the longer a key is held. ([4. Advanced Movement](../lessons/04_advanced_movement.md))
 - **annotation** – a note added to a plan or diagram that explains what part of it does. ([Planning Your Game](../own_game/planning.md))
 - **API** – short for application programming interface, the set of commands one piece of software provides so other code can use it. ([Introduction](../start/introduction.md))
-- **argument** – a value we pass into a method or function when we call it. ([7. Asteroids](../lessons/07_asteroids.md))
+- **argument** – a value we send into a function or method when we call it. ([7. Asteroids](../lessons/07_asteroids.md))
 - **asset** – a file the game uses that isn't code, such as an image or a sound. ([Get to Know GameFrame](../start/gameframe.md))
-- **attribute** – a variable that belongs to an object and describes one of its features. ([Planning Your Game](../own_game/planning.md))
+- **attribute** – a quality that every object of a class has, such as a student's name, stored as data inside the object. ([Planning Your Game](../own_game/planning.md))
 - **audio feedback** – using sounds to tell the player whether what they just did was good or bad. ([Game Design](../design/game_design.md))
 - **automate** – to make something happen by itself under the computer's control, instead of through the player's input. ([6. Zork](../lessons/06_zork.md))
 - **avatar** – the character or object in a game that the player controls. ([3. Spaceship](../lessons/03_spaceship.md))
@@ -25,16 +25,16 @@ This glossary lists every technical term introduced on this site, in alphabetica
 ## C
 
 - **Cartesian plane** – a flat surface where every position is described by an x and a y coordinate. ([8. Moving Asteroids](../lessons/08_moving_asteroids.md))
-- **case-sensitive** – treating capital and lower-case letters as different, so `background.png` and `Background.png` are not the same name. ([1. Welcome Screen](../lessons/01_welcome.md))
+- **case-sensitive** – treating capital and lower-case letters as different, so `age` and `Age` are two different names. ([1. Welcome Screen](../lessons/01_welcome.md))
 - **challenge** – something the player has to overcome to win a game. ([Game Design](../design/game_design.md))
-- **class diagram** – a diagram that shows a class's name, its attributes and its methods. ([1. Welcome Screen](../lessons/01_welcome.md))
+- **class diagram** – a UML (Unified Modelling Language) drawing of a class as a table with three rows: the class name, its attributes and its methods. ([1. Welcome Screen](../lessons/01_welcome.md))
 - **clone** – to copy a repository from GitHub onto our computer. ([Setup](../start/setup.md))
 - **collision** – when two objects in a game touch or overlap. ([9. Ship and Asteroid Collision](../lessons/09_ship_asteroid_collision.md))
 - **column** – one piece of information that is stored for every row in a database table. ([Saving Data with a Database](../own_game/databases.md))
 - **commit** – a saved snapshot of our changes, with a message saying what we did. ([Setup](../start/setup.md))
 - **control overload** – when a game gives the player so many controls or choices that they feel overwhelmed and less in control. ([Game Design](../design/game_design.md))
 - **cooldown** – the waiting time after a power has been used before it can be used again. ([Ship Choice](../design/ship_choice.md))
-- **coordinate** – a pair of values `(x, y)` that gives a position on the screen, with x for the horizontal position and y for the vertical position. ([3. Spaceship](../lessons/03_spaceship.md))
+- **coordinate** – a pair of numbers, such as `(x, y)`, that gives a position on a screen or display. ([3. Spaceship](../lessons/03_spaceship.md))
 - **cursor** – the object that runs SQL statements on a database. ([Saving Data with a Database](../own_game/databases.md))
 
 ## D
@@ -42,23 +42,23 @@ This glossary lists every technical term introduced on this site, in alphabetica
 - **data structure** – a way of organising and storing data so it is easy to use. ([14. Lives](../lessons/14_lives.md))
 - **database** – an organised store of data that is saved permanently, so it is kept after the program closes. ([Saving Data with a Database](../own_game/databases.md))
 - **de-spawn** – to remove an object from the game. ([7. Asteroids](../lessons/07_asteroids.md))
-- **debugging** – finding and fixing the mistakes in a program, for example by reading the error and checking the code. ([Design Thinking Flowchart](../own_game/design_flowchart.md))
-- **dictionary** – a data structure that stores values with a key for each one. ([14. Lives](../lessons/14_lives.md))
+- **debugging** – the process of finding and fixing bugs in a program. ([Design Thinking Flowchart](../own_game/design_flowchart.md))
+- **dictionary** – a collection that stores values with names, called keys, so we can look each value up by its name. ([14. Lives](../lessons/14_lives.md))
 - **docstring** – a block of text in triple quotes at the start of a class or method that explains what it is for. ([1. Welcome Screen](../lessons/01_welcome.md))
 
 ## E
 
-- **event** – something that happens while a program runs, such as a key press or two objects colliding, that the program can respond to. ([2. GamePlay Room](../lessons/02_gameplay.md))
-- **event handler** – the code, usually a method, that runs when a particular event happens. ([2. GamePlay Room](../lessons/02_gameplay.md))
+- **event** – something that happens while a program runs, such as a button press or two objects colliding, that the program responds to. ([2. GamePlay Room](../lessons/02_gameplay.md))
+- **event handler** – the code that responds to a particular event, such as moving the player when they type a direction. ([2. GamePlay Room](../lessons/02_gameplay.md))
 - **event loop** – the part of an event-driven program that keeps checking for events and runs the matching event handlers. ([2. GamePlay Room](../lessons/02_gameplay.md))
 - **event-driven framework** – a set folder structure and collection of ready-made classes that we build on, where our code runs in response to events such as key presses or collisions. ([Introduction](../start/introduction.md))
-- **event-driven programming** – a style of programming where the program waits for events to happen and then runs the code that responds to each one. ([2. GamePlay Room](../lessons/02_gameplay.md))
+- **event-driven programming** – a style of programming where the program keeps checking for things to happen and then responds to them. ([2. GamePlay Room](../lessons/02_gameplay.md))
 
 ## F
 
 - **f-string** – a Python string with an `f` before the quotes that puts the values of variables inside `{ }` into the text. ([Goals and Rewards](../design/goals_rewards.md))
-- **flag variable** – a variable that is either `True` or `False` and records the state of something, which our code checks to decide what to do. ([10. Laser](../lessons/10_laser.md))
-- **flowchart** – a diagram that uses shapes and arrows to show the steps and decisions in an algorithm. ([2. GamePlay Room](../lessons/02_gameplay.md))
+- **flag variable** – a variable that stores `True` or `False` to control part of a program, such as `running` keeping the main loop going. ([10. Laser](../lessons/10_laser.md))
+- **flowchart** – a diagram that uses shapes and arrows to show each step in a program and how it moves from one step to the next. ([2. GamePlay Room](../lessons/02_gameplay.md))
 - **fork** – our own copy of someone else's repository on GitHub, which we are allowed to push to. ([Setup](../start/setup.md))
 - **four-way movement** – movement where the player can only go up, down, left or right, and not diagonally. ([Other Game Types](../own_game/other_game_types.md))
 - **frame** – each time the screen is redrawn while the game runs. ([4. Advanced Movement](../lessons/04_advanced_movement.md))
@@ -85,28 +85,28 @@ This glossary lists every technical term introduced on this site, in alphabetica
 
 ## I
 
-- **IDE** – short for Integrated Development Environment, a program that lets us write, edit, test and run code in one place. ([Setup](../start/setup.md))
-- **indentation** – the spaces at the start of a line of code, which Python uses to show which block the line belongs to. ([Common Errors](../reference/common_errors.md))
+- **IDE** – an Integrated Development Environment, which is an app for writing, running and fixing code. ([Setup](../start/setup.md))
+- **indentation** – spaces at the start of a line (four in Python) that show which code belongs to a loop or other block. ([Common Errors](../reference/common_errors.md))
 - **index** – the number that gives an item's position in a list, starting from `0`. ([2. GamePlay Room](../lessons/02_gameplay.md))
-- **inheritance** – when a subclass automatically receives all the attributes and methods of its parent class. ([1. Welcome Screen](../lessons/01_welcome.md))
-- **instance** – one object made from a class. ([6. Zork](../lessons/06_zork.md))
+- **inheritance** – the OOP principle of making a new class based on an existing one, so the new class gets the existing class's attributes and methods. ([1. Welcome Screen](../lessons/01_welcome.md))
+- **instance** – another name for an object, describing it as one particular copy made from a class. ([6. Zork](../lessons/06_zork.md))
 - **instantiation** – creating a new object from a class, which runs the class's `__init__` method. ([6. Zork](../lessons/06_zork.md))
 - **interactive challenge** – a description of a game as something that has both interactivity and challenge. ([Game Design](../design/game_design.md))
 - **interactivity** – when the player has some control over what happens, because the game responds to the player's inputs. ([Game Design](../design/game_design.md))
-- **interpreter** – the program that runs our Python code, such as the Python in our virtual environment. ([Using Thonny](../reference/using_thonny.md))
-- **IPO table** – short for Input Process Output table, a planning tool that sets out the output we want, the input that triggers it and the process that gets from one to the other. ([3. Spaceship](../lessons/03_spaceship.md))
+- **interpreter** – the program that reads our code and runs it, such as MicroPython on the micro:bit or Python 3 on the computer. ([Using Thonny](../reference/using_thonny.md))
+- **IPO table** – an Input, Process, Output table that maps out what a system takes in, what it decides and what it does. ([3. Spaceship](../lessons/03_spaceship.md))
 
 ## L
 
 - **life** – one of a limited number of chances a player has before the game ends. ([14. Lives](../lessons/14_lives.md))
-- **list** – a data structure that stores items in order, which we can find by their index. ([14. Lives](../lessons/14_lives.md))
+- **list** – a collection of items stored in a set order inside `[` and `]`, with commas between them. ([14. Lives](../lessons/14_lives.md))
 
 ## M
 
-- **maintainable** – describes code that is organised so it is easy to read, change and add to later. ([5. Keeping the Ship in the Room](../lessons/05_ship_in_room.md))
+- **maintainable** – describes code that is easy for other people, or our future selves, to read, understand and change. ([5. Keeping the Ship in the Room](../lessons/05_ship_in_room.md))
 - **memory leak** – when a program keeps using memory it no longer needs, so it uses more and more over time and may slow down or crash. ([8. Moving Asteroids](../lessons/08_moving_asteroids.md))
-- **method** – a function that belongs to an object and describes an action the object can take. ([Planning Your Game](../own_game/planning.md))
-- **module** – a Python file containing code, such as classes or functions, that can be imported into other files. ([1. Welcome Screen](../lessons/01_welcome.md))
+- **method** – a function that belongs to an object or value, written after a dot, such as `name.upper()`. ([Planning Your Game](../own_game/planning.md))
+- **module** – a file of ready-made code that we can import into our program to use its commands. ([1. Welcome Screen](../lessons/01_welcome.md))
 
 ## N
 
@@ -114,16 +114,16 @@ This glossary lists every technical term introduced on this site, in alphabetica
 
 ## O
 
-- **object** – a part of the game, such as the player's ship or the score, that combines data with the code that controls how it behaves. ([Get to Know GameFrame](../start/gameframe.md))
+- **object** – a thing in our program, made from a class, that holds its own data and has methods that make it do things, such as a motor or a game character. ([Get to Know GameFrame](../start/gameframe.md))
 - **open source** – software whose code is freely available for anyone to use, study and change. ([Introduction](../start/introduction.md))
 - **origin** – the coordinate used as an object's position, which for objects with sprites is the top-left corner. ([3. Spaceship](../lessons/03_spaceship.md))
-- **override** – to replace a method inherited from the parent class with a new version in the subclass. ([Saving Data with a Database](../own_game/databases.md))
+- **override** – to replace an inherited method by writing a method with the same name in the child class. ([Saving Data with a Database](../own_game/databases.md))
 
 ## P
 
 - **package** – an extra library, such as Pygame, that we install so our program can use it. ([Using Thonny](../reference/using_thonny.md))
 - **pickup** – an item in a game that the player collects to get a reward or bonus. ([Bonus Pickups](../design/bonuses.md))
-- **pixel** – one of the millions of tiny dots that make up a computer screen. ([3. Spaceship](../lessons/03_spaceship.md))
+- **pixel** – one of the tiny dots of light that make up a screen or display. ([3. Spaceship](../lessons/03_spaceship.md))
 - **placeholder** – a simple shape, such as a box with an X, that marks where something will go in a plan. ([1. Welcome Screen](../lessons/01_welcome.md))
 - **platform game** – a game where the player runs and jumps between platforms while gravity pulls them down. ([Other Game Types](../own_game/other_game_types.md))
 - **play-testing** – getting other people to play our game so we can find out whether it is fun and fair. ([Design Thinking Flowchart](../own_game/design_flowchart.md))
@@ -141,7 +141,7 @@ This glossary lists every technical term introduced on this site, in alphabetica
 - **rectangular collision** – a way of detecting collisions by putting a rectangle around each object and checking whether the rectangles touch or overlap. ([9. Ship and Asteroid Collision](../lessons/09_ship_asteroid_collision.md))
 - **register** – to link an object or event handler to an event, so the program tells it when that event happens. ([2. GamePlay Room](../lessons/02_gameplay.md))
 - **repository** – a special folder, often called a repo, that stores our project files and the history of every change made to them. ([Setup](../start/setup.md))
-- **return value** – the value a method or function sends back to the code that called it. ([Subgoals](../design/subgoals.md))
+- **return value** – the value a function or method sends back to the code that called it. ([Subgoals](../design/subgoals.md))
 - **reward** – something that makes the player feel good about their effort, such as points, and keeps them interested in challenges. ([Game Design](../design/game_design.md))
 - **robust** – describes code that still works correctly when something unexpected happens. ([Goals and Rewards](../design/goals_rewards.md))
 - **Room** – a GameFrame screen or level where the game takes place and which holds the game's objects. ([Introduction](../start/introduction.md))
@@ -152,8 +152,8 @@ This glossary lists every technical term introduced on this site, in alphabetica
 ## S
 
 - **scrolling game** – a game where the background moves past the player to make it feel like they are travelling. ([Other Game Types](../own_game/other_game_types.md))
-- **set** – a data structure that stores a group of values with no repeats. ([14. Lives](../lessons/14_lives.md))
-- **Shell** – the panel in Thonny that shows errors and `print` output. ([Using Thonny](../reference/using_thonny.md))
+- **set** – a collection of values with no order and no repeats, such as the buttons being pressed right now. ([14. Lives](../lessons/14_lives.md))
+- **Shell** – the panel in Thonny that shows what our program prints and any error messages. ([Using Thonny](../reference/using_thonny.md))
 - **sound effect** – a short sound that plays when a particular event happens in the game. ([Audio](../design/audio.md))
 - **spawn** – to make a new object appear in the game. ([7. Asteroids](../lessons/07_asteroids.md))
 - **special power** – an ability the player can turn on for a short time to get an advantage. ([Ship Choice](../design/ship_choice.md))
@@ -161,31 +161,31 @@ This glossary lists every technical term introduced on this site, in alphabetica
 - **SQL** – short for Structured Query Language, the language used to create, add to and get data from a database. ([Saving Data with a Database](../own_game/databases.md))
 - **SQLite** – a type of database that stores a whole database in a single file, which Python can use with its built-in library. ([Saving Data with a Database](../own_game/databases.md))
 - **stack** – the layers of tools and technologies that work together to run a program, with each layer building on the one below it. ([Introduction](../start/introduction.md))
-- **state** – the current condition of something in a program, such as whether the ship is allowed to shoot. ([10. Laser](../lessons/10_laser.md))
+- **state** – the situation a program is in at a particular moment, such as which room the player is in. ([10. Laser](../lessons/10_laser.md))
 - **streak** – the number of times in a row the player succeeds at something, such as shooting asteroids without losing a life. ([Game Design](../design/game_design.md))
 - **structural comment** – a comment that says what the next block of code does, making our code easier to find our way around. ([1. Welcome Screen](../lessons/01_welcome.md))
 - **style guide** – a set of rules for how code should be written and laid out so it is easy to read, such as keeping lines to 79 characters or fewer. ([10. Laser](../lessons/10_laser.md))
-- **subclass** – a class that is built from another class (its parent) and gets all of the parent's attributes and methods. ([1. Welcome Screen](../lessons/01_welcome.md))
+- **subclass** – a class based on another class that inherits all of its attributes and methods, also called a child class. ([1. Welcome Screen](../lessons/01_welcome.md))
 - **subgoal** – a short-term or optional challenge on the way to the game's main goal. ([Game Design](../design/game_design.md))
 
 ## T
 
 - **table** – the part of a database that stores data in rows and columns, a bit like a spreadsheet. ([Saving Data with a Database](../own_game/databases.md))
-- **terminal** – the panel where a program's text output, such as messages from `print` and errors, is shown. ([8. Moving Asteroids](../lessons/08_moving_asteroids.md))
-- **testing table** – a table for recording tests, with columns for the test, the expected result, the actual result and the remedy. ([13. Scoring](../lessons/13_scoring.md))
+- **terminal** – the panel in the editor where anything our program prints, and any error messages, are shown. ([8. Moving Asteroids](../lessons/08_moving_asteroids.md))
+- **testing table** – a table that lists each test with its expected result and actual result, so we can spot any differences. ([13. Scoring](../lessons/13_scoring.md))
 - **TextObject** – a special kind of GameFrame RoomObject that displays text on the screen. ([13. Scoring](../lessons/13_scoring.md))
-- **Thonny** – a Python editor designed for beginners that comes with Python built in. ([Using Thonny](../reference/using_thonny.md))
+- **Thonny** – a program for writing, running and debugging Python code that is designed for beginners. ([Using Thonny](../reference/using_thonny.md))
 - **tick** – one beat of the game clock, which in GameFrame happens every 1/30 of a second. ([5. Keeping the Ship in the Room](../lessons/05_ship_in_room.md))
 - **timer** – a countdown that calls a chosen method when it reaches `0`. ([7. Asteroids](../lessons/07_asteroids.md))
 - **top-down game** – a game where we look down on the player from above as they move up, down, left and right. ([Other Game Types](../own_game/other_game_types.md))
 - **traceback** – the error report Python prints when a program crashes, showing the path it took to the error with the most recent step last. ([1. Welcome Screen](../lessons/01_welcome.md))
 - **trigger** – the event or condition that causes an action to happen. ([2. GamePlay Room](../lessons/02_gameplay.md))
-- **tuple** – a data structure that groups values that belong together, such as the `x` and `y` of a coordinate. ([14. Lives](../lessons/14_lives.md))
+- **tuple** – a group of values written in round brackets that works like a list but can't be changed. ([14. Lives](../lessons/14_lives.md))
 
 ## U
 
 - **unfair punishment** – when a game punishes the player for something they couldn't control, which damages their sense of control. ([Game Design](../design/game_design.md))
-- **unpack** – to split the values in a tuple into separate variables in one step. ([Saving Data with a Database](../own_game/databases.md))
+- **unpack** – to store each value from a tuple or list in its own variable in one line, such as `x, y = position`. ([Saving Data with a Database](../own_game/databases.md))
 
 ## V
 

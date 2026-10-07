@@ -8,10 +8,7 @@
 
 !!! terms "Terminology"
     - **avatar** – the character or object in a game that the player controls.
-    - **pixel** – one of the millions of tiny dots that make up a computer screen.
-    - **coordinate** – a pair of values `(x, y)` that gives a position on the screen, with x for the horizontal position and y for the vertical position.
     - **origin** – the coordinate used as an object's position, which for objects with sprites is the top-left corner.
-    - **IPO table** – short for Input Process Output table, a planning tool that sets out the output we want, the input that triggers it and the process that gets from one to the other.
 
 Every game needs a player **avatar**, and in our game it's a spaceship. In this lesson we'll create the spaceship and make it move up and down the screen when the player presses keys.
 

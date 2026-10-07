@@ -10,7 +10,6 @@
 !!! terms "Terminology"
     - **Pygame** – a free, open-source Python library for building 2D games and other interactive graphical programs.
     - **open source** – software whose code is freely available for anyone to use, study and change.
-    - **abstraction** – hiding complicated details behind simpler tools, so we can use something without knowing exactly how it works inside.
     - **game engine** – software that provides the tools needed to build and run games, such as drawing graphics and detecting collisions.
     - **event-driven framework** – a set folder structure and collection of ready-made classes that we build on, where our code runs in response to events such as key presses or collisions.
     - **Room** – a GameFrame screen or level where the game takes place and which holds the game's objects.
